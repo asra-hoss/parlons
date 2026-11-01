@@ -278,3 +278,20 @@ descriptive/informational reading texts are by design. Commit touches
 index.html, the JS bundle, the A1U01_D1 MP3, pron-index + 1 pron clip,
 and the favicon set (logo.svg + icon PNGs, referenced by index.html);
 all 48 thumbnails restored from HEAD, byte-identical.
+
+**LOGO + HOME TRIM — Nov 1, 2026:** per Asra (« لوگو رو درست
+کن ») the app carries its own Parlons ! logo (shipped in the
+same tree as the U1 fix above, documented here for the record):
+a violet (#7a5ff0) rounded speech bubble with a white « ! » —
+hand-drawn SVG at `logo.svg` (client/public/). Home header: the
+small caps brand line + the big « Dossiers » h1 are replaced by
+ONE lockup — the mark inline in App.tsx (fill = var(--accent),
+dark mode follows) + the « Parlons ! » wordmark in Nunito;
+settings button unchanged. Favicon: build-static.mjs injects
+the SVG link ahead of the PNG fallback. The old TEAL placeholder
+icons are gone: icon-192 / icon-512 / apple-touch-icon render
+the bubble on the lilac tint (#efeaff); manifest entries
+unchanged. Same pass, per Asra's Home screenshot: level pills
+show ONLY the code (A1 / A2 / B1 / B2 / C1/C2 — « Niveau »
+removed) and the « Dossiers » heading is removed — removals
+only, nothing else changed.
