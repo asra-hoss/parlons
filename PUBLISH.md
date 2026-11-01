@@ -76,6 +76,15 @@ on this VM, hence SSH-over-443 with the CONNECT proxy, same recipe as
 
 ## Status (Nov 1, 2026)
 
+**ACCENT LIGHTENED ONE STEP — Nov 1, 2026:** per Asra (« یکم
+بنفشش رو کمرنگ‌تر می‌کنی، خیلی کم »), ONLY the accent token
+changed: `--accent` #6c4cf1 → #7a5ff0 (dark-mode variant
+#a78bfa → #b59ef9 by the same step); the matching theme-color
+in index.html + manifest went with it. Nothing else touched.
+Verified in the built bundle (#7a5ff0 present, #6c4cf1 ×0);
+commit touches index.html, manifest + the CSS bundle only,
+all thumbnails restored from HEAD, byte-identical.
+
 **LINGUA RESTYLE + SPLIT NAVIGATION — Nov 1, 2026:** per Asra
 (approved reference: the Lingua-style Listen screen), the whole
 app is restyled through the shared theme: white background, soft
