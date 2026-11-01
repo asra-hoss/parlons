@@ -76,6 +76,20 @@ on this VM, hence SSH-over-443 with the CONNECT proxy, same recipe as
 
 ## Status (Nov 1, 2026)
 
+**DOSSIER CARDS RESTYLED + LIVE — Nov 1, 2026** (commit `286181b`): per Asra,
+the Home dossier card no longer crowds its text beside the thumbnail — the
+card is now stacked: clean full-width thumbnail on top (`h-36 w-full
+object-cover`), and below it only « Dossier N — « Title » » + the arrow.
+Removed from the card in the same pass (her follow-up instruction): the
+theme line, the counts line (« pages · texts · listening · words ») and
+the « Studied: … » time line — no counts of texts/files/words/minutes
+anywhere on Home. Tap behaviour and the dossier screens (incl. the study
+timer) are unchanged; the change is in the shared Home card component, so
+it applies to all five levels. Verified live: root serves new bundle
+`index-tn72fsxk.js` (new card class present, old `h-20 w-28` side-thumb
+class absent, counts fragment absent); sample thumbnails from B1/A2/
+C1/C2 byte-identical to HEAD (48 JPGs restored from HEAD before commit).
+
 **HOME CLEANUP PUSHED + LIVE — Nov 1, 2026** (commit `83e0afd`): per Asra,
 Home reads international now — no explanatory prose, no Persian on Home.
 Placement card title is exactly « Placement Test » (`homeButton` changed in
