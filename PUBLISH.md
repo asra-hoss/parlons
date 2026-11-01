@@ -27,9 +27,14 @@ choice persisted in the browser (`origb1:level`, the app's standing storage fami
   `assets/c12/`; U9 ships dialogue-only — no verified real-voice excerpt
   exists for it, do not invent one).
 
+Also included: **the placement test** (« Test de niveau », Nov 1, 2026) —
+Home card above the level selector; four sections (Écouter → Lire →
+Écrire → Parler), stop rule, BYOK writing scoring, speaking self-assessment;
+result persisted at `origb1:placement-result`.
+
 Not yet included (planned updates to this same repo): **A1** (rebuilt to Asra's
-own developmental checklist — awaiting the checklist),
-the placement test, and the Spanish/Russian/Hindi/Arabic localisation pass.
+own developmental checklist — awaiting the checklist)
+and the Spanish/Russian/Hindi/Arabic localisation pass.
 
 ## Tree rules (learned the hard way — keep them)
 
@@ -70,6 +75,27 @@ on this VM, hence SSH-over-443 with the CONNECT proxy, same recipe as
 `french-study-app` and `edito-b1`.)
 
 ## Status (Nov 1, 2026)
+
+**PLACEMENT TEST PUSHED + LIVE — Nov 1, 2026** (commit `0aef07e`, on top of
+the illustrations commit `edb1e14`): Home card « Test de niveau » above the
+level selector; sections Écouter → Lire → Écrire → Parler with the stop rule
+(2 consecutive wrong answers end a section); writing scored only via the
+learner's own API key (no key → standard notice + writing « non évalué »);
+speaking = can-do self-assessment + optional self-check recording
+(`pl-speak-selfcheck`, never scored/sent/transcribed); result screen with
+per-skill levels + « Commencer le niveau X » (the button is the only thing
+that switches level; an A1 recommendation starts at A2 — no A1 level is
+wired yet); result persisted at `origb1:placement-result`. Verified live:
+root 200 + new bundle, `assets/PL_L1…L5-*.mp3` 200, pron-index 200,
+C12 dialogue 200, illustration thumbnails untouched (30,008 B sample).
+⚠️ Two gotchas from this run: (1) the build source's thumbnail JPGs are
+STALE — thumbnail style updates were applied tree-side only (photos in
+`83ca27f`/`12aa8ac`, illustrations in `edb1e14`), so a fresh build's
+`dist` carries the old cartoon bytes under the same filenames: after
+rsync'ing the assembled tree over the clone, restore every modified
+`*.jpg` from HEAD (`git checkout HEAD -- <jpgs>`) before committing, or
+the push silently reverts the thumbnails. (2) `/tmp` is a 512 MB tmpfs —
+clone the repo under `~/workspace`, never `/tmp`.
 
 **C1/C2 PUSHED + LIVE — Nov 1, 2026** (commit `83ca27f`): live site serves
 all four levels; verified live: root 200 + Parlons title, bundle contains
