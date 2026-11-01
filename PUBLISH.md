@@ -76,6 +76,20 @@ on this VM, hence SSH-over-443 with the CONNECT proxy, same recipe as
 
 ## Status (Nov 1, 2026)
 
+**LISTEN PLAYER TRIMMED + PREV/NEXT GLYPHS — Nov 1, 2026:** per Asra
+(« 1 / 2 — Bonjour… و اتو پلی رو بردار از اپ اصلی » + « علامت قبل و بعد
+هم درست کن تو اپ »), in the shared `ListenTab` player: (1) the track
+indicator line (« N / M — title ») is REMOVED entirely; (2) AUTOPLAY
+is REMOVED completely — toggle, state and the onEnded auto-advance
+logic; a track now simply stops at its end and moving on is manual
+via Previous/Next only; (3) the Previous/Next glyphs changed from
+skip-style ⏮/⏭ (triangle + bar) to plain double triangles **◀◀ / ▶▶**
+(U+25C0 ×2 / U+25B6 ×2), same size/weight, balanced either side of
+Play (single ▶, unchanged) in the solid-disc family. Verified in the
+built bundle (Autoplay/autoplay ×0, ⏮/⏭ ×0, ◀◀ ×1, ▶▶ ×1, « Lecture
+enchaînée » ×0); commit touches index.html + bundle files only, all
+48 thumbnails restored from HEAD, byte-identical.
+
 **LISTEN TRANSPORT ICONS UNIFIED — Nov 1, 2026:** per Asra (« علامت های
 پلی و قبلی بعدی چرا بهم نمی‌خورن »), the playlist player's Previous/Next
 were pale bordered circles beside a solid teal Play disc. Prev/Next are
