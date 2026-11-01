@@ -76,6 +76,18 @@ on this VM, hence SSH-over-443 with the CONNECT proxy, same recipe as
 
 ## Status (Nov 1, 2026)
 
+**PLACEMENT LISTENING SPLIT PER QUESTION — Nov 1, 2026** (commit
+`f0fadc4`): Asra's rule « هر سوال فایل جدا » — each placement
+listening question now plays only its own MP3 (`PL_L{n}Q{1..3}.mp3`,
+15 files, cut from the PL_L1…L5 masters at transcript-line
+boundaries) and the 2-play cap applies per question. Boundaries,
+method and the afade/output-`-ss` silence pitfall are documented in
+the source project: `placement/audio/SEGMENTS.md`. Data gained
+`questionAudio: string[]` per piece (generator-derived); scoring,
+stop rule and results untouched (31/31 module checks pass).
+Verified live: all 15 per-question files 200, thumbnails
+byte-identical (340,255 B sample), pron-index 200.
+
 **PLACEMENT TEST PUSHED + LIVE — Nov 1, 2026** (commit `0aef07e`, on top of
 the illustrations commit `edb1e14`): Home card « Test de niveau » above the
 level selector; sections Écouter → Lire → Écrire → Parler with the stop rule
