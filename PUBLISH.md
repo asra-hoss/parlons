@@ -76,6 +76,32 @@ on this VM, hence SSH-over-443 with the CONNECT proxy, same recipe as
 
 ## Status (Nov 1, 2026)
 
+**A1 PUSHED + LIVE — Nov 1, 2026** (commit `32a7722`): the fifth and
+final level is in. Built from Asra's own checklist — the A1 fiches of
+Raemdonck, *TCF Entraînement intensif* (Partie 2, pp. 20–24), sent by
+her Nov 1 — ordered along her developmental spine (alphabet/phonetics →
+greetings → pronouns → être/avoir/aller → -er verbs → articles →
+onward), all content 100 % original. Coverage map:
+`original-b1-product/content-a1/CHECKLIST-COVERAGE.md` (28/28 grammar
+notions, 19/19 vocab themes, 10/10 savoir-faire as Writing/Speaking
+prompts, phonetics in U1). Per unité: 3 texts, made dialogue (voix de
+synthèse) + ONE long CC BY real-voice excerpt (12/12, licence verified
+on each video's own page; U1's assigned Allezy lead was rejected on
+speech — bilingual VI/FR — and replaced by a verified same-theme
+video, documented in `audio-work-a1/provenance/u01.md`). Gloss coverage
+10,814/10,814 (100 %); LL vocab pronunciation 453 entries after the
+quality pass (468/480 fetched); pron-index now 9,525 items (1,152
+under `assets/a1/`). Selector order A1 → A2 → B1 → B2 → C1/C2;
+placement-test A1 result now opens A1 (`bandToLevelId`). Storage
+family `oria1:`, dossiers `orig-a1-u1…u12`, staging in
+`content-a1/` + `site-a1/` + `audio-work-a1/` (A2 pipeline cloned;
+beware the sed trap: `sha256` → `sha156` when adapting scripts with
+a2→a1 replacements). Verified live: root + bundle contain
+`orig-a1-u1…u12`, A1 dialogue/excerpt MP3s 200, A1 thumbnail 200 at
+the illustrated byte size, A1 LL + shard pron clips 200, and A2/B2/
+C1/C2 thumbnails byte-identical to the illustrated files (restored
+from HEAD before commit), B1 + placement files 200.
+
 **PLACEMENT LISTENING SPLIT PER QUESTION — Nov 1, 2026** (commit
 `f0fadc4`): Asra's rule « هر سوال فایل جدا » — each placement
 listening question now plays only its own MP3 (`PL_L{n}Q{1..3}.mp3`,
