@@ -76,6 +76,20 @@ on this VM, hence SSH-over-443 with the CONNECT proxy, same recipe as
 
 ## Status (Nov 1, 2026)
 
+**GRAMMAR TABBED — Nov 1, 2026:** per Asra (« گرامر رو هم قرار بود
+تب کنی »), the Grammar tab no longer stacks every sheet in one long
+scroll: it now shows a pill sub-tab strip (same pattern as Vocab) —
+one tab per grammar point, labelled with the point's short topic
+(the part before the " — " in its title, trimmed; detail part on
+collision) — and renders ONLY the selected point's sheet, booklet
+layout and 🇫🇷/🇮🇷 flag unchanged. Selection persists per dossier
+in origb1:nav (`grammarPoint`, by point number; default = first
+point); single-point dossiers show no strip. « Mark as done » for
+Grammar unchanged (still ticks all the dossier's points at once).
+Verified in the built bundle (« Grammar points » tablist ×1,
+`grammarPoint` ×2); commit touches index.html + bundle files only,
+all 48 thumbnails restored from HEAD, byte-identical.
+
 **LISTEN PLAYER TRIMMED + PREV/NEXT GLYPHS — Nov 1, 2026:** per Asra
 (« 1 / 2 — Bonjour… و اتو پلی رو بردار از اپ اصلی » + « علامت قبل و بعد
 هم درست کن تو اپ »), in the shared `ListenTab` player: (1) the track
