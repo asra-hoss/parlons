@@ -338,3 +338,27 @@ Replaced everywhere the bubble lived: `logo.svg`
 (client/public/), the Home header inline lockup in App.tsx,
 and icon-192 / icon-512 / apple-touch-icon re-rendered from
 the mark on the lilac tint (#efeaff). Nothing else changed.
+
+**HOME GRID + SOURCES RELOCATED — Nov 1, 2026:** per Asra (« قسمت
+دوسيه‌ها رو کوچیک‌تر کن، مثل تامبنیل » + « اون سورس و فلانم زیرش
+بردار، همه رو »), two Home changes: (1) the dossier list is now a
+compact TWO-COLUMN GRID of thumbnail cards (`grid-cols-2`, card
+padding p-2.5, title text-base) — each card still shows the WHOLE
+illustration at natural aspect (no crop, per her full-picture
+rule), text under the image is only « Dossier N — « Title » ».
+(2) The Home « Sources » block is REMOVED entirely. The CC BY
+attributions did not vanish — they moved to the point of use:
+each dossier's Listen tab now shows its own unité's « Écoute »
+credit line (creator + CC BY licence + link, from LEVEL_SOURCES)
+directly under the Voix réelle item, and the unité's remaining
+source lines (dialogue ambiances, Lingua Libre pronunciation)
+plus « Voix des dialogues : voix de synthèse. » sit in a small
+« Sources — Unité N » block at the bottom of the same Listen tab.
+Placement-test excerpt credits were already rendered inside the
+placement screen itself (piece notes) and stay there. Wiring:
+App shell passes `level` to DossierScreen, which passes
+`LEVEL_SOURCES[level][dossier.number]` to ListenTab as `sources`.
+Verified in the built bundle (grid-cols-2 ×1, old card img class
+×0, « Sources — Unité » ×1, « Test de niveau — voix réelles » ×0);
+commit touches index.html, the new bundle and this note only —
+all JPGs restored from HEAD, byte-identical.
