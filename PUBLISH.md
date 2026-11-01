@@ -325,3 +325,16 @@ Verified in the built bundle (object-cover ×0, objectPosition ×0,
 « h-auto w-full rounded-xl » present); commit touches index.html, the
 new bundle, and this note only — all JPGs restored from HEAD,
 byte-identical.
+
+**LOGO MARK: BUBBLE → LIPS — Nov 1, 2026:** per Asra, the
+speech bubble read as a messaging icon (« پارلون چه ربطی به
+مسیج داره ») and the « é » idea had no clear link either; her
+choice: a MOUTH / LIPS mark (« دهن، لب » — Parlons means
+speaking). The mark is now a one-colour flat lips silhouette
+(hand-drawn SVG paths, violet #7a5ff0 / var(--accent) inline;
+Cupid's-bow notch + parted-mouth slit cut out via evenodd),
+visually checked at 512 / 256 / 48 / 16 px before shipping.
+Replaced everywhere the bubble lived: `logo.svg`
+(client/public/), the Home header inline lockup in App.tsx,
+and icon-192 / icon-512 / apple-touch-icon re-rendered from
+the mark on the lilac tint (#efeaff). Nothing else changed.
