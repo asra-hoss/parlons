@@ -362,3 +362,24 @@ Verified in the built bundle (grid-cols-2 ×1, old card img class
 ×0, « Sources — Unité » ×1, « Test de niveau — voix réelles » ×0);
 commit touches index.html, the new bundle and this note only —
 all JPGs restored from HEAD, byte-identical.
+
+**LOGO MARK REMOVED → « P! » WORDMARK TILE — Nov 1, 2026:** per Asra
+(« لوگوت زشته برش دار همون پغلونز بنویس »), the lips mark is GONE
+everywhere. Home header: the inline SVG is removed — the lockup is
+now JUST the « Parlons ! » wordmark text (Nunito ExtraBold,
+var(--text), unchanged). Favicon + app icons: no artwork, a plain
+wordmark tile — render tests showed the full « Parlons ! »
+collapses at small sizes (mush at 32 px, gone at 16 px), so the
+tile carries just « P! » in Nunito ExtraBold (instanced at wght
+800 from the self-hosted variable font), dark ink #221d33 on the
+lilac tint #efeaff, ink height 60 % of the tile, centred.
+logo.svg is now a 512-viewBox tile with the glyph outlines as
+paths (same geometry); icon-192 / icon-512 / apple-touch-icon
+re-rendered natively at size. Verified: the built bundle
+contains no lips path (×0); the commit touches index.html, the
+new bundle (old one removed), logo.svg, the three icon PNGs and
+this note — all JPGs restored from HEAD, byte-identical.
+(Built on top of 0911656: the shared source already carried
+both this header edit and the grid/Sources edit, so the shipped
+bundle contains both; the grid commit's bundle still had the
+lips mark in the header and is superseded by this one.)
