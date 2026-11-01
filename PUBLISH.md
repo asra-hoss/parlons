@@ -313,3 +313,15 @@ every figure (B2 U3 reporter vs crouching pair, B2 U10 presenter vs
 audience, B2 U12/C12 U12 two-depth scenes) the main subject wins.
 Verified in the built bundle (`DOSSIER_THUMB_FOCUS` values +
 `objectPosition` present); JPGs all restored from HEAD, byte-identical.
+
+**HOME CARDS SHOW FULL ILLUSTRATION — Nov 1, 2026:** per Asra
+(« عکس نصفه … مگه قرار کجا دیگه دیده بشه این عکس »), the focal-point
+crop is REVERTED: these illustrations are only ever seen in the Home
+cards, so the card must show the WHOLE picture. The card <img> is now
+`h-auto w-full` (natural aspect, no fixed height, no object-cover)
+and the DOSSIER_THUMB_FOCUS map + thumbFocus wiring are removed from
+App.tsx. Nothing else changed (titles, pills, layout below the image).
+Verified in the built bundle (object-cover ×0, objectPosition ×0,
+« h-auto w-full rounded-xl » present); commit touches index.html, the
+new bundle, and this note only — all JPGs restored from HEAD,
+byte-identical.
