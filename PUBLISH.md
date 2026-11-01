@@ -58,11 +58,12 @@ on this VM, hence SSH-over-443 with the CONNECT proxy, same recipe as
 
 ## Status (Nov 1, 2026)
 
-Local git repo is committed and ready (remote set, push commands above).
-The GitHub repo itself does **not exist yet** and cannot be created from this
-VM: there is no GitHub API token here and `gh` is unauthenticated (the SSH key
-can push but cannot create repos — same situation as `french-study-app` /
-`edito-b1`, whose empty repos were created in the browser).
-**One-time unblock:** create an empty PUBLIC repo named `parlons` under
-`asra-hoss` (github.com/new), then run the push commands above — Pages goes
-live at https://asra-hoss.github.io/parlons/ from the `gh-pages` branch.
+**PUSHED + LIVE — Nov 1, 2026.** The empty public repo `asra-hoss/parlons`
+was created in the browser, then `git push origin main:main main:gh-pages`
+succeeded from this VM (both branches created). GitHub Pages serves the
+`gh-pages` branch at https://asra-hoss.github.io/parlons/ — verified live
+Nov 1, 2026: root page 200 with title « Parlons ! — Français de A1 à C2 »,
+`assets/pron-index.json` 200, sample pronunciation clip
+`assets/b2/pron/ll/drone.mp3` 200, `manifest.webmanifest` 200.
+(Pages took ~2 minutes to build after the push — initial fetches 404'd,
+then went 200.)
