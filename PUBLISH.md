@@ -76,6 +76,32 @@ on this VM, hence SSH-over-443 with the CONNECT proxy, same recipe as
 
 ## Status (Nov 1, 2026)
 
+**LINGUA RESTYLE + SPLIT NAVIGATION — Nov 1, 2026:** per Asra
+(approved reference: the Lingua-style Listen screen), the whole
+app is restyled through the shared theme: white background, soft
+lilac pastel tints (`--accent-soft` #efeaff, `--surface-alt`
+#f4f1fe), ONE vivid violet accent (`--accent` #6c4cf1), dark ink
+text (#221d33), Nunito (self-hosted variable woff2 under
+`assets/fonts/`) as the Latin font, Vazirmatn unchanged for
+Persian. SPLIT NAVIGATION on the dossier screen: the header strip
+now holds ONLY Listen / Read / Vocab / Grammar as icon + label
+pills (active = filled violet, white label; rest pale lilac);
+Exercises / Writing / Speaking / Flashcards moved to a FIXED
+BOTTOM NAVIGATION BAR (white, soft top shadow, safe-area inset;
+active item violet, rest grey ink), and the dossier content got
+bottom padding (pb-32) so the bar never covers it. Header: lilac
+« ← Dossiers » pill, folder icon + dossier title. Listen player:
+lilac card, Previous/Next now pale circles with violet ◀◀ / ▶▶
+glyphs around the big violet Play disc (her Nov 1 hard rules
+untouched: no track line, no autoplay, timer manual, per-question
+placement audio unchanged). Grammar's inner per-point sub-tabs
+unchanged. Content, data and storage keys untouched. Verified in
+the built bundle (bottom-bar « More sections » ×1, #6c4cf1 +
+#efeaff + Nunito in CSS, Autoplay ×0, grammarPoint present);
+commit touches index.html, manifest, the new bundle, the Nunito
+font and this note only — all thumbnails restored from HEAD,
+byte-identical.
+
 **GRAMMAR TABBED — Nov 1, 2026:** per Asra (« گرامر رو هم قرار بود
 تب کنی »), the Grammar tab no longer stacks every sheet in one long
 scroll: it now shows a pill sub-tab strip (same pattern as Vocab) —
