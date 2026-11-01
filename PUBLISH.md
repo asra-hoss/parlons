@@ -76,6 +76,18 @@ on this VM, hence SSH-over-443 with the CONNECT proxy, same recipe as
 
 ## Status (Nov 1, 2026)
 
+**LISTEN TRANSPORT ICONS UNIFIED — Nov 1, 2026:** per Asra (« علامت های
+پلی و قبلی بعدی چرا بهم نمی‌خورن »), the playlist player's Previous/Next
+were pale bordered circles beside a solid teal Play disc. Prev/Next are
+now solid accent discs with white glyphs (`h-12 w-12 bg-[var(--accent)]
+text-lg text-white`), Play unchanged at h-14 — one family, Play
+slightly larger; disabled keeps `disabled:opacity-40` (same family,
+dimmer). The placement-test player has a single solid accent
+« Écouter » pill — already in family, untouched. Verified in the built
+bundle (new class ×2, old `h-11` bordered class ×0); commit touches
+index.html + new bundle only, 48 thumbnails restored from HEAD,
+byte-identical.
+
 **DOSSIER CARDS RESTYLED + LIVE — Nov 1, 2026** (commit `286181b`): per Asra,
 the Home dossier card no longer crowds its text beside the thumbnail — the
 card is now stacked: clean full-width thumbnail on top (`h-36 w-full
