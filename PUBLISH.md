@@ -258,3 +258,23 @@ Nov 1, 2026: root page 200 with title « Parlons ! — Français de A1 à C2 »,
 `assets/b2/pron/ll/drone.mp3` 200, `manifest.webmanifest` 200.
 (Pages took ~2 minutes to build after the push — initial fetches 404'd,
 then went 200.)
+
+**A1 U1 DIALOGUE/TEXT FIXED — Nov 1, 2026:** per Asra's review of A1
+(« داستان اول چرا یارو باید اسم طرف مقابلش رو هجی کنه »), Unité 1's made
+dialogue had Hugo spell CLAIRE's name back to her and an unmotivated
+« Voilà le professeur, devant la porte » announcement. Fixed in
+`content-a1/unites/u01.py`: Hugo now spells ONLY his own name
+(« H, U, G, O. »), the teacher's arrival is spotted naturally
+(« Regarde, le professeur arrive ! ») and the pair head into class
+(« Allez, on entre ! » / « Oui ! À tout à l'heure ! »). Texte 2: the
+teacher now asks « Ça s'écrit comment ? » alongside the name question,
+so Sara's spelling has a reason. Dialogue audio rebuilt through the A1
+pipeline (A1U01_D1.mp3, 25.7 s, same voices); glosses re-verified
+10808/10808 via gen_gloss_overlay_a1.py; one new sentence clip for
+Texte 2 (the paragraph's other merged sentence keeps no clip, like 5
+pre-existing A1 sentences). Unités 2–12 audited for the same defect
+class (vocab-display lines, unmotivated actions) — no other clear cases;
+descriptive/informational reading texts are by design. Commit touches
+index.html, the JS bundle, the A1U01_D1 MP3, pron-index + 1 pron clip,
+and the favicon set (logo.svg + icon PNGs, referenced by index.html);
+all 48 thumbnails restored from HEAD, byte-identical.
