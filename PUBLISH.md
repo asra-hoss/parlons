@@ -295,3 +295,21 @@ unchanged. Same pass, per Asra's Home screenshot: level pills
 show ONLY the code (A1 / A2 / B1 / B2 / C1/C2 — « Niveau »
 removed) and the « Dossiers » heading is removed — removals
 only, nothing else changed.
+
+**CARD CROP FOCAL POINTS — Nov 1, 2026:** per Asra (« عکس ها رو ببین »),
+the Home dossier cards' wide short crop (`h-36 object-cover`, default
+centre) chopped heads — worst case A1 Dossier 2, whose card cut the
+man's face while the square illustration itself is fine. Fix is
+code-only (no JPG bytes changed): a per-dossier focal point
+(`DOSSIER_THUMB_FOCUS` in App.tsx, object-position Y %) stored beside
+`DOSSIER_THUMBS_BY_LEVEL`, applied to the card `<img>`. All 60
+thumbnails (A1/A2/B1/B2/C1/C2) were audited — face positions located
+per illustration, crop bands simulated at the card's mobile aspect
+and visually verified per level. Values frame the faces/subject of
+each unité (e.g. A1 U2 → 8%, B1 U8 → 68%, C1/C2 U12 → 91%); the three
+people-less B1/A1 still lifes (A1 U6 desk, B1 U4 map, B1 U6 paper
+stack) are framed on their subjects. Where one band cannot hold
+every figure (B2 U3 reporter vs crouching pair, B2 U10 presenter vs
+audience, B2 U12/C12 U12 two-depth scenes) the main subject wins.
+Verified in the built bundle (`DOSSIER_THUMB_FOCUS` values +
+`objectPosition` present); JPGs all restored from HEAD, byte-identical.
