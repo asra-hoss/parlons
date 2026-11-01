@@ -55,3 +55,14 @@ git push origin main:main main:gh-pages
 (Remote: `ssh://git@ssh.github.com:443/asra-hoss/parlons.git` — port 22 is blocked
 on this VM, hence SSH-over-443 with the CONNECT proxy, same recipe as
 `french-study-app` and `edito-b1`.)
+
+## Status (Nov 1, 2026)
+
+Local git repo is committed and ready (remote set, push commands above).
+The GitHub repo itself does **not exist yet** and cannot be created from this
+VM: there is no GitHub API token here and `gh` is unauthenticated (the SSH key
+can push but cannot create repos — same situation as `french-study-app` /
+`edito-b1`, whose empty repos were created in the browser).
+**One-time unblock:** create an empty PUBLIC repo named `parlons` under
+`asra-hoss` (github.com/new), then run the push commands above — Pages goes
+live at https://asra-hoss.github.io/parlons/ from the `gh-pages` branch.
