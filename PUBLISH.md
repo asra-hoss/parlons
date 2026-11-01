@@ -76,6 +76,25 @@ on this VM, hence SSH-over-443 with the CONNECT proxy, same recipe as
 
 ## Status (Nov 1, 2026)
 
+**HOME CLEANUP PUSHED + LIVE — Nov 1, 2026** (commit `83e0afd`): per Asra,
+Home reads international now — no explanatory prose, no Persian on Home.
+Placement card title is exactly « Placement Test » (`homeButton` changed in
+`placement/content/placement_meta.py` + regenerated `placement-data.ts`)
+and its French subtitle (« Vous ne savez pas par où commencer ? … ») is
+deleted. Also removed from Home: the `meta.authors` line (« Français de
+A1 à C2 — contenu 100 % original », `BOOK_META.authors` now `""` in
+`data.ts`), the Sources framing paragraph (« Textes, dialogues, grammaire
+et exercices : contenu 100 % original … aucun texte de manuel. ») and the
+« Correction : avec votre propre clé API … » line. Kept: « Parlons ! »
+header, level pills, dossier cards, and ALL Sources credit lines
+(per-unité CC BY credits, « Voix des dialogues : voix de synthèse. »,
+placement real-voice credits — licence requirement). Test screens
+unchanged (their internal title stays « Test de niveau »). Verified
+live: root serves new bundle `index-jaymg3y8.js`; bundle grep —
+« Placement Test » present, all removed strings absent; commit touched
+only `index.html` + the new bundle (48 thumbnails restored from HEAD,
+byte-identical).
+
 **A1 PUSHED + LIVE — Nov 1, 2026** (commit `32a7722`): the fifth and
 final level is in. Built from Asra's own checklist — the A1 fiches of
 Raemdonck, *TCF Entraînement intensif* (Partie 2, pp. 20–24), sent by
