@@ -11,7 +11,7 @@
 
 ## What's included (Nov 1, 2026)
 
-Three levels in ONE app, Home level selector in the order **A2 → B1 → B2**,
+Four levels in ONE app, Home level selector in the order **A2 → B1 → B2 → C1/C2**,
 choice persisted in the browser (`origb1:level`, the app's standing storage family):
 
 - **B1** — the verified B1 product exactly as the Muse artifact `b1` v13 serves it
@@ -22,25 +22,38 @@ choice persisted in the browser (`origb1:level`, the app's standing storage fami
   (data `book-data-a2.json`, dossiers `orig-a2-u1…u12`, assets under `assets/a2/`).
 - **B2** — from `content-b2/` staging, per `content-b2/MERGE_NOTE_B2.md`
   (dossiers `orig-b2-u1…u12`, assets under `assets/b2/`).
+- **C1/C2** — from `content-c12/` staging, per `content-c12/MERGE_NOTE_C12.md`
+  (dossiers `oric12-u1…u12`, storage family `oric12:`, assets under
+  `assets/c12/`; U9 ships dialogue-only — no verified real-voice excerpt
+  exists for it, do not invent one).
 
 Not yet included (planned updates to this same repo): **A1** (rebuilt to Asra's
-own developmental checklist — awaiting the checklist), **C1/C2** (in production),
+own developmental checklist — awaiting the checklist),
 the placement test, and the Spanish/Russian/Hindi/Arabic localisation pass.
 
 ## Tree rules (learned the hard way — keep them)
 
 - EVERYTHING lives under `assets/`: bundle media, `assets/fonts/`,
   `assets/pron/` (B1 clips), `assets/a2/pron/`, `assets/b2/pron/`, and the single
-  merged `assets/pron-index.json` (6,042 entries; B1 first, then A2/B2 additions,
-  Lingua Libre clips repoint shard-TTS entries). Root-level `pron/` or `fonts/`
-  copies are NOT used on this host.
+  merged `assets/pron-index.json` (8,535 entries; B1 first, then A2/B2/C12
+  additions, Lingua Libre clips repoint shard-TTS entries). Root-level `pron/`
+  or `fonts/` copies are NOT used on this host.
 - `.nojekyll` at the root (no Jekyll processing).
 
 ## Update procedure
 
 1. Edit the app source in `original-b1-product/build/client/src/`
    (new level data: drop the staged JSONs in `site-<lv>/`, run
-   `build/convert_levels.py`, register the level via `build/do_merge_edits.py`).
+   `build/convert_levels.py`, register the level via `build/do_merge_edits.py`
+   — C1/C2 used its own `build/do_c12_edits.py`).
+   ⚠️ `assemble_parlons.py` rmtree's this whole folder INCLUDING `.git`:
+   after assembling, re-clone the repo elsewhere, rsync the assembled tree
+   over the clone (`--exclude=.git`), then commit + push from the clone.
+   ⚠️ Build gotcha (Nov 1): the tailwind plugin's native candidate scanner
+   can choke on a binary asset whose byte runs form a toxic token
+   (error surfaces as a CSS parse failure in theme.css). Bisect by building
+   theme.css + one asset at a time; fix = re-encode that asset's audio
+   (done for `C12U07_R1.mp3`, staging + src copies, same audio).
 2. `cd build && bun ./build-static.mjs`
 3. `python3 build/assemble_parlons.py` (rebuilds this folder from dist + pron trees)
 4. Commit and push (below). GitHub Pages serves the `gh-pages` branch.
@@ -57,6 +70,12 @@ on this VM, hence SSH-over-443 with the CONNECT proxy, same recipe as
 `french-study-app` and `edito-b1`.)
 
 ## Status (Nov 1, 2026)
+
+**C1/C2 PUSHED + LIVE — Nov 1, 2026** (commit `83ca27f`): live site serves
+all four levels; verified live: root 200 + Parlons title, bundle contains
+the C1/C2 registration + `oric12-u1`, `assets/pron-index.json` 200 with
+8,535 items (2,493 under `assets/c12/`), C12 dialogue/excerpt MP3s and
+pron clips (shard + Lingua Libre) 200, B2 regression clip 200.
 
 **PUSHED + LIVE — Nov 1, 2026.** The empty public repo `asra-hoss/parlons`
 was created in the browser, then `git push origin main:main main:gh-pages`
