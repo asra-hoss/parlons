@@ -383,3 +383,27 @@ this note — all JPGs restored from HEAD, byte-identical.
 both this header edit and the grid/Sources edit, so the shipped
 bundle contains both; the grid commit's bundle still had the
 lips mark in the header and is superseded by this one.)
+
+**A2 GRAMMAR IN EXACT CHECKLIST ORDER — Nov 1, 2026:** per Asra
+(« حتی گرامر هم مرتب نیست » — even the grammar was not in order),
+the A2 grammar was re-sequenced so the first teaching of each of
+the 20 TCF A2 checklist notions advances monotonically through
+the dossiers: **1,1,1,2,3,4,5,6,7,8,9,9,9,10,10,11,11,11,11,12**
+(zero dips; ties only inside one dossier, in checklist order).
+Sheets/sections moved with content byte-identical (verified by
+block-multiset equality): présent rappel split out of the
+imparfait sheet → U1; futur U5→U3; impératif (with its obligation
+sheet) U6→U4; conditionnel de politesse U9→U5; pronoms toniques
+U11→U6; possessifs U4→U7; démonstratifs U10→U8; interrogatifs
+U7→U9 with the interro-négative réponses section inserted
+between lequel and the trois formes; négation U1→U10 with the
+prépositions-de-lieu section appended; prépositions/adverbes de
+temps et adverbes de lieu appended to U11 sheets 1–2; the three
+comparatif/superlatif sheets (U3/U4/U7) merged into one sheet in
+U11; cause+conséquence merged into one articulateurs sheet in
+U12; passif U12→U8 fills the démonstratifs slot. Bound exercise
+sets travelled with their sheets (every dossier keeps exactly 6
+sets; U4 and U7 now carry 2 grammar sheets, all others 3).
+Checks: check_a2.py --ll OK 12/12; gloss coverage re-verified
+15,276/15,276 (100 %, grammar 2,794/2,794); proof sequence
+computed from the shipped book data, not the sources.
