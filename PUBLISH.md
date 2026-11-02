@@ -524,3 +524,27 @@ dossiers. The restructured bundle itself was carried live by the
 converged missing-sheets build 2aae039 (assembled from the same
 shared source tree; a fresh converged rebuild is byte-identical,
 bundle index-1w1hg3wy.js) — this note records the pass.
+
+**VOCAB IN EXACT CHECKLIST ORDER — Nov 1, 2026** (commit `df433fe`):
+per Asra (« واژه‌گان هم به ترتیب بچین، از A1 تا سطح آخر »), vocab groups
+now read in exact TCF checklist order at every level — groups moved
+WHOLE between dossiers, nothing authored, nothing dropped (480 words
+per level before and after; entry and annotation multisets identical,
+gloss coverage unchanged). A1: rebuilt as a balanced consecutive
+partition of the theme-sorted sequence (per-dossier totals 35–44 —
+exact-40 + strict order is mathematically impossible with these group
+sizes; the A1 generator's per-dossier-40 assert was relaxed to the
+sibling levels' post-restructure form; record:
+`content-a1/VOCAB-ORDER-A1.md`). A2: « Le corps et le visage » D1→D9,
+« Les sens et les souvenirs » D7→D1, loisirs group to the front of D3
+(record: `content-a2/VOCAB-ORDER-A2.md`). C1/C2: « Francophonie et
+diplomatie » D2→D4 swapped with « Voyage et gastronomie mondialisée »
+D4→D2 (record: `content-c12/VOCAB-ORDER-C12.md`). B1 and B2 verified
+already ascending around their anchored non-checklist bundles — no
+moves (records: `content/VOCAB-ORDER-B1.md`,
+`content-b2/VOCAB-ORDER-B2.md`). Non-checklist groups and entry-level
+theme mixes are flagged in the per-level records, not improvised.
+Verified live: root serves bundle `index-shvnfnh4.js`; served-bundle
+spot-checks pass (C12 D2 + D4 group order, A1 D1 vocab order, A2
+« sens et souvenirs » ahead of the U7 block); all thumbnails restored
+from HEAD before commit (commit touches index.html + new bundle only).
