@@ -441,3 +441,28 @@ D2←C1-SF2 Opinion, D3←C1-SF3 Rapporter, D4←C1-SF4 Parole en public, D5←C
 D6←C2-SF1 Sujets abstraits + C2-SF2 Implicite, D7←C2-SF3 Discours élaboré + C2-SF4 Synthèse.
 
 **B2 MISSING GRAMMAR SHEETS AUTHORED — Nov 1, 2026** (commit `2aae039`): per Asra (« خب بساز »), the five TCF B2 grammar notions that had no sheet are now taught — B2 grammar covers **19/19 checklist items**. New 100 %-original sheets (booklet layout, FR + FA mirror blocks, one bound type-in exercise set each): item 11 « Les adjectifs suivis des prépositions à et de » → D6 G1 (before relatifs composés) + set b2-u6-ex7; item 14 « Les adjectifs indéfinis » → D7 G3 (after the mise en relief sheets) + b2-u7-ex7; item 15 « Les pronoms indéfinis » → D8 G1 (before hypothèse) + b2-u8-ex7; item 17 « La construction des verbes — avec à, avec de, sans préposition » → D9 G1 (first sheet) + b2-u9-ex7; item 18 « Les constructions impersonnelles » → D9 G2 + b2-u9-ex8. (Item 18's brief said "after sheet 4"; D9 held exactly one sheet, so it sits immediately after item 17's sheet, preserving pair order.) Existing sheets were only renumbered — content verified byte-identical against the pre-restructure backup multiset (+5 sheets, +5 sets, 0 lost/altered; totals now 31 sheets / 77 sets, asserted in gen_book_data_b2.py). Gloss coverage **21,447/21,447 (100 %)** (baseline 20,417 + 1,030 new tokens; 32 new glosses in gloss_new_b2.json). ⚠️ Overlay pinning: the same-day A2 restructure rebuilt the A2 reuse pool, so a raw B2 overlay regeneration drifted gloss variants on ~45 unrelated surfaces; the shipped overlay pins every pre-existing surface to its pre-build list (provenance note inside overlay_b2.py; snapshot kept at content-b2/overlay_b2_old_snapshot.py) — only the new/renumbered surfaces carry fresh lists. Also fixed gen_gloss_overlay_b2.py's A2 loader to skip missing unités (A2 is 10 dossiers now). The converged bundle also carries the A2 10-dossier restructure from the shared source tree. Verified live: root serves bundle `index-1w1hg3wy.js` with all five new titles, A1 12 / A2 10 / B1 9 / B2 10 / C1-C2 7 dossiers, pron-index 200 (9,525 items unchanged — new grammar example sentences have no TTS clips, so no speaker buttons there, per the standing rule).
+
+**B1 MISSING GRAMMAR SHEETS AUTHORED — Nov 1, 2026 (late):** per Asra
+(« خب بساز »), the six TCF B1 checklist items that still had no sheet
+now have one — B1 grammar covers all 18 items, each in its pair home:
+item 5 « Le participe présent et le gérondif » → D3 G1 (before the
+accord sheet); item 10 « Les doubles pronoms compléments » → D5 G4
+(after COD/COI/y-en); item 13 « La négation et la restriction » → D7
+G1; item 14 « L'expression du temps » → D7 G2; item 15 « Les adverbes
+de manière en -ment » → D8 G1; item 16 « Les adverbes de fréquence »
+→ D8 G2. Each sheet is 100 % original, booklet layout (FR blocks +
+FA mirror blocks), B1 depth, and carries ONE bound type-in exercise
+set with corrigé (orig-u3-ex7, orig-u5-ex7, orig-u7-ex7, orig-u7-ex8,
+orig-u8-ex7, orig-u8-ex8). Existing sheets only renumbered where a
+sheet was inserted before them — content verified identical (blocks +
+blocks_fa compared per sheet; exercise sets compared per id). Gloss
+overlay regenerated: coverage 19,129/19,129 tokens (100 %); 91 new
+gloss entries authored in content/gloss_new.json (EN + FA, house
+conventions); pre-existing surfaces' annotation lists verified
+unchanged. gen_book_data totals updated 25→31 sheets, 72→78 sets;
+check_unite passes all 9 dossiers. Proof walk on shipped data: items
+land 1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9 — zero absences remain.
+Shipped inside the converged bundle `index-1w1hg3wy.js` (commit
+`2aae039`, the B2 missing-sheets push built from the same shared
+source tree); verified live: root serves that bundle, all six titles
++ new set ids present, pron-index 200, A1/B2/C1-C2 intact.
