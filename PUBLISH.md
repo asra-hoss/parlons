@@ -466,3 +466,25 @@ Shipped inside the converged bundle `index-1w1hg3wy.js` (commit
 `2aae039`, the B2 missing-sheets push built from the same shared
 source tree); verified live: root serves that bundle, all six titles
 + new set ids present, pron-index 200, A1/B2/C1-C2 intact.
+**C1/C2 MISSING GRAMMAR SHEETS AUTHORED — Nov 1, 2026:** per Asra
+(« خب بساز »), the three C1/C2 checklist notions that had no sheet are
+now taught: « La négation — toutes les formes » (item 5) and « Les
+adjectifs et pronoms indéfinis » (item 6) open Dossier 3 (pair 5+6
+complete; passif → G3, clivées → G4), and « Les articulateurs
+temporels » (item 11) opens Dossier 6 ahead of the construction des
+verbes sheets (impersonnel → G2, subjonctif/indicatif → G3). Each
+sheet is 100 % original, booklet layout with Persian blocks, C1
+depth, and carries ONE bound type-in exercise set with corrigé
+(c12-u3-ex7 négation, c12-u3-ex8 indéfinis, c12-u6-ex7 temporels).
+Level inventory 24 → 27 sheets, 72 → 75 exercise sets (generator
+totals updated in gen_book_data_c12.py); gloss coverage
+25,450/25,450 (100 %) with 96 new entries in gloss_new_c12.json.
+Proof walk on shipped data: items 1–13 all taught in their pair
+homes (item 14 = C2 blanket, no sheet by design); every pre-existing
+sheet and exercise set verified identical by content hash. The
+content reached the site inside the converged bundle
+`index-1w1hg3wy.js` (shared source tree, carried by the B2 pass's
+push 2aae039/6f32bb2) — this note is its record. Tooling:
+gen_gloss_overlay_c12.py's A2 reuse-pool loader now skips unité
+files removed by the A2 12 → 10 restructure instead of dropping
+the whole A2 pool.
