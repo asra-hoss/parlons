@@ -94,6 +94,33 @@ proof: regenerated book-data.ts differs from before ONLY in those 49
 paras + 9 annotation entries. Commit touches index.html + new bundle
 (`index-gm2hewjy.js`) only; all 36 stale JPGs restored from HEAD.
 
+**A1 DOSSIER SCREEN REDESIGNED — TEST COPY ONLY — Nov 2, 2026:** per Asra
+(« سطح اوله میخوام این شکلی باشه » + « نمیخوام روی اپ اصلی کارکنم، اول
+ببینم »), the A1 dossier screen follows her reference mockup: header row
+(back arrow, « A1 · Dossier N », « n / 4 » pill), the dossier illustration
+as a wide hero, title + one-line French subtitle (A1_DOSSIER_SUBTITLES,
+written from each dossier's theme), ONE pill row (Listen / Read / Vocab /
+Grammar), a big « Continue → » advancing Listen → Read → Vocab →
+Grammar → Exercises, and a « More Practice » tile card (Exercises /
+Writing / Speaking / Flashcards) opening those sections full-screen with
+a back button — the fixed bottom bar is gone inside A1 dossiers. The A1
+Listen player card is the mockup's: ±15 s skips around the big play disc,
+seek slider with elapsed/total at its ends, one instruction line, small
+prev/next-track buttons; the transcript stays under the card exactly as
+before (glosses + speaker buttons intact). REMOVED in A1 only: the study
+timer and every progress display (battery + %, bars) — stored ticks and
+times untouched. Colours/fonts/content unchanged; A2/B1/B2/C1/C2 keep
+the classic layout byte-for-byte in behaviour.
+PUBLISHED AS A TEST COPY: this commit lands on `main` (source of
+record), but the gh-pages ROOT still serves the previous bundle
+(`index-gm2hewjy.js`) — the redesign is reachable only at
+https://asra-hoss.github.io/parlons/a1-test/ (its index.html carries
+`<base href="../">` + absolute links to its own new bundle/CSS under
+a1-test/assets/, so all media resolve to the shared root assets).
+Verified live: root unchanged; a1-test A1 dossier shows hero, pills,
+player card, Continue, More Practice; B1 inside the test copy still
+shows the classic layout.
+
 ## Status (Nov 1, 2026)
 
 **ACCENT LIGHTENED ONE STEP — Nov 1, 2026:** per Asra (« یکم
