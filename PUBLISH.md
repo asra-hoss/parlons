@@ -74,6 +74,26 @@ git push origin main:main main:gh-pages
 on this VM, hence SSH-over-443 with the CONNECT proxy, same recipe as
 `french-study-app` and `edito-b1`.)
 
+**MONOLOGUE TRANSCRIPTS — LABELS DROPPED — Nov 2, 2026** (commit `d24c2d1`):
+per Asra (« اگه یه نفر داره صحبت می‌کنه دیگه دو نقطه نمی‌خواد »), Listen
+transcripts spoken by ONE single person no longer carry the repeated
+« Name : » prefix. Found pattern: B1's « Voix réelle » excerpts stored
+one speaker name on EVERY paragraph (paras rendered as « Name : text »
+from per-line speaker fields). The 7 B1 monologue excerpts — « Voix
+réelle » (orig-u4-listen-2), « Guy Roulier » (u5), « Julia » (u12),
+« Le narrateur » (u11), « Rabha » (u3), « Marc Madec » (u10), « Mariama »
+(u9) — had all 49 paragraph prefixes stripped, speech byte-identical;
+the 9 gloss entries that existed only for the label name-words were
+removed with them (listen gloss samples back to 3,161/3,161). The rule
+lives in the source generator (`content/gen_book_data.py`): a listen
+item whose lines share one speaker renders bare text; 2+ speakers keep
+labels. All other levels verified: A1/A2/B2/C1/C2 hold NO labelled
+monologue transcripts (made dialogues = 2+ speakers, real-voice
+excerpts already unlabelled) — nothing to change there. Structural
+proof: regenerated book-data.ts differs from before ONLY in those 49
+paras + 9 annotation entries. Commit touches index.html + new bundle
+(`index-gm2hewjy.js`) only; all 36 stale JPGs restored from HEAD.
+
 ## Status (Nov 1, 2026)
 
 **ACCENT LIGHTENED ONE STEP — Nov 1, 2026:** per Asra (« یکم
