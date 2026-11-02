@@ -134,6 +134,27 @@ Continue, More Practice, colours, content, other levels); the
 gh-pages root still serves `index-gm2hewjy.js` — the new bundle
 (`index-x0yafn43.js`) is reachable only under /a1-test/.
 
+**A1 HERO = REFERENCE PROPORTION + TRANSCRIPT BUTTON — TEST COPY
+ONLY — Nov 2, 2026:** per Asra (« اینجوری » — the reference picture
+re-sent as the exact target), the A1 dossier hero is now a proper
+wide banner ≈ 165 px tall (~20 % of the phone viewport), replacing
+the 100 px strip whose centre crop cut faces. Framing is
+per-dossier: `A1_HERO_FOCUS` (object-position Y % in App.tsx,
+audited on simulated 358×165 crops of all 12 A1 illustrations)
+keeps the faces in frame — Dossier 2, headless in the strip, shows
+both faces again; the still life (U6) is framed on the desk. The
+collapse-on-scroll behaviour is unchanged. Same pass, her added
+requirement: in the A1 Listen view a clear « Transcript » button
+sits directly under the player card — the transcript is CLOSED by
+default, so the screen opens exactly like the reference, and the
+button toggles it in place beneath itself; transcript text,
+tap-a-word glosses and sources are untouched, and the classic
+player (every other level) keeps its always-visible transcript.
+Published exactly like the previous test passes: this commit lands
+on `main` (source of record); the gh-pages ROOT still serves
+`index-gm2hewjy.js` — the new bundle (`index-drdw23wf.js`) is
+reachable only under /a1-test/.
+
 ## Status (Nov 1, 2026)
 
 **ACCENT LIGHTENED ONE STEP — Nov 1, 2026:** per Asra (« یکم
