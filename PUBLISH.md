@@ -488,3 +488,39 @@ push 2aae039/6f32bb2) — this note is its record. Tooling:
 gen_gloss_overlay_c12.py's A2 reuse-pool loader now skips unité
 files removed by the A2 12 → 10 restructure instead of dropping
 the whole A2 pool.
+
+**A2 RESTRUCTURED TO 10 DOSSIERS — Nov 1, 2026:** per Asra's final
+architecture (the B1/B2/C1-C2 precedent), A2's dossiers now BE the
+TCF A2 checklist: the 20 grammar items grouped consecutively in
+pairs (1+2 -> D1 ... 19+20 -> D10); every notion taught in exactly
+one dossier — all its sheets and bound exercise sets gathered,
+incl. deepening strands (accord du participe passé + récit
+PC/imparfait -> D2, conditionnel-conseil + gérondif -> D4, deux
+pronoms -> D5). Six bundled sheets were split at their section
+boundaries (passé composé: core / pronominaux au présent / PC des
+pronominaux; obligation -> impératif out; interrogatifs ->
+lequel / réponses / trois formes; négation -> prépositions de
+lieu out; discours rapporté -> prépositions de temps out; pronom
+COI y -> adverbes de lieu / de temps out), FR + FA booklet mirrors
+split at mechanically aligned boundaries, block content
+byte-identical. Non-checklist sheets placed by affinity
+(relatifs -> D6, partitif/quantités + en -> D8, passif -> D10…).
+Vocab: all 480 words re-homed in authored theme bundles merged
+and ordered by dominant checklist theme (caractère U4, logement
+U3, études/parcours U1+U11, cuisine U6, consommer U9, voyages
+U10, souvenirs U2, nature/animaux U12, santé U7 — carries the T1
+routine entries —, technologies/médias U5+U8); groups never
+split; SF designated consecutively D1..D10. Texts/dialogues/
+prompts follow their bundle; audio untouched (dialogue ids +
+MP3 names preserved; the ex-U2 bundle stays dialogue-only in D7,
+no excerpt invented). Inventory asserted identical (36 texts,
+23 listen, 480 words in 36 groups, 72 exercise sets, 48 prompts;
+grammar blocks unchanged at block level, 34 sheets -> 43 parts);
+gloss coverage re-verified 15,276/15,276 (100 %). Dossier
+thumbnails remapped to the former unité image matching each
+theme. Proof walk on shipped data: items land
+1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10; no sheet in two
+dossiers. The restructured bundle itself was carried live by the
+converged missing-sheets build 2aae039 (assembled from the same
+shared source tree; a fresh converged rebuild is byte-identical,
+bundle index-1w1hg3wy.js) — this note records the pass.
