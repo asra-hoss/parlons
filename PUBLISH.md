@@ -407,3 +407,35 @@ sets; U4 and U7 now carry 2 grammar sheets, all others 3).
 Checks: check_a2.py --ll OK 12/12; gloss coverage re-verified
 15,276/15,276 (100 %, grammar 2,794/2,794); proof sequence
 computed from the shipped book data, not the sources.
+
+**C1/C2 RESTRUCTURED 12 → 7 DOSSIERS — Nov 1, 2026** (commit `c43aca6`): per Asra's final
+architecture (the B1 pass applied to C1/C2), the dossiers now BE the TCF checklist: the 13 C1
+grammar items + the C2 blanket item as item 14, grouped consecutively in pairs (1+2 → D1 …
+13+14 → D7). Every notion is taught in exactly one dossier — all its sheets + bound exercise
+sets gathered home, deepening strands included (subjonctif-conjonctions but-strand → D4,
+raisonnement hypothétique + concéder/réfuter → D5, subjonctif/indicatif → D6). Items 5
+(négation, toutes les formes) and 6 (indéfinis) stay sheetless in their home D3; item 11
+(articulateurs temporels) stays THIN (strands inside the D1 concordance and D2 récit sheets);
+item 14 is the C2 blanket (réutilisation, by design no sheet). Non-checklist sheets placed by
+authored-bundle affinity. Vocab: all 480 words re-homed in their authored theme bundles,
+merged and ordered by dominant checklist theme — D1 « Société et solidarités » (U3+U12),
+D2 « Échanges et commerce » (U7), D3 « Écologie et énergies » (U8), D4 « Politique et
+frontières » (U6+U4), D5 « Élites et générations » (U5+U2), D6 « Médias et mondes virtuels »
+(U1+U9), D7 « Culture et santé » (U10+U11); groups never split; loi et l'ordre, religions and
+expressions idiomatiques still have no content. Audio untouched — dialogue ids and MP3 names
+preserved verbatim, ex-U9 keeps its single dialogue inside D6 (no excerpt invented); merged
+dossiers carry their bundles' two excerpts. Inventory asserted identical (36 texts, 23 listen,
+24 sheets, 480 words, 72 exercise sets, 48 prompts); the level's annotation multiset is
+byte-identical to pre-restructure, so gloss coverage stays 24,364/24,364 (100 %).
+check_c12.py passes 7/7 (adapted to variable per-dossier counts, B1-style; level totals
+asserted in gen_book_data_c12.py; its gloss-overlay import replaced by a verbatim local
+split_sentences). Thumbnails remapped (société→U3, échanges→U7, écologie→U8, politique→U6,
+élites→U5, médias→U1, culture→U10), JPGs restored from HEAD. Proof walk on shipped data:
+1,1,2,2,absent,absent,4,4,5,5,thin,6,7,blanket — no sheet in two dossiers. Verified live:
+bundle `index-0wadbab9.js`, oric12-u7 present / oric12-u8 absent, C12 MP3 + thumbnail 200,
+pron-index 9,525. The same bundle also carries the B2 10-dossier restructure from the shared
+source tree (converged build). Pre-restructure backup:
+`original-b1-product/content-c12/backup-pre7-restructure/`; transform:
+`content-c12/restructure_c12_7.py`. SF designation (no app field): D1←C1-SF1 Présenter,
+D2←C1-SF2 Opinion, D3←C1-SF3 Rapporter, D4←C1-SF4 Parole en public, D5←C1-SF5 Caractériser,
+D6←C2-SF1 Sujets abstraits + C2-SF2 Implicite, D7←C2-SF3 Discours élaboré + C2-SF4 Synthèse.
