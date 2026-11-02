@@ -121,6 +121,19 @@ Verified live: root unchanged; a1-test A1 dossier shows hero, pills,
 player card, Continue, More Practice; B1 inside the test copy still
 shows the classic layout.
 
+**A1 HERO SHRUNK + COLLAPSING — TEST COPY ONLY — Nov 2, 2026:** per
+Asra (« عکس رو کوچیکتر کن خیلی … یعنی همه این سه صفحه یه صفحه ان »),
+the A1 dossier hero is no longer the full natural-aspect picture: it
+is a SHORT banner (100 px tall, full width, centre `object-cover`
+crop, same rounded corners) that COLLAPSES with scrolling — its
+height tracks `window.scrollY` and reaches 0 after ~100 px of
+scroll, so it never eats reading space. Result: header + banner +
+title + pills + Listen player card + the start of the transcript
+fit ONE phone screen. Nothing else changed (layout order, player,
+Continue, More Practice, colours, content, other levels); the
+gh-pages root still serves `index-gm2hewjy.js` — the new bundle
+(`index-x0yafn43.js`) is reachable only under /a1-test/.
+
 ## Status (Nov 1, 2026)
 
 **ACCENT LIGHTENED ONE STEP — Nov 1, 2026:** per Asra (« یکم
