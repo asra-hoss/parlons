@@ -629,3 +629,12 @@ Verified live: root serves bundle `index-shvnfnh4.js`; served-bundle
 spot-checks pass (C12 D2 + D4 group order, A1 D1 vocab order, A2
 « sens et souvenirs » ahead of the U7 block); all thumbnails restored
 from HEAD before commit (commit touches index.html + new bundle only).
+
+**A1 TRANSCRIPT BUTTON MADE SMALL — TEST COPY ONLY — Nov 2, 2026:** per Asra
+(« یه دونه دکمه کوچولو … هیچ چیز دیگه تغییر ندی »), the A1 Listen « Transcript »
+button under the player card is now a SMALL compact pill (w-fit, centred,
+px-4 py-2, text-sm) instead of the full-width bold bar. Colour (accent),
+position (directly under the player card), label, chevron and toggle
+behaviour unchanged; nothing else in the design or content changed.
+New bundle `index-dttek1hf.js` (+ css `index-gg6ws1hn.css`) reachable
+only under /a1-test/; gh-pages root still serves `index-gm2hewjy.js`.
