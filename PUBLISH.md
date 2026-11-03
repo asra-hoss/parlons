@@ -663,3 +663,12 @@ text glyphs; (4)+(5) Sources left the Listen tab entirely in A1 and
 now sits at the VERY bottom of the dossier screen, collapsed behind a
 « Sources » pill toggle, hidden until tapped. New test bundle
 `index-0bx253qz.js` under /a1-test/ only; root still `index-gm2hewjy.js`.
+
+**A1: HERO PIN REMOVED — TEST COPY ONLY — Nov 2, 2026 (evening):**
+Asra reversed the pin the same evening (« پینش نکن، پینشو بردار …
+یه عادی باشه، عکسم مثل بقیه صفحه باشه »): A1Hero is a plain static
+banner again — it scrolls up with the rest of the page, no sticky,
+no collapse. Everything else from the five-point build stands
+(bottom bar, centred play, Sources collapsed at the bottom, light
+Transcript pill, no instruction line). New test bundle
+`index-ywcs6a1v.js` under /a1-test/ only; root still `index-gm2hewjy.js`.
