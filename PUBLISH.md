@@ -687,3 +687,10 @@ horizontal hero; the other levels had NO picture inside a dossier —
 they now open with the same horizontal banner (165 px crop of the
 dossier illustration, 50% 30%) above the tab content, test copy
 only, pending her verdict.
+
+**PHOTO CHANGES PROMOTED TO THE LIVE APP — Nov 3, 2026:** Asra
+approved the pictures (« از لحاظ عکس اوکیه »): the horizontal Home
+thumbnails (all levels) and the horizontal in-lesson banners
+(non-A1 dossiers) are now LIVE at the root — root bundle
+`index-syekm7xc.js`. The Nov 1 « whole illustration, no crop »
+Home rule is superseded for real.
