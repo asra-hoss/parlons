@@ -694,3 +694,16 @@ thumbnails (all levels) and the horizontal in-lesson banners
 (non-A1 dossiers) are now LIVE at the root — root bundle
 `index-syekm7xc.js`. The Nov 1 « whole illustration, no crop »
 Home rule is superseded for real.
+
+**ALL LEVELS UNIFIED TO THE A1 DESIGN + HOME BOTTOM BAR — LIVE —
+Nov 3, 2026:** Asra: « درست کن همه یه دست باشن » / « مثل همین A1
+باید باشه قیافه همشون » / « اون نوار پایین باید تو هوم پیج هم
+باشه ». The classic dossier layout is DELETED; every level now
+uses the A1 layout (header pill, hero banner, title + subtitle,
+4 pills, A1 player card, Continue, More Practice, Sources at the
+bottom, bottom nav bar). Subtitles authored for A2/B1/B2/C1-C2
+(DOSSIER_SUBTITLES_BY_LEVEL); hero focal points audited for all
+36 non-A1 dossiers — six low-subject banners fixed (A2 6/7,
+B2 2/6, C1/C2 1/2 in HERO_FOCUS_BY_LEVEL). The bottom bar now
+also sits on Home. Root bundle `index-kssapy4y.js`. No timer or
+progress display anywhere now (stored data untouched).
