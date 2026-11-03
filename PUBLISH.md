@@ -638,3 +638,16 @@ position (directly under the player card), label, chevron and toggle
 behaviour unchanged; nothing else in the design or content changed.
 New bundle `index-dttek1hf.js` (+ css `index-gg6ws1hn.css`) reachable
 only under /a1-test/; gh-pages root still serves `index-gm2hewjy.js`.
+
+**A1: LIGHT TRANSCRIPT BUTTON + INSTRUCTION LINE REMOVED — TEST COPY
+ONLY — Nov 2, 2026:** per Asra's photo-edit approval (« اوکیه همین رو
+روی اپ پیاده کن » — her own reference photo, edited on the photo
+itself until she approved it), in the A1 Listen player card: (1) the
+instruction line under the slider (« Écoute le dialogue et lis la
+transcription. » / « Écoute cet extrait… ») is REMOVED; (2) the
+« Transcript » button under the card is now the LIGHT pill of her
+approved photo — white surface, thin lavender border, dark document
+icon + « Transcript » in dark ink, no chevron — matching her Édito
+sample. Position (own row under the card) and toggle behaviour
+unchanged; nothing else changed. New test bundle `index-n26yn8gv.js`
+under /a1-test/ only; gh-pages root still serves `index-gm2hewjy.js`.
