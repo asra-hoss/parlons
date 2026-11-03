@@ -707,3 +707,8 @@ bottom, bottom nav bar). Subtitles authored for A2/B1/B2/C1-C2
 B2 2/6, C1/C2 1/2 in HERO_FOCUS_BY_LEVEL). The bottom bar now
 also sits on Home. Root bundle `index-kssapy4y.js`. No timer or
 progress display anywhere now (stored data untouched).
+
+**LESSONS BAR ITEM GOES HOME — Nov 3, 2026:** Asra: « اون پایین
+lessons رو میخوام بره هوم پیج — یعنی بزنم روش بره هوم ». The
+bottom bar's Lessons item now returns to the Home page (dossier
+list) from every dossier view, like Home itself.
