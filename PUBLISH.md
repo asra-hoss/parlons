@@ -742,3 +742,32 @@ grayscale photo + dim title. An overall bar with « n / N »
 sits above the list. Progress % comes from the reading ticks
 (dossierTickKeys vs doneKeys). No connector line (she rejected
 it: « وصل کردنشون جالب نیست »). Root bundle: index-yst0q66e.js.
+
+**CONTINUE CHAIN — Nov 3, 2026:** Asra's navigation fix, order
+confirmed by her: Écouter → Lire → Vocabulaire → Grammaire →
+Exercices → Écrire → Parler → Flashcards. Continue moves ONE
+step: next audio FILE inside Listen (stepper ref in ListenTab),
+next document inside Read, next point inside Grammar
+(GrammarTab stepper ref), then section by section; the
+practice screens have their own Continue now, and after
+Flashcards it returns to the dossier list. The header pill
+counts the whole chain (« n / N »). Verified by an automated
+walk of A1 Dossier 1: 12 Continues from Listen track 1 to
+Home. Root bundle: index-k1kc2xf7.js.
+
+**A1 ENRICHMENT LIVE — Nov 3, 2026:** all 12 A1 dossiers brought to
+roughly Édito scale (coordinator run, packets in
+original-b1-product/enrichment/work-a1/, log in enrichment/LOG.md):
++71 licence-verified CC BY real-voice excerpts (no video id used
+twice; provenance per item in the packets; credits in each unité's
+SOURCES_FR), +36 original reading texts (+3 coordinator top-up
+paragraphs). Per dossier: 8 listen files / ~15 min / ≥1,100 words —
+except D10 « Le temps qu'il fait » at 7 files / 11.3 min / 1,116
+words (flagged: no 8th licence-verifiable A1 weather voice exists
+after 65+ checks; its 5th item is a complete 74 s Français
+interactif weather montage). Gloss coverage re-verified 100 % over
+all A1 surfaces (3,511 merged glosses); pron index grew by 1,654
+A1 items (total 11,179; 22 words have no clean pronunciation and
+get no speaker button). New bundle `index-219x5hjw.js` + css
+`index-apfh26wk.css` at root AND a1-test. Additions only — no
+existing item id was removed, renamed or re-ided.
