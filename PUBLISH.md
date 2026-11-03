@@ -651,3 +651,15 @@ icon + « Transcript » in dark ink, no chevron — matching her Édito
 sample. Position (own row under the card) and toggle behaviour
 unchanged; nothing else changed. New test bundle `index-n26yn8gv.js`
 under /a1-test/ only; gh-pages root still serves `index-gm2hewjy.js`.
+
+**A1: HERO PINNED + BOTTOM BAR + PLAY CENTRED + SOURCES COLLAPSED AT
+THE VERY BOTTOM — TEST COPY ONLY — Nov 2, 2026 (evening):** per Asra's
+five points on the app screenshot: (1) the mockup's bottom navigation
+bar (Home / Roadmap / Lessons / Progress / Profile) is back as
+A1BottomBar on both A1 dossier views; (2) the hero no longer collapses
+— A1Hero is sticky-pinned at the top (« پین کن »); (3) the A1 player
+card's Play/Pause are centred SVG shapes instead of the off-centre
+text glyphs; (4)+(5) Sources left the Listen tab entirely in A1 and
+now sits at the VERY bottom of the dossier screen, collapsed behind a
+« Sources » pill toggle, hidden until tapped. New test bundle
+`index-0bx253qz.js` under /a1-test/ only; root still `index-gm2hewjy.js`.
