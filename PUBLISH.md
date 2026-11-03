@@ -712,3 +712,8 @@ progress display anywhere now (stored data untouched).
 lessons رو میخوام بره هوم پیج — یعنی بزنم روش بره هوم ». The
 bottom bar's Lessons item now returns to the Home page (dossier
 list) from every dossier view, like Home itself.
+
+**A1 D1 HERO FOCUS 0 -> 12 — Nov 3, 2026:** Asra's phone shot
+showed both chins on the banner's bottom edge (« عکسها اوکی
+نیست »). Full A1 hero re-audit at phone size: only D1 was
+marginal; D2–D12 all frame their faces fully.
