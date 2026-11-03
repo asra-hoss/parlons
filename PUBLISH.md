@@ -717,3 +717,17 @@ list) from every dossier view, like Home itself.
 showed both chins on the banner's bottom edge (« عکسها اوکی
 نیست »). Full A1 hero re-audit at phone size: only D1 was
 marginal; D2–D12 all frame their faces fully.
+
+**LANDSCAPE HEROES — Nov 3, 2026:** Asra's final word on the
+photos: « عکس افقی همون سایز » + « اصلا نمیخوام نصفه نیمه ».
+All 48 dossier illustrations were extended sideways into true
+2.2:1 landscape scenes in the same flat style (people whole,
+nothing cropped, no blur frame). Working files:
+~/workspace/french/parlons-thumbnails-landscape/ (final JPEGs
+under the served hashed names + gen1..gen7 raw WebPs). The
+build-source assets (plain names) carry the same landscape
+bytes, so rebuilds keep them. A1Hero is a plain full-bleed
+cover again — the focal-point maps are unused. The old square
+hashed JPGs were removed from the served trees (in git
+history). Home cards (16/10) now crop the landscape versions
+slightly at the sides; subjects are centred, faces safe.
