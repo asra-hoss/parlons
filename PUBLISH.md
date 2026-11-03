@@ -680,3 +680,10 @@ small HORIZONTAL thumbnails — a landscape 16/10 crop (object-cover;
 A1 reuses A1_HERO_FOCUS, other levels 30 %) — superseding the Nov 1
 « whole illustration, no crop » Home rule, in the test copy only,
 pending her verdict. A1 hero and everything else unchanged.
+
+**LESSON BANNERS HORIZONTAL — TEST COPY ONLY — Nov 3, 2026:** per
+Asra (« توی خود درسها چی »): inside the lessons, A1 already had its
+horizontal hero; the other levels had NO picture inside a dossier —
+they now open with the same horizontal banner (165 px crop of the
+dossier illustration, 50% 30%) above the tab content, test copy
+only, pending her verdict.
