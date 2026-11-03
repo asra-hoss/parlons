@@ -672,3 +672,11 @@ no collapse. Everything else from the five-point build stands
 (bottom bar, centred play, Sources collapsed at the bottom, light
 Transcript pill, no instruction line). New test bundle
 `index-ywcs6a1v.js` under /a1-test/ only; root still `index-gm2hewjy.js`.
+
+**HOME THUMBNAILS HORIZONTAL — TEST COPY ONLY — Nov 3, 2026:** per
+Asra (« عکس‌ها افقی بشه، صفحه اول هم افقی کوچیک تامبنیل — تست کنیم »):
+the Home dossier grid (ALL levels, inside the test copy) now shows
+small HORIZONTAL thumbnails — a landscape 16/10 crop (object-cover;
+A1 reuses A1_HERO_FOCUS, other levels 30 %) — superseding the Nov 1
+« whole illustration, no crop » Home rule, in the test copy only,
+pending her verdict. A1 hero and everything else unchanged.
