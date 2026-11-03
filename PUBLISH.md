@@ -731,3 +731,14 @@ cover again — the focal-point maps are unused. The old square
 hashed JPGs were removed from the served trees (in git
 history). Home cards (16/10) now crop the landscape versions
 slightly at the sides; subjects are centred, faces safe.
+
+**HOME ROW CARDS LIVE — Nov 3, 2026:** Asra's approved design
+(her reference photo of a book list): dossiers are a vertical
+stack of ROW cards — small photo left, title beside it, French
+subtitle under the title, thin progress bar under that with
+the % at its end. States: done = green check badge + green
+bar; current (first unfinished) = violet ring; upcoming =
+grayscale photo + dim title. An overall bar with « n / N »
+sits above the list. Progress % comes from the reading ticks
+(dossierTickKeys vs doneKeys). No connector line (she rejected
+it: « وصل کردنشون جالب نیست »). Root bundle: index-yst0q66e.js.
