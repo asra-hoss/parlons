@@ -771,3 +771,11 @@ A1 items (total 11,179; 22 words have no clean pronunciation and
 get no speaker button). New bundle `index-219x5hjw.js` + css
 `index-apfh26wk.css` at root AND a1-test. Additions only — no
 existing item id was removed, renamed or re-ided.
+
+## Nov 3, 2026 — A2 enrichment publish
+- Bundle index-11sdjpm3.js / CSS index-9pzngwkq.css at root (main 508d8a6, gh-pages 0892e5d). All 10 A2 dossiers at Édito scale: 80 listen files, 145.8 min, 12,026 reading words, gloss 100%. Merged pron-index 12,291 items. a1-test/ + progress-test/ untouched — NOTE: their index.html files use ABSOLUTE paths (/parlons/a1-test/assets/…) into their own subfolders, so root assets/ bundles can be rotated freely; the earlier "root AND a1-test" copies in root assets/ were stale duplicates.
+
+## Nov 3, 2026 — Trial completion system merged into the MAIN app (live root)
+- Asra (« بنادران … نوتیفیکیشن‌ها رو نشون نمی‌ده » — she was judging the features on the main app): the progress-test trial system is now merged into the main tree and LIVE at the root. Merge method: donor = progress-build App.tsx trial changes applied onto the main App.tsx (selective diff, 52 hunks); the base import block + AUDIO map survive intact — AUDIO key set byte-identical before/after (267 keys; A1 95, A2 80, incl. all 92 A1/A2 enrichment entries); api.ts = the trial version (NOTE score parsing).
+- Carries: `parlons:gates` completion gates (exercises ≥70 %, writing NOTE ≥50 %, speaking ≥30 s), listen/read/grammar/vocab auto-ticks, red incomplete-count badges on section pills + practice tiles, subtle red highlight on unpassed exercise sets, new Home (intro + How it works + violet Placement card + Go to lessons), combined Lessons page (level pills + counter/bar + photo row cards), Home % from ticks + gates.
+- Bundle `index-m5t4j1dk.js` / CSS `index-khn6fa5m.css` at root. progress-test/ + a1-test/ untouched.
