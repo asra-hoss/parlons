@@ -72,9 +72,25 @@
         font-display: swap;
       }
     </style>
+    <!-- Dark mode (Nov 7, 2026): apply the saved choice
+         (Settings → « Dark mode », origb1:dark-mode)
+         BEFORE first paint, so a dark-mode learner never
+         sees a light flash. Default = light. The
+         useDarkMode hook in App.tsx keeps this attribute
+         in sync afterwards. -->
+    <script>
+      try {
+        document.documentElement.dataset.theme =
+          window.localStorage.getItem("origb1:dark-mode") === "1"
+            ? "dark"
+            : "light";
+      } catch (e) {
+        document.documentElement.dataset.theme = "light";
+      }
+    </script>
     <title>Élan — Français de A1 à C2</title>
     
-  <link rel="stylesheet" crossorigin href="./assets/index-ac5r4t4a.css"><script type="module" crossorigin src="./assets/index-jy8x7x7v.js"></script></head>
+  <link rel="stylesheet" crossorigin href="./assets/index-cn61pgd9.css"><script type="module" crossorigin src="./assets/index-1tw084yj.js"></script></head>
   <body>
     <div
       data-generated-space-root=""
