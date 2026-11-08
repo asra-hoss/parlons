@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Élan — Parlons français · sitemap
+
+  The app itself is a single-page application whose screens live on
+  hash routes (…/parlons/#/blog, …/parlons/#/about, …/parlons/#/contact).
+  Search engines index the static pages below; each one summarises its
+  section and links into the app. The canonical root is the app itself.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://asra-hoss.github.io/parlons/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://asra-hoss.github.io/parlons/blog/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://asra-hoss.github.io/parlons/about/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://asra-hoss.github.io/parlons/contact/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <!-- In-app routes (hash-based; listed for reference):
+       https://asra-hoss.github.io/parlons/#/blog
+       https://asra-hoss.github.io/parlons/#/blog/how-the-edito-method-works
+       https://asra-hoss.github.io/parlons/#/blog/a1-to-b2-cefr-levels-explained
+       https://asra-hoss.github.io/parlons/#/blog/10-french-phrases-you-will-actually-use-in-paris
+       https://asra-hoss.github.io/parlons/#/about
+       https://asra-hoss.github.io/parlons/#/contact
+       https://asra-hoss.github.io/parlons/#/privacy
+       https://asra-hoss.github.io/parlons/#/terms
+  -->
+</urlset>
