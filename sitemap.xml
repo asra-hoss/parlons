@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Élan — Parlons français · sitemap
+  Camelon — Parlons français · sitemap
 
   The app itself is a single-page application whose screens live on
   hash routes (…/parlons/#/blog, …/parlons/#/about, …/parlons/#/contact).
