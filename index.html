@@ -243,6 +243,39 @@
             }
             if (!ok) ls.removeItem("origb1:nav");
           }
+          /* Reading checks: an array of {checkKey, …} entries.
+             A non-array value is dropped outright; entries
+             without a string checkKey are unusable to every
+             reader and are filtered — the one malformation
+             class the in-bundle healing used to leave behind. */
+          var checks = ls.getItem("origb1:reading-checks");
+          if (checks !== null) {
+            try {
+              var arr = JSON.parse(checks);
+              if (!Array.isArray(arr)) {
+                ls.removeItem("origb1:reading-checks");
+              } else {
+                var kept = arr.filter(function (c) {
+                  return (
+                    c !== null &&
+                    typeof c === "object" &&
+                    typeof c.checkKey === "string" &&
+                    /* Real check keys are always « kind:… »
+                       (visual:, game:, words:, listen:, sp:…). */
+                    c.checkKey.indexOf(":") !== -1
+                  );
+                });
+                if (kept.length !== arr.length) {
+                  ls.setItem(
+                    "origb1:reading-checks",
+                    JSON.stringify(kept),
+                  );
+                }
+              }
+            } catch (e3) {
+              ls.removeItem("origb1:reading-checks");
+            }
+          }
         } catch (e) {}
       })();
     </script>
