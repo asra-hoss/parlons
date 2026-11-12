@@ -171,9 +171,84 @@
         document.documentElement.dataset.theme = "light";
       }
     </script>
+    <!-- Boot scrub (Nov 12, 2026): runs BEFORE the app bundle
+         is even fetched, so it survives a device whose stored
+         state kills the bundle during module init — the case
+         the in-bundle healStoredState (main.tsx) can never
+         reach. Two jobs, both structural and idempotent:
+         (1) This app has NEVER registered a service worker;
+             if one is somehow registered for this origin,
+             unregister it and drop every Cache Storage cache,
+             so the page always comes from the network, never
+             from a trapped copy. (2) Validate the handful of
+             BOOKKEEPING keys startup reads first (language,
+             nav position, theme) and drop a value that is
+             structurally impossible; progress keys are NOT
+             touched here — healStoredState owns those, and
+             /rescue owns the manual repair. The transient
+             sign-in markers (auth-error, redirect-attempt)
+             are dropped unconditionally: a stale one can
+             only mislead the next load. Everything is wrapped
+             so a failure here can never block the app. -->
+    <script>
+      (function () {
+        try {
+          if ("serviceWorker" in navigator) {
+            navigator.serviceWorker
+              .getRegistrations()
+              .then(function (regs) {
+                regs.forEach(function (r) {
+                  r.unregister();
+                });
+              })
+              .catch(function () {});
+          }
+          if (window.caches && caches.keys) {
+            caches
+              .keys()
+              .then(function (names) {
+                names.forEach(function (n) {
+                  caches.delete(n);
+                });
+              })
+              .catch(function () {});
+          }
+        } catch (e) {}
+        try {
+          var ls = window.localStorage;
+          ls.removeItem("origb1:auth-error");
+          ls.removeItem("origb1:redirect-attempt");
+          var lang = ls.getItem("origb1:lang");
+          if (
+            lang !== null &&
+            ["en", "fa", "es", "ru", "hi", "ar"].indexOf(lang) === -1
+          ) {
+            ls.removeItem("origb1:lang");
+          }
+          var dm = ls.getItem("origb1:dark-mode");
+          if (dm !== null && dm !== "0" && dm !== "1") {
+            ls.removeItem("origb1:dark-mode");
+          }
+          var nav = ls.getItem("origb1:nav");
+          if (nav !== null) {
+            var ok = false;
+            try {
+              var parsed = JSON.parse(nav);
+              ok =
+                parsed !== null &&
+                typeof parsed === "object" &&
+                !Array.isArray(parsed);
+            } catch (e2) {
+              ok = false;
+            }
+            if (!ok) ls.removeItem("origb1:nav");
+          }
+        } catch (e) {}
+      })();
+    </script>
     <title>Camelon — Français de A1 à C2</title>
     
-  <link rel="stylesheet" crossorigin href="./assets/index-j7bphpgf.css"><script type="module" crossorigin src="./assets/index-sx0k6ksq.js"></script></head>
+  <link rel="stylesheet" crossorigin href="./assets/index-j7bphpgf.css"><script type="module" crossorigin src="./assets/index-bootfix-1.js"></script></head>
   <body>
     <div
       data-generated-space-root=""

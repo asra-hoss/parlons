@@ -568,3 +568,23 @@ Verified live: root serves bundle `index-shvnfnh4.js`; served-bundle
 spot-checks pass (C12 D2 + D4 group order, A1 D1 vocab order, A2
 « sens et souvenirs » ahead of the U7 block); all thumbnails restored
 from HEAD before commit (commit touches index.html + new bundle only).
+
+**RESCUE PAGE + BOOT SCRUB — Nov 12, 2026:** `/rescue/` is a standalone
+plain-HTML repair page (source of record:
+`original-b1-product/build/client/public/rescue/index.html` — it ships
+in every dist build; the copy in this tree must be PRESERVED across
+overlays, never deleted). It runs no app code: on load it unregisters
+any service worker for the origin and deletes all Cache Storage
+caches, then offers « Repair » (removes ONLY bookkeeping keys —
+origb1:nav/lang/level/dark-mode/auth-error/redirect-attempt/
+onboarded/tip-pending/tip-seen, parlons:level-updated-at,
+camelon:sync-status, camelon:last-cloud-hash* — plus sessionStorage;
+progress keys kept) and « Back up, then reset » (downloads a JSON of
+all origb1:/parlons: entries, then clears them + the Firebase
+IndexedDB). Companion change: `client/index.html` carries an inline
+BOOT SCRUB script (head, before the bundle) that unregisters SWs /
+clears caches and structurally validates the startup bookkeeping
+keys on every load. The app itself has never registered a service
+worker — the bundle's `serviceWorker` strings are Firebase Auth SDK
+internals. Entry bundle for this publish: `index-bootfix-1.js`
+(byte-identical JS to index-sx0k6ksq.js; the change is the HTML).
