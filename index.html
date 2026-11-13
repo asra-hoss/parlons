@@ -183,9 +183,13 @@
              from a trapped copy. (2) Validate the handful of
              BOOKKEEPING keys startup reads first (language,
              nav position, theme) and drop a value that is
-             structurally impossible; progress keys are NOT
-             touched here — healStoredState owns those, and
-             /rescue owns the manual repair. The transient
+             structurally impossible; since Nov 13, 2026 the
+             scrub also shape-checks the MAIN PROGRESS stores
+             (reading checks, study time, starred words,
+             entries, writing/speaking progress) at entry
+             level — the bundle's sanitiser (state-sanitize)
+             owns the full validation, and /rescue owns the
+             manual repair. The transient
              sign-in markers (auth-error, redirect-attempt)
              are dropped unconditionally: a stale one can
              only mislead the next load. Everything is wrapped
@@ -276,12 +280,102 @@
               ls.removeItem("origb1:reading-checks");
             }
           }
+          /* Main progress stores (Nov 13, 2026 — the boot
+             scrub grows the same cheap shape checks the
+             bundle's sanitiser runs, for the stores whose
+             malformed entries can kill a screen before the
+             bundle's own healing is even reached — a null
+             entry in study-time crashed Home in Chromium).
+             Same rule as everywhere: only malformed entries
+             are dropped; valid entries are never touched. */
+          var cleanArr = function (key, okEntry) {
+            var raw = ls.getItem(key);
+            if (raw === null) return;
+            try {
+              var a = JSON.parse(raw);
+              if (!Array.isArray(a)) {
+                ls.removeItem(key);
+                return;
+              }
+              var keptA = a.filter(okEntry);
+              if (keptA.length !== a.length) {
+                ls.setItem(key, JSON.stringify(keptA));
+              }
+            } catch (e4) {
+              ls.removeItem(key);
+            }
+          };
+          var isObj = function (v) {
+            return v !== null && typeof v === "object";
+          };
+          cleanArr("origb1:study-time", function (e) {
+            return (
+              isObj(e) &&
+              typeof e.dossierId === "string" &&
+              typeof e.day === "string" &&
+              typeof e.seconds === "number" &&
+              isFinite(e.seconds) &&
+              e.seconds >= 0
+            );
+          });
+          cleanArr("origb1:starred-words", function (e) {
+            return (
+              isObj(e) &&
+              typeof e.wordKey === "string" &&
+              typeof e.display === "string"
+            );
+          });
+          cleanArr("origb1:entries", function (e) {
+            return (
+              isObj(e) &&
+              typeof e.id === "number" &&
+              typeof e.text === "string"
+            );
+          });
+          /* Progress store: an object whose writing /
+             speaking lists hold only well-shaped entries;
+             a non-object value is dropped outright. */
+          var prog = ls.getItem("origb1:progress");
+          if (prog !== null) {
+            try {
+              var pp = JSON.parse(prog);
+              if (!isObj(pp) || Array.isArray(pp)) {
+                ls.removeItem("origb1:progress");
+              } else {
+                var dirty = false;
+                var fixList = function (list, okE) {
+                  if (!Array.isArray(list)) {
+                    dirty = true;
+                    return [];
+                  }
+                  var k = list.filter(okE);
+                  if (k.length !== list.length) dirty = true;
+                  return k;
+                };
+                pp.writing = fixList(pp.writing, function (e) {
+                  return (
+                    isObj(e) &&
+                    typeof e.draftKey === "string" &&
+                    typeof e.content === "string"
+                  );
+                });
+                pp.speaking = fixList(pp.speaking, function (e) {
+                  return isObj(e) && typeof e.checkKey === "string";
+                });
+                if (dirty) {
+                  ls.setItem("origb1:progress", JSON.stringify(pp));
+                }
+              }
+            } catch (e5) {
+              ls.removeItem("origb1:progress");
+            }
+          }
         } catch (e) {}
       })();
     </script>
     <title>Camelon — Français de A1 à C2</title>
     
-  <link rel="stylesheet" crossorigin href="./assets/index-j7bphpgf.css"><script type="module" crossorigin src="./assets/index-lessonno-1.js"></script></head>
+  <link rel="stylesheet" crossorigin href="./assets/index-j7bphpgf.css"><script type="module" crossorigin src="./assets/index-statefix-1.js"></script></head>
   <body>
     <div
       data-generated-space-root=""
