@@ -129,7 +129,12 @@ S.forEach(function(sc,k){var frame=sc.querySelector('div[style*="height:690px"]'
  pv.innerHTML='<span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:800;color:#4b34b0;padding:6px 12px;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4b34b0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>Previous</span>';
  frame.appendChild(pv)});
 // ---- speech for pronouns and letters
-function say(t){try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='fr-FR';u.rate=.85;var v=speechSynthesis.getVoices().filter(function(x){return /^fr/i.test(x.lang)})[0];if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){}}
+var VOICES=[];function loadV(){try{VOICES=speechSynthesis.getVoices()}catch(e){}}loadV();try{speechSynthesis.onvoiceschanged=loadV}catch(e){}
+function say(t){if(!('speechSynthesis' in window)||typeof SpeechSynthesisUtterance==='undefined'){toast('Voice is not supported in this browser');return}
+ try{try{au.pause()}catch(e){}var u=new SpeechSynthesisUtterance(t);u.lang='fr-FR';u.rate=.8;u.volume=1;loadV();var v=VOICES.filter(function(x){return /^fr[-_]FR/i.test(x.lang)})[0]||VOICES.filter(function(x){return /^fr/i.test(x.lang)})[0];if(v)u.voice=v;window._u=u;
+  var go2=function(){try{speechSynthesis.resume()}catch(e){}speechSynthesis.speak(u)};
+  if(speechSynthesis.speaking||speechSynthesis.pending){speechSynthesis.cancel();setTimeout(go2,80)}else go2()}catch(e){toast('Voice could not play')}}
+function toast(m){var d=document.createElement('div');d.textContent=m;d.style.cssText='position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#2a2550;color:#fff;font:700 13px Nunito,sans-serif;padding:10px 16px;border-radius:14px;z-index:9999';document.body.appendChild(d);setTimeout(function(){d.remove()},2200)}
 document.addEventListener('click',function(e){var el=e.target.closest('.pron,.let');if(!el)return;e.stopImmediatePropagation();say(el.getAttribute('data-say'));
  el.style.transform='scale(.94)';setTimeout(function(){el.style.transform=''},140)},true);
 // ---- s'appeler practice
