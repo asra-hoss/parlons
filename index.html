@@ -393,7 +393,8 @@ function build(){var im=document.querySelector('.nx-wcard img[src*="a1-unit-1-"]
  var g=[].filter.call(sec.querySelectorAll('b,strong,span'),function(x){return x.textContent.trim()==='Grammar:'})[0];if(g){var n=g;while(n.parentElement&&!/Speaking:/.test(n.parentElement.textContent.slice(0,0)+n.textContent)){n=n.parentElement;if(/Speaking:/.test(n.textContent))break}
   n.style.display='none';var pv=n.previousElementSibling;if(pv&&!pv.textContent.trim())pv.style.display='none'}}
 new MutationObserver(build).observe(document.documentElement,{childList:true,subtree:true});
-document.addEventListener('click',function(e){if(!cover())return;var b=e.target.closest&&e.target.closest('button');if(!b||b.getAttribute('aria-label')==='Back')return;if(!/^Continue/.test(b.textContent.trim()))return;var k=sel||getC();if(k!=='l1'){setC(k);return}setC('l1');e.preventDefault();e.stopPropagation();go=true;location.assign('./lesson-1/#start')},true);
+document.addEventListener('click',function(e){var pb=e.target.closest&&e.target.closest('button');if(pb&&/^Continue$/.test(pb.textContent.trim())){var pc=pb.closest('.nx-wcard');if(pc&&pc.querySelector('#camlist')){var kk=sel||getC();var nn=kk.replace('l','');setC(kk);e.preventDefault();e.stopPropagation();go=true;location.assign('./lesson-'+nn+'/#start');return}}
+if(!cover())return;var b=e.target.closest&&e.target.closest('button');if(!b||b.getAttribute('aria-label')==='Back')return;if(!/^Continue/.test(b.textContent.trim()))return;var k=sel||getC();if(k!=='l1'){setC(k);return}setC('l1');e.preventDefault();e.stopPropagation();go=true;location.assign('./lesson-1/#start')},true);
 function chk(){if(go||!leaving)return;var im=cover();var yes=[].filter.call(document.querySelectorAll('button'),function(b){return b.textContent.trim()==='Yes'})[0];
  if(yes){go=true;leaving=false;try{sessionStorage.removeItem('cam_exit')}catch(e){}yes.click();setTimeout(function(){go=false},1200);return}
  var bk=document.querySelector('button[aria-label="Back"]');if(im&&bk&&!bk._c){bk._c=1;bk.click()}}
@@ -412,7 +413,7 @@ var mo=new MutationObserver(function(){var bs=[].slice.call(document.querySelect
  if(en){en.click();return}
  if(document.body.innerText.length>20)show()});
 mo.observe(document.documentElement,{childList:true,subtree:true});setTimeout(show,2500)})();</script><script>/* camelon-settings-clean: remove section captions and status lines from Settings */
-(function(){function clean(){if(!/Reset my progress/.test(document.body.innerText||''))return;[].forEach.call(document.querySelectorAll('h2,h3,p,span,div'),function(el){if(el.children.length)return;var t=el.textContent.trim();
+(function(){function clean(){if(!document.body||!/Reset my progress/.test(document.body.innerText||''))return;[].forEach.call(document.querySelectorAll('h2,h3,p,span,div'),function(el){if(el.children.length)return;var t=el.textContent.trim();
  if(t==='Learning'||t==='App'||/^Email verified/.test(t)||/^Progress saved/.test(t)||/^Erases all your progress/.test(t))el.style.display='none'})}
 new MutationObserver(clean).observe(document.documentElement,{childList:true,subtree:true})})();</script><script>/* camelon-hide-level-note: remove the "You can change your level anytime" strip */
 (function(){function hide(){[].forEach.call(document.querySelectorAll('footer p'),function(p){if(p.textContent.trim()==='You can change your level anytime.'){var f=p.closest('footer');if(f)f.style.display='none'}})}
