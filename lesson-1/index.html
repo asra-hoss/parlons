@@ -261,7 +261,7 @@ document.addEventListener('click',function(e){if(i!==1)return;var t=e.target,sc=
   var miss=CORRECT.filter(function(w){return !found[w]});
   var r=sc.querySelector('.res');r.style.color=hits===CORRECT.length?'#1f7a47':'#a82a63';
   if(hits===CORRECT.length&&!sc._cel){sc._cel=1;setTimeout(function(){celebrate(sc)},150)}r.textContent=hits+' of '+CORRECT.length+' words found'+(miss.length?'. Missed: '+miss.join(', '):'. Well heard!');
-  setTimeout(function(){try{vis(r)}catch(x){}},60);if(!bt.parentElement.querySelector('.snext')){var nx=document.createElement('div');nx.className='snext';nx.style.cssText='margin-top:10px;min-height:50px;border-radius:999px;border:2px solid #4a78e0;color:#24489c;font-family:Fredoka,Nunito,sans-serif;font-size:18px;font-weight:600;display:flex;align-items:center;justify-content:center;cursor:pointer;background:#fff';nx.textContent='Next';bt.insertAdjacentElement('afterend',nx)}return}
+  setTimeout(function(){try{vis(r)}catch(x){}},60);if(!bt.parentElement.querySelector('.snext')){var nx=document.createElement('div');nx.className='snext';nx.style.cssText='margin-top:10px;min-height:56px;border-radius:999px;border:0;color:#fff;font-family:Fredoka,Nunito,sans-serif;font-size:20px;font-weight:600;display:flex;align-items:center;justify-content:center;cursor:pointer;background:linear-gradient(135deg,#3fb0c4,#4f7fe0);box-shadow:0 10px 22px rgba(63,130,210,.38)';nx.textContent='Next';bt.insertAdjacentElement('afterend',nx);bt.style.background='#fff';bt.style.color='#24489c';bt.style.border='2px solid #4a78e0';bt.style.boxShadow='none';bt.style.minHeight='50px'}return}
 },true);
 
 // ---- recorded file row
