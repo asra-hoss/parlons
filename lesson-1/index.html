@@ -106,7 +106,7 @@ document.addEventListener('click',function(e){if(i!==1)return;var t=e.target,sc=
   var miss=CORRECT.filter(function(w){return !found[w]});
   var r=sc.querySelector('.res');r.style.color=hits===CORRECT.length?'#1f7a47':'#a82a63';
   if(hits===CORRECT.length)setTimeout(function(){celebrate(sc)},150);r.textContent=hits+' of '+CORRECT.length+' words found'+(miss.length?'. Missed: '+miss.join(', '):'. Well heard!');
-  checked=true;bt.textContent='Listen again, with the text';return}
+  checked=true;bt.textContent='Next';return}
 },true);
 
 // ---- recorded file row
@@ -210,7 +210,7 @@ var DECK=[{"w":"merci","en":"thank you","ex":"Merci, Monsieur !"},{"w":"merci be
  var P=[['merci','thank you'],['de rien','you are welcome'],['pardon','sorry'],['s’il vous plaît','please']],R=[2,0,3,1],done=0,sel=null;
  function cell(cls,k,t,fs){return '<div class="'+cls+'" data-k="'+k+'" style="box-sizing:border-box;border:2px solid #e8e3f7;background:#fff;border-radius:16px;padding:16px 8px;text-align:center;font-size:'+fs+'px;font-weight:800;cursor:pointer;margin-bottom:10px">'+t+'</div>'}
  bd.innerHTML=tagH+h1+h2+'<div style="display:flex;gap:10px"><div style="flex:1">'+P.map(function(p,k){return cell('mc ml',k,p[0],15)}).join('')+'</div><div style="flex:1">'+R.map(function(k){return cell('mc mr',k,P[k][1],14)}).join('')+'</div></div><div class="mcnt" style="font-size:12px;color:#6f6a85;font-weight:800;text-align:center;margin-top:2px">0 of 4 matched</div>';
- ft.innerHTML=xb('Continue','mnext','opacity:.4');
+ ft.innerHTML=xb('Next','mnext','opacity:.4');
  function style(el,bg,bd2){el.style.background=bg;el.style.borderColor=bd2}
  document.addEventListener('click',function(e){var t=e.target;if(!sc.contains(t)||!sc.classList.contains('on'))return;
   var n=t.closest('.mnext');if(n){e.stopImmediatePropagation();if(done===4)go(S.indexOf(sc)+1);return}
@@ -244,7 +244,8 @@ var DECK=[{"w":"merci","en":"thank you","ex":"Merci, Monsieur !"},{"w":"merci be
    if(ok>=4)setTimeout(function(){celebrate(sc)},150)}
   else res='<div style="font-size:13.5px;font-weight:700">Photo received. Reading handwriting is not part of this prototype yet.</div>';
   fb.innerHTML='<div style="margin-top:10px;background:#fff;border:2px solid #f6d3e3;border-radius:18px;padding:12px 14px;box-shadow:0 8px 20px rgba(90,70,180,.10)">'+res+'</div>';
-  sent=true;b.textContent='Continue';try{fb.scrollIntoView({block:'nearest',behavior:'smooth'})}catch(x){}},true)})();
+  sent=true;b.textContent='Next';try{fb.scrollIntoView({block:'nearest',behavior:'smooth'})}catch(x){}},true)})();
+[].forEach.call(document.querySelectorAll('.scr button'),function(b){var t=b.textContent.trim();if(/^Continue/.test(t)||/^Listen again/.test(t))b.textContent='Next'});
 // ---- fit to screen
 var stage=document.getElementById('stage');
 function fit(){if(innerWidth<=600){document.body.classList.add('m');return}document.body.classList.remove('m');var k=Math.min(1.12,(innerHeight-70)/700,(innerWidth-16)/340);k=Math.max(.5,k);stage.style.transform='scale('+k+')';stage.style.height=(700*k)+'px';stage.style.width='340px';stage.style.marginBottom='0'}
@@ -257,7 +258,7 @@ function micEl(sc){return sc.querySelector('.mic')||sc.querySelector('div[style*
 S.forEach(function(sc,k){if(!REC[k])return;var m=micEl(sc);if(m)m.classList.add('mic');
  var wrap=sc.querySelector('div[style*="flex-direction:column"]')||sc;
  var d=document.createElement('div');d.style.cssText='padding:0 18px 14px';
- d.innerHTML='<div class="status" style="text-align:center;font-size:12.5px;font-weight:800;color:#6f6a85;min-height:18px;margin-bottom:8px">Hold the microphone and speak</div><button style="width:100%;min-height:54px;border:0;border-radius:999px;background:linear-gradient(90deg,#3fb0c4,#4f7fe0);color:#fff;font-family:Fredoka,Nunito,sans-serif;font-size:19px;font-weight:600;box-shadow:0 8px 18px rgba(63,130,210,.38)">Continue</button>';
+ d.innerHTML='<div class="status" style="text-align:center;font-size:12.5px;font-weight:800;color:#6f6a85;min-height:18px;margin-bottom:8px">Hold the microphone and speak</div><button style="width:100%;min-height:54px;border:0;border-radius:999px;background:linear-gradient(90deg,#3fb0c4,#4f7fe0);color:#fff;font-family:Fredoka,Nunito,sans-serif;font-size:19px;font-weight:600;box-shadow:0 8px 18px rgba(63,130,210,.38)">Next</button>';
  var frame=sc.querySelector('div[style*="height:690px"]');if(frame){var last=frame.lastElementChild;frame.insertBefore(d,last);var bd=frame.children[1];if(bd)bd.style.overflowY='auto';
   var cards=bd?bd.querySelectorAll('div[style*="border-radius:22px"]'):[];cards.forEach(function(c){c.style.padding='10px 14px';c.style.marginBottom='8px'})}});
 function status(t){var st=S[i].querySelector('.status');if(st)st.textContent=t}
