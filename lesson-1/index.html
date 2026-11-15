@@ -344,19 +344,21 @@ var DECK=[{"w":"merci","en":"thank you","ex":"Merci, Monsieur !"},{"w":"merci be
  var q=DECK.map(function(d,k){return{d:d,n:k+1}}),flipped=false,total=DECK.length,busy=false;
  bd.innerHTML=tagH+'<div style="display:flex;justify-content:space-between;font-size:12px;color:#6f6a85;margin-bottom:10px;font-weight:800"><span class="fn"></span><span>La politesse simple</span></div><div class="fcard" style="margin:8px 6px 0;padding:14px;border-radius:30px;background:#fff;box-shadow:0 18px 36px rgba(90,70,180,.20),0 2px 6px rgba(90,70,180,.10);cursor:pointer"><div class="fin" style="height:300px;box-sizing:border-box;border-radius:20px;background:linear-gradient(160deg,#e4e9ff,#ece6ff);padding:20px 18px"></div></div><div class="fhint" style="text-align:center;font-size:12px;color:#6f6a85;margin-top:14px;font-weight:700">Tap the card to flip</div>';
  function rb(l,c,bg,cl,r){return '<div class="fr" data-r="'+r+'" style="flex:1;min-height:50px;box-sizing:border-box;border:2px solid '+c+';border-radius:18px;background:'+bg+';color:'+cl+';font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;cursor:pointer">'+l+'</div>'}
- ft.innerHTML='<div class="fshow">'+xb('Show the answer')+'</div><div class="frate" style="display:none;gap:8px">'+rb('Again','#e0478a','#ffe5f0','#a82a63','a')+rb('Good','#f09a1f','#fff0d6','#8a5200','g')+rb('Easy','#4a78e0','#e3ecff','#24489c','e')+'</div>';
+ ft.innerHTML='<div class="fshow">'+xb('Next')+'</div>';
  var fin=bd.querySelector('.fin');
  function render(){var it=q[0];bd.querySelector('.fn').textContent='Card '+it.n+' of '+total;var num='<div style="font-family:Georgia,serif;font-size:15px;color:#4b34b0">'+(it.n<10?'0':'')+it.n+'</div>';
   if(!flipped)fin.innerHTML=num+'<div style="font-family:Fredoka,Nunito,sans-serif;font-size:34px;font-weight:600;margin-top:6px">'+it.d.w+'</div><div class="fsay" style="display:inline-flex;margin-top:8px;padding:6px;cursor:pointer"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7a5ff0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6"/></svg></div><div style="font-size:14px;line-height:1.5;color:#6f6a85;font-weight:700;margin-top:10px">'+it.d.ex+'</div>';
   else fin.innerHTML=num+'<div style="font-family:Fredoka,Nunito,sans-serif;font-size:30px;font-weight:600;margin-top:6px;color:#7a5ff0">'+it.d.en+'</div><div style="font-size:14px;line-height:1.5;color:#6f6a85;font-weight:700;margin-top:14px">'+it.d.ex+'</div>';
-  ft.querySelector('.fshow').style.display=flipped?'none':'block';ft.querySelector('.frate').style.display=flipped?'flex':'none';bd.querySelector('.fhint').textContent=flipped?'Tap the card to flip back':'Tap the card to flip'}
+  bd.querySelector('.fhint').textContent=flipped?'Tap the card to flip back':'Tap the card to flip'}
  function flip(){if(busy)return;busy=true;var a=fin.animate([{transform:'rotateY(0deg)'},{transform:'rotateY(90deg)'}],{duration:140,easing:'ease-in'});a.onfinish=function(){flipped=!flipped;render();fin.animate([{transform:'rotateY(-90deg)'},{transform:'rotateY(0deg)'}],{duration:140,easing:'ease-out'}).onfinish=function(){busy=false}}}
- function rate(r){var it=q.shift();if(r==='a')q.push(it);flipped=false;if(!q.length){celebrate(sc);setTimeout(function(){go(S.indexOf(sc)+1)},1400);return}render();fin.animate([{transform:'translateX(30px)',opacity:0},{transform:'translateX(0)',opacity:1}],{duration:220})}
+ function rate(r){q.shift();flipped=false;if(!q.length){celebrate(sc);setTimeout(function(){go(S.indexOf(sc)+1)},1400);return}render();fin.animate([{transform:'translateX(30px)',opacity:0},{transform:'translateX(0)',opacity:1}],{duration:220})}
  render();
  document.addEventListener('click',function(e){var t=e.target;if(!sc.contains(t)||!sc.classList.contains('on'))return;
   var sy=t.closest('.fsay');if(sy){e.stopImmediatePropagation();say(q[0].d.w);return}
-  var rr=t.closest('.fr');if(rr){e.stopImmediatePropagation();rate(rr.getAttribute('data-r'));return}
-  if(t.closest('.fcard')||t.closest('.fshow')){e.stopImmediatePropagation();flip()}},true)})();
+  if(t.closest('.fshow')){e.stopImmediatePropagation();rate('n');return}
+  if(t.closest('.fcard')){e.stopImmediatePropagation();if(Date.now()<swp)return;flip()}},true);
+ var swp=0,sx=null;bd.addEventListener('pointerdown',function(e){if(e.target.closest('.fcard'))sx=e.clientX});
+ bd.addEventListener('pointerup',function(e){if(sx===null)return;var dx=e.clientX-sx;sx=null;if(Math.abs(dx)>50){swp=Date.now()+400;rate('n')}})})();
 // ---- match game
 (function(){var sc=findScr('Match the words');if(!sc)return;var fr=frameOf(sc),bd=fr.children[1],ft=fr.children[2],tagH=bd.children[0].outerHTML,h1=bd.children[1].outerHTML,h2=bd.children[2].outerHTML;
  var P=[['merci','thank you'],['de rien','you are welcome'],['pardon','sorry'],['s’il vous plaît','please']],R=[2,0,3,1],done=0,sel=null;
