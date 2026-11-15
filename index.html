@@ -411,7 +411,10 @@ var mo=new MutationObserver(function(){var bs=[].slice.call(document.querySelect
  var en=bs.filter(function(b){return /English/.test(b.textContent)&&bs.some(function(x){return /العربية/.test(x.textContent)})})[0];
  if(en){en.click();return}
  if(document.body.innerText.length>20)show()});
-mo.observe(document.documentElement,{childList:true,subtree:true});setTimeout(show,2500)})();</script><script>/* camelon-hide-level-note: remove the "You can change your level anytime" strip */
+mo.observe(document.documentElement,{childList:true,subtree:true});setTimeout(show,2500)})();</script><script>/* camelon-settings-clean: remove section captions and status lines from Settings */
+(function(){function clean(){if(!/Reset my progress/.test(document.body.innerText||''))return;[].forEach.call(document.querySelectorAll('h2,h3,p,span,div'),function(el){if(el.children.length)return;var t=el.textContent.trim();
+ if(t==='Learning'||t==='App'||/^Email verified/.test(t)||/^Progress saved/.test(t)||/^Erases all your progress/.test(t))el.style.display='none'})}
+new MutationObserver(clean).observe(document.documentElement,{childList:true,subtree:true})})();</script><script>/* camelon-hide-level-note: remove the "You can change your level anytime" strip */
 (function(){function hide(){[].forEach.call(document.querySelectorAll('footer p'),function(p){if(p.textContent.trim()==='You can change your level anytime.'){var f=p.closest('footer');if(f)f.style.display='none'}})}
 new MutationObserver(hide).observe(document.documentElement,{childList:true,subtree:true});hide()})();</script><style id="camelon-cover-style">
 [data-elan="flow-cover"] section{border:2px solid #e8e3f7!important;background:#fff!important;border-radius:26px!important;box-shadow:0 14px 30px rgba(90,70,180,.14)!important}
