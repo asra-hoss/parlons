@@ -88,25 +88,27 @@ var CORRECT=['Pardon','Je m’appelle','tu t’appelles','Enchantée','il s’ap
  box.innerHTML='<div class="tags" style="display:flex;flex-wrap:wrap;gap:6px"></div><input class="typed" placeholder="…or type what you heard" style="width:100%;box-sizing:border-box;border:0;background:transparent;outline:0;font:700 14px Nunito,sans-serif;color:#221d33;padding:6px 2px;margin-top:2px"><div class="res" style="font-size:13px;font-weight:800;margin-top:4px"></div>';
  sc.querySelectorAll('span[style*="padding:8px 14px"]').forEach(function(c){c.style.background='#fff';c.style.borderColor='#e8e3f7';c.classList.add('wchip')});
 })();
+function clearRes(){var sc=S[1],r=sc.querySelector('.res');if(r)r.textContent='';sc.querySelectorAll('.tags .tag').forEach(function(q){q.style.background='#4a78e0'})}
 function sel(){return [].map.call(S[1].querySelectorAll('.tags .tag'),function(t){return t.getAttribute('data-w')})}
 function addTag(w,chip){var tg=S[1].querySelector('.tags'),el=document.createElement('span');el.className='tag';el.setAttribute('data-w',w);
  el.style.cssText='display:inline-flex;align-items:center;gap:6px;padding:6px 8px 6px 12px;border-radius:14px;background:#4a78e0;color:#fff;font-size:13.5px;font-weight:700';
  el.innerHTML=w+'<span class="x" style="font-size:16px;line-height:1;opacity:.85;cursor:pointer;padding:0 2px">×</span>';tg.appendChild(el);
- chip.style.background='#e3ecff';chip.style.borderColor='#4a78e0'}
-function removeTag(el){var w=el.getAttribute('data-w');el.remove();S[1].querySelectorAll('.wchip').forEach(function(c){if(c.textContent.trim()===w){c.style.background='#fff';c.style.borderColor='#e8e3f7'}})}
+ chip.style.background='#e3ecff';chip.style.borderColor='#4a78e0';clearRes()}
+function removeTag(el){var w=el.getAttribute('data-w');el.remove();clearRes();S[1].querySelectorAll('.wchip').forEach(function(c){if(c.textContent.trim()===w){c.style.background='#fff';c.style.borderColor='#e8e3f7'}})}
 document.addEventListener('click',function(e){if(i!==1)return;var t=e.target,sc=S[1];if(!sc.contains(t))return;
- var x=t.closest('.tag .x');if(x&&!checked){e.stopImmediatePropagation();removeTag(x.parentElement);return}
- var chip=t.closest('.wchip');if(chip&&!checked){e.stopImmediatePropagation();var w=chip.textContent.trim();var ex=[].filter.call(sc.querySelectorAll('.tags .tag'),function(q){return q.getAttribute('data-w')===w})[0];if(ex)removeTag(ex);else addTag(w,chip);return}
- var bt=t.closest('button');if(bt&&!checked){e.stopImmediatePropagation();
+ var x=t.closest('.tag .x');if(x){e.stopImmediatePropagation();removeTag(x.parentElement);return}
+ var chip=t.closest('.wchip');if(chip){e.stopImmediatePropagation();var w=chip.textContent.trim();var ex=[].filter.call(sc.querySelectorAll('.tags .tag'),function(q){return q.getAttribute('data-w')===w})[0];if(ex)removeTag(ex);else addTag(w,chip);return}
+ var sn=t.closest('.snext');if(sn){e.stopImmediatePropagation();go(2);return}
+  var bt=t.closest('button');if(bt){e.stopImmediatePropagation();
   var typed=(sc.querySelector('.typed').value||'').toLowerCase(),found={};
   sel().forEach(function(w){found[w]=1});
   CORRECT.forEach(function(w){if(typed.indexOf(w.toLowerCase())>-1)found[w]=1});
   var hits=0;CORRECT.forEach(function(w){if(found[w])hits++});
-  sc.querySelectorAll('.tags .tag').forEach(function(q){var ok=CORRECT.indexOf(q.getAttribute('data-w'))>-1;q.style.background=ok?'#2fa56b':'#e0476a';var xx=q.querySelector('.x');if(xx)xx.style.display='none'});
+  sc.querySelectorAll('.tags .tag').forEach(function(q){var ok=CORRECT.indexOf(q.getAttribute('data-w'))>-1;q.style.background=ok?'#2fa56b':'#e0476a';});
   var miss=CORRECT.filter(function(w){return !found[w]});
   var r=sc.querySelector('.res');r.style.color=hits===CORRECT.length?'#1f7a47':'#a82a63';
-  if(hits===CORRECT.length)setTimeout(function(){celebrate(sc)},150);r.textContent=hits+' of '+CORRECT.length+' words found'+(miss.length?'. Missed: '+miss.join(', '):'. Well heard!');
-  checked=true;bt.textContent='Next';return}
+  if(hits===CORRECT.length&&!sc._cel){sc._cel=1;setTimeout(function(){celebrate(sc)},150)}r.textContent=hits+' of '+CORRECT.length+' words found'+(miss.length?'. Missed: '+miss.join(', '):'. Well heard!');
+  setTimeout(function(){try{r.scrollIntoView({block:'nearest',behavior:'smooth'})}catch(x){}},60);if(!bt.parentElement.querySelector('.snext')){var nx=document.createElement('div');nx.className='snext';nx.style.cssText='margin-top:10px;min-height:50px;border-radius:999px;border:2px solid #4a78e0;color:#24489c;font-family:Fredoka,Nunito,sans-serif;font-size:18px;font-weight:600;display:flex;align-items:center;justify-content:center;cursor:pointer;background:#fff';nx.textContent='Next';bt.insertAdjacentElement('afterend',nx)}return}
 },true);
 
 // ---- recorded file row
