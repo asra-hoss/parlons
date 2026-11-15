@@ -375,14 +375,13 @@
     </script>
     <title>Camelon</title>
     
-  <link rel="stylesheet" crossorigin href="./assets/index-1f9b76c2.css"><script type="module" crossorigin src="./assets/index-5506c766.js"></script><script>/* Camelon: A1 Dossier 1 Lesson 1 opens the new lesson page only when the user taps Continue; leaving returns to the app */
-(function(){var clicked=0,go=false,leaving=false;try{if(sessionStorage.getItem('cam_exit')==='1')leaving=true}catch(e){}
-['pointerdown','click','touchstart'].forEach(function(ev){document.addEventListener(ev,function(){clicked=Date.now()},true)});
-function chk(){if(go)return;var im=document.querySelector('img[src*="a1-opener-cover-1"]');
- if(leaving){var yes=[].filter.call(document.querySelectorAll('button'),function(b){return b.textContent.trim()==='Yes'})[0];if(yes){go=true;leaving=false;try{sessionStorage.removeItem('cam_exit')}catch(e){}yes.click();setTimeout(function(){go=false},1200);return}
-  var bk=document.querySelector('button[aria-label="Back"]');if(im&&bk&&!bk._c){bk._c=1;bk.click()}return}
- if(!im)return;var t=document.body?document.body.innerText:'';if(t.indexOf('Roadmap')>-1)return;
- if(Date.now()-clicked<4000){go=true;location.assign('./lesson-1/')}else{leaving=true;chk()}}
+  <link rel="stylesheet" crossorigin href="./assets/index-1f9b76c2.css"><script type="module" crossorigin src="./assets/index-5506c766.js"></script><script>/* Camelon: the lesson cover pop-up stays; its Continue button opens the new Lesson 1 (from Listening); leaving returns home */
+(function(){var go=false,leaving=false;try{if(sessionStorage.getItem('cam_exit')==='1')leaving=true}catch(e){}
+function cover(){return document.querySelector('img[src*="a1-opener-cover-1"]')}
+document.addEventListener('click',function(e){if(!cover())return;var b=e.target.closest&&e.target.closest('button');if(!b||b.getAttribute('aria-label')==='Back')return;if(!/^Continue/.test(b.textContent.trim()))return;e.preventDefault();e.stopPropagation();go=true;location.assign('./lesson-1/#start')},true);
+function chk(){if(go||!leaving)return;var im=cover();var yes=[].filter.call(document.querySelectorAll('button'),function(b){return b.textContent.trim()==='Yes'})[0];
+ if(yes){go=true;leaving=false;try{sessionStorage.removeItem('cam_exit')}catch(e){}yes.click();setTimeout(function(){go=false},1200);return}
+ var bk=document.querySelector('button[aria-label="Back"]');if(im&&bk&&!bk._c){bk._c=1;bk.click()}}
 new MutationObserver(chk).observe(document.documentElement,{childList:true,subtree:true});})();</script></head>
   <body>
     <div
