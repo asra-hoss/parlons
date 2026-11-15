@@ -389,7 +389,9 @@ var mo=new MutationObserver(function(){var bs=[].slice.call(document.querySelect
  var en=bs.filter(function(b){return /English/.test(b.textContent)&&bs.some(function(x){return /العربية/.test(x.textContent)})})[0];
  if(en){en.click();return}
  if(document.body.innerText.length>20)show()});
-mo.observe(document.documentElement,{childList:true,subtree:true});setTimeout(show,2500)})();</script></head>
+mo.observe(document.documentElement,{childList:true,subtree:true});setTimeout(show,2500)})();</script><script>/* camelon-hide-level-note: remove the "You can change your level anytime" strip */
+(function(){function hide(){[].forEach.call(document.querySelectorAll('footer p'),function(p){if(p.textContent.trim()==='You can change your level anytime.'){var f=p.closest('footer');if(f)f.style.display='none'}})}
+new MutationObserver(hide).observe(document.documentElement,{childList:true,subtree:true});hide()})();</script></head>
   <body>
     <div
       data-generated-space-root=""
