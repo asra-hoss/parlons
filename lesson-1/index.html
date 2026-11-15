@@ -45,7 +45,7 @@ document.addEventListener('click',function(e){
  var t=e.target;
  var sc=t.closest('.scr'); if(!sc)return;
  if(i===S.length-1){var big=sc.querySelectorAll('img')[1]; var im=t.closest('img');
-  if((im&&im.width>150)||t.closest('button')){ if(big.src!==OPEN){big.src=OPEN;var bt=sc.querySelector('button');if(bt)bt.textContent='Back to the start';return} else if(t.closest('button')){location.href='../';return} } }
+  if((im&&im.width>150)||t.closest('button')){ if(big.src!==OPEN){big.src=OPEN;var bt=sc.querySelector('button');if(bt)bt.textContent='Back to the start';return} else if(t.closest('button')){try{sessionStorage.setItem('cam_exit','1')}catch(x){}location.href='../';return} } }
  if(t.closest('button')){go(i+1);return}
  var sp=t.closest('span,div');
  var txt=(t.closest('span')||t).textContent||'';
@@ -249,7 +249,7 @@ var DECK=[{"w":"merci","en":"thank you","ex":"Merci, Monsieur !"},{"w":"merci be
 
 // ---- X leaves the lesson and returns to the app
 S.forEach(function(sc){var fr=frameOf(sc);if(!fr)return;var tb=fr.children[0];if(!tb||!tb.firstElementChild)return;var x=tb.firstElementChild;x.style.cursor='pointer';x.setAttribute('data-exit','1')});
-document.addEventListener('click',function(e){var x=e.target.closest('[data-exit]');if(!x)return;e.stopImmediatePropagation();location.href='../'},true);
+document.addEventListener('click',function(e){var x=e.target.closest('[data-exit]');if(!x)return;e.stopImmediatePropagation();try{sessionStorage.setItem('cam_exit','1')}catch(x){}location.href='../'},true);
 // ---- fit to screen
 var stage=document.getElementById('stage');
 function fit(){if(innerWidth<=600){document.body.classList.add('m');return}document.body.classList.remove('m');var k=Math.min(1.12,(innerHeight-70)/700,(innerWidth-16)/340);k=Math.max(.5,k);stage.style.transform='scale('+k+')';stage.style.height=(700*k)+'px';stage.style.width='340px';stage.style.marginBottom='0'}
