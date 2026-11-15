@@ -45,7 +45,7 @@ document.addEventListener('click',function(e){
  var t=e.target;
  var sc=t.closest('.scr'); if(!sc)return;
  if(i===S.length-1){var big=sc.querySelectorAll('img')[1]; var im=t.closest('img');
-  if((im&&im.width>150)||t.closest('button')){ if(big.src!==OPEN){big.src=OPEN;var bt=sc.querySelector('button');if(bt)bt.textContent='Back to the start';return} else if(t.closest('button')){big.src=big.getAttribute('data-c')||big.src;go(0);return} } }
+  if((im&&im.width>150)||t.closest('button')){ if(big.src!==OPEN){big.src=OPEN;var bt=sc.querySelector('button');if(bt)bt.textContent='Back to the start';return} else if(t.closest('button')){location.href='../';return} } }
  if(t.closest('button')){go(i+1);return}
  var sp=t.closest('span,div');
  var txt=(t.closest('span')||t).textContent||'';
@@ -246,6 +246,10 @@ var DECK=[{"w":"merci","en":"thank you","ex":"Merci, Monsieur !"},{"w":"merci be
   fb.innerHTML='<div style="margin-top:10px;background:#fff;border:2px solid #f6d3e3;border-radius:18px;padding:12px 14px;box-shadow:0 8px 20px rgba(90,70,180,.10)">'+res+'</div>';
   sent=true;b.textContent='Next';try{fb.scrollIntoView({block:'nearest',behavior:'smooth'})}catch(x){}},true)})();
 [].forEach.call(document.querySelectorAll('.scr button'),function(b){var t=b.textContent.trim();if(/^Continue/.test(t)||/^Listen again/.test(t)||/^Got it/.test(t))b.textContent='Next'});
+
+// ---- X leaves the lesson and returns to the app
+S.forEach(function(sc){var fr=frameOf(sc);if(!fr)return;var tb=fr.children[0];if(!tb||!tb.firstElementChild)return;var x=tb.firstElementChild;x.style.cursor='pointer';x.setAttribute('data-exit','1')});
+document.addEventListener('click',function(e){var x=e.target.closest('[data-exit]');if(!x)return;e.stopImmediatePropagation();location.href='../'},true);
 // ---- fit to screen
 var stage=document.getElementById('stage');
 function fit(){if(innerWidth<=600){document.body.classList.add('m');return}document.body.classList.remove('m');var k=Math.min(1.12,(innerHeight-70)/700,(innerWidth-16)/340);k=Math.max(.5,k);stage.style.transform='scale('+k+')';stage.style.height=(700*k)+'px';stage.style.width='340px';stage.style.marginBottom='0'}
