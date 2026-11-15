@@ -397,7 +397,14 @@ document.addEventListener('click',function(e){if(!cover())return;var b=e.target.
 function chk(){if(go||!leaving)return;var im=cover();var yes=[].filter.call(document.querySelectorAll('button'),function(b){return b.textContent.trim()==='Yes'})[0];
  if(yes){go=true;leaving=false;try{sessionStorage.removeItem('cam_exit')}catch(e){}yes.click();setTimeout(function(){go=false},1200);return}
  var bk=document.querySelector('button[aria-label="Back"]');if(im&&bk&&!bk._c){bk._c=1;bk.click()}}
-new MutationObserver(chk).observe(document.documentElement,{childList:true,subtree:true});})();</script><script>/* camelon-skip-language: start on "Where are you with French?"; English is the default, the flags on that page change it */
+new MutationObserver(chk).observe(document.documentElement,{childList:true,subtree:true});})();</script><script>/* camelon-next: after finishing Lesson 1, open the next lesson's cover directly */
+(function(){var on=false,t0=Date.now();try{on=sessionStorage.getItem('cam_next')==='1'}catch(e){}if(!on)return;var st=document.createElement('style');st.id='camnext';st.textContent='body{visibility:hidden}';document.head.appendChild(st);
+function done(){try{sessionStorage.removeItem('cam_next')}catch(e){}var x=document.getElementById('camnext');if(x)x.remove();mo.disconnect()}
+var c1=0,c2=0;var mo=new MutationObserver(function(){if(Date.now()-t0>9000){done();return}
+ var w=document.querySelector('div.fixed .nx-wcard');
+ if(w){var b=[].filter.call(w.querySelectorAll('button'),function(b){return /^Continue$/.test(b.textContent.trim())}).pop();if(b&&!c2){c2=1;setTimeout(function(){b.click();setTimeout(done,500)},250)}return}
+ if(!c1){var h=[].filter.call(document.querySelectorAll('button'),function(b){return /^Continue/.test(b.textContent.trim())&&/Dossier/.test(b.textContent)})[0];if(h){c1=1;setTimeout(function(){h.click()},250)}}});
+mo.observe(document.documentElement,{childList:true,subtree:true});setTimeout(done,9500)})();</script><script>/* camelon-skip-language: start on "Where are you with French?"; English is the default, the flags on that page change it */
 (function(){var st=document.createElement('style');st.id='camskip';st.textContent='body{visibility:hidden}';document.head.appendChild(st);
 function show(){var s=document.getElementById('camskip');if(s)s.remove();mo.disconnect()}
 var mo=new MutationObserver(function(){var bs=[].slice.call(document.querySelectorAll('button'));if(!bs.length)return;
