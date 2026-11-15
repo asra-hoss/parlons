@@ -382,7 +382,14 @@ document.addEventListener('click',function(e){if(!cover())return;var b=e.target.
 function chk(){if(go||!leaving)return;var im=cover();var yes=[].filter.call(document.querySelectorAll('button'),function(b){return b.textContent.trim()==='Yes'})[0];
  if(yes){go=true;leaving=false;try{sessionStorage.removeItem('cam_exit')}catch(e){}yes.click();setTimeout(function(){go=false},1200);return}
  var bk=document.querySelector('button[aria-label="Back"]');if(im&&bk&&!bk._c){bk._c=1;bk.click()}}
-new MutationObserver(chk).observe(document.documentElement,{childList:true,subtree:true});})();</script></head>
+new MutationObserver(chk).observe(document.documentElement,{childList:true,subtree:true});})();</script><script>/* camelon-skip-language: start on "Where are you with French?"; English is the default, the flags on that page change it */
+(function(){var st=document.createElement('style');st.id='camskip';st.textContent='body{visibility:hidden}';document.head.appendChild(st);
+function show(){var s=document.getElementById('camskip');if(s)s.remove();mo.disconnect()}
+var mo=new MutationObserver(function(){var bs=[].slice.call(document.querySelectorAll('button'));if(!bs.length)return;
+ var en=bs.filter(function(b){return /English/.test(b.textContent)&&bs.some(function(x){return /العربية/.test(x.textContent)})})[0];
+ if(en){en.click();return}
+ if(document.body.innerText.length>20)show()});
+mo.observe(document.documentElement,{childList:true,subtree:true});setTimeout(show,2500)})();</script></head>
   <body>
     <div
       data-generated-space-root=""
