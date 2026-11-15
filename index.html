@@ -375,12 +375,14 @@
     </script>
     <title>Camelon</title>
     
-  <link rel="stylesheet" crossorigin href="./assets/index-1f9b76c2.css"><script type="module" crossorigin src="./assets/index-5506c766.js"></script><script>/* Camelon: A1 Dossier 1 Lesson 1 opens the new lesson page; leaving it returns to the app */
-(function(){var go=false,out=false;try{out=sessionStorage.getItem('cam_exit')==='1'}catch(e){}
+  <link rel="stylesheet" crossorigin href="./assets/index-1f9b76c2.css"><script type="module" crossorigin src="./assets/index-5506c766.js"></script><script>/* Camelon: A1 Dossier 1 Lesson 1 opens the new lesson page only when the user taps Continue; leaving returns to the app */
+(function(){var clicked=0,go=false,leaving=false;try{if(sessionStorage.getItem('cam_exit')==='1')leaving=true}catch(e){}
+['pointerdown','click','touchstart'].forEach(function(ev){document.addEventListener(ev,function(){clicked=Date.now()},true)});
 function chk(){if(go)return;var im=document.querySelector('img[src*="a1-opener-cover-1"]');
- if(out){var yes=[].filter.call(document.querySelectorAll('button'),function(b){return b.textContent.trim()==='Yes'})[0];if(yes){go=true;out=false;try{sessionStorage.removeItem('cam_exit')}catch(e){}yes.click();setTimeout(function(){go=false},1200);return}
+ if(leaving){var yes=[].filter.call(document.querySelectorAll('button'),function(b){return b.textContent.trim()==='Yes'})[0];if(yes){go=true;leaving=false;try{sessionStorage.removeItem('cam_exit')}catch(e){}yes.click();setTimeout(function(){go=false},1200);return}
   var bk=document.querySelector('button[aria-label="Back"]');if(im&&bk&&!bk._c){bk._c=1;bk.click()}return}
- if(!im)return;var t=document.body?document.body.innerText:'';if(t.indexOf('Roadmap')>-1)return;go=true;location.assign('./lesson-1/')}
+ if(!im)return;var t=document.body?document.body.innerText:'';if(t.indexOf('Roadmap')>-1)return;
+ if(Date.now()-clicked<4000){go=true;location.assign('./lesson-1/')}else{leaving=true;chk()}}
 new MutationObserver(chk).observe(document.documentElement,{childList:true,subtree:true});})();</script></head>
   <body>
     <div
