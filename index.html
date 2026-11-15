@@ -391,7 +391,18 @@ var mo=new MutationObserver(function(){var bs=[].slice.call(document.querySelect
  if(document.body.innerText.length>20)show()});
 mo.observe(document.documentElement,{childList:true,subtree:true});setTimeout(show,2500)})();</script><script>/* camelon-hide-level-note: remove the "You can change your level anytime" strip */
 (function(){function hide(){[].forEach.call(document.querySelectorAll('footer p'),function(p){if(p.textContent.trim()==='You can change your level anytime.'){var f=p.closest('footer');if(f)f.style.display='none'}})}
-new MutationObserver(hide).observe(document.documentElement,{childList:true,subtree:true});hide()})();</script></head>
+new MutationObserver(hide).observe(document.documentElement,{childList:true,subtree:true});hide()})();</script><style id="camelon-cover-style">
+[data-elan="flow-cover"] section{border:2px solid #e8e3f7!important;background:#fff!important;border-radius:26px!important;box-shadow:0 14px 30px rgba(90,70,180,.14)!important}
+[data-elan="flow-cover"] section>div:first-child{background:#f1edff!important;border-bottom:2px solid #e8e3f7!important}
+[data-elan="flow-cover"] section p{color:#4b34b0!important}
+[data-elan="flow-cover"] section h3{font-family:Fredoka,Nunito,sans-serif!important;font-weight:600!important;font-size:22px!important;color:#1d1a33!important}
+[data-elan="flow-cover"] li{font-family:Nunito,sans-serif!important;font-weight:700!important}
+[data-elan="flow-cover"] li span{background:linear-gradient(135deg,#3fb0c4,#4f7fe0)!important}
+[data-elan="flow-cover"] img{border-radius:24px}
+button.cam-cont{background:linear-gradient(135deg,#3fb0c4,#4f7fe0)!important;box-shadow:0 10px 22px rgba(63,130,210,.38)!important;font-family:Fredoka,Nunito,sans-serif!important;font-weight:600!important}
+</style><script>/* camelon-cover-style: mark the Continue button of the lesson cover */
+(function(){function m(){if(!document.querySelector('[data-elan="flow-cover"]'))return;[].forEach.call(document.querySelectorAll('button'),function(b){if(/^Continue/.test(b.textContent.trim()))b.classList.add('cam-cont')})}
+new MutationObserver(m).observe(document.documentElement,{childList:true,subtree:true});m()})();</script></head>
   <body>
     <div
       data-generated-space-root=""
