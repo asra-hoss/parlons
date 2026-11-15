@@ -378,7 +378,22 @@
   <link rel="stylesheet" crossorigin href="./assets/index-1f9b76c2.css"><script type="module" crossorigin src="./assets/index-5506c766.js"></script><script>/* Camelon: the lesson cover pop-up stays; its Continue button opens the new Lesson 1 (from Listening); leaving returns home */
 (function(){var go=false,leaving=false;try{if(sessionStorage.getItem('cam_exit')==='1')leaving=true}catch(e){}
 function cover(){return document.querySelector('img[src*="a1-opener-cover-1"]')}
-document.addEventListener('click',function(e){if(!cover())return;var b=e.target.closest&&e.target.closest('button');if(!b||b.getAttribute('aria-label')==='Back')return;if(!/^Continue/.test(b.textContent.trim()))return;e.preventDefault();e.stopPropagation();go=true;location.assign('./lesson-1/#start')},true);
+var D='orig-a1-m0',L=[['l1',"Discover French and introduce yourself","Comment tu t'appelles ?"],['l2',"Spell your name in French","Ça s'écrit comment, ton prénom ?"],['l3',"The world in French","Ça, c'est quel pays ?"],['l4',"Survive in the classroom","On est quel jour, aujourd'hui ?"]];
+function getC(){try{var m=JSON.parse(localStorage.getItem('parlons:a1-lesson-choice')||'{}');return (m[D]||D+'-l1').slice(D.length+1)}catch(e){return 'l1'}}
+function setC(k){try{var m=JSON.parse(localStorage.getItem('parlons:a1-lesson-choice')||'{}');m[D]=D+'-'+k;localStorage.setItem('parlons:a1-lesson-choice',JSON.stringify(m))}catch(e){}}
+var sel=null;
+function paint(box){[].forEach.call(box.children,function(r){var on=r.getAttribute('data-k')===sel;r.style.background=on?'#ede9fe':'#f8f6ff';r.style.borderColor=on?'#7a5ff0':'transparent'})}
+function build(){var im=document.querySelector('.nx-wcard img[src*="a1-unit-1-"]');if(!im)return;var sec=im.closest('.nx-wcard');if(!sec||sec.querySelector('#camlist'))return;
+ var bs=[].filter.call(sec.querySelectorAll('button'),function(b){return /^Continue$/.test(b.textContent.trim())});var cb=bs[bs.length-1];if(!cb)return;
+ var card=cb.parentNode;sel=getC();var box=document.createElement('div');box.id='camlist';box.style.cssText='display:flex;flex-direction:column;gap:8px;margin:12px 0';
+ L.forEach(function(x,i){var r=document.createElement('div');r.setAttribute('data-k',x[0]);r.style.cssText='display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:18px;border:2px solid transparent;cursor:pointer;font-family:Nunito,sans-serif';
+  r.innerHTML='<span style="width:36px;height:36px;border-radius:12px;background:#e4e0fa;display:flex;align-items:center;justify-content:center;font-weight:900;color:#22316e;flex:none">'+(i+1)+'</span><span style="min-width:0"><b style="display:block;font-size:14px;color:#22316e">'+x[1]+'</b><span style="font-size:12px;color:#6b6f8d;font-weight:700">'+x[2]+'</span></span>';
+  r.addEventListener('click',function(){sel=x[0];setC(sel);paint(box)});box.appendChild(r)});
+ card.insertBefore(box,cb);paint(box);
+ var g=[].filter.call(sec.querySelectorAll('b,strong,span'),function(x){return x.textContent.trim()==='Grammar:'})[0];if(g){var n=g;while(n.parentElement&&!/Speaking:/.test(n.parentElement.textContent.slice(0,0)+n.textContent)){n=n.parentElement;if(/Speaking:/.test(n.textContent))break}
+  n.style.display='none';var pv=n.previousElementSibling;if(pv&&!pv.textContent.trim())pv.style.display='none'}}
+new MutationObserver(build).observe(document.documentElement,{childList:true,subtree:true});
+document.addEventListener('click',function(e){if(!cover())return;var b=e.target.closest&&e.target.closest('button');if(!b||b.getAttribute('aria-label')==='Back')return;if(!/^Continue/.test(b.textContent.trim()))return;var k=sel||getC();if(k!=='l1'){setC(k);return}setC('l1');e.preventDefault();e.stopPropagation();go=true;location.assign('./lesson-1/#start')},true);
 function chk(){if(go||!leaving)return;var im=cover();var yes=[].filter.call(document.querySelectorAll('button'),function(b){return b.textContent.trim()==='Yes'})[0];
  if(yes){go=true;leaving=false;try{sessionStorage.removeItem('cam_exit')}catch(e){}yes.click();setTimeout(function(){go=false},1200);return}
  var bk=document.querySelector('button[aria-label="Back"]');if(im&&bk&&!bk._c){bk._c=1;bk.click()}}
