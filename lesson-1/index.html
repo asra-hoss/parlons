@@ -246,8 +246,8 @@ function sel(){return [].map.call(S[1].querySelectorAll('.tags .tag'),function(t
 function addTag(w,chip){var tg=S[1].querySelector('.tags'),el=document.createElement('span');el.className='tag';el.setAttribute('data-w',w);
  el.style.cssText='display:inline-flex;align-items:center;gap:6px;padding:6px 8px 6px 12px;border-radius:14px;background:#4a78e0;color:#fff;font-size:13.5px;font-weight:700';
  el.innerHTML=w+'<span class="x" style="font-size:16px;line-height:1;opacity:.85;cursor:pointer;padding:0 2px">×</span>';tg.appendChild(el);
- chip.style.background='#e3ecff';chip.style.borderColor='#4a78e0';clearRes()}
-function removeTag(el){var w=el.getAttribute('data-w');el.remove();clearRes();S[1].querySelectorAll('.wchip').forEach(function(c){if(c.textContent.trim()===w){c.style.background='#fff';c.style.borderColor='#e8e3f7'}})}
+ chip.style.display='none';clearRes()}
+function removeTag(el){var w=el.getAttribute('data-w');el.remove();clearRes();S[1].querySelectorAll('.wchip').forEach(function(c){if(c.textContent.trim()===w){c.style.display='';c.style.background='#fff';c.style.borderColor='#e8e3f7'}})}
 document.addEventListener('click',function(e){if(i!==1)return;var t=e.target,sc=S[1];if(!sc.contains(t))return;
  var x=t.closest('.tag .x');if(x){e.stopImmediatePropagation();removeTag(x.parentElement);return}
  var chip=t.closest('.wchip');if(chip){e.stopImmediatePropagation();var w=chip.textContent.trim();var ex=[].filter.call(sc.querySelectorAll('.tags .tag'),function(q){return q.getAttribute('data-w')===w})[0];if(ex)removeTag(ex);else addTag(w,chip);return}
@@ -319,6 +319,9 @@ function celebrate(sc){var fr=sc.querySelector('.frm');if(!fr)return;fr.style.po
 [].forEach.call(document.querySelectorAll('.scr *'),function(el){if(el.children.length)return;var t=el.textContent.trim();
  if(t==='WORDS IN THIS AUDIO'||t==='What I heard'||t==='WHAT I HEARD'||t==='Words in this audio'||t==='Tap a word to see its meaning.'||t==='Say your name'||t==='Speed'||t==='Start over')el.style.display='none';
  if(/^(Continue to |Got it, let me practise|Start lesson)/.test(t)&&(el.tagName==='BUTTON'||el.classList.contains('xbtn')))el.textContent='Continue'});
+[].forEach.call(document.querySelectorAll('.scr'),function(sc){var pill=null,ttl=null;[].forEach.call(sc.querySelectorAll('div'),function(e){if(e.children.length)return;var t=e.textContent.trim();if(!pill&&(/^STEP [0-9]/.test(t)||/^DOSSIER 1/.test(t)))pill=e;else if(pill&&!ttl&&t.length>3&&parseFloat(getComputedStyle(e).fontSize)>=19)ttl=e});
+ if(pill){pill.style.display='table';pill.style.marginLeft='auto';pill.style.marginRight='auto'}
+ if(ttl){ttl.style.textAlign='center';var n=ttl.nextElementSibling;if(n&&!n.children.length&&parseFloat(getComputedStyle(n).fontSize)<=14&&n.textContent.trim().length>8)n.style.textAlign='center'}});
 // ---- transcript in one box
 [2,7].forEach(function(n){var sc=S[n];if(!sc)return;var ls=[].slice.call(sc.querySelectorAll('.dline'));if(!ls.length)return;var bx=document.createElement('div');bx.style.cssText='background:#fff;border:2px solid #e8e3f7;border-radius:18px;padding:6px 6px 4px';ls[0].parentNode.insertBefore(bx,ls[0]);ls.forEach(function(l){bx.appendChild(l)})});
 // ---- drag an option into the blank
