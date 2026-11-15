@@ -230,7 +230,7 @@ document.addEventListener('click',function(e){var t=e.target,sc=t.closest('.scr'
 // ---- Listening 1: tap words -> tags, Check
 var CORRECT=['Pardon','Je m’appelle','tu t’appelles','Enchantée','il s’appelle'],checked=false;
 (function(){var sc=S[1],box=sc.querySelector('div[style*="min-height:70px"]');if(!box)return;
- box.innerHTML='<div class="tags" style="display:flex;flex-wrap:wrap;gap:6px"></div><input class="typed" placeholder="…or type what you heard" style="width:100%;box-sizing:border-box;border:0;background:transparent;outline:0;font:700 14px Nunito,sans-serif;color:#221d33;padding:6px 2px;margin-top:2px"><div class="res" style="font-size:13px;font-weight:800;margin-top:4px"></div>';
+ box.innerHTML='<div class="tags" style="display:flex;flex-wrap:wrap;gap:6px"></div><input class="typed" style="display:none"><div class="res" style="display:none;font-size:13px;font-weight:800;margin-top:4px"></div>';
  sc.querySelectorAll('span[style*="padding:8px 14px"]').forEach(function(c){c.style.background='#fff';c.style.borderColor='#e8e3f7';c.classList.add('wchip')});
 })();
 function clearRes(){var sc=S[1],r=sc.querySelector('.res');if(r)r.textContent='';sc.querySelectorAll('.tags .tag').forEach(function(q){q.style.background='#4a78e0'})}
