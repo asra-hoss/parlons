@@ -431,9 +431,9 @@ button.cam-cont{background:linear-gradient(135deg,#3fb0c4,#4f7fe0)!important;box
 </style><script>/* camelon-cover-style: mark the Continue button of the lesson cover */
 (function(){function m(){if(!document.querySelector('[data-elan="flow-cover"]'))return;[].forEach.call(document.querySelectorAll('button'),function(b){if(/^Continue/.test(b.textContent.trim()))b.classList.add('cam-cont')})}
 new MutationObserver(m).observe(document.documentElement,{childList:true,subtree:true});m()})();</script><script>/* Camelon: old lesson pages -> new flow */
-(function(){var t=0,MX={A1:9,A2:10,B1:9,B2:10,'C1/C2':7},P={A2:'a2-',B1:'b1-',B2:'b2-','C1/C2':'c12-'};function chk(){var m=/Camelon\s*\u2022\s*(A1|A2|B1|B2|C1\/C2)\s*\u2022\s*Dossier\s*(\d+)\s*\u2022\s*Lesson\s*(\d+)/.exec(document.body?document.body.innerText:'');if(!m)return;var lv=m[1],d=+m[2],l=+m[3];if(d>MX[lv])return;try{if(sessionStorage.getItem('cam_exit')==='1')return}catch(e){}
+(function(){var t=0,MX={A1:9,A2:10,B1:9,B2:10,'C1/C2':7},P={A2:'a2-',B1:'b1-',B2:'b2-','C1/C2':'c12-'};var armed=true;try{if(sessionStorage.getItem('cam_exit')==='1'){armed=false;sessionStorage.removeItem('cam_exit')}}catch(e){}function chk(){var m=/Camelon\s*\u2022\s*(A1|A2|B1|B2|C1\/C2)\s*\u2022\s*Dossier\s*(\d+)\s*\u2022\s*Lesson\s*(\d+)/.exec(document.body?document.body.innerText:'');if(!m){armed=true;return}var lv=m[1],d=+m[2],l=+m[3];if(d>MX[lv])return;if(!armed)return;
 var u=lv==='A1'?(l>6?null:'./lesson-'+d+'-'+l+'/#start'):'./lesson-'+P[lv]+d+'/#start';if(!u)return;var o=document.createElement('div');o.style.cssText='position:fixed;left:0;top:0;right:0;bottom:0;z-index:2147483647;background:#f5f3ff';document.body.appendChild(o);location.replace(u)}
-new MutationObserver(function(){if(t)return;t=setTimeout(function(){t=0;chk()},25)}).observe(document.documentElement,{childList:true,subtree:true})})();</script></head>
+new MutationObserver(function(){if(t)return;t=setTimeout(function(){t=0;chk()},25)}).observe(document.documentElement,{childList:true,subtree:true});setInterval(chk,250);document.addEventListener('DOMContentLoaded',chk);window.addEventListener('pageshow',chk)})();</script></head>
   <body>
     <div
       data-generated-space-root=""
