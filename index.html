@@ -431,13 +431,14 @@ button.cam-cont{background:linear-gradient(135deg,#3fb0c4,#4f7fe0)!important;box
 </style><script>/* camelon-cover-style: mark the Continue button of the lesson cover */
 (function(){function m(){if(!document.querySelector('[data-elan="flow-cover"]'))return;[].forEach.call(document.querySelectorAll('button'),function(b){if(/^Continue/.test(b.textContent.trim()))b.classList.add('cam-cont')})}
 new MutationObserver(m).observe(document.documentElement,{childList:true,subtree:true});m()})();</script><script>/* Camelon: old lesson pages -> new flow */
-(function(){var MX={A1:9,A2:10,B1:9,B2:10,'C1/C2':7},P={A2:'a2-',B1:'b1-',B2:'b2-','C1/C2':'c12-'},RX=/Camelon\s*\u2022\s*(A1|A2|B1|B2|C1\/C2)\s*\u2022\s*Dossier\s*(\d+)\s*\u2022\s*Lesson\s*(\d+)/;var armed=true,seen=false;try{if(sessionStorage.getItem('cam_exit')==='1')armed=false}catch(e){}
+(function(){var MX={A1:9,A2:10,B1:9,B2:10,'C1/C2':7},P={A2:'a2-',B1:'b1-',B2:'b2-','C1/C2':'c12-'},RX=/Camelon\s*\u2022\s*(A1|A2|B1|B2|C1\/C2)\s*\u2022\s*Dossier\s*(\d+)\s*\u2022\s*Lesson\s*(\d+)/;var armed=true,seen=false,exiting=false;try{if(sessionStorage.getItem('cam_exit')==='1'){armed=false;exiting=true}}catch(e){}
+if(exiting){var cs=document.createElement('style');cs.id='camexitcov';cs.textContent='body{visibility:hidden!important}';document.head.appendChild(cs);var t0=Date.now();var rm=function(){var x=document.getElementById('camexitcov');if(x)x.remove();try{mo2.disconnect()}catch(e){}};var mo2=new MutationObserver(function(){var hb=[].filter.call(document.querySelectorAll('button'),function(b){var t=b.textContent.trim();return /^Continue/.test(t)&&/Dossier/.test(t)})[0];if(hb&&!document.querySelector('[data-elan="flow-cover"]')&&!document.querySelector('.nx-wcard'))rm()});mo2.observe(document.documentElement,{childList:true,subtree:true});setTimeout(rm,3500)}
 function go(m){var lv=m[1],d=+m[2],l=+m[3];if(d>MX[lv])return;var u=lv==='A1'?(l>6?null:'./lesson-'+d+'-'+l+'/#start'):'./lesson-'+P[lv]+d+'/#start';if(!u)return;var o=document.createElement('div');o.style.cssText='position:fixed;left:0;top:0;right:0;bottom:0;z-index:2147483647;background:#f5f3ff';document.body.appendChild(o);location.replace(u)}
 function look(n){if(!n||n.nodeType!==1)return null;var s=n.textContent;if(!s||s.length>400||s.indexOf('Camelon')<0)return null;return RX.exec(s)}
 function full(){var e=document.querySelectorAll('header span,header div,span,p');for(var k=0;k<e.length&&k<400;k++){var s=e[k].textContent;if(s&&s.length<80&&s.indexOf('Camelon')===0){var m=RX.exec(s);if(m)return m}}return null}
 new MutationObserver(function(ms){var f=null;for(var a=0;a<ms.length&&!f;a++){var ad=ms[a].addedNodes;for(var b=0;b<ad.length&&!f;b++)f=look(ad[b])}
 if(f){seen=true;if(armed)go(f)}}).observe(document.documentElement,{childList:true,subtree:true});
-function once(){var m=full();if(m){seen=true;if(armed)go(m)}else armed=true}
+function once(){if(exiting)return;var m=full();if(m){seen=true;if(armed)go(m)}else armed=true}
 setTimeout(once,600);setTimeout(once,1800);setTimeout(once,4000)})();</script></head>
   <body>
     <div
