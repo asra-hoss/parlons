@@ -201,7 +201,7 @@ document.addEventListener('click',function(e){
  var sp=t.closest('span,div');
  var txt=(t.closest('span')||t).textContent||'';
  if(/^\s*Previous/.test(txt)||(t.closest('span')&&/Previous/.test(t.closest('span').textContent))){go(i-1);return}
- if(t.textContent.trim()==='×'&&t.getAttribute('aria-hidden')){go(0);return}
+ if(t.textContent.trim()==='×'&&t.getAttribute('aria-hidden')){confirmLeave();return}
  var chip=t.closest('span[style*="padding:8px 14px"]');
  if(chip){var on=chip.style.background.indexOf('227, 236, 255')>-1||chip.style.backgroundColor==='rgb(227, 236, 255)';chip.style.background=on?'#fff':'#e3ecff';chip.style.borderColor=on?'#e8e3f7':'#4a78e0';return}
  var card=t.closest('div[style*="border-radius:30px"]'); if(card&&sc.querySelector('button')){go(i+1);return}
@@ -550,6 +550,9 @@ document.addEventListener('click',function(e){var y=e.target.closest&&e.target.c
   var o=e.target.closest('[data-fs]');if(o){e.stopImmediatePropagation();try{localStorage.setItem('cam_fs',o.getAttribute('data-fs'))}catch(x){}mark();fit();m.style.display='none';return}
   if(m.style.display==='block'&&!e.target.closest('#fsm'))m.style.display='none'},true)})();
 function leave(){try{sessionStorage.setItem('cam_exit','1')}catch(x){}location.href='../'}
+function confirmLeave(){if(document.getElementById('leavepop'))return;var o=document.createElement('div');o.id='leavepop';o.style.cssText='position:fixed;left:0;top:0;right:0;bottom:0;z-index:9999;background:rgba(15,18,35,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:16px';
+ o.innerHTML='<div style="width:100%;max-width:320px;box-sizing:border-box;background:#fff;border-radius:28px;padding:24px 20px 18px;text-align:center;box-shadow:0 28px 56px -20px rgba(90,60,180,.5)"><h2 style="margin:0;font:600 24px/28px Fredoka,Nunito,sans-serif;color:#22316e">Are you sure you want to leave?</h2><p style="margin:8px 0 0;font:700 14px/20px Nunito,sans-serif;color:#6f6a85">Your progress is saved.</p><div class="lvy" style="margin-top:18px;padding:14px;border-radius:999px;background:linear-gradient(90deg,#3fb0c4,#4f7fe0);color:#fff;font:600 18px Fredoka,Nunito,sans-serif;cursor:pointer">Yes, leave</div><div class="lvn" style="margin-top:10px;padding:12px;border-radius:999px;background:#efeaff;color:#4b34b0;font:600 18px Fredoka,Nunito,sans-serif;cursor:pointer">No, stay</div></div>';document.body.appendChild(o)}
+document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('.lvy,.lvn');if(!t)return;e.stopImmediatePropagation();e.preventDefault();if(t.classList.contains('lvy')){leave();return}var p=document.getElementById('leavepop');if(p)p.remove()},true);
 document.addEventListener('click',function(e){var x=e.target.closest&&e.target.closest('[data-exit]');if(x){e.stopImmediatePropagation();e.preventDefault();if(x.closest('.chestfr')){showDone();return}leave()}},true);
 // ---- logo on top of every screen goes back to the app
 var LOGO='../shared/3fc9580779cb9131.png';
