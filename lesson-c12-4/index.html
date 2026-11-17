@@ -190,7 +190,8 @@ var OPEN="../shared/9d56339931779a05.png";
 [].forEach.call(document.querySelectorAll('.scr div[style*="height:690px"]'),function(d){d.classList.add('frm')});
 var S=[].slice.call(document.querySelectorAll('.scr')),i=0;
 
-function go(n){i=Math.max(0,Math.min(S.length-1,n));S.forEach(function(s,k){s.classList.toggle('on',k===i)});}
+S.forEach(function(s){if(s.querySelector('.opt')&&s.querySelector('.blank'))s.setAttribute('data-prac','1')});
+function go(n){n=Math.max(0,Math.min(S.length-1,n));if(S[n]&&S[n].getAttribute('data-prac'))n+=(n>=i?1:-1);i=n;S.forEach(function(s,k){s.classList.toggle('on',k===i)});}
 document.addEventListener('click',function(e){
  var t=e.target;
  var sc=t.closest('.scr'); if(!sc)return;

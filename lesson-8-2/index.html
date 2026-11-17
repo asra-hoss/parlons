@@ -190,7 +190,8 @@ var OPEN="../shared/9d56339931779a05.png";
 [].forEach.call(document.querySelectorAll('.scr div[style*="height:690px"]'),function(d){d.classList.add('frm')});
 var S=[].slice.call(document.querySelectorAll('.scr')),i=0;
 
-function go(n){i=Math.max(0,Math.min(S.length-1,n));S.forEach(function(s,k){s.classList.toggle('on',k===i)});}
+S.forEach(function(s){if(s.querySelector('.opt')&&s.querySelector('.blank'))s.setAttribute('data-prac','1')});
+function go(n){n=Math.max(0,Math.min(S.length-1,n));if(S[n]&&S[n].getAttribute('data-prac'))n+=(n>=i?1:-1);i=n;S.forEach(function(s,k){s.classList.toggle('on',k===i)});}
 document.addEventListener('click',function(e){
  var t=e.target;
  var sc=t.closest('.scr'); if(!sc)return;
@@ -207,7 +208,7 @@ document.addEventListener('click',function(e){
 });
 document.addEventListener('keydown',function(e){if(e.key==='ArrowRight')go(i+1);if(e.key==='ArrowLeft')go(i-1)});
 S[S.length-1].querySelectorAll('img').forEach(function(m){m.setAttribute('data-c',m.src)});
-var LD={"trk": {"1": [["rc", "listen:a1-u7-listen-2"]], "2": [], "3": [["g", "sp:a1-u7-s1", 30]], "4": [["rc", "listen:a1-u7-listen-2"]], "5": [["rc", "read:a1-u7-text-2"]], "7": [["rc", "words:orig-a1-m7:1"]], "8": [["g", "wr:a1-u7-w1", 1]]}, "L": 2, "n": 2, "dnum": 8, "id": "orig-a1-m7-l2", "dossier": "orig-a1-m7", "lastInDossier": false, "aud": {"1": "https://kamelon.app/assets/A1P42_D.mp3", "2": "https://kamelon.app/assets/A1P42_D.mp3", "7": "https://audio.kamelon.app/assets/A1U07_R1-6brf300y.mp3"}, "correct": ["il t'en faut combien", "Il m'en faut six", "un litre de", "Deux cents grammes", "trois"], "target6": "Il t en faut combien", "target9": "Le samedi matin  Hugo va au marché avec sa sœur  Il y a beaucoup de monde  Hugo achète des pommes  des bananes et des oranges", "practice": [{"before": "Je mets un ", "after": " de lait dans mon café.", "answer": "peu", "opts": ["morceau", "beaucoup", "peu"]}, {"before": "Il y a ", "after": " de monde au marché aujourd'hui.", "answer": "beaucoup", "opts": ["morceau", "beaucoup", "peu"]}, {"before": "Un ", "after": " de fromage, s'il vous plaît.", "answer": "morceau", "opts": ["morceau", "beaucoup", "peu"]}, {"before": "Elle boit un ", "after": " de jus.", "answer": "verre", "opts": ["verre", "beaucoup", "peu"]}, {"before": "Nous achetons un ", "after": " de tomates.", "answer": "kilo", "opts": ["beaucoup", "peu", "kilo"]}, {"before": "Il boit une ", "after": " d'eau.", "answer": "bouteille", "opts": ["bouteille", "beaucoup", "peu"]}], "hint": "Look again at the grammar card.", "next": {"id": "orig-a1-m7-l3", "dossier": "orig-a1-m7", "n": 3, "dnum": 8, "title": "Reading habits", "bullets": ["comparing (plus… que, moins… que, aussi… que)", "de plus en plus / de moins en moins"], "url": "../lesson-8-3/#start", "cover": "../assets/a1-unit-8-9yex79ah.jpg"}, "title": "At the market", "vwords": ["une pomme", "une banane", "une orange", "une fraise", "un citron", "des raisins", "une tomate", "une pomme de terre", "une carotte", "un oignon", "une salade", "un concombre"], "goalFr": "Il t'en faut combien ?", "qclip": {}, "vtitle": "Les fruits et les légumes", "cover": "../assets/a1-unit-8-9yex79ah.jpg", "level": "a1"};var AUD=LD.aud;
+var LD={"trk": {"1": [["rc", "listen:a1-u7-listen-2"]], "2": [], "3": [["g", "sp:a1-u7-s1", 30]], "4": [["rc", "listen:a1-u7-listen-2"]], "5": [["rc", "read:a1-u7-text-2"]], "7": [["rc", "words:orig-a1-m7:1"]], "8": [["g", "wr:a1-u7-w1", 1]]}, "L": 2, "n": 2, "dnum": 8, "id": "orig-a1-m7-l2", "dossier": "orig-a1-m7", "lastInDossier": false, "aud": {"1": "https://kamelon.app/assets/A1P42_D.mp3", "2": "https://kamelon.app/assets/A1P42_D.mp3", "7": "https://audio.kamelon.app/assets/A1U07_R1-6brf300y.mp3"}, "correct": ["il t'en faut combien", "Il m'en faut six", "un litre de", "Deux cents grammes", "trois"], "target6": "Il t en faut combien", "target9": "Le samedi matin  Hugo va au marché avec sa sœur  Il y a beaucoup de monde  Hugo achète des pommes  des bananes et des oranges", "practice": [{"before": "Je mets un ", "after": " de lait dans mon café.", "answer": "peu", "opts": ["morceau", "beaucoup", "peu"]}, {"before": "Il y a ", "after": " de monde au marché aujourd'hui.", "answer": "beaucoup", "opts": ["morceau", "beaucoup", "peu"]}, {"before": "Un ", "after": " de fromage, s'il vous plaît.", "answer": "morceau", "opts": ["morceau", "beaucoup", "peu"]}, {"before": "Elle boit un ", "after": " de jus.", "answer": "verre", "opts": ["verre", "beaucoup", "peu"]}, {"before": "Nous achetons un ", "after": " de tomates.", "answer": "kilo", "opts": ["beaucoup", "peu", "kilo"]}, {"before": "Il boit une ", "after": " d'eau.", "answer": "bouteille", "opts": ["bouteille", "beaucoup", "peu"]}], "hint": "Look again at the grammar card.", "next": {"id": "orig-a1-m7-l3", "dossier": "orig-a1-m7", "n": 3, "dnum": 8, "title": "Reading habits", "bullets": ["comparing (plus… que, moins… que, aussi… que)", "de plus en plus / de moins en moins"], "url": "../lesson-8-3/#start", "cover": "../assets/a1-unit-8-9yex79ah.jpg"}, "title": "At the market", "vwords": ["une pomme", "une banane", "une orange", "une fraise", "un citron", "des raisins", "une tomate", "une pomme de terre", "une carotte", "un oignon", "une salade", "un concombre"], "goalFr": "Il t'en faut combien ?", "qclip": {}, "vtitle": "Les fruits et les légumes", "cover": "../assets/a1-unit-8-9yex79ah.jpg", "level": "a1", "sumkeys": ["combien", "pommes", "quiche", "accord", "fromage", "grammes", "tomates", "salade", "demain", "seulement"], "sumtext": "Alors Nadia, pour ta quiche de ce soir, des œufs, il t'en faut combien ? Il m'en faut six. Et aussi un litre de lait, s'il te plaît. D'accord. Et du fromage râpé, il t'en faut combien ? Deux cents grammes, pas plus. Ah, et trois tomates pour la salade ! Et ces pommes de terre, pour demain ? Il m'en faut un kilo. Un kilo seulement, hein — le sac est déjà lourd ! Compris : six œufs, un litre de lait, un kilo de pommes de terre. On a tout !"};var AUD=LD.aud;
 var au=new Audio(),curSrc='',rate=1;au.preload='none';
 var PLAY='<path d="M8 5.5v13l11-6.5z" fill="#fff"/>',PAUSE='<rect x="6.5" y="5" width="4" height="14" rx="1.5" fill="#fff"/><rect x="13.5" y="5" width="4" height="14" rx="1.5" fill="#fff"/>';
 function fmt(t){t=Math.max(0,Math.floor(t||0));return Math.floor(t/60)+':'+('0'+(t%60)).slice(-2)}
@@ -236,7 +237,7 @@ document.addEventListener('click',function(e){var t=e.target,sc=t.closest('.scr'
 },true);
 
 // ---- Listening 1: tap words -> tags, Check
-var CORRECT=LD.correct,checked=false;
+var CORRECT=LD.correct,checked=false;var TS=LD.level==='b2'||LD.level==='c12';
 (function(){var sc=S[1],box=sc.querySelector('div[style*="min-height:70px"]');if(!box)return;
  box.innerHTML='<div class="tags" style="display:flex;flex-wrap:wrap;gap:6px"></div><input class="typed" style="display:none"><div class="res" style="display:none;font-size:13px;font-weight:800;margin-top:4px"></div>';
  sc.querySelectorAll('span[style*="padding:8px 14px"]').forEach(function(c){c.style.background='#fff';c.style.borderColor='#e8e3f7';c.classList.add('wchip')});
@@ -248,7 +249,7 @@ function addTag(w,chip){var tg=S[1].querySelector('.tags'),el=document.createEle
  el.innerHTML=w+'<span class="x" style="font-size:16px;line-height:1;opacity:.85;cursor:pointer;padding:0 2px">×</span>';tg.appendChild(el);
  chip.style.display='none';clearRes()}
 function removeTag(el){var w=el.getAttribute('data-w');el.remove();clearRes();S[1].querySelectorAll('.wchip').forEach(function(c){if(c.textContent.trim()===w){c.style.display='';c.style.background='#fff';c.style.borderColor='#e8e3f7'}})}
-document.addEventListener('click',function(e){if(i!==1)return;var t=e.target,sc=S[1];if(!sc.contains(t))return;
+document.addEventListener('click',function(e){if(TS||i!==1)return;var t=e.target,sc=S[1];if(!sc.contains(t))return;
  var x=t.closest('.tag .x');if(x){e.stopImmediatePropagation();removeTag(x.parentElement);return}
  var chip=t.closest('.wchip');if(chip){e.stopImmediatePropagation();var w=chip.textContent.trim();var ex=[].filter.call(sc.querySelectorAll('.tags .tag'),function(q){return q.getAttribute('data-w')===w})[0];if(ex)removeTag(ex);else addTag(w,chip);return}
  var sn=t.closest('.snext');if(sn){e.stopImmediatePropagation();go(2);return}
@@ -329,7 +330,7 @@ function celebrate(sc){var fr=sc.querySelector('.frm');if(!fr)return;fr.style.po
  if(pill){pill.style.display='table';pill.style.marginLeft='auto';pill.style.marginRight='auto'}
  if(ttl){ttl.style.textAlign='center';var n=ttl.nextElementSibling;if(n&&!n.children.length&&parseFloat(getComputedStyle(n).fontSize)<=14&&n.textContent.trim().length>8)n.style.textAlign='center'}});
 // ---- transcript in one box
-[2,7].forEach(function(n){var sc=S[n];if(!sc)return;var ls=[].slice.call(sc.querySelectorAll('.dline'));if(!ls.length)return;var bx=document.createElement('div');bx.style.cssText='background:#fff;border:2px solid #e8e3f7;border-radius:18px;padding:6px 6px 4px';ls[0].parentNode.insertBefore(bx,ls[0]);ls.forEach(function(l){bx.appendChild(l)})});
+[TS?1:2,7].forEach(function(n){var sc=S[n];if(!sc)return;var ls=[].slice.call(sc.querySelectorAll('.dline'));if(!ls.length)return;var bx=document.createElement('div');bx.style.cssText='background:#fff;border:2px solid #e8e3f7;border-radius:18px;padding:6px 6px 4px';ls[0].parentNode.insertBefore(bx,ls[0]);ls.forEach(function(l){bx.appendChild(l)})});
 // ---- drag an option into the blank
 (function(){S.forEach(function(sc){var ops=sc.querySelectorAll('.opt'),bl=sc.querySelector('.blank');if(!ops.length||!bl)return;
  ops.forEach(function(o){o.style.touchAction='none';var sx,sy,g=null,down=false;
@@ -351,7 +352,7 @@ var TARGET={6:LD.target6,9:LD.target9};
 var wpipe=null;
 function to16k(blob){return blob.arrayBuffer().then(function(ab){var AC=window.AudioContext||window.webkitAudioContext,c=new AC();return new Promise(function(ok,no){c.decodeAudioData(ab,ok,no)}).then(function(buf){try{c.close()}catch(e){}var n=Math.max(1,Math.round(buf.duration*16000)),oc=new (window.OfflineAudioContext||window.webkitOfflineAudioContext)(1,n,16000),sr=oc.createBufferSource();sr.buffer=buf;sr.connect(oc.destination);sr.start();return oc.startRendering()}).then(function(r){return r.getChannelData(0)})})}
 function transcribe(blob,prog){return to16k(blob).then(function(f){if(!wpipe)wpipe=import('https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.7.0').then(function(m){return m.pipeline('automatic-speech-recognition','onnx-community/whisper-tiny',{dtype:'q8',device:'wasm',progress_callback:function(p){if(prog&&p&&p.status==='progress')prog(Math.round(p.progress||0))}})});return wpipe.then(function(p){return p(f,{language:'french',task:'transcribe'})})}).then(function(o){return(o&&o.text)||''})}
-function evalRec(sc){var k=S.indexOf(sc),tg=TARGET[k];if(!tg)return;var row=sc.querySelector('.myrec');if(!row)return;
+function evalRec(sc){if(TS&&S.indexOf(sc)===2){evalSum(sc);return}var k=S.indexOf(sc),tg=TARGET[k];if(!tg)return;var row=sc.querySelector('.myrec');if(!row)return;
  var old=sc.querySelector('.recfb');if(old)old.remove();
  var card=document.createElement('div');card.className='recfb';card.style.cssText='text-align:center;font-size:13px;font-weight:800;color:#6f6a85;margin-top:10px';row.parentElement.insertBefore(card,row.nextSibling);
  function fin(h){var tw=tg.split(' '),hw=normW(h||''),items=[],hits=0;
@@ -363,6 +364,39 @@ function evalRec(sc){var k=S.indexOf(sc),tg=TARGET[k];if(!tg)return;var row=sc.q
  var blobNow=lastBlob;if(!blobNow){fin('');return}
  card.textContent='Checking your pronunciation…';
  transcribe(blobNow,function(p){card.textContent='Preparing the speech check… '+p+'%'}).then(function(t){card.textContent='Checking your pronunciation…';fin(t)}).catch(function(){fin('')})}
+// ---- B2 and C1/C2: summary of the listening text (record or write) + feedback
+var evalSum=function(){};
+if(TS){(function(){
+ var sc=S[2],ta=sc.querySelector('.sumta'),fb=sc.querySelector('.sumfb'),recv=sc.querySelector('.sumrec'),wrv=sc.querySelector('.sumwr'),tabs=sc.querySelectorAll('.sumtab');
+ var KEYS=LD.sumkeys||[],SRC=normW(LD.sumtext||'').join(' ');
+ [S[1],S[2]].forEach(function(s){var f=s.querySelector('.frm');if(f&&f.children[1])f.children[1].style.overflowY='auto'});
+ // foldable transcript on the listening screen
+ var tf=S[1].querySelector('.tfold'),tb=S[1].querySelector('.tbody');
+ if(tf&&tb)S[1].addEventListener('click',function(e){var h=e.target.closest('.tfold');if(!h)return;var open=tb.style.display==='none';tb.style.display=open?'block':'none';h.querySelector('.tch').textContent=open?'▴':'▾';if(open)setTimeout(function(){try{tb.scrollIntoView({block:'nearest',behavior:'smooth'})}catch(x){}},60)});
+ function mode(m){recv.style.display=m==='rec'?'block':'none';wrv.style.display=m==='wr'?'block':'none';tabs.forEach(function(t){var on=t.getAttribute('data-m')===m;t.style.background=on?'linear-gradient(135deg,#3fb0c4,#4f7fe0)':'#fff';t.style.color=on?'#fff':'#22316e';t.style.borderColor=on?'transparent':'#e8e3f7'});var st=sc.querySelector('.status');if(st)st.style.display=m==='rec'?'':'none'}
+ tabs.forEach(function(t){t.addEventListener('click',function(){fb.innerHTML='';mode(t.getAttribute('data-m'))})});mode('rec');
+ function ico(k){var c={ok:'#2fa56b',bad:'#e0476a',warn:'#f09a1f',tip:'#7a5ff0'}[k],g={ok:'✓',bad:'×',warn:'!',tip:'i'}[k];return '<span style="width:22px;height:22px;border-radius:50%;background:'+c+';color:#fff;font:900 13px Nunito,sans-serif;display:flex;align-items:center;justify-content:center;flex:none">'+g+'</span>'}
+ function review(tx){var w=normW(tx),n=w.length,items=[],hit=[],miss=[];
+  KEYS.forEach(function(k){(wordHit(normW(k)[0]||k,w)?hit:miss).push(k)});
+  var need=Math.min(3,KEYS.length);
+  if(n<15)items.push({k:'bad',t:'Too short: '+n+' words. Aim for about 30 to 90.'});else if(n<30)items.push({k:'warn',t:n+' words. Add a little more: the main idea and two or three key points.'});else if(n>130)items.push({k:'warn',t:n+' words is long for a summary. Keep only the main points.'});else items.push({k:'ok',t:'Good length: '+n+' words.'});
+  if(KEYS.length){if(hit.length>=need)items.push({k:'ok',t:'Key ideas covered ('+hit.length+' of '+KEYS.length+'): '+hit.slice(0,5).join(', ')});else items.push({k:'bad',t:'Only '+hit.length+' of '+KEYS.length+' key ideas found.'});if(miss.length&&hit.length<KEYS.length)items.push({k:'tip',t:'Not mentioned yet: '+miss.slice(0,4).join(', ')})}
+  var sh=0,tot=0;for(var q=0;q+4<=w.length;q++){tot++;if(SRC.indexOf(w.slice(q,q+4).join(' '))>-1)sh++}
+  var copy=tot?sh/tot:0;if(copy>.5)items.push({k:'warn',t:'Much of this is copied from the text. Try your own words.'});else if(n>=15)items.push({k:'ok',t:'In your own words.'});
+  return {items:items,pass:n>=20&&hit.length>=need&&copy<=.7,n:n}}
+ function show(tx,src){var r=review(tx);
+  var h='<div style="border:2px solid #e8e3f7;border-radius:20px;background:#fff;padding:12px 14px;margin-top:10px;text-align:left"><div style="font:800 13px Nunito,sans-serif;color:'+(r.pass?'#1f7a47':'#a82a63')+';margin-bottom:4px">'+(r.pass?'Well summarised!':'Good try. Improve it and send again.')+'</div>';
+  if(src==='rec')h+='<div style="font:700 12.5px/1.4 Nunito,sans-serif;color:#6f6a85;margin:2px 0 6px">I heard: '+tx.replace(/</g,'&lt;')+'</div>';
+  h+=r.items.map(function(x){return '<div style="display:flex;gap:10px;align-items:flex-start;margin:8px 0;font:700 13.5px/1.4 Nunito,sans-serif;color:#22316e">'+ico(x.k)+'<span>'+x.t+'</span></div>'}).join('')+'</div>';
+  fb.innerHTML=h;
+  try{var l=JSON.parse(localStorage.getItem('cam_inbox')||'[]');l.unshift({ts:Date.now(),text:'Summary: '+tx.trim().split(' ').slice(0,5).join(' ')+'…',items:r.items,read:0});localStorage.setItem('cam_inbox',JSON.stringify(l.slice(0,50)))}catch(e){}
+  try{inbBadge()}catch(e){}
+  if(r.pass)celebrate(sc);setTimeout(function(){try{fb.scrollIntoView({block:'nearest',behavior:'smooth'})}catch(x){}},80)}
+ sc.addEventListener('click',function(e){var g=e.target.closest('.sumgo');if(!g)return;var tx=(ta.value||'').trim();if(!tx){fb.innerHTML='<div style="font:800 13px Nunito,sans-serif;color:#a82a63;margin-top:10px">Write your summary first.</div>';return}show(tx,'wr')});
+ evalSum=function(){fb.innerHTML='<div style="text-align:center;font:800 13px Nunito,sans-serif;color:#6f6a85;margin-top:10px" class="sumwait">Checking your recording…</div>';
+  var b=lastBlob;if(!b){fb.innerHTML='';return}
+  transcribe(b,function(p){var w=fb.querySelector('.sumwait');if(w)w.textContent='Preparing the speech check… '+p+'%'}).then(function(t){if(!normW(t).length){fb.innerHTML='<div style="font:800 13px Nunito,sans-serif;color:#a82a63;margin-top:10px">We could not hear words. Move closer to the microphone and try again.</div>';return}show(t,'rec')}).catch(function(){fb.innerHTML='<div style="font:800 13px Nunito,sans-serif;color:#a82a63;margin-top:10px">We could not check the recording this time. You can write your summary instead.</div>'})};
+})()}
 // ---- flashcards
 var DECK=[{"w": "une pomme", "en": "an apple", "ex": "Je mange une pomme."}, {"w": "une banane", "en": "a banana", "ex": "Les enfants aiment les bananes."}, {"w": "une orange", "en": "an orange", "ex": "Elle boit un jus d'orange."}, {"w": "une fraise", "en": "a strawberry", "ex": "Cette fraise est rouge."}, {"w": "un citron", "en": "a lemon", "ex": "Je mets du citron dans le thé."}, {"w": "des raisins", "en": "grapes", "ex": "Nous achetons des raisins."}, {"w": "une tomate", "en": "a tomato", "ex": "Une tomate est rouge."}, {"w": "une pomme de terre", "en": "a potato", "ex": "Je voudrais un kilo de pommes de terre."}, {"w": "une carotte", "en": "a carrot", "ex": "La carotte est orange."}, {"w": "un oignon", "en": "an onion", "ex": "Il y a un oignon dans la soupe."}, {"w": "une salade", "en": "a lettuce, a salad", "ex": "Elle prépare une salade."}, {"w": "un concombre", "en": "a cucumber", "ex": "Je mets un concombre dans la salade."}];
 (function(){var sc=findScr('Tap the card to flip');if(!sc)return;var fr=frameOf(sc),bd=fr.children[1],ft=fr.children[2],tagH=bd.children[0].outerHTML;
@@ -526,7 +560,7 @@ function fit(){if(innerWidth<=600){document.body.classList.add('m');var fz=1;try
 addEventListener('resize',fit);fit();
 document.body.style.justifyContent='flex-start';document.body.style.paddingTop='8px';
 // ---- real recording on the Speaking (6) and Read aloud (9) screens
-var REC={6:1,9:1},mr=null,chunks=[],stream=null,t0=0,sticky=false,recOn=false,tick=null,an=null,ac=null,pb=null;
+var REC={6:1,9:1,2:TS?1:0},mr=null,chunks=[],stream=null,t0=0,sticky=false,recOn=false,tick=null,an=null,ac=null,pb=null;
 
 function micEl(sc){return sc.querySelector('.mic')||sc.querySelector('div[style*="width:84px"]')}
 S.forEach(function(sc,k){if(!REC[k])return;var m=micEl(sc);if(m){m.classList.add('mic');m.style.touchAction='none';m.style.webkitTouchCallout='none';m.style.userSelect='none'}
