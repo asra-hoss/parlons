@@ -397,6 +397,9 @@ if(TS){(function(){
   var b=lastBlob;if(!b){fb.innerHTML='';return}
   transcribe(b,function(p){var w=fb.querySelector('.sumwait');if(w)w.textContent='Preparing the speech check… '+p+'%'}).then(function(t){if(!normW(t).length){fb.innerHTML='<div style="font:800 13px Nunito,sans-serif;color:#a82a63;margin-top:10px">We could not hear words. Move closer to the microphone and try again.</div>';return}show(t,'rec')}).catch(function(){fb.innerHTML='<div style="font:800 13px Nunito,sans-serif;color:#a82a63;margin-top:10px">We could not check the recording this time. You can write your summary instead.</div>'})};
 })()}
+// ---- star counter = the app's real stars
+function paintStars(){var b=0;try{var o=JSON.parse(localStorage.getItem('parlons:stars')||'{}');b=Math.max(0,Math.floor(+o.balance||0))}catch(e){}[].forEach.call(document.querySelectorAll('span'),function(s){var p=s.parentElement;if(p&&p.style&&p.style.borderRadius==='20px'&&(s.getAttribute('data-stn')||s.textContent==='12')){s.setAttribute('data-stn','1');s.textContent=String(b)}})}
+paintStars();window.addEventListener('storage',paintStars);document.addEventListener('visibilitychange',paintStars);window.addEventListener('focus',paintStars);
 // ---- flashcards
 var DECK=[{"w": "tu as fait quels progrès en français ?", "en": "what progress have you made in French?", "ex": ""}, {"w": "comprenais", "en": "used to understand / was understanding", "ex": ""}, {"w": "était", "en": "was", "ex": ""}, {"w": "parlais", "en": "I was speaking", "ex": ""}, {"w": "comprends", "en": "understand (je comprends = I understand)", "ex": ""}, {"w": "parle", "en": "speak (I) / speaks (he, she)", "ex": ""}, {"w": "depuis", "en": "since, for (duration)", "ex": ""}, {"w": "il y a", "en": "there is, there are", "ex": ""}];
 (function(){var sc=findScr('Tap the card to flip');if(!sc)return;var fr=frameOf(sc),bd=fr.children[1],ft=fr.children[2],tagH=bd.children[0].outerHTML;
