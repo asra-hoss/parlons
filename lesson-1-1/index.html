@@ -707,6 +707,7 @@ function flagBtn(){var b=document.getElementById('fsb');if(!b||document.getEleme
  f.onclick=function(e){e.stopPropagation();m.style.display=m.style.display==='block'?'none':'block'};
  m.onclick=function(e){e.stopPropagation();var t=e.target.closest('[data-l]');if(t){setLang(t.getAttribute('data-l'));paint();m.style.display='none'}};
  document.addEventListener('click',function(){m.style.display='none'});
+ setInterval(function(){try{var h=(window.i===0);f.style.display=h?'flex':'none';if(!h)m.style.display='none'}catch(e){}},300);
  var g0=window.go;if(typeof g0==='function'){window.go=function(n){var r=g0.apply(this,arguments);var home=(n===0);f.style.display=home?'flex':'none';if(!home)m.style.display='none';return r}}
 }
 function init(){flagBtn();[].forEach.call(document.querySelectorAll('.dline'),function(dl){var ds=dl.children;var t=ds[ds.length-1];if(!t||t.getAttribute('data-gl'))return;t.setAttribute('data-gl','1');t.innerHTML=tok(t.textContent)});
