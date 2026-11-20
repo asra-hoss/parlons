@@ -165,27 +165,45 @@
   "level": "A1",
   "dossier": 2,
   "lesson": 3,
-  "id": "v3-a1-a1-09",
-  "title_fr": "Mes goûts et mes loisirs",
-  "title_en": "Likes and free time",
-  "outcome": "Say what you like and do in your free time",
-  "content_to_cover": "likes/dislikes, sports, hobbies, activities, what you do on the weekend",
-  "grammar_to_teach": "aimer/détester/adorer + noun or infinitive; faire du/de la; jouer à/de; pouvoir",
-  "source_refs": "E A 4.3 4.5 5.5 · C D3L3 D3L5 D4L5",
+  "id": "v3-a1-a1-15",
+  "title_fr": "On fait connaissance",
+  "title_en": "Get to know someone",
+  "outcome": "Get to know someone",
+  "content_to_cover": "where do you live, get acquainted, short conversation",
+  "grammar_to_teach": "No new grammar. Recycles earlier points.",
+  "source_refs": "A 3.4 · C D2L4",
   "status": "FROM_V2",
-  "from_v2": "lesson-4-3",
+  "from_v2": "lesson-3-4",
   "old_lessons_available": [
-   "lesson-4-3",
-   "lesson-4-5",
-   "lesson-5-5"
+   "lesson-3-4"
   ],
-  "url": "/v3/lesson-a1-a1-09/"
+  "url": "/v3/lesson-a1-a1-15/"
  },
  {
   "code": "A1-10",
   "level": "A1",
   "dossier": 2,
   "lesson": 4,
+  "id": "v3-a1-a1-18",
+  "title_fr": "J'ai mal",
+  "title_en": "Feelings and the body",
+  "outcome": "Talk about feelings and the body",
+  "content_to_cover": "feelings during a trip, parts of the body, where does it hurt, at the doctor",
+  "grammar_to_teach": "avoir mal à + contractions (au/à la/aux); se sentir",
+  "source_refs": "E A 7.6 4.6 · C D6L6 D3L6",
+  "status": "FROM_V2",
+  "from_v2": "lesson-7-6",
+  "old_lessons_available": [
+   "lesson-7-6",
+   "lesson-4-6"
+  ],
+  "url": "/v3/lesson-a1-a1-18/"
+ },
+ {
+  "code": "A1-11",
+  "level": "A1",
+  "dossier": 3,
+  "lesson": 1,
   "id": "v3-a1-a1-10",
   "title_fr": "Ma journée",
   "title_en": "Daily routine and telling the time",
@@ -203,10 +221,31 @@
   "url": "/v3/lesson-a1-a1-10/"
  },
  {
-  "code": "A1-11",
+  "code": "A1-12",
   "level": "A1",
-  "dossier": 2,
-  "lesson": 5,
+  "dossier": 3,
+  "lesson": 2,
+  "id": "v3-a1-a1-09",
+  "title_fr": "Mes goûts et mes loisirs",
+  "title_en": "Likes and free time",
+  "outcome": "Say what you like and do in your free time",
+  "content_to_cover": "likes/dislikes, sports, hobbies, activities, what you do on the weekend",
+  "grammar_to_teach": "aimer/détester/adorer + noun or infinitive; faire du/de la; jouer à/de; pouvoir",
+  "source_refs": "E A 4.3 4.5 5.5 · C D3L3 D3L5 D4L5",
+  "status": "FROM_V2",
+  "from_v2": "lesson-4-3",
+  "old_lessons_available": [
+   "lesson-4-3",
+   "lesson-4-5",
+   "lesson-5-5"
+  ],
+  "url": "/v3/lesson-a1-a1-09/"
+ },
+ {
+  "code": "A1-13",
+  "level": "A1",
+  "dossier": 3,
+  "lesson": 3,
   "id": "v3-a1-a1-11",
   "title_fr": "On sort ?",
   "title_en": "Invite, accept, refuse",
@@ -223,87 +262,10 @@
   "url": "/v3/lesson-a1-a1-11/"
  },
  {
-  "code": "A1-12",
-  "level": "A1",
-  "dossier": 3,
-  "lesson": 1,
-  "id": "v3-a1-a1-12",
-  "title_fr": "Où est… ?",
-  "title_en": "Find your way in town",
-  "outcome": "Find your way in town",
-  "content_to_cover": "places in town, locating, left/right/straight, prepositions of place, using an audio guide",
-  "grammar_to_teach": "prepositions of place (à gauche, à côté de, en face de); contractions au/aux/du/des",
-  "source_refs": "E A 3.2 · C D2L2",
-  "status": "FROM_V2",
-  "from_v2": "lesson-3-2",
-  "old_lessons_available": [
-   "lesson-3-2"
-  ],
-  "url": "/v3/lesson-a1-a1-12/"
- },
- {
-  "code": "A1-13",
-  "level": "A1",
-  "dossier": 3,
-  "lesson": 2,
-  "id": "v3-a1-a1-13",
-  "title_fr": "Je voyage",
-  "title_en": "Travel and tickets",
-  "outcome": "Travel and buy a ticket",
-  "content_to_cover": "bus, train, metro, plane, buy a ticket, timetables, how are you getting there",
-  "grammar_to_teach": "aller and prendre; en/à/par + transport; il faut + infinitive",
-  "source_refs": "E A 3.3 · C D2L3",
-  "status": "FROM_V2",
-  "from_v2": "lesson-3-3",
-  "old_lessons_available": [
-   "lesson-3-3"
-  ],
-  "url": "/v3/lesson-a1-a1-13/"
- },
- {
   "code": "A1-14",
   "level": "A1",
-  "dossier": 3,
-  "lesson": 3,
-  "id": "v3-a1-a1-14",
-  "title_fr": "Je réserve un hôtel",
-  "title_en": "Book accommodation",
-  "outcome": "Book accommodation and talk about your stay",
-  "content_to_cover": "hotel booking dialogue, couchsurfing, where you stay, how long, housing type",
-  "grammar_to_teach": "je voudrais (polite request); pendant; il y a (duration)",
-  "source_refs": "E A 3.5 3.6 · C D2L5 D2L6",
-  "status": "FROM_V2",
-  "from_v2": "lesson-3-5",
-  "old_lessons_available": [
-   "lesson-3-5",
-   "lesson-3-6"
-  ],
-  "url": "/v3/lesson-a1-a1-14/"
- },
- {
-  "code": "A1-15",
-  "level": "A1",
-  "dossier": 3,
-  "lesson": 4,
-  "id": "v3-a1-a1-15",
-  "title_fr": "On fait connaissance",
-  "title_en": "Get to know someone",
-  "outcome": "Get to know someone",
-  "content_to_cover": "where do you live, get acquainted, short conversation",
-  "grammar_to_teach": "No new grammar. Recycles earlier points.",
-  "source_refs": "A 3.4 · C D2L4",
-  "status": "FROM_V2",
-  "from_v2": "lesson-3-4",
-  "old_lessons_available": [
-   "lesson-3-4"
-  ],
-  "url": "/v3/lesson-a1-a1-15/"
- },
- {
-  "code": "A1-16",
-  "level": "A1",
-  "dossier": 3,
-  "lesson": 5,
+  "dossier": 4,
+  "lesson": 1,
   "id": "v3-a1-a1-16",
   "title_fr": "Ma maison, ma ville",
   "title_en": "Describe your home and city",
@@ -320,10 +282,68 @@
   "url": "/v3/lesson-a1-a1-16/"
  },
  {
+  "code": "A1-15",
+  "level": "A1",
+  "dossier": 4,
+  "lesson": 2,
+  "id": "v3-a1-a1-12",
+  "title_fr": "Où est… ?",
+  "title_en": "Find your way in town",
+  "outcome": "Find your way in town",
+  "content_to_cover": "places in town, locating, left/right/straight, prepositions of place, using an audio guide",
+  "grammar_to_teach": "prepositions of place (à gauche, à côté de, en face de); contractions au/aux/du/des",
+  "source_refs": "E A 3.2 · C D2L2",
+  "status": "FROM_V2",
+  "from_v2": "lesson-3-2",
+  "old_lessons_available": [
+   "lesson-3-2"
+  ],
+  "url": "/v3/lesson-a1-a1-12/"
+ },
+ {
+  "code": "A1-16",
+  "level": "A1",
+  "dossier": 5,
+  "lesson": 1,
+  "id": "v3-a1-a1-13",
+  "title_fr": "Je voyage",
+  "title_en": "Travel and tickets",
+  "outcome": "Travel and buy a ticket",
+  "content_to_cover": "bus, train, metro, plane, buy a ticket, timetables, how are you getting there",
+  "grammar_to_teach": "aller and prendre; en/à/par + transport; il faut + infinitive",
+  "source_refs": "E A 3.3 · C D2L3",
+  "status": "FROM_V2",
+  "from_v2": "lesson-3-3",
+  "old_lessons_available": [
+   "lesson-3-3"
+  ],
+  "url": "/v3/lesson-a1-a1-13/"
+ },
+ {
   "code": "A1-17",
   "level": "A1",
-  "dossier": 3,
-  "lesson": 6,
+  "dossier": 5,
+  "lesson": 2,
+  "id": "v3-a1-a1-14",
+  "title_fr": "Je réserve un hôtel",
+  "title_en": "Book accommodation",
+  "outcome": "Book accommodation and talk about your stay",
+  "content_to_cover": "hotel booking dialogue, couchsurfing, where you stay, how long, housing type",
+  "grammar_to_teach": "je voudrais (polite request); pendant; il y a (duration)",
+  "source_refs": "E A 3.5 3.6 · C D2L5 D2L6",
+  "status": "FROM_V2",
+  "from_v2": "lesson-3-5",
+  "old_lessons_available": [
+   "lesson-3-5",
+   "lesson-3-6"
+  ],
+  "url": "/v3/lesson-a1-a1-14/"
+ },
+ {
+  "code": "A1-18",
+  "level": "A1",
+  "dossier": 5,
+  "lesson": 3,
   "id": "v3-a1-a1-17",
   "title_fr": "Quel temps fait-il ?",
   "title_en": "Weather and holiday plans",
@@ -341,30 +361,10 @@
   "url": "/v3/lesson-a1-a1-17/"
  },
  {
-  "code": "A1-18",
-  "level": "A1",
-  "dossier": 4,
-  "lesson": 1,
-  "id": "v3-a1-a1-18",
-  "title_fr": "J'ai mal",
-  "title_en": "Feelings and the body",
-  "outcome": "Talk about feelings and the body",
-  "content_to_cover": "feelings during a trip, parts of the body, where does it hurt, at the doctor",
-  "grammar_to_teach": "avoir mal à + contractions (au/à la/aux); se sentir",
-  "source_refs": "E A 7.6 4.6 · C D6L6 D3L6",
-  "status": "FROM_V2",
-  "from_v2": "lesson-7-6",
-  "old_lessons_available": [
-   "lesson-7-6",
-   "lesson-4-6"
-  ],
-  "url": "/v3/lesson-a1-a1-18/"
- },
- {
   "code": "A1-19",
   "level": "A1",
-  "dossier": 4,
-  "lesson": 2,
+  "dossier": 6,
+  "lesson": 1,
   "id": "v3-a1-a1-19",
   "title_fr": "Au restaurant",
   "title_en": "Order food and drink",
@@ -383,8 +383,8 @@
  {
   "code": "A1-20",
   "level": "A1",
-  "dossier": 4,
-  "lesson": 3,
+  "dossier": 6,
+  "lesson": 2,
   "id": "v3-a1-a1-20",
   "title_fr": "Je fais les courses",
   "title_en": "Shopping and prices",
@@ -404,46 +404,8 @@
  {
   "code": "A1-21",
   "level": "A1",
-  "dossier": 5,
+  "dossier": 7,
   "lesson": 1,
-  "id": "v3-a1-a1-21",
-  "title_fr": "Hier, j'ai…",
-  "title_en": "Tell what you did",
-  "outcome": "Tell what you did (past)",
-  "content_to_cover": "passé composé, yesterday, last weekend, then/next",
-  "grammar_to_teach": "passé composé with avoir; regular past participles; hier / dernier",
-  "source_refs": "E A 6.1 · C D5L1",
-  "status": "FROM_V2",
-  "from_v2": "lesson-6-1",
-  "old_lessons_available": [
-   "lesson-6-1"
-  ],
-  "url": "/v3/lesson-a1-a1-21/"
- },
- {
-  "code": "A1-22",
-  "level": "A1",
-  "dossier": 5,
-  "lesson": 2,
-  "id": "v3-a1-a1-22",
-  "title_fr": "Demain, je vais…",
-  "title_en": "Say what you will do",
-  "outcome": "Talk about what you will do (near future)",
-  "content_to_cover": "futur proche, recent experience, plans, projects",
-  "grammar_to_teach": "futur proche (aller + infinitive); demain / prochain",
-  "source_refs": "E A 6.2 · C D5L2",
-  "status": "FROM_V2",
-  "from_v2": "lesson-6-2",
-  "old_lessons_available": [
-   "lesson-6-2"
-  ],
-  "url": "/v3/lesson-a1-a1-22/"
- },
- {
-  "code": "A1-23",
-  "level": "A1",
-  "dossier": 5,
-  "lesson": 3,
   "id": "v3-a1-a1-23",
   "title_fr": "Ma vie",
   "title_en": "Birth and biography",
@@ -459,10 +421,29 @@
   "url": "/v3/lesson-a1-a1-23/"
  },
  {
-  "code": "A1-24",
+  "code": "A1-22",
   "level": "A1",
-  "dossier": 5,
-  "lesson": 4,
+  "dossier": 7,
+  "lesson": 2,
+  "id": "v3-a1-a1-21",
+  "title_fr": "Hier, j'ai…",
+  "title_en": "Tell what you did",
+  "outcome": "Tell what you did (past)",
+  "content_to_cover": "passé composé, yesterday, last weekend, then/next",
+  "grammar_to_teach": "passé composé with avoir; regular past participles; hier / dernier",
+  "source_refs": "E A 6.1 · C D5L1",
+  "status": "FROM_V2",
+  "from_v2": "lesson-6-1",
+  "old_lessons_available": [
+   "lesson-6-1"
+  ],
+  "url": "/v3/lesson-a1-a1-21/"
+ },
+ {
+  "code": "A1-23",
+  "level": "A1",
+  "dossier": 7,
+  "lesson": 3,
   "id": "v3-a1-a1-24",
   "title_fr": "Avant et maintenant",
   "title_en": "Compare, then and now",
@@ -479,10 +460,29 @@
   "url": "/v3/lesson-a1-a1-24/"
  },
  {
+  "code": "A1-24",
+  "level": "A1",
+  "dossier": 7,
+  "lesson": 4,
+  "id": "v3-a1-a1-22",
+  "title_fr": "Demain, je vais…",
+  "title_en": "Say what you will do",
+  "outcome": "Talk about what you will do (near future)",
+  "content_to_cover": "futur proche, recent experience, plans, projects",
+  "grammar_to_teach": "futur proche (aller + infinitive); demain / prochain",
+  "source_refs": "E A 6.2 · C D5L2",
+  "status": "FROM_V2",
+  "from_v2": "lesson-6-2",
+  "old_lessons_available": [
+   "lesson-6-2"
+  ],
+  "url": "/v3/lesson-a1-a1-22/"
+ },
+ {
   "code": "A1-25",
   "level": "A1",
-  "dossier": 5,
-  "lesson": 5,
+  "dossier": 8,
+  "lesson": 1,
   "id": "v3-a1-a1-25",
   "title_fr": "Un conseil, un avis",
   "title_en": "Appreciation and advice",
@@ -501,8 +501,8 @@
  {
   "code": "A1-26",
   "level": "A1",
-  "dossier": 5,
-  "lesson": 6,
+  "dossier": 8,
+  "lesson": 2,
   "id": "v3-a1-a1-26",
   "title_fr": "Un film que j'aime",
   "title_en": "Describe and recommend",
@@ -521,8 +521,8 @@
  {
   "code": "A1-27",
   "level": "A1",
-  "dossier": 5,
-  "lesson": 7,
+  "dossier": 8,
+  "lesson": 3,
   "id": "v3-a1-a1-27",
   "title_fr": "Bilan A1",
   "title_en": "Review and DELF A1 practice",
@@ -561,115 +561,6 @@
   "level": "A2",
   "dossier": 1,
   "lesson": 2,
-  "id": "v3-a2-a2-02",
-  "title_fr": "Mon logement, mon quartier",
-  "title_en": "Home and neighbourhood compared",
-  "outcome": "Describe and compare home and neighbourhood",
-  "content_to_cover": "housing types, rooms, neighbourhood services, rent, comparatives/superlatives",
-  "grammar_to_teach": "superlatives (le plus / le moins); comparisons with nouns (plus de, autant de)",
-  "source_refs": "E A A2-2",
-  "status": "FROM_V2",
-  "from_v2": "lesson-a2-2",
-  "old_lessons_available": [
-   "lesson-a2-2"
-  ],
-  "url": "/v3/lesson-a2-a2-02/"
- },
- {
-  "code": "A2-3",
-  "level": "A2",
-  "dossier": 1,
-  "lesson": 3,
-  "id": "v3-a2-a2-03",
-  "title_fr": "Les démarches",
-  "title_en": "Administrative steps",
-  "outcome": "Handle administrative steps",
-  "content_to_cover": "post office, bank, town hall, forms abroad, documents, appointments",
-  "grammar_to_teach": "polite requests with conditional (pourriez-vous); direct object pronouns le/la/les",
-  "source_refs": "E · C D1L2",
-  "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
-  "empty_sections": [
-   "listening_audio",
-   "transcript",
-   "flashcards",
-   "listening_real_voice",
-   "reading_text",
-   "speaking_task",
-   "writing_task"
-  ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-a2-a2-03-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-a2-1:6"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-a2-1:1007"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-a2-a2-03-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-a2-a2-03-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-a2-a2-03-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-a2-a2-03-w",
-     1
-    ]
-   ]
-  },
-  "url": "/v3/lesson-a2-a2-03/"
- },
- {
-  "code": "A2-4",
-  "level": "A2",
-  "dossier": 1,
-  "lesson": 4,
-  "id": "v3-a2-a2-04",
-  "title_fr": "Je prépare un voyage",
-  "title_en": "Prepare and take a trip",
-  "outcome": "Prepare and take a trip",
-  "content_to_cover": "carpooling, language stay, accommodation, bookings, travel problems, tell a trip",
-  "grammar_to_teach": "pronouns y and en (full system, position)",
-  "source_refs": "E A A2-6 · C D1L1-6 D2L5",
-  "status": "FROM_V2",
-  "from_v2": "lesson-a2-6",
-  "old_lessons_available": [
-   "lesson-a2-6"
-  ],
-  "url": "/v3/lesson-a2-a2-04/"
- },
- {
-  "code": "A2-5",
-  "level": "A2",
-  "dossier": 2,
-  "lesson": 1,
   "id": "v3-a2-a2-05",
   "title_fr": "Quand j'étais petit",
   "title_en": "Past habits and memories",
@@ -685,266 +576,10 @@
   "url": "/v3/lesson-a2-a2-05/"
  },
  {
-  "code": "A2-6",
+  "code": "A2-3",
   "level": "A2",
-  "dossier": 2,
-  "lesson": 2,
-  "id": "v3-a2-a2-06",
-  "title_fr": "La nature et les animaux",
-  "title_en": "Nature and animals",
-  "outcome": "Talk about the nature and animals",
-  "content_to_cover": "environment, species, nature protection actions",
-  "grammar_to_teach": "purpose with pour / afin de; negation of the infinitive (ne pas partir)",
-  "source_refs": "A A2-8 · C D7L5",
-  "status": "FROM_V2",
-  "from_v2": "lesson-a2-8",
-  "old_lessons_available": [
-   "lesson-a2-8"
-  ],
-  "url": "/v3/lesson-a2-a2-06/"
- },
- {
-  "code": "A2-7",
-  "level": "A2",
-  "dossier": 2,
+  "dossier": 1,
   "lesson": 3,
-  "id": "v3-a2-a2-07",
-  "title_fr": "À la cuisine",
-  "title_en": "Cook and follow a recipe",
-  "outcome": "Cook and follow a recipe",
-  "content_to_cover": "ingredients, quantities, instructions, imperative, kitchen vocabulary",
-  "grammar_to_teach": "imperative (negative, with pronouns); sequence words (d'abord, ensuite, enfin)",
-  "source_refs": "E A A2-4 · C D6L1 D6L2",
-  "status": "FROM_V2",
-  "from_v2": "lesson-a2-4",
-  "old_lessons_available": [
-   "lesson-a2-4"
-  ],
-  "url": "/v3/lesson-a2-a2-07/"
- },
- {
-  "code": "A2-8",
-  "level": "A2",
-  "dossier": 2,
-  "lesson": 4,
-  "id": "v3-a2-a2-08",
-  "title_fr": "Je consomme",
-  "title_en": "Shopping and money",
-  "outcome": "Shop and manage money",
-  "content_to_cover": "consuming, prices, second-hand, returns, complaints, vintage",
-  "grammar_to_teach": "negations ne…plus / jamais / rien / personne; indirect object pronouns lui/leur; celui / celle",
-  "source_refs": "E A A2-5 · C D6L6",
-  "status": "FROM_V2",
-  "from_v2": "lesson-a2-5",
-  "old_lessons_available": [
-   "lesson-a2-5"
-  ],
-  "url": "/v3/lesson-a2-a2-08/"
- },
- {
-  "code": "A2-9",
-  "level": "A2",
-  "dossier": 3,
-  "lesson": 1,
-  "id": "v3-a2-a2-09",
-  "title_fr": "Chez le médecin",
-  "title_en": "Health and the body",
-  "outcome": "Health and the body",
-  "content_to_cover": "symptoms, doctor, pharmacy, advice, hygiene and cosmetics",
-  "grammar_to_teach": "il faut que + subjunctive (first look); reflexive verbs in passé composé",
-  "source_refs": "E A A2-9 · C D6L5",
-  "status": "FROM_V2",
-  "from_v2": "lesson-a2-9",
-  "old_lessons_available": [
-   "lesson-a2-9"
-  ],
-  "url": "/v3/lesson-a2-a2-09/"
- },
- {
-  "code": "A2-10",
-  "level": "A2",
-  "dossier": 3,
-  "lesson": 2,
-  "id": "v3-a2-a2-10",
-  "title_fr": "Mes études, mon métier",
-  "title_en": "Studies and jobs",
-  "outcome": "Study and work: jobs and careers",
-  "content_to_cover": "job offer, application, CV, interview, careers, studies",
-  "grammar_to_teach": "futur simple (regular + common irregulars); feminine of professions; être en train de",
-  "source_refs": "E A A2-3 · C D3L1-6",
-  "status": "FROM_V2",
-  "from_v2": "lesson-a2-3",
-  "old_lessons_available": [
-   "lesson-a2-3"
-  ],
-  "url": "/v3/lesson-a2-a2-10/"
- },
- {
-  "code": "A2-11",
-  "level": "A2",
-  "dossier": 3,
-  "lesson": 3,
-  "id": "v3-a2-a2-11",
-  "title_fr": "Les médias et la technologie",
-  "title_en": "Media and technology",
-  "outcome": "Understand and discuss media and technology",
-  "content_to_cover": "news, press, phone dependence, series, reacting to news",
-  "grammar_to_teach": "reported speech (il a dit que); c'est … qui / que (emphasis); je pense que / je crois que",
-  "source_refs": "A A2-10 · C D8L1-4",
-  "status": "FROM_V2",
-  "from_v2": "lesson-a2-10",
-  "old_lessons_available": [
-   "lesson-a2-10"
-  ],
-  "url": "/v3/lesson-a2-a2-11/"
- },
- {
-  "code": "A2-12",
-  "level": "A2",
-  "dossier": 3,
-  "lesson": 4,
-  "id": "v3-a2-a2-12",
-  "title_fr": "Culture et sorties",
-  "title_en": "Culture and leisure",
-  "outcome": "Culture and leisure",
-  "content_to_cover": "series, music festival, comics, live shows, French culture abroad, cultural survey",
-  "grammar_to_teach": "relative où; ce qui / ce que",
-  "source_refs": "C D4L1-6",
-  "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
-  "empty_sections": [
-   "listening_audio",
-   "transcript",
-   "flashcards",
-   "listening_real_voice",
-   "reading_text",
-   "speaking_task",
-   "writing_task"
-  ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-a2-a2-12-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-a2-3:16"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-a2-3:1013"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-a2-a2-12-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-a2-a2-12-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-a2-a2-12-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-a2-a2-12-w",
-     1
-    ]
-   ]
-  },
-  "url": "/v3/lesson-a2-a2-12/"
- },
- {
-  "code": "A2-13",
-  "level": "A2",
-  "dossier": 4,
-  "lesson": 1,
-  "id": "v3-a2-a2-13",
-  "title_fr": "Sport et sécurité",
-  "title_en": "Sport and safety",
-  "outcome": "Sport and safety",
-  "content_to_cover": "organise a sports weekend, rules and safety advice, tell an experience",
-  "grammar_to_teach": "devoir; il est interdit de; conditional of advice (tu devrais)",
-  "source_refs": "C D2L1 D2L2 D2L4",
-  "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
-  "empty_sections": [
-   "listening_audio",
-   "transcript",
-   "flashcards",
-   "listening_real_voice",
-   "reading_text",
-   "speaking_task",
-   "writing_task"
-  ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-a2-a2-13-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-a2-4:0"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-a2-4:1000"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-a2-a2-13-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-a2-a2-13-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-a2-a2-13-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-a2-a2-13-w",
-     1
-    ]
-   ]
-  },
-  "url": "/v3/lesson-a2-a2-13/"
- },
- {
-  "code": "A2-14",
-  "level": "A2",
-  "dossier": 4,
-  "lesson": 2,
   "id": "v3-a2-a2-14",
   "title_fr": "Je raconte ma vie",
   "title_en": "Tell your life story",
@@ -973,13 +608,13 @@
    "3": [
     [
      "rc",
-     "words:v3-a2-4:1"
+     "words:v3-a2-1:5"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-a2-4:1001"
+     "grammar:v3-a2-1:1004"
     ]
    ],
    "5": [
@@ -1012,17 +647,17 @@
   "url": "/v3/lesson-a2-a2-14/"
  },
  {
-  "code": "A2-15",
+  "code": "A2-4",
   "level": "A2",
-  "dossier": 4,
-  "lesson": 3,
-  "id": "v3-a2-a2-15",
-  "title_fr": "Mon opinion",
-  "title_en": "Give and ask opinions",
-  "outcome": "Give and ask for opinions",
-  "content_to_cover": "agree, disagree, convince, report what others said, defend a cause",
-  "grammar_to_teach": "agreeing and disagreeing formulas; car / donc / puisque",
-  "source_refs": "E · C D5L2-5 D7L4 D7L6",
+  "dossier": 2,
+  "lesson": 1,
+  "id": "v3-a2-a2-03",
+  "title_fr": "Les démarches",
+  "title_en": "Administrative steps",
+  "outcome": "Handle administrative steps",
+  "content_to_cover": "post office, bank, town hall, forms abroad, documents, appointments",
+  "grammar_to_teach": "polite requests with conditional (pourriez-vous); direct object pronouns le/la/les",
+  "source_refs": "E · C D1L2",
   "old_lessons_available": [],
   "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
@@ -1038,55 +673,55 @@
    "1": [
     [
      "rc",
-     "listen:v3-a2-a2-15-listen-1"
+     "listen:v3-a2-a2-03-listen-1"
     ]
    ],
    "3": [
     [
      "rc",
-     "words:v3-a2-4:2"
+     "words:v3-a2-2:0"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-a2-4:1002"
+     "grammar:v3-a2-2:1000"
     ]
    ],
    "5": [
     [
      "rc",
-     "listen:v3-a2-a2-15-listen-2"
+     "listen:v3-a2-a2-03-listen-2"
     ]
    ],
    "6": [
     [
      "rc",
-     "read:v3-a2-a2-15-text"
+     "read:v3-a2-a2-03-text"
     ]
    ],
    "7": [
     [
      "g",
-     "sp:v3-a2-a2-15-s",
+     "sp:v3-a2-a2-03-s",
      30
     ]
    ],
    "8": [
     [
      "g",
-     "wr:v3-a2-a2-15-w",
+     "wr:v3-a2-a2-03-w",
      1
     ]
    ]
   },
-  "url": "/v3/lesson-a2-a2-15/"
+  "url": "/v3/lesson-a2-a2-03/"
  },
  {
-  "code": "A2-16",
+  "code": "A2-5",
   "level": "A2",
-  "dossier": 4,
-  "lesson": 4,
+  "dossier": 2,
+  "lesson": 2,
   "id": "v3-a2-a2-16",
   "title_fr": "La vie pratique",
   "title_en": "Everyday life and services",
@@ -1115,13 +750,13 @@
    "3": [
     [
      "rc",
-     "words:v3-a2-4:3"
+     "words:v3-a2-2:1"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-a2-4:1003"
+     "grammar:v3-a2-2:1001"
     ]
    ],
    "5": [
@@ -1154,10 +789,10 @@
   "url": "/v3/lesson-a2-a2-16/"
  },
  {
-  "code": "A2-17",
+  "code": "A2-6",
   "level": "A2",
-  "dossier": 4,
-  "lesson": 5,
+  "dossier": 2,
+  "lesson": 3,
   "id": "v3-a2-a2-17",
   "title_fr": "J'écris un message",
   "title_en": "Write short messages",
@@ -1186,13 +821,13 @@
    "3": [
     [
      "rc",
-     "words:v3-a2-4:4"
+     "words:v3-a2-2:2"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-a2-4:1004"
+     "grammar:v3-a2-2:1002"
     ]
    ],
    "5": [
@@ -1225,10 +860,375 @@
   "url": "/v3/lesson-a2-a2-17/"
  },
  {
-  "code": "A2-18",
+  "code": "A2-7",
+  "level": "A2",
+  "dossier": 3,
+  "lesson": 1,
+  "id": "v3-a2-a2-02",
+  "title_fr": "Mon logement, mon quartier",
+  "title_en": "Home and neighbourhood compared",
+  "outcome": "Describe and compare home and neighbourhood",
+  "content_to_cover": "housing types, rooms, neighbourhood services, rent, comparatives/superlatives",
+  "grammar_to_teach": "superlatives (le plus / le moins); comparisons with nouns (plus de, autant de)",
+  "source_refs": "E A A2-2",
+  "status": "FROM_V2",
+  "from_v2": "lesson-a2-2",
+  "old_lessons_available": [
+   "lesson-a2-2"
+  ],
+  "url": "/v3/lesson-a2-a2-02/"
+ },
+ {
+  "code": "A2-8",
+  "level": "A2",
+  "dossier": 3,
+  "lesson": 2,
+  "id": "v3-a2-a2-06",
+  "title_fr": "La nature et les animaux",
+  "title_en": "Nature and animals",
+  "outcome": "Talk about the nature and animals",
+  "content_to_cover": "environment, species, nature protection actions",
+  "grammar_to_teach": "purpose with pour / afin de; negation of the infinitive (ne pas partir)",
+  "source_refs": "A A2-8 · C D7L5",
+  "status": "FROM_V2",
+  "from_v2": "lesson-a2-8",
+  "old_lessons_available": [
+   "lesson-a2-8"
+  ],
+  "url": "/v3/lesson-a2-a2-06/"
+ },
+ {
+  "code": "A2-9",
   "level": "A2",
   "dossier": 4,
-  "lesson": 6,
+  "lesson": 1,
+  "id": "v3-a2-a2-04",
+  "title_fr": "Je prépare un voyage",
+  "title_en": "Prepare and take a trip",
+  "outcome": "Prepare and take a trip",
+  "content_to_cover": "carpooling, language stay, accommodation, bookings, travel problems, tell a trip",
+  "grammar_to_teach": "pronouns y and en (full system, position)",
+  "source_refs": "E A A2-6 · C D1L1-6 D2L5",
+  "status": "FROM_V2",
+  "from_v2": "lesson-a2-6",
+  "old_lessons_available": [
+   "lesson-a2-6"
+  ],
+  "url": "/v3/lesson-a2-a2-04/"
+ },
+ {
+  "code": "A2-10",
+  "level": "A2",
+  "dossier": 4,
+  "lesson": 2,
+  "id": "v3-a2-a2-12",
+  "title_fr": "Culture et sorties",
+  "title_en": "Culture and leisure",
+  "outcome": "Culture and leisure",
+  "content_to_cover": "series, music festival, comics, live shows, French culture abroad, cultural survey",
+  "grammar_to_teach": "relative où; ce qui / ce que",
+  "source_refs": "C D4L1-6",
+  "old_lessons_available": [],
+  "status": "EMPTY_EXCEPT_GRAMMAR",
+  "empty_sections": [
+   "listening_audio",
+   "transcript",
+   "flashcards",
+   "listening_real_voice",
+   "reading_text",
+   "speaking_task",
+   "writing_task"
+  ],
+  "trk": {
+   "1": [
+    [
+     "rc",
+     "listen:v3-a2-a2-12-listen-1"
+    ]
+   ],
+   "3": [
+    [
+     "rc",
+     "words:v3-a2-4:3"
+    ]
+   ],
+   "4": [
+    [
+     "rc",
+     "grammar:v3-a2-4:1003"
+    ]
+   ],
+   "5": [
+    [
+     "rc",
+     "listen:v3-a2-a2-12-listen-2"
+    ]
+   ],
+   "6": [
+    [
+     "rc",
+     "read:v3-a2-a2-12-text"
+    ]
+   ],
+   "7": [
+    [
+     "g",
+     "sp:v3-a2-a2-12-s",
+     30
+    ]
+   ],
+   "8": [
+    [
+     "g",
+     "wr:v3-a2-a2-12-w",
+     1
+    ]
+   ]
+  },
+  "url": "/v3/lesson-a2-a2-12/"
+ },
+ {
+  "code": "A2-11",
+  "level": "A2",
+  "dossier": 5,
+  "lesson": 1,
+  "id": "v3-a2-a2-07",
+  "title_fr": "À la cuisine",
+  "title_en": "Cook and follow a recipe",
+  "outcome": "Cook and follow a recipe",
+  "content_to_cover": "ingredients, quantities, instructions, imperative, kitchen vocabulary",
+  "grammar_to_teach": "imperative (negative, with pronouns); sequence words (d'abord, ensuite, enfin)",
+  "source_refs": "E A A2-4 · C D6L1 D6L2",
+  "status": "FROM_V2",
+  "from_v2": "lesson-a2-4",
+  "old_lessons_available": [
+   "lesson-a2-4"
+  ],
+  "url": "/v3/lesson-a2-a2-07/"
+ },
+ {
+  "code": "A2-12",
+  "level": "A2",
+  "dossier": 5,
+  "lesson": 2,
+  "id": "v3-a2-a2-08",
+  "title_fr": "Je consomme",
+  "title_en": "Shopping and money",
+  "outcome": "Shop and manage money",
+  "content_to_cover": "consuming, prices, second-hand, returns, complaints, vintage",
+  "grammar_to_teach": "negations ne…plus / jamais / rien / personne; indirect object pronouns lui/leur; celui / celle",
+  "source_refs": "E A A2-5 · C D6L6",
+  "status": "FROM_V2",
+  "from_v2": "lesson-a2-5",
+  "old_lessons_available": [
+   "lesson-a2-5"
+  ],
+  "url": "/v3/lesson-a2-a2-08/"
+ },
+ {
+  "code": "A2-13",
+  "level": "A2",
+  "dossier": 6,
+  "lesson": 1,
+  "id": "v3-a2-a2-09",
+  "title_fr": "Chez le médecin",
+  "title_en": "Health and the body",
+  "outcome": "Health and the body",
+  "content_to_cover": "symptoms, doctor, pharmacy, advice, hygiene and cosmetics",
+  "grammar_to_teach": "il faut que + subjunctive (first look); reflexive verbs in passé composé",
+  "source_refs": "E A A2-9 · C D6L5",
+  "status": "FROM_V2",
+  "from_v2": "lesson-a2-9",
+  "old_lessons_available": [
+   "lesson-a2-9"
+  ],
+  "url": "/v3/lesson-a2-a2-09/"
+ },
+ {
+  "code": "A2-14",
+  "level": "A2",
+  "dossier": 6,
+  "lesson": 2,
+  "id": "v3-a2-a2-13",
+  "title_fr": "Sport et sécurité",
+  "title_en": "Sport and safety",
+  "outcome": "Sport and safety",
+  "content_to_cover": "organise a sports weekend, rules and safety advice, tell an experience",
+  "grammar_to_teach": "devoir; il est interdit de; conditional of advice (tu devrais)",
+  "source_refs": "C D2L1 D2L2 D2L4",
+  "old_lessons_available": [],
+  "status": "EMPTY_EXCEPT_GRAMMAR",
+  "empty_sections": [
+   "listening_audio",
+   "transcript",
+   "flashcards",
+   "listening_real_voice",
+   "reading_text",
+   "speaking_task",
+   "writing_task"
+  ],
+  "trk": {
+   "1": [
+    [
+     "rc",
+     "listen:v3-a2-a2-13-listen-1"
+    ]
+   ],
+   "3": [
+    [
+     "rc",
+     "words:v3-a2-6:4"
+    ]
+   ],
+   "4": [
+    [
+     "rc",
+     "grammar:v3-a2-6:1002"
+    ]
+   ],
+   "5": [
+    [
+     "rc",
+     "listen:v3-a2-a2-13-listen-2"
+    ]
+   ],
+   "6": [
+    [
+     "rc",
+     "read:v3-a2-a2-13-text"
+    ]
+   ],
+   "7": [
+    [
+     "g",
+     "sp:v3-a2-a2-13-s",
+     30
+    ]
+   ],
+   "8": [
+    [
+     "g",
+     "wr:v3-a2-a2-13-w",
+     1
+    ]
+   ]
+  },
+  "url": "/v3/lesson-a2-a2-13/"
+ },
+ {
+  "code": "A2-15",
+  "level": "A2",
+  "dossier": 7,
+  "lesson": 1,
+  "id": "v3-a2-a2-10",
+  "title_fr": "Mes études, mon métier",
+  "title_en": "Studies and jobs",
+  "outcome": "Study and work: jobs and careers",
+  "content_to_cover": "job offer, application, CV, interview, careers, studies",
+  "grammar_to_teach": "futur simple (regular + common irregulars); feminine of professions; être en train de",
+  "source_refs": "E A A2-3 · C D3L1-6",
+  "status": "FROM_V2",
+  "from_v2": "lesson-a2-3",
+  "old_lessons_available": [
+   "lesson-a2-3"
+  ],
+  "url": "/v3/lesson-a2-a2-10/"
+ },
+ {
+  "code": "A2-16",
+  "level": "A2",
+  "dossier": 7,
+  "lesson": 2,
+  "id": "v3-a2-a2-11",
+  "title_fr": "Les médias et la technologie",
+  "title_en": "Media and technology",
+  "outcome": "Understand and discuss media and technology",
+  "content_to_cover": "news, press, phone dependence, series, reacting to news",
+  "grammar_to_teach": "reported speech (il a dit que); c'est … qui / que (emphasis); je pense que / je crois que",
+  "source_refs": "A A2-10 · C D8L1-4",
+  "status": "FROM_V2",
+  "from_v2": "lesson-a2-10",
+  "old_lessons_available": [
+   "lesson-a2-10"
+  ],
+  "url": "/v3/lesson-a2-a2-11/"
+ },
+ {
+  "code": "A2-17",
+  "level": "A2",
+  "dossier": 8,
+  "lesson": 1,
+  "id": "v3-a2-a2-15",
+  "title_fr": "Mon opinion",
+  "title_en": "Give and ask opinions",
+  "outcome": "Give and ask for opinions",
+  "content_to_cover": "agree, disagree, convince, report what others said, defend a cause",
+  "grammar_to_teach": "agreeing and disagreeing formulas; car / donc / puisque",
+  "source_refs": "E · C D5L2-5 D7L4 D7L6",
+  "old_lessons_available": [],
+  "status": "EMPTY_EXCEPT_GRAMMAR",
+  "empty_sections": [
+   "listening_audio",
+   "transcript",
+   "flashcards",
+   "listening_real_voice",
+   "reading_text",
+   "speaking_task",
+   "writing_task"
+  ],
+  "trk": {
+   "1": [
+    [
+     "rc",
+     "listen:v3-a2-a2-15-listen-1"
+    ]
+   ],
+   "3": [
+    [
+     "rc",
+     "words:v3-a2-8:0"
+    ]
+   ],
+   "4": [
+    [
+     "rc",
+     "grammar:v3-a2-8:1000"
+    ]
+   ],
+   "5": [
+    [
+     "rc",
+     "listen:v3-a2-a2-15-listen-2"
+    ]
+   ],
+   "6": [
+    [
+     "rc",
+     "read:v3-a2-a2-15-text"
+    ]
+   ],
+   "7": [
+    [
+     "g",
+     "sp:v3-a2-a2-15-s",
+     30
+    ]
+   ],
+   "8": [
+    [
+     "g",
+     "wr:v3-a2-a2-15-w",
+     1
+    ]
+   ]
+  },
+  "url": "/v3/lesson-a2-a2-15/"
+ },
+ {
+  "code": "A2-18",
+  "level": "A2",
+  "dossier": 8,
+  "lesson": 2,
   "id": "v3-a2-a2-18",
   "title_fr": "Mes projets",
   "title_en": "Plan the future",
@@ -1257,13 +1257,13 @@
    "3": [
     [
      "rc",
-     "words:v3-a2-4:5"
+     "words:v3-a2-8:1"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-a2-4:1005"
+     "grammar:v3-a2-8:1001"
     ]
    ],
    "5": [
@@ -1371,32 +1371,13 @@
   "level": "B1",
   "dossier": 1,
   "lesson": 2,
-  "id": "v3-b1-b1-02",
-  "title_fr": "Vivre à l'étranger",
-  "title_en": "Moving abroad",
-  "outcome": "Weigh moving abroad",
-  "content_to_cover": "criteria, rankings, risks, living elsewhere, cities",
-  "grammar_to_teach": "expressing probability (peut-être que, il se peut que); sembler / paraître + infinitive; mieux / le mieux",
-  "source_refs": "C D1L1 D1L3 D1L4 A B1-1",
-  "status": "FROM_V2",
-  "from_v2": "lesson-b1-1",
-  "old_lessons_available": [
-   "lesson-b1-1"
-  ],
-  "url": "/v3/lesson-b1-b1-02/"
- },
- {
-  "code": "B1-3",
-  "level": "B1",
-  "dossier": 1,
-  "lesson": 3,
-  "id": "v3-b1-b1-03",
-  "title_fr": "Les petits problèmes",
-  "title_en": "Everyday problems and complaints",
-  "outcome": "Solve everyday problems and complain",
-  "content_to_cover": "complaint, feelings, repairs, neighbour relations",
-  "grammar_to_teach": "double object pronouns (le lui, me le); conditionnel passé for reproach (tu aurais dû); avoir beau",
-  "source_refs": "C D2L1 D4L1",
+  "id": "v3-b1-b1-12",
+  "title_fr": "Étudier, se former",
+  "title_en": "Study and train",
+  "outcome": "Study and train",
+  "content_to_cover": "background, motivation, project, training",
+  "grammar_to_teach": "futur antérieur; compter / envisager + infinitive",
+  "source_refs": "C D5L1",
   "old_lessons_available": [],
   "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
@@ -1412,74 +1393,93 @@
    "1": [
     [
      "rc",
-     "listen:v3-b1-b1-03-listen-1"
+     "listen:v3-b1-b1-12-listen-1"
     ]
    ],
    "3": [
     [
      "rc",
-     "words:v3-b1-1:7"
+     "words:v3-b1-1:1"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-b1-1:1006"
+     "grammar:v3-b1-1:1001"
     ]
    ],
    "5": [
     [
      "rc",
-     "listen:v3-b1-b1-03-listen-2"
+     "listen:v3-b1-b1-12-listen-2"
     ]
    ],
    "6": [
     [
      "rc",
-     "read:v3-b1-b1-03-text"
+     "read:v3-b1-b1-12-text"
     ]
    ],
    "7": [
     [
      "g",
-     "sp:v3-b1-b1-03-s",
+     "sp:v3-b1-b1-12-s",
      30
     ]
    ],
    "8": [
     [
      "g",
-     "wr:v3-b1-b1-03-w",
+     "wr:v3-b1-b1-12-w",
      1
     ]
    ]
   },
-  "url": "/v3/lesson-b1-b1-03/"
+  "url": "/v3/lesson-b1-b1-12/"
+ },
+ {
+  "code": "B1-3",
+  "level": "B1",
+  "dossier": 1,
+  "lesson": 3,
+  "id": "v3-b1-b1-13",
+  "title_fr": "Chercher un emploi",
+  "title_en": "Find a job and work",
+  "outcome": "Find a job and work",
+  "content_to_cover": "CV, cover letter, interview, work experience, workplace",
+  "grammar_to_teach": "une fois que; après avoir + past participle; participe présent",
+  "source_refs": "A B1-6 · C D5L2-4",
+  "status": "FROM_V2",
+  "from_v2": "lesson-b1-6",
+  "old_lessons_available": [
+   "lesson-b1-6"
+  ],
+  "url": "/v3/lesson-b1-b1-13/"
  },
  {
   "code": "B1-4",
   "level": "B1",
-  "dossier": 1,
-  "lesson": 4,
-  "id": "v3-b1-b1-04",
-  "title_fr": "Les urgences et l'assurance",
-  "title_en": "Health emergencies",
-  "outcome": "Handle health emergencies and insurance",
-  "content_to_cover": "health problem, emergency, health insurance",
-  "grammar_to_teach": "subjonctif présent (formation; vouloir que, il faut que); passé récent (venir de)",
-  "source_refs": "A B1-2 · C D2L2",
+  "dossier": 2,
+  "lesson": 1,
+  "id": "v3-b1-b1-02",
+  "title_fr": "Vivre à l'étranger",
+  "title_en": "Moving abroad",
+  "outcome": "Weigh moving abroad",
+  "content_to_cover": "criteria, rankings, risks, living elsewhere, cities",
+  "grammar_to_teach": "expressing probability (peut-être que, il se peut que); sembler / paraître + infinitive; mieux / le mieux",
+  "source_refs": "C D1L1 D1L3 D1L4 A B1-1",
   "status": "FROM_V2",
-  "from_v2": "lesson-b1-2",
+  "from_v2": "lesson-b1-1",
   "old_lessons_available": [
-   "lesson-b1-2"
+   "lesson-b1-1"
   ],
-  "url": "/v3/lesson-b1-b1-04/"
+  "url": "/v3/lesson-b1-b1-02/"
  },
  {
   "code": "B1-5",
   "level": "B1",
-  "dossier": 1,
-  "lesson": 5,
+  "dossier": 2,
+  "lesson": 2,
   "id": "v3-b1-b1-05",
   "title_fr": "L'administration",
   "title_en": "Deal with administration",
@@ -1508,13 +1508,13 @@
    "3": [
     [
      "rc",
-     "words:v3-b1-1:11"
+     "words:v3-b1-2:6"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-b1-1:1011"
+     "grammar:v3-b1-2:1005"
     ]
    ],
    "5": [
@@ -1549,7 +1549,97 @@
  {
   "code": "B1-6",
   "level": "B1",
-  "dossier": 2,
+  "dossier": 3,
+  "lesson": 1,
+  "id": "v3-b1-b1-03",
+  "title_fr": "Les petits problèmes",
+  "title_en": "Everyday problems and complaints",
+  "outcome": "Solve everyday problems and complain",
+  "content_to_cover": "complaint, feelings, repairs, neighbour relations",
+  "grammar_to_teach": "double object pronouns (le lui, me le); conditionnel passé for reproach (tu aurais dû); avoir beau",
+  "source_refs": "C D2L1 D4L1",
+  "old_lessons_available": [],
+  "status": "EMPTY_EXCEPT_GRAMMAR",
+  "empty_sections": [
+   "listening_audio",
+   "transcript",
+   "flashcards",
+   "listening_real_voice",
+   "reading_text",
+   "speaking_task",
+   "writing_task"
+  ],
+  "trk": {
+   "1": [
+    [
+     "rc",
+     "listen:v3-b1-b1-03-listen-1"
+    ]
+   ],
+   "3": [
+    [
+     "rc",
+     "words:v3-b1-3:0"
+    ]
+   ],
+   "4": [
+    [
+     "rc",
+     "grammar:v3-b1-3:1000"
+    ]
+   ],
+   "5": [
+    [
+     "rc",
+     "listen:v3-b1-b1-03-listen-2"
+    ]
+   ],
+   "6": [
+    [
+     "rc",
+     "read:v3-b1-b1-03-text"
+    ]
+   ],
+   "7": [
+    [
+     "g",
+     "sp:v3-b1-b1-03-s",
+     30
+    ]
+   ],
+   "8": [
+    [
+     "g",
+     "wr:v3-b1-b1-03-w",
+     1
+    ]
+   ]
+  },
+  "url": "/v3/lesson-b1-b1-03/"
+ },
+ {
+  "code": "B1-7",
+  "level": "B1",
+  "dossier": 3,
+  "lesson": 2,
+  "id": "v3-b1-b1-04",
+  "title_fr": "Les urgences et l'assurance",
+  "title_en": "Health emergencies",
+  "outcome": "Handle health emergencies and insurance",
+  "content_to_cover": "health problem, emergency, health insurance",
+  "grammar_to_teach": "subjonctif présent (formation; vouloir que, il faut que); passé récent (venir de)",
+  "source_refs": "A B1-2 · C D2L2",
+  "status": "FROM_V2",
+  "from_v2": "lesson-b1-2",
+  "old_lessons_available": [
+   "lesson-b1-2"
+  ],
+  "url": "/v3/lesson-b1-b1-04/"
+ },
+ {
+  "code": "B1-8",
+  "level": "B1",
+  "dossier": 4,
   "lesson": 1,
   "id": "v3-b1-b1-06",
   "title_fr": "Cultures différentes",
@@ -1579,13 +1669,13 @@
    "3": [
     [
      "rc",
-     "words:v3-b1-2:0"
+     "words:v3-b1-4:0"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-b1-2:1000"
+     "grammar:v3-b1-4:1000"
     ]
    ],
    "5": [
@@ -1618,9 +1708,9 @@
   "url": "/v3/lesson-b1-b1-06/"
  },
  {
-  "code": "B1-7",
+  "code": "B1-9",
   "level": "B1",
-  "dossier": 2,
+  "dossier": 4,
   "lesson": 2,
   "id": "v3-b1-b1-07",
   "title_fr": "On sort ensemble",
@@ -1653,13 +1743,13 @@
    "3": [
     [
      "rc",
-     "words:v3-b1-2:1"
+     "words:v3-b1-4:1"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-b1-2:1001"
+     "grammar:v3-b1-4:1001"
     ]
    ],
    "5": [
@@ -1692,267 +1782,10 @@
   "url": "/v3/lesson-b1-b1-07/"
  },
  {
-  "code": "B1-8",
-  "level": "B1",
-  "dossier": 2,
-  "lesson": 3,
-  "id": "v3-b1-b1-08",
-  "title_fr": "Fêtes et traditions",
-  "title_en": "Family events",
-  "outcome": "Family events and celebrations",
-  "content_to_cover": "family, weddings, parties, traditions",
-  "grammar_to_teach": "plus-que-parfait; reported speech with tense shift; quand / lorsque / pendant que",
-  "source_refs": "A B1-3 · C D3L3 D3L4",
-  "status": "FROM_V2",
-  "from_v2": "lesson-b1-3",
-  "old_lessons_available": [
-   "lesson-b1-3"
-  ],
-  "url": "/v3/lesson-b1-b1-08/"
- },
- {
-  "code": "B1-9",
-  "level": "B1",
-  "dossier": 2,
-  "lesson": 4,
-  "id": "v3-b1-b1-09",
-  "title_fr": "Habiter ensemble",
-  "title_en": "Housing and neighbourhood life",
-  "outcome": "Housing and neighbourhood life",
-  "content_to_cover": "moving, sharing, communities, sustainable living",
-  "grammar_to_teach": "possessive pronouns (le mien); relatives with prepositions (chez qui, avec lequel)",
-  "source_refs": "A B1-5 · C D4L1",
-  "status": "FROM_V2",
-  "from_v2": "lesson-b1-5",
-  "old_lessons_available": [
-   "lesson-b1-5"
-  ],
-  "url": "/v3/lesson-b1-b1-09/"
- },
- {
   "code": "B1-10",
   "level": "B1",
-  "dossier": 2,
-  "lesson": 5,
-  "id": "v3-b1-b1-10",
-  "title_fr": "Consommer mieux",
-  "title_en": "Consume responsibly",
-  "outcome": "Consume responsibly",
-  "content_to_cover": "food waste, debate, local and social economy, credit, savings",
-  "grammar_to_teach": "gérondif; cause and consequence (comme, donc, c'est pourquoi); ne… que",
-  "source_refs": "A B1-8 B1-9 · C D4L2 D4L3",
-  "status": "FROM_V2",
-  "from_v2": "lesson-b1-8",
-  "old_lessons_available": [
-   "lesson-b1-8",
-   "lesson-b1-9"
-  ],
-  "url": "/v3/lesson-b1-b1-10/"
- },
- {
-  "code": "B1-11",
-  "level": "B1",
-  "dossier": 3,
-  "lesson": 1,
-  "id": "v3-b1-b1-11",
-  "title_fr": "Agir pour l'environnement",
-  "title_en": "Act for the environment",
-  "outcome": "Act for the environment",
-  "content_to_cover": "eco habits, recycling, comic strip, ecology",
-  "grammar_to_teach": "pour que / afin que + subjunctive; au lieu de / plutôt que; passive voice (intro)",
-  "source_refs": "A B1-7 · C D4L4",
-  "status": "FROM_V2",
-  "from_v2": "lesson-b1-7",
-  "old_lessons_available": [
-   "lesson-b1-7"
-  ],
-  "url": "/v3/lesson-b1-b1-11/"
- },
- {
-  "code": "B1-12",
-  "level": "B1",
-  "dossier": 3,
-  "lesson": 2,
-  "id": "v3-b1-b1-12",
-  "title_fr": "Étudier, se former",
-  "title_en": "Study and train",
-  "outcome": "Study and train",
-  "content_to_cover": "background, motivation, project, training",
-  "grammar_to_teach": "futur antérieur; compter / envisager + infinitive",
-  "source_refs": "C D5L1",
-  "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
-  "empty_sections": [
-   "listening_audio",
-   "transcript",
-   "flashcards",
-   "listening_real_voice",
-   "reading_text",
-   "speaking_task",
-   "writing_task"
-  ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b1-b1-12-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b1-3:3"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b1-3:1004"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b1-b1-12-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b1-b1-12-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b1-b1-12-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b1-b1-12-w",
-     1
-    ]
-   ]
-  },
-  "url": "/v3/lesson-b1-b1-12/"
- },
- {
-  "code": "B1-13",
-  "level": "B1",
-  "dossier": 3,
+  "dossier": 4,
   "lesson": 3,
-  "id": "v3-b1-b1-13",
-  "title_fr": "Chercher un emploi",
-  "title_en": "Find a job and work",
-  "outcome": "Find a job and work",
-  "content_to_cover": "CV, cover letter, interview, work experience, workplace",
-  "grammar_to_teach": "une fois que; après avoir + past participle; participe présent",
-  "source_refs": "A B1-6 · C D5L2-4",
-  "status": "FROM_V2",
-  "from_v2": "lesson-b1-6",
-  "old_lessons_available": [
-   "lesson-b1-6"
-  ],
-  "url": "/v3/lesson-b1-b1-13/"
- },
- {
-  "code": "B1-14",
-  "level": "B1",
-  "dossier": 3,
-  "lesson": 4,
-  "id": "v3-b1-b1-14",
-  "title_fr": "Les médias",
-  "title_en": "Understand the media",
-  "outcome": "Understand the media",
-  "content_to_cover": "press, social networks, fake news, journalists",
-  "grammar_to_teach": "passive voice (agent par/de); indirect speech for questions and orders; à mon avis / il me semble que",
-  "source_refs": "A B1-4 · C D6L1-4",
-  "status": "FROM_V2",
-  "from_v2": "lesson-b1-4",
-  "old_lessons_available": [
-   "lesson-b1-4"
-  ],
-  "url": "/v3/lesson-b1-b1-14/"
- },
- {
-  "code": "B1-15",
-  "level": "B1",
-  "dossier": 3,
-  "lesson": 5,
-  "id": "v3-b1-b1-15",
-  "title_fr": "Technologie et innovation",
-  "title_en": "Technology and innovation",
-  "outcome": "Discuss technology and innovation",
-  "content_to_cover": "innovations, science, progress and drift",
-  "grammar_to_teach": "nominalisation; bien que + subjunctive; compound relatives (auquel, duquel)",
-  "source_refs": "C D7L1-4",
-  "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
-  "empty_sections": [
-   "listening_audio",
-   "transcript",
-   "flashcards",
-   "listening_real_voice",
-   "reading_text",
-   "speaking_task",
-   "writing_task"
-  ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b1-b1-15-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b1-3:10"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b1-3:1011"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b1-b1-15-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b1-b1-15-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b1-b1-15-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b1-b1-15-w",
-     1
-    ]
-   ]
-  },
-  "url": "/v3/lesson-b1-b1-15/"
- },
- {
-  "code": "B1-16",
-  "level": "B1",
-  "dossier": 3,
-  "lesson": 6,
   "id": "v3-b1-b1-16",
   "title_fr": "La culture",
   "title_en": "Talk about culture",
@@ -1981,13 +1814,13 @@
    "3": [
     [
      "rc",
-     "words:v3-b1-3:11"
+     "words:v3-b1-4:2"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-b1-3:1012"
+     "grammar:v3-b1-4:1002"
     ]
    ],
    "5": [
@@ -2020,9 +1853,176 @@
   "url": "/v3/lesson-b1-b1-16/"
  },
  {
+  "code": "B1-11",
+  "level": "B1",
+  "dossier": 5,
+  "lesson": 1,
+  "id": "v3-b1-b1-08",
+  "title_fr": "Fêtes et traditions",
+  "title_en": "Family events",
+  "outcome": "Family events and celebrations",
+  "content_to_cover": "family, weddings, parties, traditions",
+  "grammar_to_teach": "plus-que-parfait; reported speech with tense shift; quand / lorsque / pendant que",
+  "source_refs": "A B1-3 · C D3L3 D3L4",
+  "status": "FROM_V2",
+  "from_v2": "lesson-b1-3",
+  "old_lessons_available": [
+   "lesson-b1-3"
+  ],
+  "url": "/v3/lesson-b1-b1-08/"
+ },
+ {
+  "code": "B1-12",
+  "level": "B1",
+  "dossier": 5,
+  "lesson": 2,
+  "id": "v3-b1-b1-09",
+  "title_fr": "Habiter ensemble",
+  "title_en": "Housing and neighbourhood life",
+  "outcome": "Housing and neighbourhood life",
+  "content_to_cover": "moving, sharing, communities, sustainable living",
+  "grammar_to_teach": "possessive pronouns (le mien); relatives with prepositions (chez qui, avec lequel)",
+  "source_refs": "A B1-5 · C D4L1",
+  "status": "FROM_V2",
+  "from_v2": "lesson-b1-5",
+  "old_lessons_available": [
+   "lesson-b1-5"
+  ],
+  "url": "/v3/lesson-b1-b1-09/"
+ },
+ {
+  "code": "B1-13",
+  "level": "B1",
+  "dossier": 6,
+  "lesson": 1,
+  "id": "v3-b1-b1-10",
+  "title_fr": "Consommer mieux",
+  "title_en": "Consume responsibly",
+  "outcome": "Consume responsibly",
+  "content_to_cover": "food waste, debate, local and social economy, credit, savings",
+  "grammar_to_teach": "gérondif; cause and consequence (comme, donc, c'est pourquoi); ne… que",
+  "source_refs": "A B1-8 B1-9 · C D4L2 D4L3",
+  "status": "FROM_V2",
+  "from_v2": "lesson-b1-8",
+  "old_lessons_available": [
+   "lesson-b1-8",
+   "lesson-b1-9"
+  ],
+  "url": "/v3/lesson-b1-b1-10/"
+ },
+ {
+  "code": "B1-14",
+  "level": "B1",
+  "dossier": 6,
+  "lesson": 2,
+  "id": "v3-b1-b1-11",
+  "title_fr": "Agir pour l'environnement",
+  "title_en": "Act for the environment",
+  "outcome": "Act for the environment",
+  "content_to_cover": "eco habits, recycling, comic strip, ecology",
+  "grammar_to_teach": "pour que / afin que + subjunctive; au lieu de / plutôt que; passive voice (intro)",
+  "source_refs": "A B1-7 · C D4L4",
+  "status": "FROM_V2",
+  "from_v2": "lesson-b1-7",
+  "old_lessons_available": [
+   "lesson-b1-7"
+  ],
+  "url": "/v3/lesson-b1-b1-11/"
+ },
+ {
+  "code": "B1-15",
+  "level": "B1",
+  "dossier": 7,
+  "lesson": 1,
+  "id": "v3-b1-b1-14",
+  "title_fr": "Les médias",
+  "title_en": "Understand the media",
+  "outcome": "Understand the media",
+  "content_to_cover": "press, social networks, fake news, journalists",
+  "grammar_to_teach": "passive voice (agent par/de); indirect speech for questions and orders; à mon avis / il me semble que",
+  "source_refs": "A B1-4 · C D6L1-4",
+  "status": "FROM_V2",
+  "from_v2": "lesson-b1-4",
+  "old_lessons_available": [
+   "lesson-b1-4"
+  ],
+  "url": "/v3/lesson-b1-b1-14/"
+ },
+ {
+  "code": "B1-16",
+  "level": "B1",
+  "dossier": 7,
+  "lesson": 2,
+  "id": "v3-b1-b1-15",
+  "title_fr": "Technologie et innovation",
+  "title_en": "Technology and innovation",
+  "outcome": "Discuss technology and innovation",
+  "content_to_cover": "innovations, science, progress and drift",
+  "grammar_to_teach": "nominalisation; bien que + subjunctive; compound relatives (auquel, duquel)",
+  "source_refs": "C D7L1-4",
+  "old_lessons_available": [],
+  "status": "EMPTY_EXCEPT_GRAMMAR",
+  "empty_sections": [
+   "listening_audio",
+   "transcript",
+   "flashcards",
+   "listening_real_voice",
+   "reading_text",
+   "speaking_task",
+   "writing_task"
+  ],
+  "trk": {
+   "1": [
+    [
+     "rc",
+     "listen:v3-b1-b1-15-listen-1"
+    ]
+   ],
+   "3": [
+    [
+     "rc",
+     "words:v3-b1-7:3"
+    ]
+   ],
+   "4": [
+    [
+     "rc",
+     "grammar:v3-b1-7:1004"
+    ]
+   ],
+   "5": [
+    [
+     "rc",
+     "listen:v3-b1-b1-15-listen-2"
+    ]
+   ],
+   "6": [
+    [
+     "rc",
+     "read:v3-b1-b1-15-text"
+    ]
+   ],
+   "7": [
+    [
+     "g",
+     "sp:v3-b1-b1-15-s",
+     30
+    ]
+   ],
+   "8": [
+    [
+     "g",
+     "wr:v3-b1-b1-15-w",
+     1
+    ]
+   ]
+  },
+  "url": "/v3/lesson-b1-b1-15/"
+ },
+ {
   "code": "B1-17",
   "level": "B1",
-  "dossier": 4,
+  "dossier": 8,
   "lesson": 1,
   "id": "v3-b1-b1-17",
   "title_fr": "Je raconte une histoire",
@@ -2052,13 +2052,13 @@
    "3": [
     [
      "rc",
-     "words:v3-b1-4:0"
+     "words:v3-b1-8:0"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-b1-4:1000"
+     "grammar:v3-b1-8:1000"
     ]
    ],
    "5": [
@@ -2093,7 +2093,7 @@
  {
   "code": "B1-18",
   "level": "B1",
-  "dossier": 4,
+  "dossier": 8,
   "lesson": 2,
   "id": "v3-b1-b1-18",
   "title_fr": "Je donne mon avis",
@@ -2123,13 +2123,13 @@
    "3": [
     [
      "rc",
-     "words:v3-b1-4:1"
+     "words:v3-b1-8:1"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-b1-4:1001"
+     "grammar:v3-b1-8:1001"
     ]
    ],
    "5": [
@@ -2164,7 +2164,7 @@
  {
   "code": "B1-19",
   "level": "B1",
-  "dossier": 4,
+  "dossier": 8,
   "lesson": 3,
   "id": "v3-b1-b1-19",
   "title_fr": "Conseils et obligations",
@@ -2194,13 +2194,13 @@
    "3": [
     [
      "rc",
-     "words:v3-b1-4:2"
+     "words:v3-b1-8:2"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-b1-4:1002"
+     "grammar:v3-b1-8:1002"
     ]
    ],
    "5": [
@@ -2235,8 +2235,8 @@
  {
   "code": "B1-20",
   "level": "B1",
-  "dossier": 4,
-  "lesson": 4,
+  "dossier": 9,
+  "lesson": 1,
   "id": "v3-b1-b1-20",
   "title_fr": "J'écris et je présente",
   "title_en": "Write and speak with structure",
@@ -2265,13 +2265,13 @@
    "3": [
     [
      "rc",
-     "words:v3-b1-4:3"
+     "words:v3-b1-9:0"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-b1-4:1003"
+     "grammar:v3-b1-9:1000"
     ]
    ],
    "5": [
@@ -2306,8 +2306,8 @@
  {
   "code": "B1-21",
   "level": "B1",
-  "dossier": 4,
-  "lesson": 5,
+  "dossier": 9,
+  "lesson": 2,
   "id": "v3-b1-b1-21",
   "title_fr": "Je comprends le français réel",
   "title_en": "Understand authentic French",
@@ -2336,13 +2336,13 @@
    "3": [
     [
      "rc",
-     "words:v3-b1-4:4"
+     "words:v3-b1-9:1"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-b1-4:1004"
+     "grammar:v3-b1-9:1001"
     ]
    ],
    "5": [
@@ -2377,8 +2377,8 @@
  {
   "code": "B1-22",
   "level": "B1",
-  "dossier": 4,
-  "lesson": 6,
+  "dossier": 9,
+  "lesson": 3,
   "id": "v3-b1-b1-22",
   "title_fr": "Bilan B1",
   "title_en": "Review and DELF B1 practice",
@@ -2407,13 +2407,13 @@
    "3": [
     [
      "rc",
-     "words:v3-b1-4:5"
+     "words:v3-b1-9:2"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-b1-4:1005"
+     "grammar:v3-b1-9:1002"
     ]
    ],
    "5": [
@@ -2732,8 +2732,8 @@
  {
   "code": "B2-5",
   "level": "B2",
-  "dossier": 1,
-  "lesson": 5,
+  "dossier": 2,
+  "lesson": 1,
   "id": "v3-b2-b2-05",
   "title_fr": "La société",
   "title_en": "Society and social issues",
@@ -2752,6 +2752,25 @@
   "code": "B2-6",
   "level": "B2",
   "dossier": 2,
+  "lesson": 2,
+  "id": "v3-b2-b2-08",
+  "title_fr": "Climat et environnement",
+  "title_en": "Environment and climate",
+  "outcome": "Discuss environment and climate",
+  "content_to_cover": "climate change, policies, solutions",
+  "grammar_to_teach": "si + plus-que-parfait + conditionnel passé; il est probable que",
+  "source_refs": "A B2-4",
+  "status": "FROM_V2",
+  "from_v2": "lesson-b2-4",
+  "old_lessons_available": [
+   "lesson-b2-4"
+  ],
+  "url": "/v3/lesson-b2-b2-08/"
+ },
+ {
+  "code": "B2-7",
+  "level": "B2",
+  "dossier": 3,
   "lesson": 1,
   "id": "v3-b2-b2-06",
   "title_fr": "La politique",
@@ -2768,9 +2787,9 @@
   "url": "/v3/lesson-b2-b2-06/"
  },
  {
-  "code": "B2-7",
+  "code": "B2-8",
   "level": "B2",
-  "dossier": 2,
+  "dossier": 3,
   "lesson": 2,
   "id": "v3-b2-b2-07",
   "title_fr": "La langue et l'histoire",
@@ -2787,29 +2806,10 @@
   "url": "/v3/lesson-b2-b2-07/"
  },
  {
-  "code": "B2-8",
-  "level": "B2",
-  "dossier": 2,
-  "lesson": 3,
-  "id": "v3-b2-b2-08",
-  "title_fr": "Climat et environnement",
-  "title_en": "Environment and climate",
-  "outcome": "Discuss environment and climate",
-  "content_to_cover": "climate change, policies, solutions",
-  "grammar_to_teach": "si + plus-que-parfait + conditionnel passé; il est probable que",
-  "source_refs": "A B2-4",
-  "status": "FROM_V2",
-  "from_v2": "lesson-b2-4",
-  "old_lessons_available": [
-   "lesson-b2-4"
-  ],
-  "url": "/v3/lesson-b2-b2-08/"
- },
- {
   "code": "B2-9",
   "level": "B2",
-  "dossier": 2,
-  "lesson": 4,
+  "dossier": 4,
+  "lesson": 1,
   "id": "v3-b2-b2-09",
   "title_fr": "Technologie et progrès",
   "title_en": "Technology and progress",
@@ -2827,45 +2827,7 @@
  {
   "code": "B2-10",
   "level": "B2",
-  "dossier": 2,
-  "lesson": 5,
-  "id": "v3-b2-b2-10",
-  "title_fr": "Les relations et les émotions",
-  "title_en": "Relationships and feelings",
-  "outcome": "Talk about relationships and feelings",
-  "content_to_cover": "complex emotions, relationships, psychology",
-  "grammar_to_teach": "idiomatic pronominal verbs; agreement of pronominal participles",
-  "source_refs": "A B2-6",
-  "status": "FROM_V2",
-  "from_v2": "lesson-b2-6",
-  "old_lessons_available": [
-   "lesson-b2-6"
-  ],
-  "url": "/v3/lesson-b2-b2-10/"
- },
- {
-  "code": "B2-11",
-  "level": "B2",
-  "dossier": 3,
-  "lesson": 1,
-  "id": "v3-b2-b2-11",
-  "title_fr": "Au travail",
-  "title_en": "Communicate at work",
-  "outcome": "Communicate at work and in business",
-  "content_to_cover": "meetings, reports, negotiation, economy",
-  "grammar_to_teach": "accord of participle with preceding COD; professional register patterns",
-  "source_refs": "E A B2-7",
-  "status": "FROM_V2",
-  "from_v2": "lesson-b2-7",
-  "old_lessons_available": [
-   "lesson-b2-7"
-  ],
-  "url": "/v3/lesson-b2-b2-11/"
- },
- {
-  "code": "B2-12",
-  "level": "B2",
-  "dossier": 3,
+  "dossier": 4,
   "lesson": 2,
   "id": "v3-b2-b2-12",
   "title_fr": "Santé et sciences",
@@ -2882,261 +2844,29 @@
   "url": "/v3/lesson-b2-b2-12/"
  },
  {
-  "code": "B2-13",
+  "code": "B2-11",
   "level": "B2",
-  "dossier": 3,
-  "lesson": 3,
-  "id": "v3-b2-b2-13",
-  "title_fr": "Tourisme et voyage",
-  "title_en": "Tourism and travel",
-  "outcome": "Discuss tourism and travel",
-  "content_to_cover": "tourism impact, travel experiences",
-  "grammar_to_teach": "durations (dans / en / pour / pendant); indefinites (chacun, aucun, plusieurs)",
-  "source_refs": "A B2-9",
-  "status": "FROM_V2",
-  "from_v2": "lesson-b2-9",
-  "old_lessons_available": [
-   "lesson-b2-9"
-  ],
-  "url": "/v3/lesson-b2-b2-13/"
- },
- {
-  "code": "B2-14",
-  "level": "B2",
-  "dossier": 3,
-  "lesson": 4,
-  "id": "v3-b2-b2-14",
-  "title_fr": "Art et création",
-  "title_en": "Art and creation",
-  "outcome": "Discuss art and creation",
-  "content_to_cover": "literature, cinema, art, criticism",
-  "grammar_to_teach": "the only/the first + subjunctive (le seul qui…); critical register",
-  "source_refs": "A B2-10",
-  "status": "FROM_V2",
-  "from_v2": "lesson-b2-10",
-  "old_lessons_available": [
-   "lesson-b2-10"
-  ],
-  "url": "/v3/lesson-b2-b2-14/"
- },
- {
-  "code": "B2-15",
-  "level": "B2",
-  "dossier": 3,
-  "lesson": 5,
-  "id": "v3-b2-b2-15",
-  "title_fr": "Écrire de façon formelle",
-  "title_en": "Write formally",
-  "outcome": "Write formally",
-  "content_to_cover": "formal letters, essay, summary, synthesis",
-  "grammar_to_teach": "paragraph structure; logical connectors; formal register; punctuation",
-  "source_refs": "E",
-  "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
-  "empty_sections": [
-   "listening_audio",
-   "transcript",
-   "flashcards",
-   "listening_real_voice",
-   "reading_text",
-   "speaking_task",
-   "writing_task"
-  ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b2-b2-15-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b2-3:12"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b2-3:1013"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b2-b2-15-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b2-b2-15-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b2-b2-15-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b2-b2-15-w",
-     1
-    ]
-   ]
-  },
-  "url": "/v3/lesson-b2-b2-15/"
- },
- {
-  "code": "B2-16",
-  "level": "B2",
-  "dossier": 4,
+  "dossier": 5,
   "lesson": 1,
-  "id": "v3-b2-b2-16",
-  "title_fr": "Le style soutenu",
-  "title_en": "Formal style and passive",
-  "outcome": "Use formal style and the passive",
-  "content_to_cover": "passive, nominalisation, register",
-  "grammar_to_teach": "stylistic inversion; ne explétif; ne… point / guère",
-  "source_refs": "E",
-  "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
-  "empty_sections": [
-   "listening_audio",
-   "transcript",
-   "flashcards",
-   "listening_real_voice",
-   "reading_text",
-   "speaking_task",
-   "writing_task"
+  "id": "v3-b2-b2-10",
+  "title_fr": "Les relations et les émotions",
+  "title_en": "Relationships and feelings",
+  "outcome": "Talk about relationships and feelings",
+  "content_to_cover": "complex emotions, relationships, psychology",
+  "grammar_to_teach": "idiomatic pronominal verbs; agreement of pronominal participles",
+  "source_refs": "A B2-6",
+  "status": "FROM_V2",
+  "from_v2": "lesson-b2-6",
+  "old_lessons_available": [
+   "lesson-b2-6"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b2-b2-16-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b2-4:0"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b2-4:1000"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b2-b2-16-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b2-b2-16-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b2-b2-16-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b2-b2-16-w",
-     1
-    ]
-   ]
-  },
-  "url": "/v3/lesson-b2-b2-16/"
+  "url": "/v3/lesson-b2-b2-10/"
  },
  {
-  "code": "B2-17",
+  "code": "B2-12",
   "level": "B2",
-  "dossier": 4,
+  "dossier": 5,
   "lesson": 2,
-  "id": "v3-b2-b2-17",
-  "title_fr": "Comprendre l'authentique",
-  "title_en": "Authentic material",
-  "outcome": "Understand authentic material",
-  "content_to_cover": "long audio and texts, implicit meaning",
-  "grammar_to_teach": "Listening: implicit meaning, abbreviations, language levels",
-  "source_refs": "E",
-  "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
-  "empty_sections": [
-   "listening_audio",
-   "transcript",
-   "flashcards",
-   "listening_real_voice",
-   "reading_text",
-   "speaking_task",
-   "writing_task"
-  ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b2-b2-17-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b2-4:1"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b2-4:1001"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b2-b2-17-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b2-b2-17-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b2-b2-17-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b2-b2-17-w",
-     1
-    ]
-   ]
-  },
-  "url": "/v3/lesson-b2-b2-17/"
- },
- {
-  "code": "B2-18",
-  "level": "B2",
-  "dossier": 4,
-  "lesson": 3,
   "id": "v3-b2-b2-18",
   "title_fr": "Expressions et registres",
   "title_en": "Idioms and register",
@@ -3165,13 +2895,13 @@
    "3": [
     [
      "rc",
-     "words:v3-b2-4:2"
+     "words:v3-b2-5:3"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-b2-4:1002"
+     "grammar:v3-b2-5:1005"
     ]
    ],
    "5": [
@@ -3204,10 +2934,280 @@
   "url": "/v3/lesson-b2-b2-18/"
  },
  {
+  "code": "B2-13",
+  "level": "B2",
+  "dossier": 6,
+  "lesson": 1,
+  "id": "v3-b2-b2-11",
+  "title_fr": "Au travail",
+  "title_en": "Communicate at work",
+  "outcome": "Communicate at work and in business",
+  "content_to_cover": "meetings, reports, negotiation, economy",
+  "grammar_to_teach": "accord of participle with preceding COD; professional register patterns",
+  "source_refs": "E A B2-7",
+  "status": "FROM_V2",
+  "from_v2": "lesson-b2-7",
+  "old_lessons_available": [
+   "lesson-b2-7"
+  ],
+  "url": "/v3/lesson-b2-b2-11/"
+ },
+ {
+  "code": "B2-14",
+  "level": "B2",
+  "dossier": 6,
+  "lesson": 2,
+  "id": "v3-b2-b2-15",
+  "title_fr": "Écrire de façon formelle",
+  "title_en": "Write formally",
+  "outcome": "Write formally",
+  "content_to_cover": "formal letters, essay, summary, synthesis",
+  "grammar_to_teach": "paragraph structure; logical connectors; formal register; punctuation",
+  "source_refs": "E",
+  "old_lessons_available": [],
+  "status": "EMPTY_EXCEPT_GRAMMAR",
+  "empty_sections": [
+   "listening_audio",
+   "transcript",
+   "flashcards",
+   "listening_real_voice",
+   "reading_text",
+   "speaking_task",
+   "writing_task"
+  ],
+  "trk": {
+   "1": [
+    [
+     "rc",
+     "listen:v3-b2-b2-15-listen-1"
+    ]
+   ],
+   "3": [
+    [
+     "rc",
+     "words:v3-b2-6:3"
+    ]
+   ],
+   "4": [
+    [
+     "rc",
+     "grammar:v3-b2-6:1004"
+    ]
+   ],
+   "5": [
+    [
+     "rc",
+     "listen:v3-b2-b2-15-listen-2"
+    ]
+   ],
+   "6": [
+    [
+     "rc",
+     "read:v3-b2-b2-15-text"
+    ]
+   ],
+   "7": [
+    [
+     "g",
+     "sp:v3-b2-b2-15-s",
+     30
+    ]
+   ],
+   "8": [
+    [
+     "g",
+     "wr:v3-b2-b2-15-w",
+     1
+    ]
+   ]
+  },
+  "url": "/v3/lesson-b2-b2-15/"
+ },
+ {
+  "code": "B2-15",
+  "level": "B2",
+  "dossier": 6,
+  "lesson": 3,
+  "id": "v3-b2-b2-16",
+  "title_fr": "Le style soutenu",
+  "title_en": "Formal style and passive",
+  "outcome": "Use formal style and the passive",
+  "content_to_cover": "passive, nominalisation, register",
+  "grammar_to_teach": "stylistic inversion; ne explétif; ne… point / guère",
+  "source_refs": "E",
+  "old_lessons_available": [],
+  "status": "EMPTY_EXCEPT_GRAMMAR",
+  "empty_sections": [
+   "listening_audio",
+   "transcript",
+   "flashcards",
+   "listening_real_voice",
+   "reading_text",
+   "speaking_task",
+   "writing_task"
+  ],
+  "trk": {
+   "1": [
+    [
+     "rc",
+     "listen:v3-b2-b2-16-listen-1"
+    ]
+   ],
+   "3": [
+    [
+     "rc",
+     "words:v3-b2-6:4"
+    ]
+   ],
+   "4": [
+    [
+     "rc",
+     "grammar:v3-b2-6:1005"
+    ]
+   ],
+   "5": [
+    [
+     "rc",
+     "listen:v3-b2-b2-16-listen-2"
+    ]
+   ],
+   "6": [
+    [
+     "rc",
+     "read:v3-b2-b2-16-text"
+    ]
+   ],
+   "7": [
+    [
+     "g",
+     "sp:v3-b2-b2-16-s",
+     30
+    ]
+   ],
+   "8": [
+    [
+     "g",
+     "wr:v3-b2-b2-16-w",
+     1
+    ]
+   ]
+  },
+  "url": "/v3/lesson-b2-b2-16/"
+ },
+ {
+  "code": "B2-16",
+  "level": "B2",
+  "dossier": 7,
+  "lesson": 1,
+  "id": "v3-b2-b2-13",
+  "title_fr": "Tourisme et voyage",
+  "title_en": "Tourism and travel",
+  "outcome": "Discuss tourism and travel",
+  "content_to_cover": "tourism impact, travel experiences",
+  "grammar_to_teach": "durations (dans / en / pour / pendant); indefinites (chacun, aucun, plusieurs)",
+  "source_refs": "A B2-9",
+  "status": "FROM_V2",
+  "from_v2": "lesson-b2-9",
+  "old_lessons_available": [
+   "lesson-b2-9"
+  ],
+  "url": "/v3/lesson-b2-b2-13/"
+ },
+ {
+  "code": "B2-17",
+  "level": "B2",
+  "dossier": 7,
+  "lesson": 2,
+  "id": "v3-b2-b2-14",
+  "title_fr": "Art et création",
+  "title_en": "Art and creation",
+  "outcome": "Discuss art and creation",
+  "content_to_cover": "literature, cinema, art, criticism",
+  "grammar_to_teach": "the only/the first + subjunctive (le seul qui…); critical register",
+  "source_refs": "A B2-10",
+  "status": "FROM_V2",
+  "from_v2": "lesson-b2-10",
+  "old_lessons_available": [
+   "lesson-b2-10"
+  ],
+  "url": "/v3/lesson-b2-b2-14/"
+ },
+ {
+  "code": "B2-18",
+  "level": "B2",
+  "dossier": 8,
+  "lesson": 1,
+  "id": "v3-b2-b2-17",
+  "title_fr": "Comprendre l'authentique",
+  "title_en": "Authentic material",
+  "outcome": "Understand authentic material",
+  "content_to_cover": "long audio and texts, implicit meaning",
+  "grammar_to_teach": "Listening: implicit meaning, abbreviations, language levels",
+  "source_refs": "E",
+  "old_lessons_available": [],
+  "status": "EMPTY_EXCEPT_GRAMMAR",
+  "empty_sections": [
+   "listening_audio",
+   "transcript",
+   "flashcards",
+   "listening_real_voice",
+   "reading_text",
+   "speaking_task",
+   "writing_task"
+  ],
+  "trk": {
+   "1": [
+    [
+     "rc",
+     "listen:v3-b2-b2-17-listen-1"
+    ]
+   ],
+   "3": [
+    [
+     "rc",
+     "words:v3-b2-8:0"
+    ]
+   ],
+   "4": [
+    [
+     "rc",
+     "grammar:v3-b2-8:1000"
+    ]
+   ],
+   "5": [
+    [
+     "rc",
+     "listen:v3-b2-b2-17-listen-2"
+    ]
+   ],
+   "6": [
+    [
+     "rc",
+     "read:v3-b2-b2-17-text"
+    ]
+   ],
+   "7": [
+    [
+     "g",
+     "sp:v3-b2-b2-17-s",
+     30
+    ]
+   ],
+   "8": [
+    [
+     "g",
+     "wr:v3-b2-b2-17-w",
+     1
+    ]
+   ]
+  },
+  "url": "/v3/lesson-b2-b2-17/"
+ },
+ {
   "code": "B2-19",
   "level": "B2",
-  "dossier": 4,
-  "lesson": 4,
+  "dossier": 8,
+  "lesson": 2,
   "id": "v3-b2-b2-19",
   "title_fr": "Bilan B2",
   "title_en": "Review and DELF B2 practice",
@@ -3236,13 +3236,13 @@
    "3": [
     [
      "rc",
-     "words:v3-b2-4:3"
+     "words:v3-b2-8:1"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-b2-4:1003"
+     "grammar:v3-b2-8:1001"
     ]
    ],
    "5": [
@@ -3419,8 +3419,8 @@
  {
   "code": "C1-3",
   "level": "C1",
-  "dossier": 1,
-  "lesson": 3,
+  "dossier": 2,
+  "lesson": 1,
   "id": "v3-c12-c1-03",
   "title_fr": "Santé, science et éthique",
   "title_en": "Health, science and ethics",
@@ -3438,8 +3438,8 @@
  {
   "code": "C1-4",
   "level": "C1",
-  "dossier": 1,
-  "lesson": 4,
+  "dossier": 2,
+  "lesson": 2,
   "id": "v3-c12-c1-04",
   "title_fr": "Le corps et l'art",
   "title_en": "Body, art and inequality",
@@ -3470,13 +3470,13 @@
    "3": [
     [
      "rc",
-     "words:v3-c12-1:8"
+     "words:v3-c12-2:6"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-c12-1:1005"
+     "grammar:v3-c12-2:1003"
     ]
    ],
    "5": [
@@ -3511,7 +3511,7 @@
  {
   "code": "C1-5",
   "level": "C1",
-  "dossier": 2,
+  "dossier": 3,
   "lesson": 1,
   "id": "v3-c12-c1-05",
   "title_fr": "Société, identité, générations",
@@ -3531,27 +3531,8 @@
  {
   "code": "C1-6",
   "level": "C1",
-  "dossier": 2,
+  "dossier": 3,
   "lesson": 2,
-  "id": "v3-c12-c1-06",
-  "title_fr": "Travail et économie",
-  "title_en": "Work and economy",
-  "outcome": "Discuss work and economy",
-  "content_to_cover": "well-being at work, labour conflict, trade and commerce",
-  "grammar_to_teach": "journalistic conditional (rumour); participe absolu; néanmoins / toutefois",
-  "source_refs": "E A C12-2 · C D6",
-  "status": "FROM_V2",
-  "from_v2": "lesson-c12-2",
-  "old_lessons_available": [
-   "lesson-c12-2"
-  ],
-  "url": "/v3/lesson-c12-c1-06/"
- },
- {
-  "code": "C1-7",
-  "level": "C1",
-  "dossier": 2,
-  "lesson": 3,
   "id": "v3-c12-c1-07",
   "title_fr": "Philosophie et émotions",
   "title_en": "Philosophy and emotions",
@@ -3580,13 +3561,13 @@
    "3": [
     [
      "rc",
-     "words:v3-c12-2:9"
+     "words:v3-c12-3:6"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-c12-2:1006"
+     "grammar:v3-c12-3:1003"
     ]
    ],
    "5": [
@@ -3619,80 +3600,47 @@
   "url": "/v3/lesson-c12-c1-07/"
  },
  {
+  "code": "C1-7",
+  "level": "C1",
+  "dossier": 4,
+  "lesson": 1,
+  "id": "v3-c12-c1-06",
+  "title_fr": "Travail et économie",
+  "title_en": "Work and economy",
+  "outcome": "Discuss work and economy",
+  "content_to_cover": "well-being at work, labour conflict, trade and commerce",
+  "grammar_to_teach": "journalistic conditional (rumour); participe absolu; néanmoins / toutefois",
+  "source_refs": "E A C12-2 · C D6",
+  "status": "FROM_V2",
+  "from_v2": "lesson-c12-2",
+  "old_lessons_available": [
+   "lesson-c12-2"
+  ],
+  "url": "/v3/lesson-c12-c1-06/"
+ },
+ {
   "code": "C1-8",
   "level": "C1",
-  "dossier": 2,
-  "lesson": 4,
-  "id": "v3-c12-c1-08",
-  "title_fr": "Les registres de la langue",
-  "title_en": "Register and language variation",
-  "outcome": "Master register and language variation",
-  "content_to_cover": "borrowings, decolonising language, literary extracts",
-  "grammar_to_teach": "registers, borrowings, neologisms, verlan",
-  "source_refs": "E · C D8",
-  "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
-  "empty_sections": [
-   "listening_audio",
-   "transcript",
-   "flashcards",
-   "listening_real_voice",
-   "reading_text",
-   "speaking_task",
-   "writing_task"
+  "dossier": 4,
+  "lesson": 2,
+  "id": "v3-c12-c1-13",
+  "title_fr": "Politique et institutions",
+  "title_en": "Politics and institutions",
+  "outcome": "Understand politics and institutions",
+  "content_to_cover": "borders, law, institutions",
+  "grammar_to_teach": "legal register; pronominal passive vs passive; official formulas",
+  "source_refs": "E A C12-4",
+  "status": "FROM_V2",
+  "from_v2": "lesson-c12-4",
+  "old_lessons_available": [
+   "lesson-c12-4"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-c12-c1-08-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-c12-2:10"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-c12-2:1007"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-c12-c1-08-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-c12-c1-08-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-c12-c1-08-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-c12-c1-08-w",
-     1
-    ]
-   ]
-  },
-  "url": "/v3/lesson-c12-c1-08/"
+  "url": "/v3/lesson-c12-c1-13/"
  },
  {
   "code": "C1-9",
   "level": "C1",
-  "dossier": 3,
+  "dossier": 5,
   "lesson": 1,
   "id": "v3-c12-c1-09",
   "title_fr": "L'ère numérique",
@@ -3711,8 +3659,27 @@
  {
   "code": "C1-10",
   "level": "C1",
-  "dossier": 3,
+  "dossier": 5,
   "lesson": 2,
+  "id": "v3-c12-c1-12",
+  "title_fr": "Écologie et énergie",
+  "title_en": "Ecology and energy",
+  "outcome": "Discuss ecology and energy",
+  "content_to_cover": "climate impacts, political ecology, argument strategy",
+  "grammar_to_teach": "à supposer que / quand bien même; futur antérieur in argument",
+  "source_refs": "E A C12-3 · C D12",
+  "status": "FROM_V2",
+  "from_v2": "lesson-c12-3",
+  "old_lessons_available": [
+   "lesson-c12-3"
+  ],
+  "url": "/v3/lesson-c12-c1-12/"
+ },
+ {
+  "code": "C1-11",
+  "level": "C1",
+  "dossier": 6,
+  "lesson": 1,
   "id": "v3-c12-c1-10",
   "title_fr": "Histoire et mémoire",
   "title_en": "History and memory",
@@ -3741,13 +3708,13 @@
    "3": [
     [
      "rc",
-     "words:v3-c12-3:6"
+     "words:v3-c12-6:0"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-c12-3:1006"
+     "grammar:v3-c12-6:1000"
     ]
    ],
    "5": [
@@ -3780,10 +3747,10 @@
   "url": "/v3/lesson-c12-c1-10/"
  },
  {
-  "code": "C1-11",
+  "code": "C1-12",
   "level": "C1",
-  "dossier": 3,
-  "lesson": 3,
+  "dossier": 6,
+  "lesson": 2,
   "id": "v3-c12-c1-11",
   "title_fr": "L'interculturel",
   "title_en": "Interculturality",
@@ -3812,13 +3779,13 @@
    "3": [
     [
      "rc",
-     "words:v3-c12-3:7"
+     "words:v3-c12-6:1"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-c12-3:1007"
+     "grammar:v3-c12-6:1001"
     ]
    ],
    "5": [
@@ -3851,47 +3818,80 @@
   "url": "/v3/lesson-c12-c1-11/"
  },
  {
-  "code": "C1-12",
-  "level": "C1",
-  "dossier": 3,
-  "lesson": 4,
-  "id": "v3-c12-c1-12",
-  "title_fr": "Écologie et énergie",
-  "title_en": "Ecology and energy",
-  "outcome": "Discuss ecology and energy",
-  "content_to_cover": "climate impacts, political ecology, argument strategy",
-  "grammar_to_teach": "à supposer que / quand bien même; futur antérieur in argument",
-  "source_refs": "E A C12-3 · C D12",
-  "status": "FROM_V2",
-  "from_v2": "lesson-c12-3",
-  "old_lessons_available": [
-   "lesson-c12-3"
-  ],
-  "url": "/v3/lesson-c12-c1-12/"
- },
- {
   "code": "C1-13",
   "level": "C1",
-  "dossier": 4,
+  "dossier": 7,
   "lesson": 1,
-  "id": "v3-c12-c1-13",
-  "title_fr": "Politique et institutions",
-  "title_en": "Politics and institutions",
-  "outcome": "Understand politics and institutions",
-  "content_to_cover": "borders, law, institutions",
-  "grammar_to_teach": "legal register; pronominal passive vs passive; official formulas",
-  "source_refs": "E A C12-4",
-  "status": "FROM_V2",
-  "from_v2": "lesson-c12-4",
-  "old_lessons_available": [
-   "lesson-c12-4"
+  "id": "v3-c12-c1-08",
+  "title_fr": "Les registres de la langue",
+  "title_en": "Register and language variation",
+  "outcome": "Master register and language variation",
+  "content_to_cover": "borrowings, decolonising language, literary extracts",
+  "grammar_to_teach": "registers, borrowings, neologisms, verlan",
+  "source_refs": "E · C D8",
+  "old_lessons_available": [],
+  "status": "EMPTY_EXCEPT_GRAMMAR",
+  "empty_sections": [
+   "listening_audio",
+   "transcript",
+   "flashcards",
+   "listening_real_voice",
+   "reading_text",
+   "speaking_task",
+   "writing_task"
   ],
-  "url": "/v3/lesson-c12-c1-13/"
+  "trk": {
+   "1": [
+    [
+     "rc",
+     "listen:v3-c12-c1-08-listen-1"
+    ]
+   ],
+   "3": [
+    [
+     "rc",
+     "words:v3-c12-7:0"
+    ]
+   ],
+   "4": [
+    [
+     "rc",
+     "grammar:v3-c12-7:1000"
+    ]
+   ],
+   "5": [
+    [
+     "rc",
+     "listen:v3-c12-c1-08-listen-2"
+    ]
+   ],
+   "6": [
+    [
+     "rc",
+     "read:v3-c12-c1-08-text"
+    ]
+   ],
+   "7": [
+    [
+     "g",
+     "sp:v3-c12-c1-08-s",
+     30
+    ]
+   ],
+   "8": [
+    [
+     "g",
+     "wr:v3-c12-c1-08-w",
+     1
+    ]
+   ]
+  },
+  "url": "/v3/lesson-c12-c1-08/"
  },
  {
   "code": "C1-14",
   "level": "C1",
-  "dossier": 4,
+  "dossier": 7,
   "lesson": 2,
   "id": "v3-c12-c1-14",
   "title_fr": "Le discours structuré",
@@ -3921,13 +3921,13 @@
    "3": [
     [
      "rc",
-     "words:v3-c12-4:6"
+     "words:v3-c12-7:1"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-c12-4:1003"
+     "grammar:v3-c12-7:1001"
     ]
    ],
    "5": [
@@ -3962,7 +3962,7 @@
  {
   "code": "C1-15",
   "level": "C1",
-  "dossier": 4,
+  "dossier": 7,
   "lesson": 3,
   "id": "v3-c12-c1-15",
   "title_fr": "La grammaire avancée",
@@ -3992,13 +3992,13 @@
    "3": [
     [
      "rc",
-     "words:v3-c12-4:7"
+     "words:v3-c12-7:2"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-c12-4:1004"
+     "grammar:v3-c12-7:1002"
     ]
    ],
    "5": [
@@ -4033,7 +4033,7 @@
  {
   "code": "C1-16",
   "level": "C1",
-  "dossier": 4,
+  "dossier": 7,
   "lesson": 4,
   "id": "v3-c12-c1-16",
   "title_fr": "Écrire à un niveau avancé",
@@ -4063,13 +4063,13 @@
    "3": [
     [
      "rc",
-     "words:v3-c12-4:8"
+     "words:v3-c12-7:3"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-c12-4:1005"
+     "grammar:v3-c12-7:1003"
     ]
    ],
    "5": [
@@ -4104,7 +4104,7 @@
  {
   "code": "C2-1",
   "level": "C2",
-  "dossier": 5,
+  "dossier": 8,
   "lesson": 1,
   "id": "v3-c12-c2-01",
   "title_fr": "Résumer et reformuler",
@@ -4134,13 +4134,13 @@
    "3": [
     [
      "rc",
-     "words:v3-c12-5:0"
+     "words:v3-c12-8:0"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-c12-5:1000"
+     "grammar:v3-c12-8:1000"
     ]
    ],
    "5": [
@@ -4175,7 +4175,7 @@
  {
   "code": "C2-2",
   "level": "C2",
-  "dossier": 5,
+  "dossier": 8,
   "lesson": 2,
   "id": "v3-c12-c2-02",
   "title_fr": "Les nuances",
@@ -4205,13 +4205,13 @@
    "3": [
     [
      "rc",
-     "words:v3-c12-5:1"
+     "words:v3-c12-8:1"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-c12-5:1001"
+     "grammar:v3-c12-8:1001"
     ]
    ],
    "5": [
@@ -4246,7 +4246,7 @@
  {
   "code": "C2-3",
   "level": "C2",
-  "dossier": 5,
+  "dossier": 8,
   "lesson": 3,
   "id": "v3-c12-c2-03",
   "title_fr": "Penser de façon critique",
@@ -4276,13 +4276,13 @@
    "3": [
     [
      "rc",
-     "words:v3-c12-5:2"
+     "words:v3-c12-8:2"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-c12-5:1002"
+     "grammar:v3-c12-8:1002"
     ]
    ],
    "5": [
@@ -4317,8 +4317,8 @@
  {
   "code": "C2-4",
   "level": "C2",
-  "dossier": 5,
-  "lesson": 4,
+  "dossier": 9,
+  "lesson": 1,
   "id": "v3-c12-c2-04",
   "title_fr": "Politique internationale",
   "title_en": "Politics and international affairs",
@@ -4349,13 +4349,13 @@
    "3": [
     [
      "rc",
-     "words:v3-c12-5:3"
+     "words:v3-c12-9:0"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-c12-5:1003"
+     "grammar:v3-c12-9:1000"
     ]
    ],
    "5": [
@@ -4390,8 +4390,8 @@
  {
   "code": "C2-5",
   "level": "C2",
-  "dossier": 6,
-  "lesson": 1,
+  "dossier": 9,
+  "lesson": 2,
   "id": "v3-c12-c2-05",
   "title_fr": "Littérature et textes classiques",
   "title_en": "Literature",
@@ -4420,13 +4420,13 @@
    "3": [
     [
      "rc",
-     "words:v3-c12-6:0"
+     "words:v3-c12-9:1"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-c12-6:1000"
+     "grammar:v3-c12-9:1001"
     ]
    ],
    "5": [
@@ -4461,8 +4461,8 @@
  {
   "code": "C2-6",
   "level": "C2",
-  "dossier": 6,
-  "lesson": 2,
+  "dossier": 9,
+  "lesson": 3,
   "id": "v3-c12-c2-06",
   "title_fr": "Domaines spécialisés",
   "title_en": "Specialised domains",
@@ -4491,13 +4491,13 @@
    "3": [
     [
      "rc",
-     "words:v3-c12-6:1"
+     "words:v3-c12-9:2"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-c12-6:1001"
+     "grammar:v3-c12-9:1002"
     ]
    ],
    "5": [
@@ -4532,8 +4532,8 @@
  {
   "code": "C2-7",
   "level": "C2",
-  "dossier": 6,
-  "lesson": 3,
+  "dossier": 10,
+  "lesson": 1,
   "id": "v3-c12-c2-07",
   "title_fr": "Maîtriser le style",
   "title_en": "Mastery of style",
@@ -4562,13 +4562,13 @@
    "3": [
     [
      "rc",
-     "words:v3-c12-6:2"
+     "words:v3-c12-10:0"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-c12-6:1002"
+     "grammar:v3-c12-10:1000"
     ]
    ],
    "5": [
@@ -4603,8 +4603,8 @@
  {
   "code": "C2-8",
   "level": "C2",
-  "dossier": 6,
-  "lesson": 4,
+  "dossier": 10,
+  "lesson": 2,
   "id": "v3-c12-c2-08",
   "title_fr": "Parler longuement",
   "title_en": "Extended speaking",
@@ -4633,13 +4633,13 @@
    "3": [
     [
      "rc",
-     "words:v3-c12-6:3"
+     "words:v3-c12-10:1"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-c12-6:1003"
+     "grammar:v3-c12-10:1001"
     ]
    ],
    "5": [
@@ -4674,7 +4674,7 @@
  {
   "code": "C2-9",
   "level": "C2",
-  "dossier": 7,
+  "dossier": 11,
   "lesson": 1,
   "id": "v3-c12-c2-09",
   "title_fr": "Écrire longuement",
@@ -4704,13 +4704,13 @@
    "3": [
     [
      "rc",
-     "words:v3-c12-7:0"
+     "words:v3-c12-11:0"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-c12-7:1000"
+     "grammar:v3-c12-11:1000"
     ]
    ],
    "5": [
@@ -4745,7 +4745,7 @@
  {
   "code": "C2-10",
   "level": "C2",
-  "dossier": 7,
+  "dossier": 11,
   "lesson": 2,
   "id": "v3-c12-c2-10",
   "title_fr": "Tout comprendre",
@@ -4775,13 +4775,13 @@
    "3": [
     [
      "rc",
-     "words:v3-c12-7:1"
+     "words:v3-c12-11:1"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-c12-7:1001"
+     "grammar:v3-c12-11:1001"
     ]
    ],
    "5": [
@@ -4816,7 +4816,7 @@
  {
   "code": "C2-11",
   "level": "C2",
-  "dossier": 7,
+  "dossier": 11,
   "lesson": 3,
   "id": "v3-c12-c2-11",
   "title_fr": "Bilan C2",
@@ -4846,13 +4846,13 @@
    "3": [
     [
      "rc",
-     "words:v3-c12-7:2"
+     "words:v3-c12-11:2"
     ]
    ],
    "4": [
     [
      "rc",
-     "grammar:v3-c12-7:1002"
+     "grammar:v3-c12-11:1002"
     ]
    ],
    "5": [
