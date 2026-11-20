@@ -1,44 +1,457 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"><title>Camelon · CEFR order (v2)</title>
-<link rel="icon" href="/favicon.ico"><link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;background:#f6f4ff;font-family:Nunito,sans-serif;color:#22316e;padding:0 0 40px}
-.wrap{max-width:560px;margin:0 auto;padding:0 16px}
-header{padding:calc(env(safe-area-inset-top) + 18px) 0 8px;display:flex;align-items:center;gap:10px}
-h1{font:600 26px Fredoka,sans-serif;margin:0}.badge{font:800 11px Nunito;background:#7a5ff0;color:#fff;border-radius:10px;padding:3px 8px}
-.tabs{display:flex;gap:8px;overflow-x:auto;padding:10px 0;position:sticky;top:0;background:#f6f4ff;z-index:5}
-.tab{flex:none;border:0;border-radius:16px;padding:9px 16px;font:900 15px Nunito;background:#e4e0fa;color:#22316e}.tab.on{background:#7a5ff0;color:#fff}
-.goal{background:#fff;border-radius:22px;padding:16px;margin:6px 0 12px;box-shadow:0 2px 10px #7a5ff01a}
-.goal h2{margin:0 0 4px;font:600 20px Fredoka}.goal p{margin:0;font-size:14px;line-height:1.4;color:#4a527f;font-weight:700}
-.cont{display:block;width:100%;margin-top:12px;border:0;border-radius:18px;background:#7a5ff0;color:#fff;font:900 16px Nunito;padding:13px;text-decoration:none;text-align:center}
-.obj{background:#fff;border-radius:22px;padding:14px;margin-bottom:12px;box-shadow:0 2px 10px #7a5ff014}
-.oh{display:flex;align-items:center;gap:12px}.num{flex:none;width:38px;height:38px;border-radius:13px;background:#e4e0fa;display:flex;align-items:center;justify-content:center;font-weight:900}
-.oh b{font-size:16px;flex:1}.cnt{font-size:12px;font-weight:800;color:#6b6f8d}
-.les{display:flex;align-items:center;gap:10px;margin-top:8px;padding:10px 12px;border-radius:16px;background:#f8f6ff;text-decoration:none;color:inherit}
-.les:active{background:#ede9fe}.les .t{flex:1;min-width:0}.les .t b{display:block;font-size:14px}.les .t span{font-size:12px;color:#6b6f8d;font-weight:700}
-.o{font-size:11px;color:#9a9db8;font-weight:800}.ck{flex:none;width:24px;height:24px;border-radius:50%;border:2px solid #cfc9f3;display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff}
-.ck.d{background:#2fae6b;border-color:#2fae6b}.ck.p{border-color:#7a5ff0;background:#efeaff}
-.pt{font-size:12px;line-height:1.4;color:#6b6f8d;font-weight:700;margin:8px 0 0}.mis{border:2px dashed #cfc9f3;background:#fcfbff;box-shadow:none}.tag{font:800 11px Nunito;border-radius:9px;padding:3px 8px;background:#fff1d6;color:#9a5b00;margin-top:8px;display:inline-block}.xt{background:#f1f3f8}.sum{margin-top:10px;font-size:13px;font-weight:800;color:#4a527f}
-footer{text-align:center;margin-top:18px;font-size:13px;font-weight:800}footer a{color:#7a5ff0}
-</style></head><body><div class="wrap">
-<header><h1>Camelon</h1><span class="badge">v2 · CEFR order</span></header>
-<div class="tabs" id="tabs"></div><div id="main"></div>
-<footer><a href="/">Open the original version</a></footer></div>
-<script>
-var LV=[{"id": "a1", "name": "A1", "title": "Survive and connect", "goal": "Communicate in simple, face-to-face situations: introduce yourself and others, talk about daily life, and ask for and give basic information.", "obj": [{"n": 1, "t": "Greet and say your name", "p": "Hello / goodbye, formal (vous) and informal (tu); How are you? and answering; say your name; polite words", "ls": [{"dir": "lesson-1-1", "key": "orig-a1-m0-l1", "t": "Discover French and introduce yourself", "s": "What's your name?", "o": "1.1"}, {"dir": "lesson-2-1", "key": "orig-a1-m1-l1", "t": "Tu or vous — greetings and politeness", "s": "Do you say tu or vous?", "o": "2.1"}]}, {"n": 2, "t": "The alphabet, spelling and numbers 0–100", "p": "Letters and accents; spell your name aloud; numbers 0–20, then 20–100; say a phone number and an email address", "ls": [{"dir": "lesson-1-2", "key": "orig-a1-m0-l2", "t": "Spell your name in French", "s": "How do you spell your name?", "o": "1.2"}]}, {"n": 3, "t": "Say where you are from", "p": "Countries and nationalities; être / venir de; cities and prepositions (en, au, à)", "ls": [{"dir": "lesson-1-3", "key": "orig-a1-m0-l3", "t": "The world in French", "s": "What country is this?", "o": "1.3"}, {"dir": "lesson-2-3", "key": "orig-a1-m1-l3", "t": "Say who you are", "s": "Where are you from?", "o": "2.3"}, {"dir": "lesson-3-1", "key": "orig-a1-m2-l1", "t": "Places and Travel — Where are you from?", "s": "Where are you from?", "o": "3.1"}]}, {"n": 4, "t": "Say your age and birth", "p": "Numbers for age; birthday and date of birth; place of birth", "ls": [{"dir": "lesson-2-5", "key": "orig-a1-m1-l5", "t": "My identity card", "s": "How old are you?", "o": "2.5"}, {"dir": "lesson-6-3", "key": "orig-a1-m5-l3", "t": "Born where, born when?", "s": "Where and when were you born?", "o": "6.3"}]}, {"n": 5, "t": "Say your job and why you learn French", "p": "Professions; workplace or school; reasons with parce que / pour; dreams and goals", "ls": [{"dir": "lesson-4-4", "key": "orig-a1-m3-l4", "t": "Long live speed-meetings!", "s": "What's your job? What are your dreams?", "o": "4.4"}, {"dir": "lesson-6-5", "key": "orig-a1-m5-l5", "t": "Why did you choose your job?", "s": "Why did you choose your job?", "o": "6.5"}, {"dir": "lesson-2-6", "key": "orig-a1-m1-l6", "t": "Give a reason (parce que / pour) and punctuate", "s": "Why do you learn French?", "o": "2.6"}]}, {"n": 6, "t": "Fill in a form", "p": "Form words (nom, prénom, adresse, date de naissance); write your address; phone, email, signature, date; tick boxes", "ls": []}, {"n": 7, "t": "Introduce someone else", "p": "Il / elle: my friend, my colleague; name, age, nationality, job; Enchanté(e)", "ls": [{"dir": "lesson-2-4", "key": "orig-a1-m1-l4", "t": "Introduce someone else", "s": "Who is this?", "o": "2.4"}]}, {"n": 8, "t": "Talk about your family", "p": "Family members; names and ages; possessives (mon, ma, mes); describe a person", "ls": [{"dir": "lesson-4-1", "key": "orig-a1-m3-l1", "t": "In the family", "s": "Tell me about your family.", "o": "4.1"}, {"dir": "lesson-4-2", "key": "orig-a1-m3-l2", "t": "The selfie contest", "s": "What does your best friend look like?", "o": "4.2"}, {"dir": "lesson-6-4", "key": "orig-a1-m5-l4", "t": "Who do you look like?", "s": "Who do you look like?", "o": "6.4"}]}, {"n": 9, "t": "Your home and your city", "p": "Rooms and furniture; apartment or house, floor, neighbourhood; places in town; il y a", "ls": [{"dir": "lesson-3-4", "key": "orig-a1-m2-l4", "t": "Places and Travel — Where do you live?", "s": "Where do you live?", "o": "3.4"}, {"dir": "lesson-3-5", "key": "orig-a1-m2-l5", "t": "Places and Travel — Where are you staying?", "s": "Where are you staying?", "o": "3.5"}, {"dir": "lesson-7-3", "key": "orig-a1-m6-l3", "t": "Describe your city", "s": "What's your city like?", "o": "7.3"}, {"dir": "lesson-7-4", "key": "orig-a1-m6-l4", "t": "Describe a home in Morocco", "s": "What's your home like?", "o": "7.4"}]}, {"n": 10, "t": "Time, days and dates", "p": "Days, months, seasons; say the date; tell the time; opening hours and appointments", "ls": [{"dir": "lesson-1-4", "key": "orig-a1-m0-l4", "t": "Survive in the classroom", "s": "What day is it today?", "o": "1.4"}, {"dir": "lesson-5-1", "key": "orig-a1-m4-l1", "t": "Say the time and plan your day", "s": "What time is it?", "o": "5.1"}]}, {"n": 11, "t": "Food and ordering", "p": "Foods, drinks, quantities; order at a café or restaurant; prices and paying", "ls": [{"dir": "lesson-8-1", "key": "orig-a1-m7-l1", "t": "Eating French-style", "s": "What would you like to eat?", "o": "8.1"}, {"dir": "lesson-8-2", "key": "orig-a1-m7-l2", "t": "At the market", "s": "How much do you need?", "o": "8.2"}, {"dir": "lesson-9-2", "key": "orig-a1-m8-l2", "t": "Dinner in town", "s": "What would you like to order?", "o": "9.2"}]}, {"n": 12, "t": "Shopping and clothes", "p": "Clothes, colours and sizes; ask for what you need; likes and dislikes", "ls": [{"dir": "lesson-8-5", "key": "orig-a1-m7-l5", "t": "Shopping for clothes", "s": "What are you looking for?", "o": "8.5"}, {"dir": "lesson-9-3", "key": "orig-a1-m8-l3", "t": "The costume party", "s": "Which outfit do you prefer?", "o": "9.3"}]}, {"n": 13, "t": "Ask for and give directions", "p": "Left, right, straight on, next to, opposite; ask where something is; understand short instructions", "ls": [{"dir": "lesson-2-2", "key": "orig-a1-m1-l2", "t": "Ask for information — politely", "s": "Where is the French class?", "o": "2.2"}, {"dir": "lesson-3-2", "key": "orig-a1-m2-l2", "t": "Places and Travel — Where is it?", "s": "Where is it?", "o": "3.2"}, {"dir": "lesson-3-3", "key": "orig-a1-m2-l3", "t": "Places and Travel — How are you getting to Aosta?", "s": "How are you getting to Aosta?", "o": "3.3"}]}, {"n": 14, "t": "Daily routine", "p": "Daily verbs; frequency; a working day", "ls": [{"dir": "lesson-5-2", "key": "orig-a1-m4-l2", "t": "Talk about your morning", "s": "What do you do every morning?", "o": "5.2"}, {"dir": "lesson-5-4", "key": "orig-a1-m4-l4", "t": "A day at work", "s": "What's a typical day at work like?", "o": "5.4"}, {"dir": "lesson-5-3", "key": "orig-a1-m4-l3", "t": "Reading, writing and how often", "s": "How often do you read?", "o": "5.3"}]}, {"n": 15, "t": "Likes and free time", "p": "Hobbies and sports; what you like doing; weekend activities", "ls": [{"dir": "lesson-4-3", "key": "orig-a1-m3-l3", "t": "French and us", "s": "What do you like doing?", "o": "4.3"}, {"dir": "lesson-4-5", "key": "orig-a1-m3-l5", "t": "The free neighbourhood", "s": "What do you do in your free time?", "o": "4.5"}, {"dir": "lesson-5-5", "key": "orig-a1-m4-l5", "t": "Weekends and going out", "s": "What do you like doing on weekends?", "o": "5.5"}]}, {"n": 16, "t": "Invite someone", "p": "Invite, accept or refuse; suggest a time and place", "ls": [{"dir": "lesson-5-6", "key": "orig-a1-m4-l6", "t": "Invite a friend", "s": "Are you free this weekend?", "o": "5.6"}, {"dir": "lesson-9-6", "key": "orig-a1-m8-l6", "t": "A real party", "s": "Who are you inviting to your party?", "o": "9.6"}]}, {"n": 17, "t": "Transport and simple travel", "p": "Bus, train, metro, plane; buy a ticket, times and platform; book a hotel room; holiday plans", "ls": [{"dir": "lesson-7-1", "key": "orig-a1-m6-l1", "t": "Plan the next holiday", "s": "Where are you going on your next holiday?", "o": "7.1"}, {"dir": "lesson-7-2", "key": "orig-a1-m6-l2", "t": "Dream of a destination", "s": "Where would you like to go?", "o": "7.2"}, {"dir": "lesson-3-6", "key": "orig-a1-m2-l6", "t": "Places and Travel — How long are you staying?", "s": "How long are you staying?", "o": "3.6"}]}, {"n": 18, "t": "Health and weather", "p": "Body parts, I have a headache; weather today; feelings during a trip", "ls": [{"dir": "lesson-4-6", "key": "orig-a1-m3-l6", "t": "Where does it hurt?", "s": "Where does it hurt?", "o": "4.6"}, {"dir": "lesson-7-5", "key": "orig-a1-m6-l5", "t": "Choose the season", "s": "What's the weather like?", "o": "7.5"}, {"dir": "lesson-7-6", "key": "orig-a1-m6-l6", "t": "Feel the trip", "s": "How do you feel about your trip?", "o": "7.6"}]}, {"n": 19, "t": "Mini-dialogues and review", "p": "Combine objectives 1–5 in one conversation; combine 6–17 in role-plays", "ls": [{"dir": "lesson-9-1", "key": "orig-a1-m8-l1", "t": "Look how far you've come", "s": "How has your French improved?", "o": "9.1"}]}, {"n": 20, "t": "Extra in the app (outside this CEFR level)", "p": "Lessons the app already has that do not belong to the CEFR objectives above", "ls": [{"dir": "lesson-6-1", "key": "orig-a1-m5-l1", "t": "What you did yesterday", "s": "What did you do yesterday?", "o": "6.1"}, {"dir": "lesson-6-2", "key": "orig-a1-m5-l2", "t": "What's next?", "s": "What are you going to do next?", "o": "6.2"}, {"dir": "lesson-6-6", "key": "orig-a1-m5-l6", "t": "A good piece of advice", "s": "What advice would you give a friend?", "o": "6.6"}, {"dir": "lesson-8-3", "key": "orig-a1-m7-l3", "t": "Reading habits", "s": "Do you read more or less than before?", "o": "8.3"}, {"dir": "lesson-8-4", "key": "orig-a1-m7-l4", "t": "Life before", "s": "What was your life like before?", "o": "8.4"}, {"dir": "lesson-8-6", "key": "orig-a1-m7-l6", "t": "A little corner of France", "s": "Did you like it?", "o": "8.6"}, {"dir": "lesson-9-4", "key": "orig-a1-m8-l4", "t": "At someone's home", "s": "Who's the person you're talking about?", "o": "9.4"}, {"dir": "lesson-9-5", "key": "orig-a1-m8-l5", "t": "A little culture?", "s": "What movie would you recommend?", "o": "9.5"}], "x": 1}]}, {"id": "a2", "name": "A2", "title": "Handle everyday tasks", "goal": "Manage routine situations and exchange simple information about yourself, your past and your plans.", "obj": [{"n": 1, "t": "Talk about your daily life in detail", "p": "Reflexive verbs and a full day; work or study schedule; housework and chores", "ls": []}, {"n": 2, "t": "Describe people, places and things", "p": "Appearance and personality; adjective agreement and position; compare (plus, moins, aussi)", "ls": [{"dir": "lesson-a2-1", "key": "orig-a2-u1-l1", "t": "Describe people and feelings", "s": "Le caractère et les sentiments", "o": ""}]}, {"n": 3, "t": "Shop and handle money", "p": "Clothes, sizes, returns; prices, discounts, paying; pronouns le, la, les, lui, leur", "ls": [{"dir": "lesson-a2-5", "key": "orig-a2-u5-l1", "t": "Buy and manage money", "s": "Consommer et l'argent", "o": ""}]}, {"n": 4, "t": "Eat out and cook", "p": "Read a menu; allergies and preferences; recipe steps and quantities; complain politely", "ls": [{"dir": "lesson-a2-4", "key": "orig-a2-u4-l1", "t": "Cook, eat and use quantities", "s": "La cuisine et les quantités", "o": ""}]}, {"n": 5, "t": "Talk about the past (what happened)", "p": "Passé composé with avoir and être; yesterday, last week; tell a short story in order", "ls": []}, {"n": 6, "t": "Talk about childhood and past habits", "p": "Imparfait; memories: when I was a child; imparfait vs passé composé", "ls": [{"dir": "lesson-a2-7", "key": "orig-a2-u7-l1", "t": "Memories and the past", "s": "Souvenirs et nature", "o": ""}]}, {"n": 7, "t": "Talk about plans and the near future", "p": "Futur proche; make plans, invite, suggest; arrange a meeting", "ls": []}, {"n": 8, "t": "Get around the city and use public services", "p": "Transport passes, delays; post office, bank, pharmacy, town hall; ask for help and repetition", "ls": []}, {"n": 9, "t": "Travel and accommodation", "p": "Book tickets, hotels; check in; problems in the room; holiday stories", "ls": [{"dir": "lesson-a2-6", "key": "orig-a2-u6-l1", "t": "Travel and holidays", "s": "Voyages et vacances", "o": ""}]}, {"n": 10, "t": "Health and the doctor", "p": "Describe symptoms and pain; make a medical appointment; understand advice and a prescription", "ls": [{"dir": "lesson-a2-9", "key": "orig-a2-u9-l1", "t": "Health and the doctor", "s": "Le corps et la santé", "o": ""}]}, {"n": 11, "t": "Work and jobs", "p": "Jobs, tasks, colleagues; simple CV and cover message; phone and email basics", "ls": [{"dir": "lesson-a2-3", "key": "orig-a2-u3-l1", "t": "Studies, jobs and career", "s": "Études, métiers et parcours", "o": ""}]}, {"n": 12, "t": "Housing", "p": "Find and visit a flat; describe problems to a landlord; rules and obligations", "ls": [{"dir": "lesson-a2-2", "key": "orig-a2-u2-l1", "t": "Home and neighbourhood", "s": "Le logement et le quartier", "o": ""}]}, {"n": 13, "t": "Write short messages", "p": "Texts, short emails, postcards; formal and informal openings and endings; thank, invite, apologise", "ls": []}, {"n": 14, "t": "Give opinions and preferences (simple)", "p": "Je pense que, à mon avis; agree / disagree; review and role-plays", "ls": []}, {"n": 15, "t": "Extra in the app (outside this CEFR level)", "p": "Lessons the app already has that do not belong to the CEFR objectives above", "ls": [{"dir": "lesson-a2-8", "key": "orig-a2-u8-l1", "t": "Nature and animals", "s": "La nature et les animaux", "o": ""}, {"dir": "lesson-a2-10", "key": "orig-a2-u10-l1", "t": "Technology and media", "s": "Technologies et médias", "o": ""}], "x": 1}]}, {"id": "b1", "name": "B1", "title": "Be independent in familiar situations", "goal": "Deal with most situations while living, travelling or working in French; describe experiences and give reasons and opinions.", "obj": [{"n": 1, "t": "Tell stories and experiences", "p": "Passé composé, imparfait, plus-que-parfait together; narrative connectors; feelings and reactions", "ls": []}, {"n": 2, "t": "Plans, hopes and predictions", "p": "Futur simple; conditionnel for wishes and polite requests; si + present / future", "ls": []}, {"n": 3, "t": "Give and justify opinions", "p": "Agree, disagree, hesitate; reasons and consequences; pros and cons", "ls": []}, {"n": 4, "t": "Advice, obligation and suggestions", "p": "Imperative, il faut que, subjunctive (first uses); give and refuse advice", "ls": []}, {"n": 5, "t": "Work and career", "p": "Interviews, CV, cover letter; meetings, tasks, deadlines; phone calls and formal emails", "ls": [{"dir": "lesson-b1-6", "key": "orig-u6-l1", "t": "Work and jobs", "s": "Le travail et l'emploi", "o": ""}]}, {"n": 6, "t": "Study, training and the future", "p": "Courses, exams, diplomas; goals and ambitions", "ls": []}, {"n": 7, "t": "Media, news and technology", "p": "Understand a news item; social media, apps, online safety; summarise what you read or heard", "ls": [{"dir": "lesson-b1-4", "key": "orig-u4-l1", "t": "Media and communication", "s": "Les médias et la communication", "o": ""}]}, {"n": 8, "t": "Neighbourhood and housing", "p": "Housing, neighbours, moving; describe your area; daily problems", "ls": [{"dir": "lesson-b1-5", "key": "orig-u5-l1", "t": "Neighbourhood and housing", "s": "Le quartier et le logement", "o": ""}]}, {"n": 9, "t": "Environment and recycling", "p": "Nature, recycling, everyday habits; opinions about the environment", "ls": [{"dir": "lesson-b1-7", "key": "orig-u7-l1", "t": "Environment", "s": "L'environnement", "o": ""}]}, {"n": 10, "t": "Shopping, complaints and money", "p": "Shops, paying, the budget; complaints and claims; reported speech (il a dit que)", "ls": [{"dir": "lesson-b1-9", "key": "orig-u9-l1", "t": "Shopping and money", "s": "Les achats et l'argent", "o": ""}]}, {"n": 11, "t": "Culture, leisure and travel stories", "p": "Films, books, music, museums; recommend and review; travel problems", "ls": [{"dir": "lesson-b1-1", "key": "orig-u1-l1", "t": "Free time and travel", "s": "Les loisirs et les voyages", "o": ""}]}, {"n": 12, "t": "Health, lifestyle and well-being", "p": "Habits, diet, sport, stress; talk to a doctor in detail", "ls": [{"dir": "lesson-b1-2", "key": "orig-u2-l1", "t": "Body and health", "s": "Le corps et la santé", "o": ""}]}, {"n": 13, "t": "Relationships and feelings", "p": "Family, friends, conflict, apologising; relative pronouns qui, que, où, dont", "ls": [{"dir": "lesson-b1-3", "key": "orig-u3-l1", "t": "Family, memories and celebrations", "s": "La famille et les fêtes", "o": ""}]}, {"n": 14, "t": "Write and speak with structure", "p": "Informal and formal letters; short essay; linking words", "ls": []}, {"n": 15, "t": "Understand authentic French", "p": "Radio, interviews, announcements; gist, keywords, guessing", "ls": []}, {"n": 16, "t": "Review and mixed tasks", "p": "Role-play: bank, doctor, workplace; short oral presentation", "ls": []}, {"n": 17, "t": "Extra in the app (outside this CEFR level)", "p": "Lessons the app already has that do not belong to the CEFR objectives above", "ls": [{"dir": "lesson-b1-8", "key": "orig-u8-l1", "t": "Food", "s": "L'alimentation", "o": ""}], "x": 1}]}, {"id": "b2", "name": "B2", "title": "Argue and work fluently", "goal": "Interact fluently with native speakers, present clear detailed arguments, and understand complex texts on concrete and abstract topics.", "obj": [{"n": 1, "t": "Argue a position", "p": "State a thesis; support with examples and data; concede, counter-argue, conclude; debate etiquette", "ls": []}, {"n": 2, "t": "Subjunctive and nuance", "p": "Subjunctive after emotion, doubt, necessity; certainty vs doubt; hypotheses", "ls": []}, {"n": 3, "t": "Cause, consequence, aim and concession", "p": "puisque, si bien que, pour que, bien que, malgré", "ls": []}, {"n": 4, "t": "Report and relate (indirect speech)", "p": "Tense changes; report questions, orders and opinions", "ls": []}, {"n": 5, "t": "Professional communication", "p": "Meetings, negotiation, presentations; reports, minutes, formal emails; clients and complaints", "ls": []}, {"n": 6, "t": "Current affairs and politics", "p": "Institutions and elections; read and compare press articles; a reasoned political opinion", "ls": [{"dir": "lesson-b2-2", "key": "orig-b2-u2-l1", "t": "Politics and engagement", "s": "La politique et l'engagement", "o": ""}]}, {"n": 7, "t": "Work and economy", "p": "Unemployment, inflation; work-life balance, remote work; consumer society", "ls": [{"dir": "lesson-b2-7", "key": "orig-b2-u7-l1", "t": "Work and economy", "s": "Le travail et l'économie", "o": ""}]}, {"n": 8, "t": "Society", "p": "Social issues and public debate", "ls": [{"dir": "lesson-b2-1", "key": "orig-b2-u1-l1", "t": "Society", "s": "Les faits de société", "o": ""}]}, {"n": 9, "t": "Environment and climate", "p": "Climate, energy, sustainability", "ls": [{"dir": "lesson-b2-4", "key": "orig-b2-u4-l1", "t": "Environment and climate", "s": "L'environnement et le climat", "o": ""}]}, {"n": 10, "t": "Health and science", "p": "Scientific progress and ethics; health debates", "ls": [{"dir": "lesson-b2-8", "key": "orig-b2-u8-l1", "t": "Health and science", "s": "La santé et les sciences", "o": ""}]}, {"n": 11, "t": "Technology and progress", "p": "Technology, innovation, risks and benefits", "ls": [{"dir": "lesson-b2-5", "key": "orig-b2-u5-l1", "t": "Technology and progress", "s": "La technologie et le progrès", "o": ""}]}, {"n": 12, "t": "Art and culture", "p": "Literature extracts, cinema, art critique", "ls": [{"dir": "lesson-b2-10", "key": "orig-b2-u10-l1", "t": "Art and creation", "s": "L'art et la création", "o": ""}]}, {"n": 13, "t": "Language and history", "p": "Language, identity and history; media bias and fake news", "ls": [{"dir": "lesson-b2-3", "key": "orig-b2-u3-l1", "t": "Language and history", "s": "La langue et l'histoire", "o": ""}]}, {"n": 14, "t": "Passive, nominalisation and formal style", "p": "Passive voice, impersonal constructions; verbs to nouns for written style", "ls": []}, {"n": 15, "t": "Writing at B2", "p": "Formal letters; argumentative essay and review; summaries of texts", "ls": []}, {"n": 16, "t": "Listening and reading authentic material", "p": "Documentaries, podcasts, long articles; implied meaning and tone", "ls": []}, {"n": 17, "t": "Idioms, register and fluency", "p": "Expressions and proverbs; formal, informal, slang; fillers and rephrasing", "ls": []}, {"n": 18, "t": "Review and exam practice", "p": "Timed tasks in all four skills", "ls": []}, {"n": 19, "t": "Extra in the app (outside this CEFR level)", "p": "Lessons the app already has that do not belong to the CEFR objectives above", "ls": [{"dir": "lesson-b2-6", "key": "orig-b2-u6-l1", "t": "Relationships and feelings", "s": "Les relations et les sentiments", "o": ""}, {"dir": "lesson-b2-9", "key": "orig-b2-u9-l1", "t": "Tourism and travel", "s": "Le tourisme et le voyage", "o": ""}], "x": 1}]}, {"id": "c1", "name": "C1", "title": "Express yourself precisely", "goal": "Use French flexibly for social, academic and professional purposes; produce clear, detailed text on complex subjects; understand demanding texts and implicit meaning. (The app's C1/C2 lessons are shared and are listed here.)", "obj": [{"n": 1, "t": "Structured discourse and rhetoric", "p": "Organise long speech and writing; emphasis structures; persuade, nuance, soften and strengthen claims", "ls": []}, {"n": 2, "t": "Advanced grammar for precision", "p": "Subjunctive in all uses, literary tenses; participle and gerund clauses; lequel, auquel, duquel", "ls": []}, {"n": 3, "t": "Politics, law and institutions", "p": "Political systems, reforms, rights and duties; legal and administrative texts; debate a policy", "ls": [{"dir": "lesson-c12-4", "key": "oric12-u4-l1", "t": "Politics and borders", "s": "Politique et frontières", "o": ""}]}, {"n": 4, "t": "Economy and business in depth", "p": "Markets, trade, globalisation, startups; reports and proposals; negotiate and present a case", "ls": [{"dir": "lesson-c12-2", "key": "oric12-u2-l1", "t": "Trade and exchanges", "s": "Échanges et commerce", "o": ""}]}, {"n": 5, "t": "Philosophy and ideas", "p": "Freedom, justice, happiness, progress; define a concept; express abstract ideas", "ls": []}, {"n": 6, "t": "Ecology and energy", "p": "Energy, climate, sustainability; weigh risks and benefits", "ls": [{"dir": "lesson-c12-3", "key": "oric12-u3-l1", "t": "Ecology and energy", "s": "Écologie et énergies", "o": ""}]}, {"n": 7, "t": "Media and virtual worlds", "p": "AI, privacy, online worlds; explain complex processes", "ls": [{"dir": "lesson-c12-6", "key": "oric12-u6-l1", "t": "Media and virtual worlds", "s": "Médias et mondes virtuels", "o": ""}]}, {"n": 8, "t": "Literature and the arts", "p": "Analyse an extract, poem or film; style, tone, narrator; critical review", "ls": [{"dir": "lesson-c12-7", "key": "oric12-u7-l1", "t": "Culture and health", "s": "Culture et santé", "o": ""}]}, {"n": 9, "t": "Society and solidarity", "p": "Social issues, solidarity, identity, migration", "ls": [{"dir": "lesson-c12-1", "key": "oric12-u1-l1", "t": "Society and solidarity", "s": "Société et solidarités", "o": ""}]}, {"n": 10, "t": "Elites and generations", "p": "Social classes, generations, power; identity and secularism", "ls": [{"dir": "lesson-c12-5", "key": "oric12-u5-l1", "t": "Elites and generations", "s": "Élites et générations", "o": ""}]}, {"n": 11, "t": "Academic and professional writing", "p": "Synthesis, abstract, formal report; cite and paraphrase sources; formal email and speech", "ls": []}, {"n": 12, "t": "Spoken interaction at C1", "p": "Interviews, panel discussions, Q&A; take and hold the floor; humour, irony", "ls": []}, {"n": 13, "t": "Register, idioms and wordplay", "p": "Formal, literary, colloquial, slang (verlan); idioms; regional French", "ls": []}, {"n": 14, "t": "Understand fast, authentic French", "p": "News, debates, films without subtitles; long articles and essays", "ls": []}, {"n": 15, "t": "Review and exam practice", "p": "DALF C1-style tasks", "ls": []}]}, {"id": "c2", "name": "C2", "title": "Mastery", "goal": "Understand virtually everything; summarise and argue from several sources; express yourself very fluently with fine shades of meaning.", "obj": [{"n": 1, "t": "Summarise and reconstruct arguments", "p": "Merge several sources into one account; reconstruct and critique arguments", "ls": []}, {"n": 2, "t": "Fine shades of meaning", "p": "Near-synonyms; modality, irony, understatement; connotation and tone", "ls": []}, {"n": 3, "t": "Philosophy and critical thinking", "p": "Ethics, existence, power, knowledge; argue abstract positions; philosophical extracts", "ls": []}, {"n": 4, "t": "Politics and international affairs", "p": "Geopolitics, diplomacy; analyse political speeches; debate at length", "ls": []}, {"n": 5, "t": "Literature and classic texts", "p": "Poetry, theatre, classic novels; literary analysis and commentary", "ls": []}, {"n": 6, "t": "Specialised and academic domains", "p": "Law, medicine, economics, science texts; write articles and abstracts", "ls": []}, {"n": 7, "t": "Mastery of style and register", "p": "Switch register at will; idioms, humour, wordplay; francophone variation", "ls": []}, {"n": 8, "t": "Extended speaking", "p": "Lectures, speeches, improvised debate; respond to hostile questions", "ls": []}, {"n": 9, "t": "Extended writing", "p": "Essays, editorials, critical reviews; edit and improve your own text", "ls": []}, {"n": 10, "t": "Understand everything", "p": "Rapid speech, accents, dialect; satire, legal and technical texts", "ls": []}, {"n": 11, "t": "Review and exam practice", "p": "DALF C2-style tasks", "ls": []}]}];
+<!doctype html>
+<html lang="en">
+  <head><base href="/"><script>/* Camelon: a reset (no onboarding flag) also clears the lesson progress */try{if(localStorage.getItem('origb1:onboarded')!=='1'){Object.keys(localStorage).forEach(function(k){if(k.indexOf('cam_')===0)localStorage.removeItem(k)});try{sessionStorage.removeItem('cam_exit')}catch(e){}}}catch(e){}</script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="color-scheme" content="light dark" />
+    <!-- Installable web app (PWA): Safari's "Add to Home Screen" gives
+         the app its own icon and a full-screen, standalone launch.
+         The file-referencing <link>s (manifest, touch icon, favicon)
+         are injected into the built HTML by build-static.mjs —
+         Bun resolves relative link hrefs as bundle assets, so they
+         cannot live in this source file. The files themselves live
+         in client/public/ and ship verbatim at the site root. -->
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="./logo.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+    <meta name="theme-color" content="#7a5ff0" />
+    <meta
+      name="description"
+      content="Camelon — learn French from A1 to C2 with the Édito classroom method: complete dossiers, real voices, step-by-step grammar, writing and speaking practice, with your progress saved on every device."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Camelon" />
+    <meta
+      property="og:title"
+      content="Camelon — Learn French, one dossier at a time (A1 to C2)"
+    />
+    <meta
+      property="og:description"
+      content="French lessons built on the Édito method: listening, reading, vocabulary, grammar, exercises, writing and speaking in every dossier."
+    />
+    <meta property="og:url" content="https://asra-hoss.github.io/parlons/" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Camelon" />
+    <!-- Persian/Arabic-script font, SELF-HOSTED (no CDN):
+         Vazirmatn woff2 files live in client/public/fonts/ and
+         ship verbatim at ./fonts/. Every element marked
+         lang="fa" (tap-a-word glosses, flashcard meanings,
+         Persian grammar explanations) or lang="ar" (Arabic
+         translations from the global language picker) renders
+         in Vazirmatn; Latin/French text keeps its own fonts.
+         Line-height is generous: the script needs it. -->
+    <style>
+      @font-face {
+        font-family: "Vazirmatn";
+        src: url("./assets/fonts/vazirmatn-regular.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Vazirmatn";
+        src: url("./assets/fonts/vazirmatn-bold.woff2") format("woff2");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      [lang="fa"],
+      [lang="ar"] {
+        font-family: "Vazirmatn", Tahoma, Arial, sans-serif;
+        line-height: 2;
+      }
+      /* Latin font, SELF-HOSTED (no CDN): Nunito variable woff2
+         (weights 400–800 in one file), the rounded geometric sans
+         of the Lingua-style theme. The font-family itself is
+         applied in theme.css. */
+      @font-face {
+        font-family: "Nunito";
+        src: url("./assets/fonts/nunito.woff2") format("woff2");
+        font-weight: 400 800;
+        font-style: normal;
+        font-display: swap;
+      }
+      /* Rounded display font, SELF-HOSTED: Fredoka variable
+         ttf (weights 300–700) in client/public/fonts/,
+         shipped like Nunito's. Used by the Home v6 screen
+         (bar counter, level title, star chip, Continue)
+         and already named by the Bubble Dream stack. */
+      @font-face {
+        font-family: "Fredoka";
+        src: url("./assets/fonts/fredoka.ttf") format("truetype");
+        font-weight: 300 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      /* Chunky display font for outlined numbers,
+         SELF-HOSTED: Lilita One (Google Fonts, OFL) in
+         client/public/fonts/, shipped like Fredoka's.
+         Used by the Contest page (Asra's design package,
+         Nov 8, 2026) for its outlined score numerals. */
+      @font-face {
+        font-family: "Lilita One";
+        src: url("./assets/fonts/lilita-one.woff") format("woff");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      /* Serif display font, SELF-HOSTED: Libre Baskerville
+         variable woff2 (weights 400–700 in one file) in
+         client/public/fonts/, shipped like Nunito's. Used by
+         the Vocabulary (Flashcards) Tracker screen — the
+         serif of Asra's design package (Nov 8, 2026). */
+      @font-face {
+        font-family: "Libre Baskerville";
+        src: url("./assets/fonts/libre-baskerville.woff2") format("woff2");
+        font-weight: 400 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      /* Serif display font, SELF-HOSTED: Fraunces (latin
+         subsets, weights 600/700 + italics 500/600) in
+         client/public/fonts/, shipped like Nunito's. Used
+         by the Writing and Practice Tracker screens — the
+         serif of Asra's design packages (Nov 8, 2026). */
+      @font-face {
+        font-family: "Fraunces";
+        src: url("./assets/fonts/fraunces-600.woff2") format("woff2");
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Fraunces";
+        src: url("./assets/fonts/fraunces-700.woff2") format("woff2");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Fraunces";
+        src: url("./assets/fonts/fraunces-500-italic.woff2") format("woff2");
+        font-weight: 500;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Fraunces";
+        src: url("./assets/fonts/fraunces-600-italic.woff2") format("woff2");
+        font-weight: 600;
+        font-style: italic;
+        font-display: swap;
+      }
+      /* Script font, SELF-HOSTED: Great Vibes (latin) in
+         client/public/fonts/. Used inside the Writing
+         Tracker's stamp artwork (« Bonjour », « Carte
+         postale ») — the script of Asra's package. */
+      @font-face {
+        font-family: "Great Vibes";
+        src: url("./assets/fonts/great-vibes.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+    <!-- Dark mode (Nov 7, 2026): apply the saved choice
+         (Settings → « Dark mode », origb1:dark-mode)
+         BEFORE first paint, so a dark-mode learner never
+         sees a light flash. Default = light. The
+         useDarkMode hook in App.tsx keeps this attribute
+         in sync afterwards. -->
+    <script>
+      try {
+        document.documentElement.dataset.theme =
+          window.localStorage.getItem("origb1:dark-mode") === "1"
+            ? "dark"
+            : "light";
+      } catch (e) {
+        document.documentElement.dataset.theme = "light";
+      }
+    </script>
+    <!-- Boot scrub (Nov 12, 2026): runs BEFORE the app bundle
+         is even fetched, so it survives a device whose stored
+         state kills the bundle during module init — the case
+         the in-bundle healStoredState (main.tsx) can never
+         reach. Two jobs, both structural and idempotent:
+         (1) This app has NEVER registered a service worker;
+             if one is somehow registered for this origin,
+             unregister it and drop every Cache Storage cache,
+             so the page always comes from the network, never
+             from a trapped copy. (2) Validate the handful of
+             BOOKKEEPING keys startup reads first (language,
+             nav position, theme) and drop a value that is
+             structurally impossible; since Nov 13, 2026 the
+             scrub also shape-checks the MAIN PROGRESS stores
+             (reading checks, study time, starred words,
+             entries, writing/speaking progress) at entry
+             level — the bundle's sanitiser (state-sanitize)
+             owns the full validation, and /rescue owns the
+             manual repair. The transient
+             sign-in markers (auth-error, redirect-attempt)
+             are dropped unconditionally: a stale one can
+             only mislead the next load. Everything is wrapped
+             so a failure here can never block the app. -->
+    <script>
+      (function () {
+        try {
+          if ("serviceWorker" in navigator) {
+            navigator.serviceWorker
+              .getRegistrations()
+              .then(function (regs) {
+                regs.forEach(function (r) {
+                  r.unregister();
+                });
+              })
+              .catch(function () {});
+          }
+          if (window.caches && caches.keys) {
+            caches
+              .keys()
+              .then(function (names) {
+                names.forEach(function (n) {
+                  caches.delete(n);
+                });
+              })
+              .catch(function () {});
+          }
+        } catch (e) {}
+        try {
+          var ls = window.localStorage;
+          ls.removeItem("origb1:auth-error");
+          ls.removeItem("origb1:redirect-attempt");
+          var lang = ls.getItem("origb1:lang");
+          if (
+            lang !== null &&
+            ["en", "fa", "es", "ru", "hi", "ar"].indexOf(lang) === -1
+          ) {
+            ls.removeItem("origb1:lang");
+          }
+          var dm = ls.getItem("origb1:dark-mode");
+          if (dm !== null && dm !== "0" && dm !== "1") {
+            ls.removeItem("origb1:dark-mode");
+          }
+          var nav = ls.getItem("origb1:nav");
+          if (nav !== null) {
+            var ok = false;
+            try {
+              var parsed = JSON.parse(nav);
+              ok =
+                parsed !== null &&
+                typeof parsed === "object" &&
+                !Array.isArray(parsed);
+            } catch (e2) {
+              ok = false;
+            }
+            if (!ok) ls.removeItem("origb1:nav");
+          }
+          /* Reading checks: an array of {checkKey, …} entries.
+             A non-array value is dropped outright; entries
+             without a string checkKey are unusable to every
+             reader and are filtered — the one malformation
+             class the in-bundle healing used to leave behind. */
+          var checks = ls.getItem("origb1:reading-checks");
+          if (checks !== null) {
+            try {
+              var arr = JSON.parse(checks);
+              if (!Array.isArray(arr)) {
+                ls.removeItem("origb1:reading-checks");
+              } else {
+                var kept = arr.filter(function (c) {
+                  return (
+                    c !== null &&
+                    typeof c === "object" &&
+                    typeof c.checkKey === "string" &&
+                    /* Real check keys are always « kind:… »
+                       (visual:, game:, words:, listen:, sp:…). */
+                    c.checkKey.indexOf(":") !== -1
+                  );
+                });
+                if (kept.length !== arr.length) {
+                  ls.setItem(
+                    "origb1:reading-checks",
+                    JSON.stringify(kept),
+                  );
+                }
+              }
+            } catch (e3) {
+              ls.removeItem("origb1:reading-checks");
+            }
+          }
+          /* Main progress stores (Nov 13, 2026 — the boot
+             scrub grows the same cheap shape checks the
+             bundle's sanitiser runs, for the stores whose
+             malformed entries can kill a screen before the
+             bundle's own healing is even reached — a null
+             entry in study-time crashed Home in Chromium).
+             Same rule as everywhere: only malformed entries
+             are dropped; valid entries are never touched. */
+          var cleanArr = function (key, okEntry) {
+            var raw = ls.getItem(key);
+            if (raw === null) return;
+            try {
+              var a = JSON.parse(raw);
+              if (!Array.isArray(a)) {
+                ls.removeItem(key);
+                return;
+              }
+              var keptA = a.filter(okEntry);
+              if (keptA.length !== a.length) {
+                ls.setItem(key, JSON.stringify(keptA));
+              }
+            } catch (e4) {
+              ls.removeItem(key);
+            }
+          };
+          var isObj = function (v) {
+            return v !== null && typeof v === "object";
+          };
+          cleanArr("origb1:study-time", function (e) {
+            return (
+              isObj(e) &&
+              typeof e.dossierId === "string" &&
+              typeof e.day === "string" &&
+              typeof e.seconds === "number" &&
+              isFinite(e.seconds) &&
+              e.seconds >= 0
+            );
+          });
+          cleanArr("origb1:starred-words", function (e) {
+            return (
+              isObj(e) &&
+              typeof e.wordKey === "string" &&
+              typeof e.display === "string"
+            );
+          });
+          cleanArr("origb1:entries", function (e) {
+            return (
+              isObj(e) &&
+              typeof e.id === "number" &&
+              typeof e.text === "string"
+            );
+          });
+          /* Progress store: an object whose writing /
+             speaking lists hold only well-shaped entries;
+             a non-object value is dropped outright. */
+          var prog = ls.getItem("origb1:progress");
+          if (prog !== null) {
+            try {
+              var pp = JSON.parse(prog);
+              if (!isObj(pp) || Array.isArray(pp)) {
+                ls.removeItem("origb1:progress");
+              } else {
+                var dirty = false;
+                var fixList = function (list, okE) {
+                  if (!Array.isArray(list)) {
+                    dirty = true;
+                    return [];
+                  }
+                  var k = list.filter(okE);
+                  if (k.length !== list.length) dirty = true;
+                  return k;
+                };
+                pp.writing = fixList(pp.writing, function (e) {
+                  return (
+                    isObj(e) &&
+                    typeof e.draftKey === "string" &&
+                    typeof e.content === "string"
+                  );
+                });
+                pp.speaking = fixList(pp.speaking, function (e) {
+                  return isObj(e) && typeof e.checkKey === "string";
+                });
+                if (dirty) {
+                  ls.setItem("origb1:progress", JSON.stringify(pp));
+                }
+              }
+            } catch (e5) {
+              ls.removeItem("origb1:progress");
+            }
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <title>Camelon</title>
+    
+  <link rel="stylesheet" crossorigin href="./assets/index-1f9b76c2.css"><script type="module" crossorigin src="/assets/index-v2.js"></script><script>/* Camelon: the lesson cover pop-up stays; its Continue button opens the new Lesson 1 (from Listening); leaving returns home */
+(function(){var go=false,leaving=false;try{if(sessionStorage.getItem('cam_exit')==='1')leaving=true}catch(e){}
+function cover(){return document.querySelector('img[src*="a1-opener-cover-1"]')}
+var T={"a1":[[{"i":1,"t":"Discover French and introduce yourself","s":"What's your name?","dir":"lesson-1-1","key":"orig-a1-m0-l1"},{"i":2,"t":"Tu or vous — greetings and politeness","s":"Do you say tu or vous?","dir":"lesson-2-1","key":"orig-a1-m1-l1"}],[{"i":1,"t":"Spell your name in French","s":"How do you spell your name?","dir":"lesson-1-2","key":"orig-a1-m0-l2"}],[{"i":1,"t":"The world in French","s":"What country is this?","dir":"lesson-1-3","key":"orig-a1-m0-l3"},{"i":2,"t":"Say who you are","s":"Where are you from?","dir":"lesson-2-3","key":"orig-a1-m1-l3"},{"i":3,"t":"Places and Travel — Where are you from?","s":"Where are you from?","dir":"lesson-3-1","key":"orig-a1-m2-l1"}],[{"i":1,"t":"My identity card","s":"How old are you?","dir":"lesson-2-5","key":"orig-a1-m1-l5"},{"i":2,"t":"Born where, born when?","s":"Where and when were you born?","dir":"lesson-6-3","key":"orig-a1-m5-l3"}],[{"i":1,"t":"Long live speed-meetings!","s":"What's your job? What are your dreams?","dir":"lesson-4-4","key":"orig-a1-m3-l4"},{"i":2,"t":"Why did you choose your job?","s":"Why did you choose your job?","dir":"lesson-6-5","key":"orig-a1-m5-l5"},{"i":3,"t":"Give a reason (parce que / pour) and punctuate","s":"Why do you learn French?","dir":"lesson-2-6","key":"orig-a1-m1-l6"}],[{"i":1,"t":"Introduce someone else","s":"Who is this?","dir":"lesson-2-4","key":"orig-a1-m1-l4"}],[{"i":1,"t":"In the family","s":"Tell me about your family.","dir":"lesson-4-1","key":"orig-a1-m3-l1"},{"i":2,"t":"The selfie contest","s":"What does your best friend look like?","dir":"lesson-4-2","key":"orig-a1-m3-l2"},{"i":3,"t":"Who do you look like?","s":"Who do you look like?","dir":"lesson-6-4","key":"orig-a1-m5-l4"}],[{"i":1,"t":"Places and Travel — Where do you live?","s":"Where do you live?","dir":"lesson-3-4","key":"orig-a1-m2-l4"},{"i":2,"t":"Places and Travel — Where are you staying?","s":"Where are you staying?","dir":"lesson-3-5","key":"orig-a1-m2-l5"},{"i":3,"t":"Describe your city","s":"What's your city like?","dir":"lesson-7-3","key":"orig-a1-m6-l3"},{"i":4,"t":"Describe a home in Morocco","s":"What's your home like?","dir":"lesson-7-4","key":"orig-a1-m6-l4"}],[{"i":1,"t":"Survive in the classroom","s":"What day is it today?","dir":"lesson-1-4","key":"orig-a1-m0-l4"},{"i":2,"t":"Say the time and plan your day","s":"What time is it?","dir":"lesson-5-1","key":"orig-a1-m4-l1"}],[{"i":1,"t":"Eating French-style","s":"What would you like to eat?","dir":"lesson-8-1","key":"orig-a1-m7-l1"},{"i":2,"t":"At the market","s":"How much do you need?","dir":"lesson-8-2","key":"orig-a1-m7-l2"},{"i":3,"t":"Dinner in town","s":"What would you like to order?","dir":"lesson-9-2","key":"orig-a1-m8-l2"}],[{"i":1,"t":"Shopping for clothes","s":"What are you looking for?","dir":"lesson-8-5","key":"orig-a1-m7-l5"},{"i":2,"t":"The costume party","s":"Which outfit do you prefer?","dir":"lesson-9-3","key":"orig-a1-m8-l3"}],[{"i":1,"t":"Ask for information — politely","s":"Where is the French class?","dir":"lesson-2-2","key":"orig-a1-m1-l2"},{"i":2,"t":"Places and Travel — Where is it?","s":"Where is it?","dir":"lesson-3-2","key":"orig-a1-m2-l2"},{"i":3,"t":"Places and Travel — How are you getting to Aosta?","s":"How are you getting to Aosta?","dir":"lesson-3-3","key":"orig-a1-m2-l3"}],[{"i":1,"t":"Talk about your morning","s":"What do you do every morning?","dir":"lesson-5-2","key":"orig-a1-m4-l2"},{"i":2,"t":"A day at work","s":"What's a typical day at work like?","dir":"lesson-5-4","key":"orig-a1-m4-l4"},{"i":3,"t":"Reading, writing and how often","s":"How often do you read?","dir":"lesson-5-3","key":"orig-a1-m4-l3"}],[{"i":1,"t":"French and us","s":"What do you like doing?","dir":"lesson-4-3","key":"orig-a1-m3-l3"},{"i":2,"t":"The free neighbourhood","s":"What do you do in your free time?","dir":"lesson-4-5","key":"orig-a1-m3-l5"},{"i":3,"t":"Weekends and going out","s":"What do you like doing on weekends?","dir":"lesson-5-5","key":"orig-a1-m4-l5"}],[{"i":1,"t":"Invite a friend","s":"Are you free this weekend?","dir":"lesson-5-6","key":"orig-a1-m4-l6"},{"i":2,"t":"A real party","s":"Who are you inviting to your party?","dir":"lesson-9-6","key":"orig-a1-m8-l6"}],[{"i":1,"t":"Plan the next holiday","s":"Where are you going on your next holiday?","dir":"lesson-7-1","key":"orig-a1-m6-l1"},{"i":2,"t":"Dream of a destination","s":"Where would you like to go?","dir":"lesson-7-2","key":"orig-a1-m6-l2"},{"i":3,"t":"Places and Travel — How long are you staying?","s":"How long are you staying?","dir":"lesson-3-6","key":"orig-a1-m2-l6"}],[{"i":1,"t":"Where does it hurt?","s":"Where does it hurt?","dir":"lesson-4-6","key":"orig-a1-m3-l6"},{"i":2,"t":"Choose the season","s":"What's the weather like?","dir":"lesson-7-5","key":"orig-a1-m6-l5"},{"i":3,"t":"Feel the trip","s":"How do you feel about your trip?","dir":"lesson-7-6","key":"orig-a1-m6-l6"}],[{"i":1,"t":"Look how far you've come","s":"How has your French improved?","dir":"lesson-9-1","key":"orig-a1-m8-l1"}],[{"i":1,"t":"What you did yesterday","s":"What did you do yesterday?","dir":"lesson-6-1","key":"orig-a1-m5-l1"},{"i":2,"t":"What's next?","s":"What are you going to do next?","dir":"lesson-6-2","key":"orig-a1-m5-l2"},{"i":3,"t":"A good piece of advice","s":"What advice would you give a friend?","dir":"lesson-6-6","key":"orig-a1-m5-l6"},{"i":4,"t":"Reading habits","s":"Do you read more or less than before?","dir":"lesson-8-3","key":"orig-a1-m7-l3"},{"i":5,"t":"Life before","s":"What was your life like before?","dir":"lesson-8-4","key":"orig-a1-m7-l4"},{"i":6,"t":"A little corner of France","s":"Did you like it?","dir":"lesson-8-6","key":"orig-a1-m7-l6"},{"i":7,"t":"At someone's home","s":"Who's the person you're talking about?","dir":"lesson-9-4","key":"orig-a1-m8-l4"},{"i":8,"t":"A little culture?","s":"What movie would you recommend?","dir":"lesson-9-5","key":"orig-a1-m8-l5"}]],"a2":[[{"i":1,"t":"Describe people and feelings","s":"Le caractère et les sentiments","dir":"lesson-a2-1","key":"orig-a2-u1-l1"}],[{"i":1,"t":"Buy and manage money","s":"Consommer et l'argent","dir":"lesson-a2-5","key":"orig-a2-u5-l1"}],[{"i":1,"t":"Cook, eat and use quantities","s":"La cuisine et les quantités","dir":"lesson-a2-4","key":"orig-a2-u4-l1"}],[{"i":1,"t":"Memories and the past","s":"Souvenirs et nature","dir":"lesson-a2-7","key":"orig-a2-u7-l1"}],[{"i":1,"t":"Travel and holidays","s":"Voyages et vacances","dir":"lesson-a2-6","key":"orig-a2-u6-l1"}],[{"i":1,"t":"Health and the doctor","s":"Le corps et la santé","dir":"lesson-a2-9","key":"orig-a2-u9-l1"}],[{"i":1,"t":"Studies, jobs and career","s":"Études, métiers et parcours","dir":"lesson-a2-3","key":"orig-a2-u3-l1"}],[{"i":1,"t":"Home and neighbourhood","s":"Le logement et le quartier","dir":"lesson-a2-2","key":"orig-a2-u2-l1"}],[{"i":1,"t":"Nature and animals","s":"La nature et les animaux","dir":"lesson-a2-8","key":"orig-a2-u8-l1"},{"i":2,"t":"Technology and media","s":"Technologies et médias","dir":"lesson-a2-10","key":"orig-a2-u10-l1"}]],"b1":[[{"i":1,"t":"Work and jobs","s":"Le travail et l'emploi","dir":"lesson-b1-6","key":"orig-u6-l1"}],[{"i":1,"t":"Media and communication","s":"Les médias et la communication","dir":"lesson-b1-4","key":"orig-u4-l1"}],[{"i":1,"t":"Neighbourhood and housing","s":"Le quartier et le logement","dir":"lesson-b1-5","key":"orig-u5-l1"}],[{"i":1,"t":"Environment","s":"L'environnement","dir":"lesson-b1-7","key":"orig-u7-l1"}],[{"i":1,"t":"Shopping and money","s":"Les achats et l'argent","dir":"lesson-b1-9","key":"orig-u9-l1"}],[{"i":1,"t":"Free time and travel","s":"Les loisirs et les voyages","dir":"lesson-b1-1","key":"orig-u1-l1"}],[{"i":1,"t":"Body and health","s":"Le corps et la santé","dir":"lesson-b1-2","key":"orig-u2-l1"}],[{"i":1,"t":"Family, memories and celebrations","s":"La famille et les fêtes","dir":"lesson-b1-3","key":"orig-u3-l1"}],[{"i":1,"t":"Food","s":"L'alimentation","dir":"lesson-b1-8","key":"orig-u8-l1"}]],"b2":[[{"i":1,"t":"Politics and engagement","s":"La politique et l'engagement","dir":"lesson-b2-2","key":"orig-b2-u2-l1"}],[{"i":1,"t":"Work and economy","s":"Le travail et l'économie","dir":"lesson-b2-7","key":"orig-b2-u7-l1"}],[{"i":1,"t":"Society","s":"Les faits de société","dir":"lesson-b2-1","key":"orig-b2-u1-l1"}],[{"i":1,"t":"Environment and climate","s":"L'environnement et le climat","dir":"lesson-b2-4","key":"orig-b2-u4-l1"}],[{"i":1,"t":"Health and science","s":"La santé et les sciences","dir":"lesson-b2-8","key":"orig-b2-u8-l1"}],[{"i":1,"t":"Technology and progress","s":"La technologie et le progrès","dir":"lesson-b2-5","key":"orig-b2-u5-l1"}],[{"i":1,"t":"Art and creation","s":"L'art et la création","dir":"lesson-b2-10","key":"orig-b2-u10-l1"}],[{"i":1,"t":"Language and history","s":"La langue et l'histoire","dir":"lesson-b2-3","key":"orig-b2-u3-l1"}],[{"i":1,"t":"Relationships and feelings","s":"Les relations et les sentiments","dir":"lesson-b2-6","key":"orig-b2-u6-l1"},{"i":2,"t":"Tourism and travel","s":"Le tourisme et le voyage","dir":"lesson-b2-9","key":"orig-b2-u9-l1"}]],"c12":[[{"i":1,"t":"Politics and borders","s":"Politique et frontières","dir":"lesson-c12-4","key":"oric12-u4-l1"}],[{"i":1,"t":"Trade and exchanges","s":"Échanges et commerce","dir":"lesson-c12-2","key":"oric12-u2-l1"}],[{"i":1,"t":"Ecology and energy","s":"Écologie et énergies","dir":"lesson-c12-3","key":"oric12-u3-l1"}],[{"i":1,"t":"Media and virtual worlds","s":"Médias et mondes virtuels","dir":"lesson-c12-6","key":"oric12-u6-l1"}],[{"i":1,"t":"Culture and health","s":"Culture et santé","dir":"lesson-c12-7","key":"oric12-u7-l1"}],[{"i":1,"t":"Society and solidarity","s":"Société et solidarités","dir":"lesson-c12-1","key":"oric12-u1-l1"}],[{"i":1,"t":"Elites and generations","s":"Élites et générations","dir":"lesson-c12-5","key":"oric12-u5-l1"}]]};window.__T=T;var LVL='a1';function KY(k){var a=T[LVL]&&T[LVL][DN-1];var i=+k.replace('l','');return a&&a[i-1]?a[i-1].key:D+'-'+k}function DR(k){var a=T[LVL]&&T[LVL][DN-1];var i=+k.replace('l','');return a&&a[i-1]?a[i-1].dir:null}
+function setDN(n,lv){lv=lv||'a1';LVL=lv;DN=n;var a=(T[lv]||[])[n-1]||[];D='v2-'+(lv==='c12'?'c1':lv)+'-'+n;L=a.map(function(x){return ['l'+x.i,x.t,x.s]})}
 function PR(){try{return JSON.parse(localStorage.getItem('cam_prog')||'{}')}catch(e){return{}}}
-var cur=0;try{var s=localStorage.getItem('cam_v2_level');if(s!==null&&LV[+s])cur=+s}catch(e){}
-function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-function render(){var p=PR(),lv=LV[cur];
- document.getElementById('tabs').innerHTML=LV.map(function(l,i){return '<button class="tab'+(i===cur?' on':'')+'" data-i="'+i+'">'+esc(l.name)+'</button>'}).join('');
- var first=null,all=0,done=0,tot=0,have=0;
- var h='<div class="goal"><h2>'+esc(lv.name)+' · '+esc(lv.title)+'</h2><p>'+esc(lv.goal)+'</p><a class="cont" id="cont" href="#">Continue</a></div>';
- lv.obj.forEach(function(o){var d=0;var rows=o.ls.map(function(l){var r=p[l.key]||{},st=r.done?'d':((r.step||r.steps&&Object.keys(r.steps).length)?'p':'');all++;if(r.done){d++;done++}else if(!first)first=l;
-  return '<a class="les" href="./'+l.dir+'/#start"><span class="t"><b>'+esc(l.t)+'</b>'+(l.s?'<span>'+esc(l.s)+'</span>':'')+'</span>'+(l.o?'<span class="o">'+l.o+'</span>':'')+'<span class="ck '+st+'">'+(st==='d'?'\u2713':'')+'</span></a>'}).join('');
-  var miss=!o.ls.length;if(!o.x){tot++;if(!miss)have++}
-  h+='<div class="obj'+(miss?' mis':'')+(o.x?' xt':'')+'"><div class="oh"><span class="num">'+(o.x?'+':o.n)+'</span><b>'+esc(o.t)+'</b><span class="cnt">'+(miss?'':d+'/'+o.ls.length)+'</span></div><p class="pt">'+esc(o.p)+'</p>'+(miss?'<span class="tag">Lessons to be created</span>':rows)+'</div>'});
- h=h.replace('<a class="cont"','<div class="sum">'+have+' of '+tot+' objectives have lessons</div><a class="cont"');
- document.getElementById('main').innerHTML=h;
- var c=document.getElementById('cont');if(!all){c.style.display='none'}else if(first){c.href='./'+first.dir+'/#start';c.textContent=(done?'Continue':'Start')+' · '+first.t}else{c.textContent='All lessons done \u2713';c.removeAttribute('href')}}
-document.getElementById('tabs').addEventListener('click',function(e){var b=e.target.closest('.tab');if(!b)return;cur=+b.dataset.i;try{localStorage.setItem('cam_v2_level',cur)}catch(x){}render();window.scrollTo(0,0)});
-render();window.addEventListener('pageshow',render);
-</script></body></html>
+function getC(){var p=PR();for(var q=0;q<L.length;q++){var r=p[KY(L[q][0])];if(!r||!r.done)return L[q][0]}return L[0][0]}
+function setC(k){try{var m=JSON.parse(localStorage.getItem('cam_lesson_choice')||'{}');m[D]=KY(k);localStorage.setItem('cam_lesson_choice',JSON.stringify(m))}catch(e){}}
+var sel=null;
+function paint(box){[].forEach.call(box.children,function(r){var on=r.getAttribute('data-k')===sel;r.style.background=on?'#ede9fe':'#f8f6ff';r.style.borderColor=on?'#7a5ff0':'transparent'})}
+function build(){var im=document.querySelector('.nx-wcard img[src*="unit-"]');if(!im)return;var mm=/(a1|a2|b2|c12)-unit-(\d+)-/.exec(im.getAttribute('src'));var lv0=mm?mm[1]:'b1';if(!mm)mm=/\/unit-(\d+)-/.exec(im.getAttribute('src'));if(!mm)return;var nn0=+mm[mm.length-1];var sc0=im.closest('.nx-wcard');var hr=sc0&&/(A1|A2|B1|B2|C1\/C2)\s*\u00b7\s*[^\d\u00b7]*?(\d+)/.exec(((sc0.closest('div.fixed')||sc0.parentElement||sc0).textContent||'').slice(0,400));if(hr){lv0={A1:'a1',A2:'a2',B1:'b1',B2:'b2','C1/C2':'c12'}[hr[1]];nn0=+hr[2]}var mx={a1:19,a2:9,b1:9,b2:9,c12:7}[lv0];if(nn0>mx)return;setDN(nn0,lv0);var sec=im.closest('.nx-wcard');if(!sec||sec.querySelector('#camlist'))return;
+ var bs=[].filter.call(sec.querySelectorAll('button'),function(b){return b.textContent.trim().length>0&&!b.getAttribute('aria-label')});var cb=bs[bs.length-1];if(!cb)return;
+ var card=cb.parentNode;sel=getC();var box=document.createElement('div');box.id='camlist';var ov=sec.closest('div.fixed');if(ov){ov.style.overflowY='auto';ov.style.alignItems='flex-start';ov.style.webkitOverflowScrolling='touch';ov.style.overscrollBehavior='contain';var w0=ov.firstElementChild;if(w0){w0.style.margin='auto';w0.style.paddingBottom='24px'}}box.style.cssText='display:flex;flex-direction:column;gap:8px;margin:12px 0';
+ L.forEach(function(x,i){var r=document.createElement('div');r.setAttribute('data-k',x[0]);r.style.cssText='display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:18px;border:2px solid transparent;cursor:pointer;font-family:Nunito,sans-serif';
+  r.innerHTML='<span style="width:36px;height:36px;border-radius:12px;background:#e4e0fa;display:flex;align-items:center;justify-content:center;font-weight:900;color:#22316e;flex:none">'+(i+1)+'</span><span style="min-width:0"><b style="display:block;font-size:14px;color:#22316e">'+x[1]+'</b><span style="font-size:12px;color:#6b6f8d;font-weight:700">'+x[2]+'</span></span>'+(function(){var r=PR()[KY(x[0])];if(!r)return '';var n=0;for(var k in (r.steps||{}))n++;if(r.done)return '<span style="margin-left:auto;flex:none;font:800 12px Nunito,sans-serif;color:#1f7a45;background:#e0f6e9;border-radius:12px;padding:4px 9px">\u2713 Done</span>';if(n||r.step)return '<span style="margin-left:auto;flex:none;font:800 12px Nunito,sans-serif;color:#4b34b0;background:#efeaff;border-radius:12px;padding:4px 9px">'+n+'/8 steps</span>';return ''})();
+  r.addEventListener('click',function(){sel=x[0];setC(sel);try{localStorage.setItem('cam_pick',JSON.stringify({d:DN,l:+x[0].replace('l',''),t:Date.now()}))}catch(e){}paint(box)});box.appendChild(r)});
+ card.insertBefore(box,cb);paint(box);
+ var g=[].filter.call(sec.querySelectorAll('b,strong,span'),function(x){return x.textContent.trim()==='Grammar:'})[0];if(g){var n=g;while(n.parentElement&&!/Speaking:/.test(n.parentElement.textContent.slice(0,0)+n.textContent)){n=n.parentElement;if(/Speaking:/.test(n.textContent))break}
+  n.style.display='none';var pv=n.previousElementSibling;if(pv&&!pv.textContent.trim())pv.style.display='none'}}
+new MutationObserver(build).observe(document.documentElement,{childList:true,subtree:true});
+document.addEventListener('click',function(e){var pb=e.target.closest&&e.target.closest('button');if(pb&&pb.textContent.trim().length>0&&!pb.getAttribute('aria-label')&&!pb.hasAttribute('data-popup-plaque')){var pc=pb.closest('.nx-wcard');if(pc&&pc.querySelector('#camlist')&&!pb.closest('#camlist')){var kk=sel||getC();var nn=kk.replace('l','');setC(kk);e.preventDefault();e.stopPropagation();go=true;location.assign('/v2/'+DR(kk)+'/#start');return}}
+if(!cover())return;var b=e.target.closest&&e.target.closest('button');if(!b||b.getAttribute('aria-label')==='Back')return;if(!/^Continue/.test(b.textContent.trim()))return;var k=sel||getC();e.preventDefault();e.stopPropagation();go=true;location.assign('/v2/'+(DR(k)||'lesson-1-1')+'/#start')},true);
+function chk(){if(go||!leaving)return;var im=cover();var yes=[].filter.call(document.querySelectorAll('button'),function(b){return /^(Yes|\u0628\u0644\u0647|Oui|S\u00ed|\u0414\u0430|\u0939\u093e\u0901|\u0646\u0639\u0645)$/.test(b.textContent.trim())})[0];
+ if(yes){go=true;leaving=false;try{sessionStorage.removeItem('cam_exit')}catch(e){}yes.click();setTimeout(function(){go=false},1200);return}
+ var bk=document.querySelector('button[aria-label="Back"]');if(im&&bk&&!bk._c){bk._c=1;bk.click()}}
+new MutationObserver(chk).observe(document.documentElement,{childList:true,subtree:true});})();</script><script>/* camelon-next: after finishing Lesson 1, open the next lesson's cover directly */
+(function(){var on=false,t0=Date.now();try{on=sessionStorage.getItem('cam_next')==='1'}catch(e){}if(!on)return;var st=document.createElement('style');st.id='camnext';st.textContent='body{visibility:hidden}';document.head.appendChild(st);
+function done(){try{sessionStorage.removeItem('cam_next')}catch(e){}var x=document.getElementById('camnext');if(x)x.remove();mo.disconnect()}
+var c1=0,c2=0;var mo=new MutationObserver(function(){if(Date.now()-t0>9000){done();return}
+ var w=document.querySelector('div.fixed .nx-wcard');
+ if(w){var b=[].filter.call(w.querySelectorAll('button'),function(b){return /^Continue$/.test(b.textContent.trim())}).pop();if(b&&!c2){c2=1;setTimeout(function(){b.click();setTimeout(done,500)},250)}return}
+ if(!c1){var h=[].filter.call(document.querySelectorAll('button'),function(b){return /^Continue/.test(b.textContent.trim())&&/Dossier/.test(b.textContent)})[0];if(h){c1=1;setTimeout(function(){h.click()},250)}}});
+mo.observe(document.documentElement,{childList:true,subtree:true});setTimeout(done,9500)})();</script><script>/* camelon-skip-language: start on "Where are you with French?"; English is the default, the flags on that page change it */
+(function(){var st=document.createElement('style');st.id='camskip';st.textContent='body{visibility:hidden}';document.head.appendChild(st);
+function show(){var s=document.getElementById('camskip');if(s)s.remove();mo.disconnect()}
+var mo=new MutationObserver(function(){var bs=[].slice.call(document.querySelectorAll('button'));if(!bs.length)return;
+ var en=bs.filter(function(b){return /English/.test(b.textContent)&&bs.some(function(x){return /العربية/.test(x.textContent)})})[0];
+ if(en){en.click();return}
+ if(document.body.innerText.length>20)show()});
+mo.observe(document.documentElement,{childList:true,subtree:true});setTimeout(show,2500)})();</script><script>/* camelon-settings-clean: remove section captions and status lines from Settings */
+(function(){function clean(){if(!document.body||!/Reset my progress/.test(document.body.innerText||''))return;[].forEach.call(document.querySelectorAll('h2,h3,p,span,div'),function(el){if(el.children.length)return;var t=el.textContent.trim();
+ if(t==='Learning'||t==='App'||/^Email verified/.test(t)||/^Progress saved/.test(t)||/^Erases all your progress/.test(t))el.style.display='none'})}
+new MutationObserver(clean).observe(document.documentElement,{childList:true,subtree:true})})();</script><script>/* camelon-hide-level-note: remove the "You can change your level anytime" strip */
+(function(){function hide(){[].forEach.call(document.querySelectorAll('footer p'),function(p){if(p.textContent.trim()==='You can change your level anytime.'){var f=p.closest('footer');if(f)f.style.display='none'}})}
+new MutationObserver(hide).observe(document.documentElement,{childList:true,subtree:true});hide()})();</script><style id="camelon-cover-style">
+[data-elan="flow-cover"] section{border:2px solid #e8e3f7!important;background:#fff!important;border-radius:26px!important;box-shadow:0 14px 30px rgba(90,70,180,.14)!important}
+[data-elan="flow-cover"] section>div:first-child{background:#f1edff!important;border-bottom:2px solid #e8e3f7!important}
+[data-elan="flow-cover"] section p{color:#4b34b0!important}
+[data-elan="flow-cover"] section h3{font-family:Fredoka,Nunito,sans-serif!important;font-weight:600!important;font-size:22px!important;color:#1d1a33!important}
+[data-elan="flow-cover"] li{font-family:Nunito,sans-serif!important;font-weight:700!important}
+[data-elan="flow-cover"] li span{background:linear-gradient(135deg,#3fb0c4,#4f7fe0)!important}
+[data-elan="flow-cover"] img{border-radius:24px}
+button.cam-cont{background:linear-gradient(135deg,#3fb0c4,#4f7fe0)!important;box-shadow:0 10px 22px rgba(63,130,210,.38)!important;font-family:Fredoka,Nunito,sans-serif!important;font-weight:600!important}
+</style><script>/* camelon-cover-style: mark the Continue button of the lesson cover */
+(function(){function m(){if(!document.querySelector('[data-elan="flow-cover"]'))return;[].forEach.call(document.querySelectorAll('button'),function(b){if(/^Continue/.test(b.textContent.trim()))b.classList.add('cam-cont')})}
+new MutationObserver(m).observe(document.documentElement,{childList:true,subtree:true});m()})();</script><script>/* Camelon: old lesson pages -> new flow */
+(function(){var MX={A1:19,A2:9,B1:9,B2:9,'C1/C2':7},P={A2:'a2-',B1:'b1-',B2:'b2-','C1/C2':'c12-'},RX=/Camelon\s*\u2022\s*(A1|A2|B1|B2|C1\/C2)\s*\u2022\s*[^\d\u2022]*?(\d+)\s*\u2022\s*[^\d\u2022]*?(\d+)/;var armed=true,seen=false,exiting=false,tq=0;try{if(sessionStorage.getItem('cam_exit')==='1'){armed=false;exiting=true}}catch(e){}
+if(exiting){var cs=document.createElement('style');cs.id='camexitcov';cs.textContent='body{visibility:hidden!important}';document.head.appendChild(cs);var t0=Date.now();var rm=function(){var x=document.getElementById('camexitcov');if(x)x.remove();try{mo2.disconnect()}catch(e){}try{sessionStorage.removeItem('cam_exit')}catch(e){}exiting=false;armed=true};var bkc=0,yc=0;var mo2=new MutationObserver(function(){var yes=[].filter.call(document.querySelectorAll('button'),function(b){return /^(Yes|\u0628\u0644\u0647|Oui|S\u00ed|\u0414\u0430|\u0939\u093e\u0901|\u0646\u0639\u0645)$/.test(b.textContent.trim())})[0];if(yes&&!yc){yc=1;try{sessionStorage.removeItem('cam_exit')}catch(e){}yes.click();return}var bk=document.querySelector('button[aria-label="Back"]');if(bk&&!bkc&&/Camelon\s*\u2022/.test(document.body.textContent)){bkc=1;bk.click()}var hb=[].filter.call(document.querySelectorAll('button'),function(b){var t=b.textContent.trim();return /^Continue/.test(t)&&/Dossier/.test(t)})[0];if(hb&&!document.querySelector('[data-elan="flow-cover"]')&&!document.querySelector('.nx-wcard'))rm()});mo2.observe(document.documentElement,{childList:true,subtree:true});setTimeout(rm,3500)}
+function go(m){var lv=m[1],d=+m[2],l=+m[3];if(d>MX[lv])return;var kk={A1:'a1',A2:'a2',B1:'b1',B2:'b2','C1/C2':'c12'}[lv];var a=window.__T&&window.__T[kk];a=a&&a[d-1];if(!a)return;var f=null;try{var pg=JSON.parse(localStorage.getItem('cam_prog')||'{}');for(var q=0;q<a.length;q++){var r=pg[a[q].key];if(!r||!r.done){f=a[q];break}}var pk=JSON.parse(localStorage.getItem('cam_pick')||'null');if(pk&&pk.d===d&&Date.now()-pk.t<120000&&a[pk.l-1])f=a[pk.l-1]}catch(e){}if(!f)f=a[Math.min(l,a.length)-1]||a[0];var u='/v2/'+f.dir+'/#start';var o=document.createElement('div');o.style.cssText='position:fixed;left:0;top:0;right:0;bottom:0;z-index:2147483647;background:#f5f3ff';document.body.appendChild(o);location.replace(u)}
+function look(n){if(!n||n.nodeType!==1)return null;var s=n.textContent;if(!s||s.length>400||s.indexOf('Camelon')<0)return null;return RX.exec(s)}
+function full(){var e=document.querySelectorAll('header span,header div,span,p');for(var k=0;k<e.length&&k<400;k++){var s=e[k].textContent;if(s&&s.length<80&&s.indexOf('Camelon')===0){var m=RX.exec(s);if(m)return m}}return null}
+new MutationObserver(function(ms){var f=null;for(var a=0;a<ms.length&&!f;a++){var ad=ms[a].addedNodes;for(var b=0;b<ad.length&&!f;b++)f=look(ad[b])}
+if(f){seen=true;if(armed)go(f);return}if(!tq){tq=setTimeout(function(){tq=0;if(!armed)return;var m=full();if(m){seen=true;go(m)}},200)}}).observe(document.documentElement,{childList:true,subtree:true});
+function once(){if(exiting)return;var m=full();if(m){seen=true;if(armed)go(m)}else armed=true}
+setTimeout(once,600);setTimeout(once,1800);setTimeout(once,4000)})();</script><script>/* Camelon: pictures on tracker flashcards */
+(function(){var EMO={"merci": "🙏", "merci beaucoup": "🙏", "de rien": "🤝", "pardon": "🙇", "excusez-moi": "🙋", "s'il vous plaît": "🙏", "s'il te plaît": "🙏", "oui": "✅", "non": "❌", "monsieur": "👨‍💼", "madame": "👩‍💼", "avec plaisir": "😊", "je vous en prie": "🤝", "un alphabet": "🔤", "une lettre": "✉️", "une voyelle": "🅰️", "une consonne": "🅱️", "épeler": "🔠", "un nom": "🏷️", "un prénom": "🏷️", "un nom de famille": "👪", "comment ?": "❓", "répéter": "🔁", "lentement": "🐢", "écouter": "👂", "un professeur": "👩‍🏫", "une école": "🏫", "une université": "🎓", "un cours": "📚", "un étudiant, une étudiante": "🧑‍🎓", "un élève": "🧒", "un livre": "📖", "un cahier": "📓", "une leçon": "📝", "un examen": "📋", "étudier": "📚", "travailler": "💼", "apprendre": "🧠", "un an": "📅", "l'âge": "🎂", "quel âge ?": "🎂", "dix": "🔟", "vingt": "2️⃣0️⃣", "trente": "3️⃣0️⃣", "quarante": "4️⃣0️⃣", "cinquante": "5️⃣0️⃣", "soixante": "6️⃣0️⃣", "soixante-dix": "7️⃣0️⃣", "quatre-vingts": "8️⃣0️⃣", "quatre-vingt-dix": "9️⃣0️⃣", "cent": "💯", "le lundi": "📅", "le mardi": "📅", "le mercredi": "📅", "le jeudi": "📅", "le vendredi": "📅", "le samedi": "📅", "le dimanche": "📅", "la semaine": "🗓️", "le week-end": "🏖️", "janvier": "❄️", "février": "💘", "mars": "🌱", "avril": "🌧️", "mai": "🌸", "juin": "☀️", "juillet": "🏖️", "août": "🌞", "septembre": "🍂", "octobre": "🎃", "novembre": "🍁", "décembre": "🎄", "le printemps": "🌷", "l'été": "☀️", "l'automne": "🍂", "l'hiver": "⛄", "bonjour": "👋", "bonsoir": "🌆", "salut": "👋", "au revoir": "👋", "à bientôt": "🤗", "à demain": "📆", "bonne journée": "🌞", "bonne soirée": "🌙", "enchanté, enchantée": "🤝", "bienvenue": "🎉", "comment ça va ?": "😊", "ça va bien": "👍", "et toi ?": "🫵", "et vous ?": "🫵", "habiter": "🏠", "manger": "🍽️", "commencer": "▶️", "chercher": "🔍", "trouver": "🔎", "demander": "🙋", "donner": "🎁", "arriver": "🛬", "rester": "🪑", "téléphoner": "📞", "voyager": "✈️", "préparer": "🧑‍🍳", "inviter": "💌", "un professeur, une professeure": "👩‍🏫", "un ingénieur": "👷", "un médecin": "🧑‍⚕️", "un cuisinier, une cuisinière": "🧑‍🍳", "un chauffeur": "🚖", "un vendeur, une vendeuse": "🛍️", "un musicien, une musicienne": "🎸", "un acteur, une actrice": "🎭", "un journaliste": "📰", "un infirmier, une infirmière": "🩺", "une profession": "💼", "la famille": "👨‍👩‍👧‍👦", "les parents": "👫", "le père": "👨", "la mère": "👩", "le frère": "👦", "la sœur": "👧", "le grand-père": "👴", "la grand-mère": "👵", "le fils": "👦", "la fille": "👧", "le mari": "🤵", "la femme": "👰", "le bébé": "👶", "l'enfant": "🧒", "le français": "🇫🇷", "l'anglais": "🇬🇧", "le persan": "🇮🇷", "l'allemand": "🇩🇪", "l'espagnol": "🇪🇸", "une langue": "🗣️", "parler": "💬", "venir de": "➡️", "un pays": "🌍", "une ville": "🏙️", "une capitale": "🏛️", "d'où ?": "📍", "la France": "🇫🇷", "français, française": "🇫🇷", "le Canada": "🇨🇦", "canadien, canadienne": "🇨🇦", "l'Iran": "🇮🇷", "iranien, iranienne": "🇮🇷", "l'Allemagne": "🇩🇪", "allemand, allemande": "🇩🇪", "la Belgique": "🇧🇪", "belge": "🇧🇪", "l'Angleterre": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "anglais, anglaise": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "l'Espagne": "🇪🇸", "espagnol, espagnole": "🇪🇸", "un marché": "🧺", "une boulangerie": "🥖", "un magasin": "🏬", "un supermarché": "🛒", "un client, une cliente": "🛍️", "un kilo": "⚖️", "un morceau": "🍰", "un prix": "🏷️", "acheter": "🛒", "payer": "💳", "cher, chère": "💰", "un bus": "🚌", "un train": "🚆", "un métro": "🚇", "une voiture": "🚗", "un vélo": "🚲", "un taxi": "🚕", "une station": "🚉", "un arrêt": "🚏", "prendre le bus": "🚌", "aller à pied": "🚶", "une carte": "🗺️", "un ticket": "🎫", "une maison": "🏠", "un appartement": "🏢", "une chambre": "🛏️", "une cuisine": "🍳", "un salon": "🛋️", "une salle de bains": "🛁", "un jardin": "🌳", "un balcon": "🪴", "une porte": "🚪", "une fenêtre": "🪟", "une table": "🪑", "un lit": "🛏️", "une chaise": "🪑", "un étage": "🪜", "un tableau": "🧑‍🏫", "un crayon": "✏️", "un stylo": "🖊️", "une règle": "📏", "une gomme": "🧽", "un sac": "🎒", "un mur": "🧱", "une lampe": "💡", "une photo": "📷", "une image": "🖼️", "un ordinateur": "💻", "un téléphone": "📱", "une armoire": "🚪", "un canapé": "🛋️", "une assiette": "🍽️", "un oncle": "👨", "une tante": "👩", "un cousin": "🧑", "une cousine": "👧", "le neveu": "👦", "la nièce": "👧", "marié, mariée": "💍", "célibataire": "🧍", "divorcé, divorcée": "💔", "veuf, veuve": "🕊️", "un couple": "👩‍❤️‍👨", "ensemble": "🤝", "seul, seule": "🧍", "les cheveux": "💇", "les yeux": "👀", "le visage": "🙂", "la tête": "🗣️", "le nez": "👃", "la bouche": "👄", "une barbe": "🧔", "des lunettes": "👓", "long, longue": "📏", "court, courte": "✂️", "blond, blonde": "👱", "brun, brune": "👨‍🦱", "roux, rousse": "👩‍🦰", "frisé, frisée": "👩‍🦱", "grand, grande": "🧍‍♂️", "petit, petite": "🤏", "mince": "🧍", "gros, grosse": "🐘", "jeune": "🧒", "vieux, vieille": "👴", "beau, belle": "😍", "joli, jolie": "🌺", "gentil, gentille": "😇", "sympathique": "😄", "drôle": "😂", "sérieux, sérieuse": "😐", "sportif, sportive": "🏃", "noir, noire": "⚫", "blanc, blanche": "⚪", "rouge": "🔴", "bleu, bleue": "🔵", "vert, verte": "🟢", "jaune": "🟡", "gris, grise": "🩶", "rose": "🌸", "orange": "🟠", "marron": "🟤", "violet, violette": "🟣", "beige": "🟫", "un loisir": "🎨", "la musique": "🎵", "un film": "🎬", "le sport": "🏅", "jouer": "🎮", "chanter": "🎤", "danser": "💃", "nager": "🏊", "cuisiner": "🧑‍🍳", "dessiner": "🖍️", "marcher": "🚶", "la télévision": "📺", "aimer": "❤️", "un secrétaire, une secrétaire": "🗂️", "un comptable, une comptable": "🧮", "un informaticien, une informaticienne": "👩‍💻", "un directeur, une directrice": "🧑‍💼", "un boulanger, une boulangère": "🥖", "un avocat, une avocate": "⚖️", "un ingénieur, une ingénieure": "👷", "un chanteur, une chanteuse": "🎤", "un collègue, une collègue": "🧑‍🤝‍🧑", "regarder la télévision": "📺", "jouer au football": "⚽", "faire du vélo": "🚴", "jouer de la guitare": "🎸", "la piscine": "🏊", "un jeu": "🎲", "se promener": "🚶", "l'heure": "🕐", "une minute": "⏱️", "le matin": "🌅", "l'après-midi": "🌤️", "le soir": "🌇", "la nuit": "🌙", "midi": "🕛", "minuit": "🌃", "une date": "📆", "un anniversaire": "🎂", "aujourd'hui": "📍", "demain": "⏭️", "hier": "⏮️", "un jour": "📅", "un mois": "🗓️", "le midi": "🕛", "le jour": "☀️", "la journée": "🌞", "tôt": "🐓", "tard": "🦉", "maintenant": "⏰", "un projet": "📌", "partir": "🧳", "visiter": "🗺️", "se reposer": "😴", "un quartier": "🏘️", "une rue": "🛣️", "une place": "⛲", "une pharmacie": "💊", "un café": "☕", "un parc": "🌳", "une gare": "🚉", "à gauche": "⬅️", "à droite": "➡️", "tout droit": "⬆️", "loin": "🔭", "le soleil": "☀️", "la pluie": "🌧️", "le vent": "💨", "un nuage": "☁️", "le ciel": "🌤️", "la neige": "❄️", "il fait beau": "🌞", "il fait chaud": "🥵", "il fait froid": "🥶", "pleuvoir": "🌧️", "neiger": "🌨️", "un degré": "🌡️", "la météo": "⛅", "le temps": "🌦️", "une saison": "🍃", "chaud": "🔥", "froid": "🧊", "doux": "🌤️", "frais": "🌬️", "sec": "🏜️", "humide": "💧", "ensoleillé": "☀️", "nuageux": "⛅", "le pain": "🍞", "le fromage": "🧀", "le beurre": "🧈", "le lait": "🥛", "un œuf": "🥚", "la viande": "🥩", "le poisson": "🐟", "le poulet": "🍗", "la confiture": "🍓", "le miel": "🍯", "le café": "☕", "le thé": "🍵", "le jus": "🧃", "l'eau": "💧", "une pomme": "🍎", "une banane": "🍌", "une orange": "🍊", "une fraise": "🍓", "un citron": "🍋", "des raisins": "🍇", "une tomate": "🍅", "une pomme de terre": "🥔", "une carotte": "🥕", "un oignon": "🧅", "une salade": "🥗", "un concombre": "🥒", "un champignon": "🍄", "une poire": "🍐", "un pantalon": "👖", "un jean": "👖", "une chemise": "👔", "un t-shirt": "👕", "un pull": "🧶", "une robe": "👗", "une jupe": "👗", "un manteau": "🧥", "un costume": "🤵", "une veste": "🧥", "des chaussures": "👟", "des bottes": "🥾", "un chapeau": "🎩", "une cravate": "👔", "des chaussettes": "🧦", "une écharpe": "🧣", "une couleur": "🎨", "rond, ronde": "⚪", "carré, carrée": "🟦", "une forme": "🔷", "une taille": "📐", "essayer": "👗", "porter": "👚", "mettre": "🧥", "choisir": "🤔", "trop grand": "📈", "trop petit": "📉", "à la mode": "✨", "les soldes": "🏷️", "élégant, élégante": "💃", "simple": "▫️"},tq=0;function run(){tq=0;var c=document.querySelectorAll('button.card .face.front');for(var i=0;i<c.length;i++){var f=c[i];if(f.getAttribute('data-emo'))continue;var u=f.querySelector('svg use');var fr=f.querySelector('.fr');if(!u||!fr)continue;var k=fr.textContent.trim();var e=EMO[k]||EMO[k.toLowerCase()];f.setAttribute('data-emo','1');if(!e)continue;var s=u.closest('svg');var sp=document.createElement('span');sp.setAttribute('aria-hidden','true');sp.style.cssText='display:flex;align-items:center;justify-content:center;font-size:44px;line-height:1;height:74px;margin-top:6px';sp.textContent=e;s.parentNode.replaceChild(sp,s)}}
+new MutationObserver(function(){if(!tq)tq=setTimeout(run,120)}).observe(document.documentElement,{childList:true,subtree:true})})();</script><style>button.iconbtn[aria-label="Reset view"]{display:none!important}</style><script>/* Camelon: asking before a page-closing X */
+(function(){function isX(el){var p=el.querySelector&&el.querySelector('path');var d=p&&p.getAttribute('d')||'';return /^M5 5\s?[Ll]\s?19 19|^M5 5\s?l\s?14 14|^M6 6\s?l\s?12 12|^M352 88/.test(d)}
+function find(t){var el=t.closest&&t.closest('button,[role="button"],g[aria-label]');if(!el)return null;var l=el.getAttribute('aria-label');if(l!=='Back'&&l!=='Close')return null;if(!isX(el))return null;if(el.closest('[role="dialog"],[data-elan="flow-cover"],.nx-wcard'))return null;return el}
+function ask(el){if(document.getElementById('camxpop'))return;var o=document.createElement('div');o.id='camxpop';o.style.cssText='position:fixed;left:0;top:0;right:0;bottom:0;z-index:99999;background:rgba(15,18,35,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:16px';
+o.innerHTML='<div style="width:100%;max-width:320px;box-sizing:border-box;background:#fff;border-radius:28px;padding:24px 20px 18px;text-align:center;box-shadow:0 28px 56px -20px rgba(90,60,180,.5)"><div style="margin:0;font:600 24px/28px Fredoka,Nunito,sans-serif;color:#22316e">Are you sure you want to leave?</div><div style="margin:8px 0 0;font:700 14px/20px Nunito,sans-serif;color:#6f6a85">Your progress is saved.</div><div class="xy" style="margin-top:18px;padding:14px;border-radius:999px;background:linear-gradient(90deg,#3fb0c4,#4f7fe0);color:#fff;font:600 18px Fredoka,Nunito,sans-serif;cursor:pointer">Yes, leave</div><div class="xn" style="margin-top:10px;padding:12px;border-radius:999px;background:#efeaff;color:#4b34b0;font:600 18px Fredoka,Nunito,sans-serif;cursor:pointer">No, stay</div></div>';
+o.addEventListener('click',function(e){var y=e.target.closest('.xy'),n=e.target.closest('.xn');if(!y&&!n)return;e.stopPropagation();o.remove();if(y){el.dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true,view:window}))}});document.body.appendChild(o)}
+document.addEventListener('click',function(e){if(!e.isTrusted)return;var el=find(e.target);if(!el)return;e.stopImmediatePropagation();e.preventDefault();ask(el)},true)})();</script></head>
+  <body>
+    <div
+      data-generated-space-root=""
+      data-generated-space-slug="french-original-b1-sample"
+    ></div>
+  </body>
+</html>
