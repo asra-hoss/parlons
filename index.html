@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+  <head><script>/* Camelon: a reset (no onboarding flag) also clears the lesson progress */try{if(localStorage.getItem('origb1:onboarded')!=='1'){Object.keys(localStorage).forEach(function(k){if(k.indexOf('cam_')===0)localStorage.removeItem(k)});try{sessionStorage.removeItem('cam_exit')}catch(e){}}}catch(e){}</script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="color-scheme" content="light dark" />
+    <!-- Installable web app (PWA): Safari's "Add to Home Screen" gives
+         the app its own icon and a full-screen, standalone launch.
+         The file-referencing <link>s (manifest, touch icon, favicon)
+         are injected into the built HTML by build-static.mjs —
+         Bun resolves relative link hrefs as bundle assets, so they
+         cannot live in this source file. The files themselves live
+         in client/public/ and ship verbatim at the site root. -->
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="./logo.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+    <meta name="theme-color" content="#7a5ff0" />
+    <meta
+      name="description"
+      content="Camelon — learn French from A1 to C2 with the Édito classroom method: complete dossiers, real voices, step-by-step grammar, writing and speaking practice, with your progress saved on every device."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Camelon" />
+    <meta
+      property="og:title"
+      content="Camelon — Learn French, one dossier at a time (A1 to C2)"
+    />
+    <meta
+      property="og:description"
+      content="French lessons built on the Édito method: listening, reading, vocabulary, grammar, exercises, writing and speaking in every dossier."
+    />
+    <meta property="og:url" content="https://asra-hoss.github.io/parlons/" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Camelon" />
+    <!-- Persian/Arabic-script font, SELF-HOSTED (no CDN):
+         Vazirmatn woff2 files live in client/public/fonts/ and
+         ship verbatim at ./fonts/. Every element marked
+         lang="fa" (tap-a-word glosses, flashcard meanings,
+         Persian grammar explanations) or lang="ar" (Arabic
+         translations from the global language picker) renders
+         in Vazirmatn; Latin/French text keeps its own fonts.
+         Line-height is generous: the script needs it. -->
+    <style>
+      @font-face {
+        font-family: "Vazirmatn";
+        src: url("./assets/fonts/vazirmatn-regular.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Vazirmatn";
+        src: url("./assets/fonts/vazirmatn-bold.woff2") format("woff2");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      [lang="fa"],
+      [lang="ar"] {
+        font-family: "Vazirmatn", Tahoma, Arial, sans-serif;
+        line-height: 2;
+      }
+      /* Latin font, SELF-HOSTED (no CDN): Nunito variable woff2
+         (weights 400–800 in one file), the rounded geometric sans
+         of the Lingua-style theme. The font-family itself is
+         applied in theme.css. */
+      @font-face {
+        font-family: "Nunito";
+        src: url("./assets/fonts/nunito.woff2") format("woff2");
+        font-weight: 400 800;
+        font-style: normal;
+        font-display: swap;
+      }
+      /* Rounded display font, SELF-HOSTED: Fredoka variable
+         ttf (weights 300–700) in client/public/fonts/,
+         shipped like Nunito's. Used by the Home v6 screen
+         (bar counter, level title, star chip, Continue)
+         and already named by the Bubble Dream stack. */
+      @font-face {
+        font-family: "Fredoka";
+        src: url("./assets/fonts/fredoka.ttf") format("truetype");
+        font-weight: 300 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      /* Chunky display font for outlined numbers,
+         SELF-HOSTED: Lilita One (Google Fonts, OFL) in
+         client/public/fonts/, shipped like Fredoka's.
+         Used by the Contest page (Asra's design package,
+         Nov 8, 2026) for its outlined score numerals. */
+      @font-face {
+        font-family: "Lilita One";
+        src: url("./assets/fonts/lilita-one.woff") format("woff");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      /* Serif display font, SELF-HOSTED: Libre Baskerville
+         variable woff2 (weights 400–700 in one file) in
+         client/public/fonts/, shipped like Nunito's. Used by
+         the Vocabulary (Flashcards) Tracker screen — the
+         serif of Asra's design package (Nov 8, 2026). */
+      @font-face {
+        font-family: "Libre Baskerville";
+        src: url("./assets/fonts/libre-baskerville.woff2") format("woff2");
+        font-weight: 400 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      /* Serif display font, SELF-HOSTED: Fraunces (latin
+         subsets, weights 600/700 + italics 500/600) in
+         client/public/fonts/, shipped like Nunito's. Used
+         by the Writing and Practice Tracker screens — the
+         serif of Asra's design packages (Nov 8, 2026). */
+      @font-face {
+        font-family: "Fraunces";
+        src: url("./assets/fonts/fraunces-600.woff2") format("woff2");
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Fraunces";
+        src: url("./assets/fonts/fraunces-700.woff2") format("woff2");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Fraunces";
+        src: url("./assets/fonts/fraunces-500-italic.woff2") format("woff2");
+        font-weight: 500;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Fraunces";
+        src: url("./assets/fonts/fraunces-600-italic.woff2") format("woff2");
+        font-weight: 600;
+        font-style: italic;
+        font-display: swap;
+      }
+      /* Script font, SELF-HOSTED: Great Vibes (latin) in
+         client/public/fonts/. Used inside the Writing
+         Tracker's stamp artwork (« Bonjour », « Carte
+         postale ») — the script of Asra's package. */
+      @font-face {
+        font-family: "Great Vibes";
+        src: url("./assets/fonts/great-vibes.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+    <!-- Dark mode (Nov 7, 2026): apply the saved choice
+         (Settings → « Dark mode », origb1:dark-mode)
+         BEFORE first paint, so a dark-mode learner never
+         sees a light flash. Default = light. The
+         useDarkMode hook in App.tsx keeps this attribute
+         in sync afterwards. -->
+    <script>
+      try {
+        document.documentElement.dataset.theme =
+          window.localStorage.getItem("origb1:dark-mode") === "1"
+            ? "dark"
+            : "light";
+      } catch (e) {
+        document.documentElement.dataset.theme = "light";
+      }
+    </script>
+    <!-- Boot scrub (Nov 12, 2026): runs BEFORE the app bundle
+         is even fetched, so it survives a device whose stored
+         state kills the bundle during module init — the case
+         the in-bundle healStoredState (main.tsx) can never
+         reach. Two jobs, both structural and idempotent:
+         (1) This app has NEVER registered a service worker;
+             if one is somehow registered for this origin,
+             unregister it and drop every Cache Storage cache,
+             so the page always comes from the network, never
+             from a trapped copy. (2) Validate the handful of
+             BOOKKEEPING keys startup reads first (language,
+             nav position, theme) and drop a value that is
+             structurally impossible; since Nov 13, 2026 the
+             scrub also shape-checks the MAIN PROGRESS stores
+             (reading checks, study time, starred words,
+             entries, writing/speaking progress) at entry
+             level — the bundle's sanitiser (state-sanitize)
+             owns the full validation, and /rescue owns the
+             manual repair. The transient
+             sign-in markers (auth-error, redirect-attempt)
+             are dropped unconditionally: a stale one can
+             only mislead the next load. Everything is wrapped
+             so a failure here can never block the app. -->
+    <script>
+      (function () {
+        try {
+          if ("serviceWorker" in navigator) {
+            navigator.serviceWorker
+              .getRegistrations()
+              .then(function (regs) {
+                regs.forEach(function (r) {
+                  r.unregister();
+                });
+              })
+              .catch(function () {});
+          }
+          if (window.caches && caches.keys) {
+            caches
+              .keys()
+              .then(function (names) {
+                names.forEach(function (n) {
+                  caches.delete(n);
+                });
+              })
+              .catch(function () {});
+          }
+        } catch (e) {}
+        try {
+          var ls = window.localStorage;
+          ls.removeItem("origb1:auth-error");
+          ls.removeItem("origb1:redirect-attempt");
+          var lang = ls.getItem("origb1:lang");
+          if (
+            lang !== null &&
+            ["en", "fa", "es", "ru", "hi", "ar"].indexOf(lang) === -1
+          ) {
+            ls.removeItem("origb1:lang");
+          }
+          var dm = ls.getItem("origb1:dark-mode");
+          if (dm !== null && dm !== "0" && dm !== "1") {
+            ls.removeItem("origb1:dark-mode");
+          }
+          var nav = ls.getItem("origb1:nav");
+          if (nav !== null) {
+            var ok = false;
+            try {
+              var parsed = JSON.parse(nav);
+              ok =
+                parsed !== null &&
+                typeof parsed === "object" &&
+                !Array.isArray(parsed);
+            } catch (e2) {
+              ok = false;
+            }
+            if (!ok) ls.removeItem("origb1:nav");
+          }
+          /* Reading checks: an array of {checkKey, …} entries.
+             A non-array value is dropped outright; entries
+             without a string checkKey are unusable to every
+             reader and are filtered — the one malformation
+             class the in-bundle healing used to leave behind. */
+          var checks = ls.getItem("origb1:reading-checks");
+          if (checks !== null) {
+            try {
+              var arr = JSON.parse(checks);
+              if (!Array.isArray(arr)) {
+                ls.removeItem("origb1:reading-checks");
+              } else {
+                var kept = arr.filter(function (c) {
+                  return (
+                    c !== null &&
+                    typeof c === "object" &&
+                    typeof c.checkKey === "string" &&
+                    /* Real check keys are always « kind:… »
+                       (visual:, game:, words:, listen:, sp:…). */
+                    c.checkKey.indexOf(":") !== -1
+                  );
+                });
+                if (kept.length !== arr.length) {
+                  ls.setItem(
+                    "origb1:reading-checks",
+                    JSON.stringify(kept),
+                  );
+                }
+              }
+            } catch (e3) {
+              ls.removeItem("origb1:reading-checks");
+            }
+          }
+          /* Main progress stores (Nov 13, 2026 — the boot
+             scrub grows the same cheap shape checks the
+             bundle's sanitiser runs, for the stores whose
+             malformed entries can kill a screen before the
+             bundle's own healing is even reached — a null
+             entry in study-time crashed Home in Chromium).
+             Same rule as everywhere: only malformed entries
+             are dropped; valid entries are never touched. */
+          var cleanArr = function (key, okEntry) {
+            var raw = ls.getItem(key);
+            if (raw === null) return;
+            try {
+              var a = JSON.parse(raw);
+              if (!Array.isArray(a)) {
+                ls.removeItem(key);
+                return;
+              }
+              var keptA = a.filter(okEntry);
+              if (keptA.length !== a.length) {
+                ls.setItem(key, JSON.stringify(keptA));
+              }
+            } catch (e4) {
+              ls.removeItem(key);
+            }
+          };
+          var isObj = function (v) {
+            return v !== null && typeof v === "object";
+          };
+          cleanArr("origb1:study-time", function (e) {
+            return (
+              isObj(e) &&
+              typeof e.dossierId === "string" &&
+              typeof e.day === "string" &&
+              typeof e.seconds === "number" &&
+              isFinite(e.seconds) &&
+              e.seconds >= 0
+            );
+          });
+          cleanArr("origb1:starred-words", function (e) {
+            return (
+              isObj(e) &&
+              typeof e.wordKey === "string" &&
+              typeof e.display === "string"
+            );
+          });
+          cleanArr("origb1:entries", function (e) {
+            return (
+              isObj(e) &&
+              typeof e.id === "number" &&
+              typeof e.text === "string"
+            );
+          });
+          /* Progress store: an object whose writing /
+             speaking lists hold only well-shaped entries;
+             a non-object value is dropped outright. */
+          var prog = ls.getItem("origb1:progress");
+          if (prog !== null) {
+            try {
+              var pp = JSON.parse(prog);
+              if (!isObj(pp) || Array.isArray(pp)) {
+                ls.removeItem("origb1:progress");
+              } else {
+                var dirty = false;
+                var fixList = function (list, okE) {
+                  if (!Array.isArray(list)) {
+                    dirty = true;
+                    return [];
+                  }
+                  var k = list.filter(okE);
+                  if (k.length !== list.length) dirty = true;
+                  return k;
+                };
+                pp.writing = fixList(pp.writing, function (e) {
+                  return (
+                    isObj(e) &&
+                    typeof e.draftKey === "string" &&
+                    typeof e.content === "string"
+                  );
+                });
+                pp.speaking = fixList(pp.speaking, function (e) {
+                  return isObj(e) && typeof e.checkKey === "string";
+                });
+                if (dirty) {
+                  ls.setItem("origb1:progress", JSON.stringify(pp));
+                }
+              }
+            } catch (e5) {
+              ls.removeItem("origb1:progress");
+            }
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <title>Camelon</title>
+    
+  <link rel="stylesheet" crossorigin href="./assets/index-1f9b76c2.css"><script type="module" crossorigin src="./assets/index-5506c766.js"></script><script>/* Camelon: the lesson cover pop-up stays; its Continue button opens the new Lesson 1 (from Listening); leaving returns home */
+(function(){var go=false,leaving=false;try{if(sessionStorage.getItem('cam_exit')==='1')leaving=true}catch(e){}
+function cover(){return document.querySelector('img[src*="a1-opener-cover-1"]')}
+var ALL=[[["1", "Discover French and introduce yourself", "What's your name?"], ["2", "Spell your name in French", "How do you spell your name?"], ["3", "The world in French", "What country is this?"], ["4", "Survive in the classroom", "What day is it today?"]], [["1", "Tu or vous — greetings and politeness", "Do you say tu or vous?"], ["2", "Ask for information — politely", "Where is the French class?"], ["3", "Say who you are", "Where are you from?"], ["4", "Introduce someone else", "Who is this?"], ["5", "My identity card", "How old are you?"], ["6", "Give a reason (parce que / pour) and punctuate", "Why do you learn French?"]], [["1", "Places and Travel — Where are you from?", "Where are you from?"], ["2", "Places and Travel — Where is it?", "Where is it?"], ["3", "Places and Travel — How are you getting to Aosta?", "How are you getting to Aosta?"], ["4", "Places and Travel — Where do you live?", "Where do you live?"], ["5", "Places and Travel — Where are you staying?", "Where are you staying?"], ["6", "Places and Travel — How long are you staying?", "How long are you staying?"]], [["1", "In the family", "Tell me about your family."], ["2", "The selfie contest", "What does your best friend look like?"], ["3", "French and us", "What do you like doing?"], ["4", "Long live speed-meetings!", "What's your job? What are your dreams?"], ["5", "The free neighbourhood", "What do you do in your free time?"], ["6", "Where does it hurt?", "Where does it hurt?"]], [["1", "Say the time and plan your day", "What time is it?"], ["2", "Talk about your morning", "What do you do every morning?"], ["3", "Reading, writing and how often", "How often do you read?"], ["4", "A day at work", "What's a typical day at work like?"], ["5", "Weekends and going out", "What do you like doing on weekends?"], ["6", "Invite a friend", "Are you free this weekend?"]], [["1", "What you did yesterday", "What did you do yesterday?"], ["2", "What's next?", "What are you going to do next?"], ["3", "Born where, born when?", "Where and when were you born?"], ["4", "Who do you look like?", "Who do you look like?"], ["5", "Why did you choose your job?", "Why did you choose your job?"], ["6", "A good piece of advice", "What advice would you give a friend?"]], [["1", "Plan the next holiday", "Where are you going on your next holiday?"], ["2", "Dream of a destination", "Where would you like to go?"], ["3", "Describe your city", "What's your city like?"], ["4", "Describe a home in Morocco", "What's your home like?"], ["5", "Choose the season", "What's the weather like?"], ["6", "Feel the trip", "How do you feel about your trip?"]], [["1", "Eating French-style", "What would you like to eat?"], ["2", "At the market", "How much do you need?"], ["3", "Reading habits", "Do you read more or less than before?"], ["4", "Life before", "What was your life like before?"], ["5", "Shopping for clothes", "What are you looking for?"], ["6", "A little corner of France", "Did you like it?"]], [["1", "Look how far you've come", "How has your French improved?"], ["2", "Dinner in town", "What would you like to order?"], ["3", "The costume party", "Which outfit do you prefer?"], ["4", "At someone's home", "Who's the person you're talking about?"], ["5", "A little culture?", "What movie would you recommend?"], ["6", "A real party", "Who are you inviting to your party?"]]];var DN=1,D='orig-a1-m0',L=ALL[0].map(function(x){return ['l'+x[0],x[1],x[2]]});
+var OTH={"a2": [[[1, "Le caractère et les sentiments", ""]], [[1, "Le logement et le quartier", ""]], [[1, "Études, métiers et parcours", ""]], [[1, "La cuisine et les quantités", ""]], [[1, "Consommer et l'argent", ""]], [[1, "Voyages et vacances", ""]], [[1, "Souvenirs et nature", ""]], [[1, "La nature et les animaux", ""]], [[1, "Le corps et la santé", ""]], [[1, "Technologies et médias", ""]]], "b1": [[[1, "Les loisirs et les voyages", ""]], [[1, "Le corps et la santé", ""]], [[1, "La famille et les fêtes", ""]], [[1, "Les médias et la communication", ""]], [[1, "Le quartier et le logement", ""]], [[1, "Le travail et l'emploi", ""]], [[1, "L'environnement", ""]], [[1, "L'alimentation", ""]], [[1, "Les achats et l'argent", ""]]], "b2": [[[1, "Les faits de société", ""]], [[1, "La politique et l'engagement", ""]], [[1, "La langue et l'histoire", ""]], [[1, "L'environnement et le climat", ""]], [[1, "La technologie et le progrès", ""]], [[1, "Les relations et les sentiments", ""]], [[1, "Le travail et l'économie", ""]], [[1, "La santé et les sciences", ""]], [[1, "Le tourisme et le voyage", ""]], [[1, "L'art et la création", ""]]], "c12": [[[1, "Société et solidarités", ""]], [[1, "Échanges et commerce", ""]], [[1, "Écologie et énergies", ""]], [[1, "Politique et frontières", ""]], [[1, "Élites et générations", ""]], [[1, "Médias et mondes virtuels", ""]], [[1, "Culture et santé", ""]]]};var LVL='a1';
+function setDN(n,lv){lv=lv||'a1';LVL=lv;DN=n;if(lv==='a1'){D='orig-a1-m'+(n-1);L=(ALL[n-1]||ALL[0]).map(function(x){return ['l'+x[0],x[1],x[2]]})}else{D=({a2:'orig-a2-u',b1:'orig-u',b2:'orig-b2-u',c12:'oric12-u'})[lv]+n;L=((OTH[lv]||[])[n-1]||[[1,'Unit '+n,'']]).map(function(x){return ['l'+x[0],x[1],x[2]]})}}
+function PR(){try{return JSON.parse(localStorage.getItem('cam_prog')||'{}')}catch(e){return{}}}
+function getC(){var p=PR();for(var q=0;q<L.length;q++){var r=p[D+'-'+L[q][0]];if(!r||!r.done)return L[q][0]}return L[0][0]}
+function setC(k){try{var m=JSON.parse(localStorage.getItem('cam_lesson_choice')||'{}');m[D]=D+'-'+k;localStorage.setItem('cam_lesson_choice',JSON.stringify(m))}catch(e){}}
+var sel=null;
+function paint(box){[].forEach.call(box.children,function(r){var on=r.getAttribute('data-k')===sel;r.style.background=on?'#ede9fe':'#f8f6ff';r.style.borderColor=on?'#7a5ff0':'transparent'})}
+function build(){var im=document.querySelector('.nx-wcard img[src*="unit-"]');if(!im)return;var mm=/(a1|a2|b2|c12)-unit-(\d+)-/.exec(im.getAttribute('src'));var lv0=mm?mm[1]:'b1';if(!mm)mm=/\/unit-(\d+)-/.exec(im.getAttribute('src'));if(!mm)return;var nn0=+mm[mm.length-1];var sc0=im.closest('.nx-wcard');var hr=sc0&&/(A1|A2|B1|B2|C1\/C2)\s*\u00b7\s*[^\d\u00b7]*?(\d+)/.exec(((sc0.closest('div.fixed')||sc0.parentElement||sc0).textContent||'').slice(0,400));if(hr){lv0={A1:'a1',A2:'a2',B1:'b1',B2:'b2','C1/C2':'c12'}[hr[1]];nn0=+hr[2]}var mx={a1:9,a2:10,b1:9,b2:10,c12:7}[lv0];if(nn0>mx)return;setDN(nn0,lv0);var sec=im.closest('.nx-wcard');if(!sec||sec.querySelector('#camlist'))return;
+ var bs=[].filter.call(sec.querySelectorAll('button'),function(b){return b.textContent.trim().length>0&&!b.getAttribute('aria-label')});var cb=bs[bs.length-1];if(!cb)return;
+ var card=cb.parentNode;sel=getC();var box=document.createElement('div');box.id='camlist';var ov=sec.closest('div.fixed');if(ov){ov.style.overflowY='auto';ov.style.alignItems='flex-start';ov.style.webkitOverflowScrolling='touch';ov.style.overscrollBehavior='contain';var w0=ov.firstElementChild;if(w0){w0.style.margin='auto';w0.style.paddingBottom='24px'}}box.style.cssText='display:flex;flex-direction:column;gap:8px;margin:12px 0';
+ L.forEach(function(x,i){var r=document.createElement('div');r.setAttribute('data-k',x[0]);r.style.cssText='display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:18px;border:2px solid transparent;cursor:pointer;font-family:Nunito,sans-serif';
+  r.innerHTML='<span style="width:36px;height:36px;border-radius:12px;background:#e4e0fa;display:flex;align-items:center;justify-content:center;font-weight:900;color:#22316e;flex:none">'+(i+1)+'</span><span style="min-width:0"><b style="display:block;font-size:14px;color:#22316e">'+x[1]+'</b><span style="font-size:12px;color:#6b6f8d;font-weight:700">'+x[2]+'</span></span>'+(function(){var r=PR()[D+'-'+x[0]];if(!r)return '';var n=0;for(var k in (r.steps||{}))n++;if(r.done)return '<span style="margin-left:auto;flex:none;font:800 12px Nunito,sans-serif;color:#1f7a45;background:#e0f6e9;border-radius:12px;padding:4px 9px">\u2713 Done</span>';if(n||r.step)return '<span style="margin-left:auto;flex:none;font:800 12px Nunito,sans-serif;color:#4b34b0;background:#efeaff;border-radius:12px;padding:4px 9px">'+n+'/8 steps</span>';return ''})();
+  r.addEventListener('click',function(){sel=x[0];setC(sel);try{localStorage.setItem('cam_pick',JSON.stringify({d:DN,l:+x[0].replace('l',''),t:Date.now()}))}catch(e){}paint(box)});box.appendChild(r)});
+ card.insertBefore(box,cb);paint(box);
+ var g=[].filter.call(sec.querySelectorAll('b,strong,span'),function(x){return x.textContent.trim()==='Grammar:'})[0];if(g){var n=g;while(n.parentElement&&!/Speaking:/.test(n.parentElement.textContent.slice(0,0)+n.textContent)){n=n.parentElement;if(/Speaking:/.test(n.textContent))break}
+  n.style.display='none';var pv=n.previousElementSibling;if(pv&&!pv.textContent.trim())pv.style.display='none'}}
+new MutationObserver(build).observe(document.documentElement,{childList:true,subtree:true});
+document.addEventListener('click',function(e){var pb=e.target.closest&&e.target.closest('button');if(pb&&pb.textContent.trim().length>0&&!pb.getAttribute('aria-label')&&!pb.hasAttribute('data-popup-plaque')){var pc=pb.closest('.nx-wcard');if(pc&&pc.querySelector('#camlist')&&!pb.closest('#camlist')){var kk=sel||getC();var nn=kk.replace('l','');setC(kk);e.preventDefault();e.stopPropagation();go=true;location.assign('./lesson-'+(LVL==='a1'?'':LVL+'-')+DN+(LVL==='a1'?'-'+nn:'')+'/#start');return}}
+if(!cover())return;var b=e.target.closest&&e.target.closest('button');if(!b||b.getAttribute('aria-label')==='Back')return;if(!/^Continue/.test(b.textContent.trim()))return;var k=sel||getC();e.preventDefault();e.stopPropagation();go=true;location.assign('./lesson-1-'+k.replace('l','')+'/#start')},true);
+function chk(){if(go||!leaving)return;var im=cover();var yes=[].filter.call(document.querySelectorAll('button'),function(b){return /^(Yes|\u0628\u0644\u0647|Oui|S\u00ed|\u0414\u0430|\u0939\u093e\u0901|\u0646\u0639\u0645)$/.test(b.textContent.trim())})[0];
+ if(yes){go=true;leaving=false;try{sessionStorage.removeItem('cam_exit')}catch(e){}yes.click();setTimeout(function(){go=false},1200);return}
+ var bk=document.querySelector('button[aria-label="Back"]');if(im&&bk&&!bk._c){bk._c=1;bk.click()}}
+new MutationObserver(chk).observe(document.documentElement,{childList:true,subtree:true});})();</script><script>/* camelon-next: after finishing Lesson 1, open the next lesson's cover directly */
+(function(){var on=false,t0=Date.now();try{on=sessionStorage.getItem('cam_next')==='1'}catch(e){}if(!on)return;var st=document.createElement('style');st.id='camnext';st.textContent='body{visibility:hidden}';document.head.appendChild(st);
+function done(){try{sessionStorage.removeItem('cam_next')}catch(e){}var x=document.getElementById('camnext');if(x)x.remove();mo.disconnect()}
+var c1=0,c2=0;var mo=new MutationObserver(function(){if(Date.now()-t0>9000){done();return}
+ var w=document.querySelector('div.fixed .nx-wcard');
+ if(w){var b=[].filter.call(w.querySelectorAll('button'),function(b){return /^Continue$/.test(b.textContent.trim())}).pop();if(b&&!c2){c2=1;setTimeout(function(){b.click();setTimeout(done,500)},250)}return}
+ if(!c1){var h=[].filter.call(document.querySelectorAll('button'),function(b){return /^Continue/.test(b.textContent.trim())&&/Dossier/.test(b.textContent)})[0];if(h){c1=1;setTimeout(function(){h.click()},250)}}});
+mo.observe(document.documentElement,{childList:true,subtree:true});setTimeout(done,9500)})();</script><script>/* camelon-skip-language: start on "Where are you with French?"; English is the default, the flags on that page change it */
+(function(){var st=document.createElement('style');st.id='camskip';st.textContent='body{visibility:hidden}';document.head.appendChild(st);
+function show(){var s=document.getElementById('camskip');if(s)s.remove();mo.disconnect()}
+var mo=new MutationObserver(function(){var bs=[].slice.call(document.querySelectorAll('button'));if(!bs.length)return;
+ var en=bs.filter(function(b){return /English/.test(b.textContent)&&bs.some(function(x){return /العربية/.test(x.textContent)})})[0];
+ if(en){en.click();return}
+ if(document.body.innerText.length>20)show()});
+mo.observe(document.documentElement,{childList:true,subtree:true});setTimeout(show,2500)})();</script><script>/* camelon-settings-clean: remove section captions and status lines from Settings */
+(function(){function clean(){if(!document.body||!/Reset my progress/.test(document.body.innerText||''))return;[].forEach.call(document.querySelectorAll('h2,h3,p,span,div'),function(el){if(el.children.length)return;var t=el.textContent.trim();
+ if(t==='Learning'||t==='App'||/^Email verified/.test(t)||/^Progress saved/.test(t)||/^Erases all your progress/.test(t))el.style.display='none'})}
+new MutationObserver(clean).observe(document.documentElement,{childList:true,subtree:true})})();</script><script>/* camelon-hide-level-note: remove the "You can change your level anytime" strip */
+(function(){function hide(){[].forEach.call(document.querySelectorAll('footer p'),function(p){if(p.textContent.trim()==='You can change your level anytime.'){var f=p.closest('footer');if(f)f.style.display='none'}})}
+new MutationObserver(hide).observe(document.documentElement,{childList:true,subtree:true});hide()})();</script><style id="camelon-cover-style">
+[data-elan="flow-cover"] section{border:2px solid #e8e3f7!important;background:#fff!important;border-radius:26px!important;box-shadow:0 14px 30px rgba(90,70,180,.14)!important}
+[data-elan="flow-cover"] section>div:first-child{background:#f1edff!important;border-bottom:2px solid #e8e3f7!important}
+[data-elan="flow-cover"] section p{color:#4b34b0!important}
+[data-elan="flow-cover"] section h3{font-family:Fredoka,Nunito,sans-serif!important;font-weight:600!important;font-size:22px!important;color:#1d1a33!important}
+[data-elan="flow-cover"] li{font-family:Nunito,sans-serif!important;font-weight:700!important}
+[data-elan="flow-cover"] li span{background:linear-gradient(135deg,#3fb0c4,#4f7fe0)!important}
+[data-elan="flow-cover"] img{border-radius:24px}
+button.cam-cont{background:linear-gradient(135deg,#3fb0c4,#4f7fe0)!important;box-shadow:0 10px 22px rgba(63,130,210,.38)!important;font-family:Fredoka,Nunito,sans-serif!important;font-weight:600!important}
+</style><script>/* camelon-cover-style: mark the Continue button of the lesson cover */
+(function(){function m(){if(!document.querySelector('[data-elan="flow-cover"]'))return;[].forEach.call(document.querySelectorAll('button'),function(b){if(/^Continue/.test(b.textContent.trim()))b.classList.add('cam-cont')})}
+new MutationObserver(m).observe(document.documentElement,{childList:true,subtree:true});m()})();</script><script>/* Camelon: old lesson pages -> new flow */
+(function(){var MX={A1:9,A2:10,B1:9,B2:10,'C1/C2':7},P={A2:'a2-',B1:'b1-',B2:'b2-','C1/C2':'c12-'},RX=/Camelon\s*\u2022\s*(A1|A2|B1|B2|C1\/C2)\s*\u2022\s*[^\d\u2022]*?(\d+)\s*\u2022\s*[^\d\u2022]*?(\d+)/;var armed=true,seen=false,exiting=false,tq=0;try{if(sessionStorage.getItem('cam_exit')==='1'){armed=false;exiting=true}}catch(e){}
+if(exiting){var cs=document.createElement('style');cs.id='camexitcov';cs.textContent='body{visibility:hidden!important}';document.head.appendChild(cs);var t0=Date.now();var rm=function(){var x=document.getElementById('camexitcov');if(x)x.remove();try{mo2.disconnect()}catch(e){}try{sessionStorage.removeItem('cam_exit')}catch(e){}exiting=false;armed=true};var bkc=0,yc=0;var mo2=new MutationObserver(function(){var yes=[].filter.call(document.querySelectorAll('button'),function(b){return /^(Yes|\u0628\u0644\u0647|Oui|S\u00ed|\u0414\u0430|\u0939\u093e\u0901|\u0646\u0639\u0645)$/.test(b.textContent.trim())})[0];if(yes&&!yc){yc=1;try{sessionStorage.removeItem('cam_exit')}catch(e){}yes.click();return}var bk=document.querySelector('button[aria-label="Back"]');if(bk&&!bkc&&/Camelon\s*\u2022/.test(document.body.textContent)){bkc=1;bk.click()}var hb=[].filter.call(document.querySelectorAll('button'),function(b){var t=b.textContent.trim();return /^Continue/.test(t)&&/Dossier/.test(t)})[0];if(hb&&!document.querySelector('[data-elan="flow-cover"]')&&!document.querySelector('.nx-wcard'))rm()});mo2.observe(document.documentElement,{childList:true,subtree:true});setTimeout(rm,3500)}
+function go(m){var lv=m[1],d=+m[2],l=+m[3];if(d>MX[lv])return;if(lv==='A1'){try{var pg=JSON.parse(localStorage.getItem('cam_prog')||'{}'),cnt=[4,6,6,6,6,6,6,6,6][d-1]||4,fl=0;for(var q=1;q<=cnt;q++){var r=pg['orig-a1-m'+(d-1)+'-l'+q];if(!r||!r.done){fl=q;break}}if(!fl)fl=1;var pk=JSON.parse(localStorage.getItem('cam_pick')||'null');if(pk&&pk.d===d&&Date.now()-pk.t<120000)fl=pk.l;l=fl}catch(e){}}
+var u=lv==='A1'?(l>6?null:'./lesson-'+d+'-'+l+'/#start'):'./lesson-'+P[lv]+d+'/#start';if(!u)return;var o=document.createElement('div');o.style.cssText='position:fixed;left:0;top:0;right:0;bottom:0;z-index:2147483647;background:#f5f3ff';document.body.appendChild(o);location.replace(u)}
+function look(n){if(!n||n.nodeType!==1)return null;var s=n.textContent;if(!s||s.length>400||s.indexOf('Camelon')<0)return null;return RX.exec(s)}
+function full(){var e=document.querySelectorAll('header span,header div,span,p');for(var k=0;k<e.length&&k<400;k++){var s=e[k].textContent;if(s&&s.length<80&&s.indexOf('Camelon')===0){var m=RX.exec(s);if(m)return m}}return null}
+new MutationObserver(function(ms){var f=null;for(var a=0;a<ms.length&&!f;a++){var ad=ms[a].addedNodes;for(var b=0;b<ad.length&&!f;b++)f=look(ad[b])}
+if(f){seen=true;if(armed)go(f);return}if(!tq){tq=setTimeout(function(){tq=0;if(!armed)return;var m=full();if(m){seen=true;go(m)}},200)}}).observe(document.documentElement,{childList:true,subtree:true});
+function once(){if(exiting)return;var m=full();if(m){seen=true;if(armed)go(m)}else armed=true}
+setTimeout(once,600);setTimeout(once,1800);setTimeout(once,4000)})();</script><script>/* Camelon: pictures on tracker flashcards */
+(function(){var EMO={"merci": "🙏", "merci beaucoup": "🙏", "de rien": "🤝", "pardon": "🙇", "excusez-moi": "🙋", "s'il vous plaît": "🙏", "s'il te plaît": "🙏", "oui": "✅", "non": "❌", "monsieur": "👨‍💼", "madame": "👩‍💼", "avec plaisir": "😊", "je vous en prie": "🤝", "un alphabet": "🔤", "une lettre": "✉️", "une voyelle": "🅰️", "une consonne": "🅱️", "épeler": "🔠", "un nom": "🏷️", "un prénom": "🏷️", "un nom de famille": "👪", "comment ?": "❓", "répéter": "🔁", "lentement": "🐢", "écouter": "👂", "un professeur": "👩‍🏫", "une école": "🏫", "une université": "🎓", "un cours": "📚", "un étudiant, une étudiante": "🧑‍🎓", "un élève": "🧒", "un livre": "📖", "un cahier": "📓", "une leçon": "📝", "un examen": "📋", "étudier": "📚", "travailler": "💼", "apprendre": "🧠", "un an": "📅", "l'âge": "🎂", "quel âge ?": "🎂", "dix": "🔟", "vingt": "2️⃣0️⃣", "trente": "3️⃣0️⃣", "quarante": "4️⃣0️⃣", "cinquante": "5️⃣0️⃣", "soixante": "6️⃣0️⃣", "soixante-dix": "7️⃣0️⃣", "quatre-vingts": "8️⃣0️⃣", "quatre-vingt-dix": "9️⃣0️⃣", "cent": "💯", "le lundi": "📅", "le mardi": "📅", "le mercredi": "📅", "le jeudi": "📅", "le vendredi": "📅", "le samedi": "📅", "le dimanche": "📅", "la semaine": "🗓️", "le week-end": "🏖️", "janvier": "❄️", "février": "💘", "mars": "🌱", "avril": "🌧️", "mai": "🌸", "juin": "☀️", "juillet": "🏖️", "août": "🌞", "septembre": "🍂", "octobre": "🎃", "novembre": "🍁", "décembre": "🎄", "le printemps": "🌷", "l'été": "☀️", "l'automne": "🍂", "l'hiver": "⛄", "bonjour": "👋", "bonsoir": "🌆", "salut": "👋", "au revoir": "👋", "à bientôt": "🤗", "à demain": "📆", "bonne journée": "🌞", "bonne soirée": "🌙", "enchanté, enchantée": "🤝", "bienvenue": "🎉", "comment ça va ?": "😊", "ça va bien": "👍", "et toi ?": "🫵", "et vous ?": "🫵", "habiter": "🏠", "manger": "🍽️", "commencer": "▶️", "chercher": "🔍", "trouver": "🔎", "demander": "🙋", "donner": "🎁", "arriver": "🛬", "rester": "🪑", "téléphoner": "📞", "voyager": "✈️", "préparer": "🧑‍🍳", "inviter": "💌", "un professeur, une professeure": "👩‍🏫", "un ingénieur": "👷", "un médecin": "🧑‍⚕️", "un cuisinier, une cuisinière": "🧑‍🍳", "un chauffeur": "🚖", "un vendeur, une vendeuse": "🛍️", "un musicien, une musicienne": "🎸", "un acteur, une actrice": "🎭", "un journaliste": "📰", "un infirmier, une infirmière": "🩺", "une profession": "💼", "la famille": "👨‍👩‍👧‍👦", "les parents": "👫", "le père": "👨", "la mère": "👩", "le frère": "👦", "la sœur": "👧", "le grand-père": "👴", "la grand-mère": "👵", "le fils": "👦", "la fille": "👧", "le mari": "🤵", "la femme": "👰", "le bébé": "👶", "l'enfant": "🧒", "le français": "🇫🇷", "l'anglais": "🇬🇧", "le persan": "🇮🇷", "l'allemand": "🇩🇪", "l'espagnol": "🇪🇸", "une langue": "🗣️", "parler": "💬", "venir de": "➡️", "un pays": "🌍", "une ville": "🏙️", "une capitale": "🏛️", "d'où ?": "📍", "la France": "🇫🇷", "français, française": "🇫🇷", "le Canada": "🇨🇦", "canadien, canadienne": "🇨🇦", "l'Iran": "🇮🇷", "iranien, iranienne": "🇮🇷", "l'Allemagne": "🇩🇪", "allemand, allemande": "🇩🇪", "la Belgique": "🇧🇪", "belge": "🇧🇪", "l'Angleterre": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "anglais, anglaise": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "l'Espagne": "🇪🇸", "espagnol, espagnole": "🇪🇸", "un marché": "🧺", "une boulangerie": "🥖", "un magasin": "🏬", "un supermarché": "🛒", "un client, une cliente": "🛍️", "un kilo": "⚖️", "un morceau": "🍰", "un prix": "🏷️", "acheter": "🛒", "payer": "💳", "cher, chère": "💰", "un bus": "🚌", "un train": "🚆", "un métro": "🚇", "une voiture": "🚗", "un vélo": "🚲", "un taxi": "🚕", "une station": "🚉", "un arrêt": "🚏", "prendre le bus": "🚌", "aller à pied": "🚶", "une carte": "🗺️", "un ticket": "🎫", "une maison": "🏠", "un appartement": "🏢", "une chambre": "🛏️", "une cuisine": "🍳", "un salon": "🛋️", "une salle de bains": "🛁", "un jardin": "🌳", "un balcon": "🪴", "une porte": "🚪", "une fenêtre": "🪟", "une table": "🪑", "un lit": "🛏️", "une chaise": "🪑", "un étage": "🪜", "un tableau": "🧑‍🏫", "un crayon": "✏️", "un stylo": "🖊️", "une règle": "📏", "une gomme": "🧽", "un sac": "🎒", "un mur": "🧱", "une lampe": "💡", "une photo": "📷", "une image": "🖼️", "un ordinateur": "💻", "un téléphone": "📱", "une armoire": "🚪", "un canapé": "🛋️", "une assiette": "🍽️", "un oncle": "👨", "une tante": "👩", "un cousin": "🧑", "une cousine": "👧", "le neveu": "👦", "la nièce": "👧", "marié, mariée": "💍", "célibataire": "🧍", "divorcé, divorcée": "💔", "veuf, veuve": "🕊️", "un couple": "👩‍❤️‍👨", "ensemble": "🤝", "seul, seule": "🧍", "les cheveux": "💇", "les yeux": "👀", "le visage": "🙂", "la tête": "🗣️", "le nez": "👃", "la bouche": "👄", "une barbe": "🧔", "des lunettes": "👓", "long, longue": "📏", "court, courte": "✂️", "blond, blonde": "👱", "brun, brune": "👨‍🦱", "roux, rousse": "👩‍🦰", "frisé, frisée": "👩‍🦱", "grand, grande": "🧍‍♂️", "petit, petite": "🤏", "mince": "🧍", "gros, grosse": "🐘", "jeune": "🧒", "vieux, vieille": "👴", "beau, belle": "😍", "joli, jolie": "🌺", "gentil, gentille": "😇", "sympathique": "😄", "drôle": "😂", "sérieux, sérieuse": "😐", "sportif, sportive": "🏃", "noir, noire": "⚫", "blanc, blanche": "⚪", "rouge": "🔴", "bleu, bleue": "🔵", "vert, verte": "🟢", "jaune": "🟡", "gris, grise": "🩶", "rose": "🌸", "orange": "🟠", "marron": "🟤", "violet, violette": "🟣", "beige": "🟫", "un loisir": "🎨", "la musique": "🎵", "un film": "🎬", "le sport": "🏅", "jouer": "🎮", "chanter": "🎤", "danser": "💃", "nager": "🏊", "cuisiner": "🧑‍🍳", "dessiner": "🖍️", "marcher": "🚶", "la télévision": "📺", "aimer": "❤️", "un secrétaire, une secrétaire": "🗂️", "un comptable, une comptable": "🧮", "un informaticien, une informaticienne": "👩‍💻", "un directeur, une directrice": "🧑‍💼", "un boulanger, une boulangère": "🥖", "un avocat, une avocate": "⚖️", "un ingénieur, une ingénieure": "👷", "un chanteur, une chanteuse": "🎤", "un collègue, une collègue": "🧑‍🤝‍🧑", "regarder la télévision": "📺", "jouer au football": "⚽", "faire du vélo": "🚴", "jouer de la guitare": "🎸", "la piscine": "🏊", "un jeu": "🎲", "se promener": "🚶", "l'heure": "🕐", "une minute": "⏱️", "le matin": "🌅", "l'après-midi": "🌤️", "le soir": "🌇", "la nuit": "🌙", "midi": "🕛", "minuit": "🌃", "une date": "📆", "un anniversaire": "🎂", "aujourd'hui": "📍", "demain": "⏭️", "hier": "⏮️", "un jour": "📅", "un mois": "🗓️", "le midi": "🕛", "le jour": "☀️", "la journée": "🌞", "tôt": "🐓", "tard": "🦉", "maintenant": "⏰", "un projet": "📌", "partir": "🧳", "visiter": "🗺️", "se reposer": "😴", "un quartier": "🏘️", "une rue": "🛣️", "une place": "⛲", "une pharmacie": "💊", "un café": "☕", "un parc": "🌳", "une gare": "🚉", "à gauche": "⬅️", "à droite": "➡️", "tout droit": "⬆️", "loin": "🔭", "le soleil": "☀️", "la pluie": "🌧️", "le vent": "💨", "un nuage": "☁️", "le ciel": "🌤️", "la neige": "❄️", "il fait beau": "🌞", "il fait chaud": "🥵", "il fait froid": "🥶", "pleuvoir": "🌧️", "neiger": "🌨️", "un degré": "🌡️", "la météo": "⛅", "le temps": "🌦️", "une saison": "🍃", "chaud": "🔥", "froid": "🧊", "doux": "🌤️", "frais": "🌬️", "sec": "🏜️", "humide": "💧", "ensoleillé": "☀️", "nuageux": "⛅", "le pain": "🍞", "le fromage": "🧀", "le beurre": "🧈", "le lait": "🥛", "un œuf": "🥚", "la viande": "🥩", "le poisson": "🐟", "le poulet": "🍗", "la confiture": "🍓", "le miel": "🍯", "le café": "☕", "le thé": "🍵", "le jus": "🧃", "l'eau": "💧", "une pomme": "🍎", "une banane": "🍌", "une orange": "🍊", "une fraise": "🍓", "un citron": "🍋", "des raisins": "🍇", "une tomate": "🍅", "une pomme de terre": "🥔", "une carotte": "🥕", "un oignon": "🧅", "une salade": "🥗", "un concombre": "🥒", "un champignon": "🍄", "une poire": "🍐", "un pantalon": "👖", "un jean": "👖", "une chemise": "👔", "un t-shirt": "👕", "un pull": "🧶", "une robe": "👗", "une jupe": "👗", "un manteau": "🧥", "un costume": "🤵", "une veste": "🧥", "des chaussures": "👟", "des bottes": "🥾", "un chapeau": "🎩", "une cravate": "👔", "des chaussettes": "🧦", "une écharpe": "🧣", "une couleur": "🎨", "rond, ronde": "⚪", "carré, carrée": "🟦", "une forme": "🔷", "une taille": "📐", "essayer": "👗", "porter": "👚", "mettre": "🧥", "choisir": "🤔", "trop grand": "📈", "trop petit": "📉", "à la mode": "✨", "les soldes": "🏷️", "élégant, élégante": "💃", "simple": "▫️"},tq=0;function run(){tq=0;var c=document.querySelectorAll('button.card .face.front');for(var i=0;i<c.length;i++){var f=c[i];if(f.getAttribute('data-emo'))continue;var u=f.querySelector('svg use');var fr=f.querySelector('.fr');if(!u||!fr)continue;var k=fr.textContent.trim();var e=EMO[k]||EMO[k.toLowerCase()];f.setAttribute('data-emo','1');if(!e)continue;var s=u.closest('svg');var sp=document.createElement('span');sp.setAttribute('aria-hidden','true');sp.style.cssText='display:flex;align-items:center;justify-content:center;font-size:44px;line-height:1;height:74px;margin-top:6px';sp.textContent=e;s.parentNode.replaceChild(sp,s)}}
+new MutationObserver(function(){if(!tq)tq=setTimeout(run,120)}).observe(document.documentElement,{childList:true,subtree:true})})();</script><style>button.iconbtn[aria-label="Reset view"]{display:none!important}</style><script>/* Camelon: asking before a page-closing X */
+(function(){function isX(el){var p=el.querySelector&&el.querySelector('path');var d=p&&p.getAttribute('d')||'';return /^M5 5\s?[Ll]\s?19 19|^M5 5\s?l\s?14 14|^M6 6\s?l\s?12 12|^M352 88/.test(d)}
+function find(t){var el=t.closest&&t.closest('button,[role="button"],g[aria-label]');if(!el)return null;var l=el.getAttribute('aria-label');if(l!=='Back'&&l!=='Close')return null;if(!isX(el))return null;if(el.closest('[role="dialog"],[data-elan="flow-cover"],.nx-wcard'))return null;return el}
+function ask(el){if(document.getElementById('camxpop'))return;var o=document.createElement('div');o.id='camxpop';o.style.cssText='position:fixed;left:0;top:0;right:0;bottom:0;z-index:99999;background:rgba(15,18,35,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:16px';
+o.innerHTML='<div style="width:100%;max-width:320px;box-sizing:border-box;background:#fff;border-radius:28px;padding:24px 20px 18px;text-align:center;box-shadow:0 28px 56px -20px rgba(90,60,180,.5)"><div style="margin:0;font:600 24px/28px Fredoka,Nunito,sans-serif;color:#22316e">Are you sure you want to leave?</div><div style="margin:8px 0 0;font:700 14px/20px Nunito,sans-serif;color:#6f6a85">Your progress is saved.</div><div class="xy" style="margin-top:18px;padding:14px;border-radius:999px;background:linear-gradient(90deg,#3fb0c4,#4f7fe0);color:#fff;font:600 18px Fredoka,Nunito,sans-serif;cursor:pointer">Yes, leave</div><div class="xn" style="margin-top:10px;padding:12px;border-radius:999px;background:#efeaff;color:#4b34b0;font:600 18px Fredoka,Nunito,sans-serif;cursor:pointer">No, stay</div></div>';
+o.addEventListener('click',function(e){var y=e.target.closest('.xy'),n=e.target.closest('.xn');if(!y&&!n)return;e.stopPropagation();o.remove();if(y){el.dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true,view:window}))}});document.body.appendChild(o)}
+document.addEventListener('click',function(e){if(!e.isTrusted)return;var el=find(e.target);if(!el)return;e.stopImmediatePropagation();e.preventDefault();ask(el)},true)})();</script></head>
+  <body>
+    <div
+      data-generated-space-root=""
+      data-generated-space-slug="french-original-b1-sample"
+    ></div>
+  </body>
+</html>
