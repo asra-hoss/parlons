@@ -571,7 +571,7 @@ function fit(){if(innerWidth<=600){document.body.classList.add('m');var fz=1;try
 addEventListener('resize',fit);fit();
 document.body.style.justifyContent='flex-start';document.body.style.paddingTop='8px';
 // ---- real recording on the Speaking (6) and Read aloud (9) screens
-var REC={7:1,10:1,2:TS?1:0},mr=null,chunks=[],stream=null,t0=0,sticky=false,recOn=false,tick=null,an=null,ac=null,pb=null;
+var REC={9:1,10:1,2:TS?1:0},mr=null,chunks=[],stream=null,t0=0,sticky=false,recOn=false,tick=null,an=null,ac=null,pb=null;
 
 function micEl(sc){return sc.querySelector('.mic')||sc.querySelector('div[style*="width:84px"]')}
 S.forEach(function(sc,k){if(!REC[k])return;var m=micEl(sc);if(m){m.classList.add('mic');m.style.touchAction='none';m.style.webkitTouchCallout='none';m.style.userSelect='none'}
@@ -613,7 +613,7 @@ document.addEventListener('contextmenu',function(e){if(e.target.closest('.mic'))
 var _go2=go;go=function(n){want=false;if(recOn)stopRec(S[i]);if(pb)pb.pause();if(!REC[n])killStream();_go2(n)};
 
 // ---- speaking screens: tidy layout, hint, inbox, big record button
-var QCLIP=LD.id!=='orig-a1-m0-l1'?{}:{7:['https://audio.kamelon.app/assets/a1/pron/c3/c3c24cd3972e5ac7edd4457ae838932687cf2f1a65ec34008713631c27e2362c.mp3'],10:['https://audio.kamelon.app/assets/a1/pron/4f/4fdbad33e574248f84f44f3143896ca36c25b039480a7ff2e5dbabb2d6601d83.mp3','https://audio.kamelon.app/assets/a1/pron/8b/8b1d4562b8a5aa278644b2d9d7e52d5aa19b1dcc6fe7268283dd9f7e2d82467c.mp3','https://audio.kamelon.app/assets/a1/pron/a9/a981d2a18151d27f96278b3179bb09417d20e372d71d3d471a3af31a46bdc30c.mp3']};
+var QCLIP=LD.id!=='orig-a1-m0-l1'?{}:{9:['https://audio.kamelon.app/assets/a1/pron/c3/c3c24cd3972e5ac7edd4457ae838932687cf2f1a65ec34008713631c27e2362c.mp3'],10:['https://audio.kamelon.app/assets/a1/pron/4f/4fdbad33e574248f84f44f3143896ca36c25b039480a7ff2e5dbabb2d6601d83.mp3','https://audio.kamelon.app/assets/a1/pron/8b/8b1d4562b8a5aa278644b2d9d7e52d5aa19b1dcc6fe7268283dd9f7e2d82467c.mp3','https://audio.kamelon.app/assets/a1/pron/a9/a981d2a18151d27f96278b3179bb09417d20e372d71d3d471a3af31a46bdc30c.mp3']};
 function inbBadge(){[].forEach.call(document.querySelectorAll('.inb2'),function(ib){var k=ib.closest('.scr')===S[11]?'cam_inbox_w':'cam_inbox',n=0;try{n=JSON.parse(localStorage.getItem(k)||'[]').filter(function(x){return !x.read}).length}catch(e){}var b=ib.querySelector('.bdg');if(b){b.textContent=n;b.style.display=n?'flex':'none'}})}[7,10].forEach(function(k){var sc=S[k],frame=sc&&sc.querySelector('.frm');if(!frame)return;var body=frame.children[2];if(!body)return;
  var ch=[].slice.call(body.children),pill=ch[0],title=ch[1],q=ch[2],help=ch[3];
  var top=document.createElement('div');top.style.cssText='display:flex;align-items:center;justify-content:space-between;margin-bottom:4px';
@@ -719,7 +719,9 @@ function init(){flagBtn();[].forEach.call(document.querySelectorAll(".rtxt:not([
  document.addEventListener('click',function(e){var w=e.target.closest&&e.target.closest('.gw');if(w){e.stopPropagation();e.preventDefault();open(w)}},true)}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 setTimeout(init,600);
-})();</script><!--/GLOSS--><script>(function(){
+})();</script><!--/GLOSS--><script>(function(){function tidy(){try{document.querySelectorAll('.scr').forEach(function(sc){var pv=[].filter.call(sc.querySelectorAll('span'),function(s){return /^\s*Previous/.test(s.textContent)&&s.querySelector('svg')&&!s.getAttribute('data-t')})[0];if(!pv)return;var box=pv.parentElement,wrap=box&&box.parentElement;if(!wrap)return;var bl=[].filter.call(wrap.querySelectorAll('button'),function(b){return b.style.width==='100%'||b.parentElement!==wrap&&b.getBoundingClientRect().width>200||b.style.minHeight});var btn=bl[bl.length-1];if(!btn)return;var bw=btn.parentElement;pv.setAttribute('data-t','1');var row=document.createElement('div');row.style.cssText='display:flex;align-items:center;gap:10px;margin-top:2px';bw.insertBefore(row,btn);pv.style.cssText='display:inline-flex;align-items:center;gap:4px;font-size:14px;font-weight:800;color:#5b3fd0;padding:12px 14px;border-radius:999px;background:#f1edff;white-space:nowrap';var tn=[].filter.call(pv.childNodes,function(n){return n.nodeType===3&&n.textContent.trim()})[0];if(tn)tn.textContent=' Back';box.style.cssText='margin:0;flex:none';row.appendChild(box);btn.style.minHeight='48px';btn.style.fontSize='18px';btn.style.flex='1';btn.style.width='auto';btn.style.marginTop='0';row.appendChild(btn);bw.style.paddingTop='6px'})}catch(e){}}
+tidy();new MutationObserver(function(){tidy()}).observe(document.body,{childList:true,subtree:true});setTimeout(tidy,400)})();</script>
+<script>(function(){
 function fix(){try{
 var rs=S.filter(function(s){return /STEP 6 · READING/.test(s.textContent)})[0],tr=S[2];if(!rs||!tr||rs.getAttribute('data-rf'))return;
 var src=tr.querySelector('.pl'),bd=rs.querySelector('[data-sc]');if(!src||!bd)return;rs.setAttribute('data-rf','1');
