@@ -587,63 +587,13 @@
   "content_to_cover": "life stages, writing short autobiographies",
   "grammar_to_teach": "après + noun; avant de + infinitive; narrative connectors",
   "source_refs": "C D2L6",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-a2-a2-14-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-a2-1:5"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-a2-1:1004"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-a2-a2-14-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-a2-a2-14-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-a2-a2-14-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-a2-a2-14-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-a2-a2-14/"
  },
  {
@@ -658,63 +608,13 @@
   "content_to_cover": "post office, bank, town hall, forms abroad, documents, appointments",
   "grammar_to_teach": "polite requests with conditional (pourriez-vous); direct object pronouns le/la/les",
   "source_refs": "E · C D1L2",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-a2-a2-03-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-a2-2:0"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-a2-2:1000"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-a2-a2-03-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-a2-a2-03-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-a2-a2-03-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-a2-a2-03-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-a2-a2-03/"
  },
  {
@@ -729,63 +629,13 @@
   "content_to_cover": "how things work, associations, commercial success, daily tasks",
   "grammar_to_teach": "passive reading (est + participle); quelqu'un / quelque chose / tout / chacun",
   "source_refs": "E · C D6L3 D6L4",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-a2-a2-16-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-a2-2:1"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-a2-2:1001"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-a2-a2-16-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-a2-a2-16-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-a2-a2-16-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-a2-a2-16-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-a2-a2-16/"
  },
  {
@@ -800,63 +650,13 @@
   "content_to_cover": "texts, emails, postcards, simple letters",
   "grammar_to_teach": "letter formulas; formal vs informal register in writing",
   "source_refs": "E",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-a2-a2-17-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-a2-2:2"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-a2-2:1002"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-a2-a2-17-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-a2-a2-17-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-a2-a2-17-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-a2-a2-17-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-a2-a2-17/"
  },
  {
@@ -928,63 +728,13 @@
   "content_to_cover": "series, music festival, comics, live shows, French culture abroad, cultural survey",
   "grammar_to_teach": "relative où; ce qui / ce que",
   "source_refs": "C D4L1-6",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-a2-a2-12-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-a2-4:3"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-a2-4:1003"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-a2-a2-12-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-a2-a2-12-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-a2-a2-12-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-a2-a2-12-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-a2-a2-12/"
  },
  {
@@ -1056,63 +806,13 @@
   "content_to_cover": "organise a sports weekend, rules and safety advice, tell an experience",
   "grammar_to_teach": "devoir; il est interdit de; conditional of advice (tu devrais)",
   "source_refs": "C D2L1 D2L2 D2L4",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-a2-a2-13-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-a2-6:4"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-a2-6:1002"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-a2-a2-13-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-a2-a2-13-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-a2-a2-13-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-a2-a2-13-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-a2-a2-13/"
  },
  {
@@ -1165,63 +865,13 @@
   "content_to_cover": "agree, disagree, convince, report what others said, defend a cause",
   "grammar_to_teach": "agreeing and disagreeing formulas; car / donc / puisque",
   "source_refs": "E · C D5L2-5 D7L4 D7L6",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-a2-a2-15-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-a2-8:0"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-a2-8:1000"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-a2-a2-15-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-a2-a2-15-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-a2-a2-15-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-a2-a2-15-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-a2-a2-15/"
  },
  {
@@ -1236,63 +886,13 @@
   "content_to_cover": "near future, plans, hopes, literary and social news",
   "grammar_to_teach": "si + présent + futur; espérer que + future; souhaiter que + subjunctive (intro)",
   "source_refs": "E · C D8L5 D8L6",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-a2-a2-18-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-a2-8:1"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-a2-8:1001"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-a2-a2-18-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-a2-a2-18-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-a2-a2-18-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-a2-a2-18-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-a2-a2-18/"
  },
  {
@@ -1307,63 +907,13 @@
   "content_to_cover": "conditional, hopes, intentions, changing your life",
   "grammar_to_teach": "conditionnel présent (formation, uses); si + imparfait + conditionnel",
   "source_refs": "E · C D1L2",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b1-b1-01-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b1-1:0"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b1-1:1000"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b1-b1-01-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b1-b1-01-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b1-b1-01-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b1-b1-01-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-b1-b1-01/"
  },
  {
@@ -1378,63 +928,13 @@
   "content_to_cover": "background, motivation, project, training",
   "grammar_to_teach": "futur antérieur; compter / envisager + infinitive",
   "source_refs": "C D5L1",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b1-b1-12-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b1-1:1"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b1-1:1001"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b1-b1-12-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b1-b1-12-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b1-b1-12-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b1-b1-12-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-b1-b1-12/"
  },
  {
@@ -1487,63 +987,13 @@
   "content_to_cover": "formalities, administrative documents, appointments",
   "grammar_to_teach": "dès que / aussitôt que + futur; devoir / falloir in all tenses",
   "source_refs": "C D2L3",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b1-b1-05-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b1-2:6"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b1-2:1005"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b1-b1-05-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b1-b1-05-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b1-b1-05-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b1-b1-05-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-b1-b1-05/"
  },
  {
@@ -1558,63 +1008,13 @@
   "content_to_cover": "complaint, feelings, repairs, neighbour relations",
   "grammar_to_teach": "double object pronouns (le lui, me le); conditionnel passé for reproach (tu aurais dû); avoir beau",
   "source_refs": "C D2L1 D4L1",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b1-b1-03-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b1-3:0"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b1-3:1000"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b1-b1-03-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b1-b1-03-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b1-b1-03-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b1-b1-03-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-b1-b1-03/"
  },
  {
@@ -1648,63 +1048,13 @@
   "content_to_cover": "French abroad, tastes, similarities and differences",
   "grammar_to_teach": "contrast: alors que / tandis que; l'un… l'autre; tout / tous / toutes",
   "source_refs": "C D2L4",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b1-b1-06-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b1-4:0"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b1-4:1000"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b1-b1-06-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b1-b1-06-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b1-b1-06-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b1-b1-06-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-b1-b1-06/"
  },
  {
@@ -1719,66 +1069,16 @@
   "content_to_cover": "outings, group choice, leisure, travel",
   "grammar_to_teach": "interrogative pronoun lequel; si on + imparfait (suggestion)",
   "source_refs": "A B1-1 · C D3L1 D3L2",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [
    "lesson-b1-1",
    "lesson-b1-1"
   ],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b1-b1-07-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b1-4:1"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b1-4:1001"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b1-b1-07-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b1-b1-07-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b1-b1-07-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b1-b1-07-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-b1-b1-07/"
  },
  {
@@ -1793,63 +1093,13 @@
   "content_to_cover": "art, shows, films, reading, opinions",
   "grammar_to_teach": "argument connectors; passé simple (recognition only)",
   "source_refs": "C D8L1-4",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b1-b1-16-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b1-4:2"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b1-4:1002"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b1-b1-16-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b1-b1-16-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b1-b1-16-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b1-b1-16-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-b1-b1-16/"
  },
  {
@@ -1960,63 +1210,13 @@
   "content_to_cover": "innovations, science, progress and drift",
   "grammar_to_teach": "nominalisation; bien que + subjunctive; compound relatives (auquel, duquel)",
   "source_refs": "C D7L1-4",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b1-b1-15-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b1-7:3"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b1-7:1004"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b1-b1-15-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b1-b1-15-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b1-b1-15-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b1-b1-15-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-b1-b1-15/"
  },
  {
@@ -2031,63 +1231,13 @@
   "content_to_cover": "past tenses together, narration, connectors",
   "grammar_to_teach": "narrative tense mix (passé composé, imparfait, plus-que-parfait); soudain, tout à coup",
   "source_refs": "E",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b1-b1-17-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b1-8:0"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b1-8:1000"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b1-b1-17-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b1-b1-17-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b1-b1-17-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b1-b1-17-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-b1-b1-17/"
  },
  {
@@ -2102,63 +1252,13 @@
   "content_to_cover": "agree/disagree, argue, debate",
   "grammar_to_teach": "opposition (pourtant, cependant, en revanche); je trouve que + indicative vs je ne trouve pas que + subjunctive",
   "source_refs": "E",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b1-b1-18-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b1-8:1"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b1-8:1001"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b1-b1-18-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b1-b1-18-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b1-b1-18-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b1-b1-18-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-b1-b1-18/"
  },
  {
@@ -2173,63 +1273,13 @@
   "content_to_cover": "subjunctive first uses, conditional of advice",
   "grammar_to_teach": "subjunctive after emotion (je suis content que); infinitive vs subjunctive (same subject)",
   "source_refs": "E",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b1-b1-19-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b1-8:2"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b1-8:1002"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b1-b1-19-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b1-b1-19-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b1-b1-19-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b1-b1-19-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-b1-b1-19/"
  },
  {
@@ -2244,63 +1294,13 @@
   "content_to_cover": "formal letters, short essay, linking words",
   "grammar_to_teach": "formal vs informal register; organising words (premièrement… enfin)",
   "source_refs": "E",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b1-b1-20-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b1-9:0"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b1-9:1000"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b1-b1-20-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b1-b1-20-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b1-b1-20-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b1-b1-20-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-b1-b1-20/"
  },
  {
@@ -2315,63 +1315,13 @@
   "content_to_cover": "radio, interviews, articles",
   "grammar_to_teach": "Listening grammar: spoken reductions (chuis, j'sais pas); dropped ne",
   "source_refs": "E",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b1-b1-21-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b1-9:1"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b1-9:1001"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b1-b1-21-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b1-b1-21-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b1-b1-21-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b1-b1-21-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-b1-b1-21/"
  },
  {
@@ -2386,63 +1336,13 @@
   "content_to_cover": "mixed tasks, DELF B1 practice",
   "grammar_to_teach": "No new grammar. Recycles earlier points. DELF B1 tasks",
   "source_refs": "E",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b1-b1-22-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b1-9:2"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b1-9:1002"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b1-b1-22-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b1-b1-22-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b1-b1-22-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b1-b1-22-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-b1-b1-22/"
  },
  {
@@ -2457,63 +1357,13 @@
   "content_to_cover": "structure arguments, concede, counter-argue, debate",
   "grammar_to_teach": "certes… mais; mise en relief ce qui… c'est",
   "source_refs": "E",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b2-b2-01-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b2-1:0"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b2-1:1000"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b2-b2-01-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b2-b2-01-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b2-b2-01-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b2-b2-01-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-b2-b2-01/"
  },
  {
@@ -2528,63 +1378,13 @@
   "content_to_cover": "doubt, wish, emotion, necessity",
   "grammar_to_teach": "subjonctif passé; subjunctive vs indicative vs infinitive after doubt, emotion, wish",
   "source_refs": "E",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b2-b2-02-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b2-1:1"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b2-1:1001"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b2-b2-02-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b2-b2-02-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b2-b2-02-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b2-b2-02-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-b2-b2-02/"
  },
  {
@@ -2599,63 +1399,13 @@
   "content_to_cover": "logical connectors, nominalisation",
   "grammar_to_teach": "consequence (si bien que, de sorte que, tellement… que); étant donné que / puisque",
   "source_refs": "E",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b2-b2-03-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b2-1:2"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b2-1:1002"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b2-b2-03-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b2-b2-03-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b2-b2-03-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b2-b2-03-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-b2-b2-03/"
  },
  {
@@ -2670,63 +1420,13 @@
   "content_to_cover": "indirect speech, tenses of reporting",
   "grammar_to_teach": "concordance des temps in reported speech; reporting verbs; free indirect speech",
   "source_refs": "E",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b2-b2-04-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b2-1:3"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b2-1:1003"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b2-b2-04-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b2-b2-04-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b2-b2-04-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b2-b2-04-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-b2-b2-04/"
  },
  {
@@ -2874,63 +1574,13 @@
   "content_to_cover": "idioms, expressions, register shifts",
   "grammar_to_teach": "fixed expressions, idioms, proverbs",
   "source_refs": "E",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b2-b2-18-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b2-5:3"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b2-5:1005"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b2-b2-18-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b2-b2-18-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b2-b2-18-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b2-b2-18-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-b2-b2-18/"
  },
  {
@@ -2964,63 +1614,13 @@
   "content_to_cover": "formal letters, essay, summary, synthesis",
   "grammar_to_teach": "paragraph structure; logical connectors; formal register; punctuation",
   "source_refs": "E",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b2-b2-15-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b2-6:3"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b2-6:1004"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b2-b2-15-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b2-b2-15-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b2-b2-15-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b2-b2-15-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-b2-b2-15/"
  },
  {
@@ -3035,63 +1635,13 @@
   "content_to_cover": "passive, nominalisation, register",
   "grammar_to_teach": "stylistic inversion; ne explétif; ne… point / guère",
   "source_refs": "E",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b2-b2-16-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b2-6:4"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b2-6:1005"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b2-b2-16-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b2-b2-16-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b2-b2-16-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b2-b2-16-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-b2-b2-16/"
  },
  {
@@ -3144,63 +1694,13 @@
   "content_to_cover": "long audio and texts, implicit meaning",
   "grammar_to_teach": "Listening: implicit meaning, abbreviations, language levels",
   "source_refs": "E",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b2-b2-17-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b2-8:0"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b2-8:1000"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b2-b2-17-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b2-b2-17-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b2-b2-17-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b2-b2-17-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-b2-b2-17/"
  },
  {
@@ -3215,63 +1715,13 @@
   "content_to_cover": "mixed tasks, exam",
   "grammar_to_teach": "No new grammar. Recycles earlier points. DELF B2 tasks",
   "source_refs": "E",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-b2-b2-19-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-b2-8:1"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-b2-8:1001"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-b2-b2-19-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-b2-b2-19-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-b2-b2-19-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-b2-b2-19-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-b2-b2-19/"
  },
  {
@@ -3286,63 +1736,13 @@
   "content_to_cover": "urban world, shared housing, mobility, city and fantasy",
   "grammar_to_teach": "relatives with prepositions + lequel / duquel / dont (advanced); ellipsis",
   "source_refs": "C D1",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-c12-c1-01-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-c12-1:0"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-c12-1:1000"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-c12-c1-01-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-c12-c1-01-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-c12-c1-01-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-c12-c1-01-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-c12-c1-01/"
  },
  {
@@ -3357,63 +1757,13 @@
   "content_to_cover": "emotional hunger, health data, farmers, buying food",
   "grammar_to_teach": "apposition; participe présent and gérondif for cause and manner",
   "source_refs": "C D2",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-c12-c1-02-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-c12-1:1"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-c12-1:1001"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-c12-c1-02-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-c12-c1-02-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-c12-c1-02-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-c12-c1-02-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-c12-c1-02/"
  },
  {
@@ -3447,65 +1797,15 @@
   "content_to_cover": "body positivity, slam, art and body",
   "grammar_to_teach": "inversion after peut-être / ainsi / aussi; metaphor and comparison",
   "source_refs": "E A C12-7 · C D4",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [
    "lesson-c12-7"
   ],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-c12-c1-04-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-c12-2:6"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-c12-2:1003"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-c12-c1-04-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-c12-c1-04-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-c12-c1-04-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-c12-c1-04-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-c12-c1-04/"
  },
  {
@@ -3540,63 +1840,13 @@
   "content_to_cover": "happiness, routine, utopia, mediation",
   "grammar_to_teach": "nominalised infinitives; abstract nominal constructions",
   "source_refs": "E · C D7",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-c12-c1-07-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-c12-3:6"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-c12-3:1003"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-c12-c1-07-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-c12-c1-07-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-c12-c1-07-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-c12-c1-07-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-c12-c1-07/"
  },
  {
@@ -3687,63 +1937,13 @@
   "content_to_cover": "teaching history, justice, chronological talk",
   "grammar_to_teach": "complex chronology; concordance across long texts",
   "source_refs": "E · C D10",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-c12-c1-10-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-c12-6:0"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-c12-6:1000"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-c12-c1-10-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-c12-c1-10-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-c12-c1-10-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-c12-c1-10-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-c12-c1-10/"
  },
  {
@@ -3758,63 +1958,13 @@
   "content_to_cover": "shared culture, humour, cultural appropriation, secularism",
   "grammar_to_teach": "wordplay, double meaning, irony, humour",
   "source_refs": "E · C D11",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-c12-c1-11-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-c12-6:1"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-c12-6:1001"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-c12-c1-11-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-c12-c1-11-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-c12-c1-11-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-c12-c1-11-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-c12-c1-11/"
  },
  {
@@ -3829,63 +1979,13 @@
   "content_to_cover": "borrowings, decolonising language, literary extracts",
   "grammar_to_teach": "registers, borrowings, neologisms, verlan",
   "source_refs": "E · C D8",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-c12-c1-08-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-c12-7:0"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-c12-7:1000"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-c12-c1-08-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-c12-c1-08-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-c12-c1-08-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-c12-c1-08-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-c12-c1-08/"
  },
  {
@@ -3900,63 +2000,13 @@
   "content_to_cover": "argument strategies, panels, Q&A",
   "grammar_to_teach": "anaphora, gradation, litotes, chiasmus; discourse cohesion",
   "source_refs": "E · C D12L2",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-c12-c1-14-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-c12-7:1"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-c12-7:1001"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-c12-c1-14-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-c12-c1-14-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-c12-c1-14-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-c12-c1-14-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-c12-c1-14/"
  },
  {
@@ -3971,63 +2021,13 @@
   "content_to_cover": "all subjunctive uses, literary tenses, precision",
   "grammar_to_teach": "remaining subjunctive uses; full passé simple; impersonal constructions",
   "source_refs": "E",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-c12-c1-15-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-c12-7:2"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-c12-7:1002"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-c12-c1-15-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-c12-c1-15-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-c12-c1-15-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-c12-c1-15-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-c12-c1-15/"
  },
  {
@@ -4042,63 +2042,13 @@
   "content_to_cover": "synthesis, essays, DALF practice",
   "grammar_to_teach": "synthesis structure; academic register; DALF tasks",
   "source_refs": "E · C Stratégies",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-c12-c1-16-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-c12-7:3"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-c12-7:1003"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-c12-c1-16-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-c12-c1-16-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-c12-c1-16-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-c12-c1-16-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-c12-c1-16/"
  },
  {
@@ -4113,63 +2063,13 @@
   "content_to_cover": "several sources, fast and coherent",
   "grammar_to_teach": "reformulation; attribution (selon, d'après, de l'avis de)",
   "source_refs": "E A C12 (shared)",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-c12-c2-01-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-c12-8:0"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-c12-8:1000"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-c12-c2-01-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-c12-c2-01-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-c12-c2-01-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-c12-c2-01-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-c12-c2-01/"
  },
  {
@@ -4184,63 +2084,13 @@
   "content_to_cover": "irony, understatement, connotation",
   "grammar_to_teach": "irony, litotes, euphemism, implication",
   "source_refs": "E",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-c12-c2-02-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-c12-8:1"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-c12-8:1001"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-c12-c2-02-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-c12-c2-02-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-c12-c2-02-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-c12-c2-02-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-c12-c2-02/"
  },
  {
@@ -4255,63 +2105,13 @@
   "content_to_cover": "abstract argument, ideas",
   "grammar_to_teach": "abstract reasoning formulas; subjonctif plus-que-parfait",
   "source_refs": "E",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-c12-c2-03-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-c12-8:2"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-c12-8:1002"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-c12-c2-03-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-c12-c2-03-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-c12-c2-03-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-c12-c2-03-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-c12-c2-03/"
  },
  {
@@ -4326,65 +2126,15 @@
   "content_to_cover": "global issues, diplomacy",
   "grammar_to_teach": "diplomatic and official formulas",
   "source_refs": "E A C12-4",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [
    "lesson-c12-4"
   ],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-c12-c2-04-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-c12-9:0"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-c12-9:1000"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-c12-c2-04-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-c12-c2-04-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-c12-c2-04-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-c12-c2-04-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-c12-c2-04/"
  },
  {
@@ -4399,63 +2149,13 @@
   "content_to_cover": "analysis, style",
   "grammar_to_teach": "stylistic analysis; figures of speech",
   "source_refs": "E",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-c12-c2-05-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-c12-9:1"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-c12-9:1001"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-c12-c2-05-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-c12-c2-05-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-c12-c2-05-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-c12-c2-05-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-c12-c2-05/"
  },
  {
@@ -4470,63 +2170,13 @@
   "content_to_cover": "academic register",
   "grammar_to_teach": "terminology; academic structures",
   "source_refs": "E",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-c12-c2-06-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-c12-9:2"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-c12-9:1002"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-c12-c2-06-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-c12-c2-06-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-c12-c2-06-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-c12-c2-06-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-c12-c2-06/"
  },
  {
@@ -4541,63 +2191,13 @@
   "content_to_cover": "style shifts, rhetoric",
   "grammar_to_teach": "register shifting; ellipsis; inversion",
   "source_refs": "E",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-c12-c2-07-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-c12-10:0"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-c12-10:1000"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-c12-c2-07-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-c12-c2-07-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-c12-c2-07-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-c12-c2-07-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-c12-c2-07/"
  },
  {
@@ -4612,63 +2212,13 @@
   "content_to_cover": "lectures, improvised debate",
   "grammar_to_teach": "oral discourse strategies; rephrasing; turn-taking",
   "source_refs": "E",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-c12-c2-08-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-c12-10:1"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-c12-10:1001"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-c12-c2-08-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-c12-c2-08-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-c12-c2-08-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-c12-c2-08-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-c12-c2-08/"
  },
  {
@@ -4683,63 +2233,13 @@
   "content_to_cover": "essays, editorials",
   "grammar_to_teach": "argument coherence; personal style; expressive punctuation",
   "source_refs": "E",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-c12-c2-09-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-c12-11:0"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-c12-11:1000"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-c12-c2-09-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-c12-c2-09-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-c12-c2-09-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-c12-c2-09-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-c12-c2-09/"
  },
  {
@@ -4754,63 +2254,13 @@
   "content_to_cover": "rapid speech, satire",
   "grammar_to_teach": "understanding the implicit; slang; regional accents",
   "source_refs": "E",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-c12-c2-10-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-c12-11:1"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-c12-11:1001"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-c12-c2-10-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-c12-c2-10-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-c12-c2-10-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-c12-c2-10-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-c12-c2-10/"
  },
  {
@@ -4825,63 +2275,13 @@
   "content_to_cover": "exam",
   "grammar_to_teach": "complete grammar review; DALF C2 tasks",
   "source_refs": "E",
+  "status": "FILLED_LISTEN_READ",
   "old_lessons_available": [],
-  "status": "EMPTY_EXCEPT_GRAMMAR",
   "empty_sections": [
-   "listening_audio",
-   "transcript",
    "flashcards",
-   "listening_real_voice",
-   "reading_text",
    "speaking_task",
    "writing_task"
   ],
-  "trk": {
-   "1": [
-    [
-     "rc",
-     "listen:v3-c12-c2-11-listen-1"
-    ]
-   ],
-   "3": [
-    [
-     "rc",
-     "words:v3-c12-11:2"
-    ]
-   ],
-   "4": [
-    [
-     "rc",
-     "grammar:v3-c12-11:1002"
-    ]
-   ],
-   "5": [
-    [
-     "rc",
-     "listen:v3-c12-c2-11-listen-2"
-    ]
-   ],
-   "6": [
-    [
-     "rc",
-     "read:v3-c12-c2-11-text"
-    ]
-   ],
-   "7": [
-    [
-     "g",
-     "sp:v3-c12-c2-11-s",
-     30
-    ]
-   ],
-   "8": [
-    [
-     "g",
-     "wr:v3-c12-c2-11-w",
-     1
-    ]
-   ]
-  },
   "url": "/v3/lesson-c12-c2-11/"
  }
 ]
