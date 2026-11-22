@@ -457,7 +457,7 @@ function find(t){var el=t.closest&&t.closest('button,[role="button"],g[aria-labe
 function ask(el){if(document.getElementById('camxpop'))return;var o=document.createElement('div');o.id='camxpop';o.style.cssText='position:fixed;left:0;top:0;right:0;bottom:0;z-index:99999;background:rgba(15,18,35,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:16px';
 o.innerHTML='<div style="width:100%;max-width:320px;box-sizing:border-box;background:#fff;border-radius:28px;padding:24px 20px 18px;text-align:center;box-shadow:0 28px 56px -20px rgba(90,60,180,.5)"><div style="margin:0;font:600 24px/28px Fredoka,Nunito,sans-serif;color:#22316e">Are you sure you want to leave?</div><div style="margin:8px 0 0;font:700 14px/20px Nunito,sans-serif;color:#6f6a85">Your progress is saved.</div><div class="xy" style="margin-top:18px;padding:14px;border-radius:999px;background:linear-gradient(90deg,#3fb0c4,#4f7fe0);color:#fff;font:600 18px Fredoka,Nunito,sans-serif;cursor:pointer">Yes, leave</div><div class="xn" style="margin-top:10px;padding:12px;border-radius:999px;background:#efeaff;color:#4b34b0;font:600 18px Fredoka,Nunito,sans-serif;cursor:pointer">No, stay</div></div>';
 o.addEventListener('click',function(e){var y=e.target.closest('.xy'),n=e.target.closest('.xn');if(!y&&!n)return;e.stopPropagation();o.remove();if(y){el.dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true,view:window}))}});document.body.appendChild(o)}
-document.addEventListener('click',function(e){if(!e.isTrusted)return;var el=find(e.target);if(!el)return;e.stopImmediatePropagation();e.preventDefault();ask(el)},true)})();</script><script>document.addEventListener("DOMContentLoaded",function(){var d=document.createElement("div");d.textContent="build 21-Nov-1115";d.style.cssText="position:fixed;left:8px;bottom:4px;font:700 10px Nunito,sans-serif;color:#9a96b5;z-index:5;pointer-events:none";document.body.appendChild(d)})</script></head>
+document.addEventListener('click',function(e){if(!e.isTrusted)return;var el=find(e.target);if(!el)return;e.stopImmediatePropagation();e.preventDefault();ask(el)},true)})();</script><script>document.addEventListener("DOMContentLoaded",function(){var d=document.createElement("div");d.textContent="build 21-Nov-1115";d.style.cssText="position:fixed;left:8px;bottom:88px;font:700 10px Nunito,sans-serif;color:#9a96b5;z-index:5;pointer-events:none";document.body.appendChild(d)})</script></head>
   <body>
     <div
       data-generated-space-root=""
@@ -483,6 +483,43 @@ function check(){try{
 }catch(e){}}
 new MutationObserver(function(){setTimeout(check,60)}).observe(document.documentElement,{childList:true,subtree:true});
 setInterval(check,900);
+})();
+</script>
+<style id="camelon-shell-fixes">
+/* Dark Home: the Eiffel backdrop illustration is a light pastel image; dim it in dark mode so Home reads as a real dark theme */
+html[data-theme="dark"] img.nx-homebg{filter:brightness(.48) saturate(.85)}
+/* Dark Home: "Study plan" link under Continue is dark blue (#4a3aff) — unreadable on the dark backdrop */
+html[data-theme="dark"] .nx-homeroot span[class*="text-[#4a3aff]"]{color:#ddd3ff!important;text-shadow:0 1px 8px rgba(10,6,40,.65)}
+/* Progress header: keep the "x / 45" track clear of the prize-chest button and its bubble artwork */
+.bd-track{margin-right:14px}
+</style>
+<script>
+/* camelon-shell-fixes: (1) Team feed opens pre-scrolled (scrollTop 71) and clips the first message — snap it to the top when the Team screen opens; (2) dark-mode "Study plan" link colour (style attr, in case the class hash changes) */
+(function(){
+function teamTop(){
+  var root=document.querySelector('.desk-team');
+  if(!root)return;
+  var sc=root.querySelector('.overflow-y-auto');
+  if(sc&&sc.scrollTop!==0)sc.scrollTop=0;
+}
+var teamUntil=0;
+function armTeam(){teamUntil=Date.now()+1200;teamTop();[150,400,900].forEach(function(t){setTimeout(teamTop,t)})}
+new MutationObserver(function(ms){
+  for(var i=0;i<ms.length;i++){for(var j=0;j<ms[i].addedNodes.length;j++){var n=ms[i].addedNodes[j];
+    if(n.nodeType===1&&(n.classList&&n.classList.contains('desk-team')||n.querySelector&&n.querySelector('.desk-team'))){armTeam();return}}}
+}).observe(document.documentElement,{childList:true,subtree:true});
+document.addEventListener('click',function(e){
+  var b=e.target.closest&&e.target.closest('button');
+  if(b&&/^Team\b/.test(b.textContent.trim()))armTeam();
+},true);
+setInterval(function(){if(Date.now()<teamUntil)teamTop()},120);
+function studyPlan(){
+  if(document.documentElement.getAttribute('data-theme')!=='dark')return;
+  [].forEach.call(document.querySelectorAll('.nx-homeroot span'),function(s){
+    if(s.children.length===0&&s.textContent.trim()==='Study plan'){s.style.color='#ddd3ff';s.style.textShadow='0 1px 8px rgba(10,6,40,.65)'}});
+}
+new MutationObserver(studyPlan).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['data-theme']});
+studyPlan();
 })();
 </script>
 </body>
