@@ -463,5 +463,27 @@ document.addEventListener('click',function(e){if(!e.isTrusted)return;var el=find
       data-generated-space-root=""
       data-generated-space-slug="french-original-b1-sample"
     ></div>
-  </body>
+  
+<script>
+/* camelon-player-net: if the app's own built-in player (Activity n / N) ever opens inside /v5/,
+   send the learner to the matching v5 lesson instead. Catches first/cold entries the cover guard misses. */
+(function(){var fired='';
+function lvKey(x){return {'A1':'a1','A2':'a2','B1':'b1','B2':'b2','C1/C2':'c12'}[x]}
+function check(){try{
+ if(document.getElementById('v3lesson'))return;
+ var t=document.body?document.body.textContent:'';
+ if(!/Activity\s+\d+\s*\/\s*\d+/.test(t))return;
+ var m=/\u2022\s*(A1|A2|B1|B2|C1\/C2)\s*\u2022\s*Dossier\s*(\d+)\s*\u2022\s*Lesson\s*(\d+)/.exec(t);
+ if(!m)return;
+ var T=window.__T;if(!T)return;
+ var a=(T[lvKey(m[1])]||[])[+m[2]-1]||[];
+ var L=a[+m[3]-1];if(!L||!L.dir)return;
+ var sig=L.dir;if(fired===sig)return;fired=sig;
+ if(typeof openLesson==='function')openLesson('/v5/'+L.dir+'/#start');
+}catch(e){}}
+new MutationObserver(function(){setTimeout(check,60)}).observe(document.documentElement,{childList:true,subtree:true});
+setInterval(check,900);
+})();
+</script>
+</body>
 </html>
