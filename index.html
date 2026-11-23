@@ -247,6 +247,24 @@
             }
             if (!ok) ls.removeItem("origb1:nav");
           }
+          /* Home must actually be Home (Nov 23, 2026). The shell
+             boots by reading origb1:nav and, whenever it holds a
+             dossier/lesson position, routes straight there instead
+             of rendering the Home dashboard — so once a learner has
+             opened any lesson, a direct hit on "/" (typing the URL,
+             a bookmark, or the in-lesson logo's own location.href="/")
+             silently bounces right back into that lesson. Home then
+             looks unreachable, which is exactly the "logo doesn't
+             go home" report. Resuming a lesson is still one tap away
+             via the dashboard's own Continue button (driven by
+             origb1:level-dossiers / origb1:progress, not this key),
+             so dropping the stale position on a literal "/" load
+             costs nothing and lets Home render. Only the exact root
+             path is scrubbed — every other shell route (/plan/,
+             /progress, …) keeps its saved nav untouched. */
+          if (location.pathname === "/") {
+            ls.removeItem("origb1:nav");
+          }
           /* Reading checks: an array of {checkKey, …} entries.
              A non-array value is dropped outright; entries
              without a string checkKey are unusable to every
