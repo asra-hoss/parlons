@@ -25,8 +25,8 @@ var LID=LD.id;
 function markStep(n){var p=pget();var r=p[LID]||(p[LID]={step:0,done:false,steps:{}});r.steps[n]=1;pset(p)}
 function stepOf(k){return +(S[k].getAttribute('data-step')||0)}
 function show(n){n=Math.max(0,Math.min(S.length-1,n));var from=i;i=n;S.forEach(function(s,k){s.classList.toggle('on',k===i)});
- for(var s=from;s<i;s++){var a=stepOf(s),b=stepOf(s+1);if(a>=1&&a<=10&&b!==a)markStep(a)}
- var p=pget();if(!p[LID])p[LID]=pres();if(i>(p[LID].step||0))p[LID].step=i;if(i===S.length-1){p[LID].done=true;p[LID].step=0}pset(p)}
+ for(var s=from;s<i;s++){var a=stepOf(s),b=stepOf(s+1);if(a>=0&&a<=11&&b!==a)markStep(a)}
+ var p=pget();if(!p[LID])p[LID]=pres();if(i>(p[LID].step||0))p[LID].step=i;if(i===S.length-1){markStep(stepOf(i));p[LID].done=true;p[LID].step=0}pset(p)}
 function home(){try{sessionStorage.setItem('cam_exit','1')}catch(x){}__v4exit()}
 document.addEventListener('click',function(e){var t=e.target;
  if(t.closest('[data-x]')){if(confirm('Leave the lesson? Your progress is saved.'))home();return}
