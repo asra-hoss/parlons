@@ -13,8 +13,8 @@ var S=[].slice.call(document.querySelectorAll('.scr')),i=0;
 if(innerWidth<500)document.body.classList.add('m');
 function pget(){try{return JSON.parse(localStorage.getItem('cam_prog')||'{}')}catch(e){return{}}}function pset(o){try{localStorage.setItem('cam_prog',JSON.stringify(o))}catch(e){}}
 function pres(){var p=pget();return p[LID]||(p[LID]={step:0,done:false,steps:{}})}
-var LID=LD.id;
-function show(n){S.forEach(function(s,idx){s.classList.toggle('on',idx===n)});i=n;var r=pres();r.step=n;pset(function(){var p=pget();p[LID]=r;return p}());window.scrollTo(0,0)}
+var LID=LD.id; function markStep(n){var p=pget();var r=p[LID]||(p[LID]={step:0,done:false,steps:{}});r.steps[n]=1;pset(p)} function stepOf(k){return +(S[k].getAttribute('data-step')||0)}
+function show(n){var from=i;S.forEach(function(s,idx){s.classList.toggle('on',idx===n)});i=n;for(var s=from;s<n;s++){var a=stepOf(s),b=stepOf(s+1);if(b!==a)markStep(a)}if(n===S.length-1)markStep(stepOf(n));var r=pres();r.step=n;pset(function(){var p=pget();p[LID]=r;return p}());window.scrollTo(0,0)}
 document.addEventListener('click',function(e){
  var b=e.target.closest('button,[data-x]');if(!b)return;
  if(b.dataset.x){location.href='/';return}
