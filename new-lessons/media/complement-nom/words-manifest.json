@@ -1,0 +1,163 @@
+[
+ {
+  "term": "le bois",
+  "spoken": "le bois",
+  "example": "Cette table est en bois.",
+  "slug": "le-bois",
+  "text": "Le bois. Cette table est en bois."
+ },
+ {
+  "term": "le verre",
+  "spoken": "le verre",
+  "example": "La bouteille est en verre.",
+  "slug": "le-verre",
+  "text": "Le verre. La bouteille est en verre."
+ },
+ {
+  "term": "le plastique",
+  "spoken": "le plastique",
+  "example": "Les enfants ont des jouets en plastique.",
+  "slug": "le-plastique",
+  "text": "Le plastique. Les enfants ont des jouets en plastique."
+ },
+ {
+  "term": "le métal",
+  "spoken": "le métal",
+  "example": "C'est une boîte en métal.",
+  "slug": "le-metal",
+  "text": "Le métal. C'est une boîte en métal."
+ },
+ {
+  "term": "le papier",
+  "spoken": "le papier",
+  "example": "Elle fait des fleurs en papier.",
+  "slug": "le-papier",
+  "text": "Le papier. Elle fait des fleurs en papier."
+ },
+ {
+  "term": "le carton",
+  "spoken": "le carton",
+  "example": "Je mets les livres dans une boîte en carton.",
+  "slug": "le-carton",
+  "text": "Le carton. Je mets les livres dans une boîte en carton."
+ },
+ {
+  "term": "le cuir",
+  "spoken": "le cuir",
+  "example": "Il a un sac en cuir.",
+  "slug": "le-cuir",
+  "text": "Le cuir. Il a un sac en cuir."
+ },
+ {
+  "term": "l'or",
+  "spoken": "l'or",
+  "example": "C'est une bague en or.",
+  "slug": "l-or",
+  "text": "L'or. C'est une bague en or."
+ },
+ {
+  "term": "l'argent",
+  "spoken": "l'argent",
+  "example": "Elle porte un bracelet en argent.",
+  "slug": "l-argent",
+  "text": "L'argent. Elle porte un bracelet en argent."
+ },
+ {
+  "term": "la laine",
+  "spoken": "la laine",
+  "example": "Je voudrais un pull en laine.",
+  "slug": "la-laine",
+  "text": "La laine. Je voudrais un pull en laine."
+ },
+ {
+  "term": "le coton",
+  "spoken": "le coton",
+  "example": "Cette chemise est en coton.",
+  "slug": "le-coton",
+  "text": "Le coton. Cette chemise est en coton."
+ },
+ {
+  "term": "fait, faite en…",
+  "spoken": "fait en, faite en",
+  "example": "Ce meuble est fait en bois.",
+  "slug": "fait-faite-en",
+  "text": "Fait en, faite en. Ce meuble est fait en bois."
+ },
+ {
+  "term": "une tasse à café",
+  "spoken": "une tasse à café",
+  "example": "Je prends une tasse à café le matin.",
+  "slug": "une-tasse-a-cafe",
+  "text": "Une tasse à café. Je prends une tasse à café le matin."
+ },
+ {
+  "term": "un verre à vin",
+  "spoken": "un verre à vin",
+  "example": "Mets les verres à vin sur la table.",
+  "slug": "un-verre-a-vin",
+  "text": "Un verre à vin. Mets les verres à vin sur la table."
+ },
+ {
+  "term": "une cuillère à soupe",
+  "spoken": "une cuillère à soupe",
+  "example": "Ajoute une cuillère à soupe de sucre.",
+  "slug": "une-cuillere-a-soupe",
+  "text": "Une cuillère à soupe. Ajoute une cuillère à soupe de sucre."
+ },
+ {
+  "term": "une cuillère à café",
+  "spoken": "une cuillère à café",
+  "example": "Une cuillère à café de miel suffit.",
+  "slug": "une-cuillere-a-cafe",
+  "text": "Une cuillère à café. Une cuillère à café de miel suffit."
+ },
+ {
+  "term": "une machine à laver",
+  "spoken": "une machine à laver",
+  "example": "La machine à laver est dans la salle de bain.",
+  "slug": "une-machine-a-laver",
+  "text": "Une machine à laver. La machine à laver est dans la salle de bain."
+ },
+ {
+  "term": "une brosse à dents",
+  "spoken": "une brosse à dents",
+  "example": "J'ai oublié ma brosse à dents.",
+  "slug": "une-brosse-a-dents",
+  "text": "Une brosse à dents. J'ai oublié ma brosse à dents."
+ },
+ {
+  "term": "une salle à manger",
+  "spoken": "une salle à manger",
+  "example": "La salle à manger est à côté de la cuisine.",
+  "slug": "une-salle-a-manger",
+  "text": "Une salle à manger. La salle à manger est à côté de la cuisine."
+ },
+ {
+  "term": "un sac à dos",
+  "spoken": "un sac à dos",
+  "example": "Il met ses livres dans son sac à dos.",
+  "slug": "un-sac-a-dos",
+  "text": "Un sac à dos. Il met ses livres dans son sac à dos."
+ },
+ {
+  "term": "une boîte à chaussures",
+  "spoken": "une boîte à chaussures",
+  "example": "Range les chaussures dans la boîte à chaussures.",
+  "slug": "une-boite-a-chaussures",
+  "text": "Une boîte à chaussures. Range les chaussures dans la boîte à chaussures."
+ },
+ {
+  "term": "un verre de lait",
+  "spoken": "un verre de lait",
+  "example": "L'enfant boit un verre de lait.",
+  "slug": "un-verre-de-lait",
+  "text": "Un verre de lait. L'enfant boit un verre de lait."
+ },
+ {
+  "term": "une bouteille d'eau",
+  "spoken": "une bouteille d'eau",
+  "example": "Je voudrais une bouteille d'eau, s'il vous plaît.",
+  "slug": "une-bouteille-d-eau",
+  "text": "Une bouteille d'eau. Je voudrais une bouteille d'eau, s'il vous plaît."
+ }
+]

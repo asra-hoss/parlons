@@ -1,0 +1,13 @@
+SARA: Entre ! Bienvenue dans mon nouvel appartement.
+LEO: Merci ! C'est grand. La cuisine est où ?
+SARA: La cuisine est en bas, à côté du salon. Et les chambres sont en haut.
+LEO: Et la salle de bain ?
+SARA: En haut aussi, en face de ma chambre.
+LEO: Attends... je ne trouve pas mon téléphone. Je l'ai mis quelque part...
+SARA: Regarde là, sur la table. Non ? Alors, peut-être dans ta veste.
+LEO: Non, il n'est nulle part ! Ah si, le voilà, sous le journal.
+SARA: Tu cherches toujours tes affaires partout, toi !
+LEO: C'est vrai. Et ton balcon, il est où ?
+SARA: Viens voir : la porte est là-bas, au fond du salon. Dehors, il y a une belle vue sur le parc.
+LEO: Super ! Et le parc, c'est loin d'ici ?
+SARA: Non, c'est tout près, cinq minutes à pied.

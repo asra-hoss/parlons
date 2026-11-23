@@ -1,0 +1,15 @@
+ANNA: Bonsoir Thomas ! Joyeux anniversaire !
+THOMAS: Merci Anna ! Entre, je suis content de te voir.
+ANNA: Tiens, c'est pour toi.
+THOMAS: Oh, un livre de photos ! Merci beaucoup, il est magnifique.
+ANNA: Et Nadia, elle est là ?
+THOMAS: Oui, elle est dans la cuisine.
+NADIA: Bonsoir Anna !
+ANNA: Nadia, félicitations pour ton diplôme !
+NADIA: Merci ! Je suis très contente.
+ANNA: Bravo ! Et ton nouveau travail, ça commence quand ?
+NADIA: Lundi. Je suis un peu stressée.
+ANNA: Bon courage ! Ça va aller, tu es très forte.
+NADIA: Merci, c'est gentil. Regarde le gâteau de Thomas, il est superbe !
+ANNA: Et il est délicieux. Thomas, tu es un excellent cuisinier !
+THOMAS: Merci, ça me fait plaisir. Allez, je vous souhaite à toutes les deux une très bonne soirée !

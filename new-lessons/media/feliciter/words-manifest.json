@@ -1,0 +1,163 @@
+[
+ {
+  "term": "félicitations",
+  "spoken": "félicitations",
+  "example": "Félicitations pour ton examen !",
+  "slug": "felicitations",
+  "text": "Félicitations. Félicitations pour ton examen !"
+ },
+ {
+  "term": "bravo",
+  "spoken": "bravo",
+  "example": "Bravo, tu as réussi !",
+  "slug": "bravo",
+  "text": "Bravo. Bravo, tu as réussi !"
+ },
+ {
+  "term": "joyeux anniversaire",
+  "spoken": "joyeux anniversaire",
+  "example": "Joyeux anniversaire, Paul !",
+  "slug": "joyeux-anniversaire",
+  "text": "Joyeux anniversaire. Joyeux anniversaire, Paul !"
+ },
+ {
+  "term": "bon anniversaire",
+  "spoken": "bon anniversaire",
+  "example": "Bon anniversaire, mamie !",
+  "slug": "bon-anniversaire",
+  "text": "Bon anniversaire. Bon anniversaire, mamie !"
+ },
+ {
+  "term": "bonne chance",
+  "spoken": "bonne chance",
+  "example": "Bonne chance pour l'entretien !",
+  "slug": "bonne-chance",
+  "text": "Bonne chance. Bonne chance pour l'entretien !"
+ },
+ {
+  "term": "bon courage",
+  "spoken": "bon courage",
+  "example": "Bon courage pour les examens !",
+  "slug": "bon-courage",
+  "text": "Bon courage. Bon courage pour les examens !"
+ },
+ {
+  "term": "bon voyage",
+  "spoken": "bon voyage",
+  "example": "Bon voyage, à la semaine prochaine !",
+  "slug": "bon-voyage",
+  "text": "Bon voyage. Bon voyage, à la semaine prochaine !"
+ },
+ {
+  "term": "bonne année",
+  "spoken": "bonne année",
+  "example": "Bonne année et bonne santé !",
+  "slug": "bonne-annee",
+  "text": "Bonne année. Bonne année et bonne santé !"
+ },
+ {
+  "term": "meilleurs vœux",
+  "spoken": "meilleurs vœux",
+  "example": "Meilleurs vœux pour la nouvelle année !",
+  "slug": "meilleurs-voeux",
+  "text": "Meilleurs vœux. Meilleurs vœux pour la nouvelle année !"
+ },
+ {
+  "term": "souhaiter",
+  "spoken": "souhaiter",
+  "example": "Je te souhaite bonne chance.",
+  "slug": "souhaiter",
+  "text": "Souhaiter. Je te souhaite bonne chance."
+ },
+ {
+  "term": "un compliment",
+  "spoken": "un compliment",
+  "example": "Merci, c'est un beau compliment.",
+  "slug": "un-compliment",
+  "text": "Un compliment. Merci, c'est un beau compliment."
+ },
+ {
+  "term": "réussir",
+  "spoken": "réussir",
+  "example": "Elle a réussi son examen.",
+  "slug": "reussir",
+  "text": "Réussir. Elle a réussi son examen."
+ },
+ {
+  "term": "un mariage",
+  "spoken": "un mariage",
+  "example": "Félicitations pour votre mariage !",
+  "slug": "un-mariage",
+  "text": "Un mariage. Félicitations pour votre mariage !"
+ },
+ {
+  "term": "une naissance",
+  "spoken": "une naissance",
+  "example": "Félicitations pour la naissance de votre fille !",
+  "slug": "une-naissance",
+  "text": "Une naissance. Félicitations pour la naissance de votre fille !"
+ },
+ {
+  "term": "un diplôme",
+  "spoken": "un diplôme",
+  "example": "Il a son diplôme de français.",
+  "slug": "un-diplome",
+  "text": "Un diplôme. Il a son diplôme de français."
+ },
+ {
+  "term": "un examen",
+  "spoken": "un examen",
+  "example": "L'examen est demain matin.",
+  "slug": "un-examen",
+  "text": "Un examen. L'examen est demain matin."
+ },
+ {
+  "term": "un nouveau travail",
+  "spoken": "un nouveau travail",
+  "example": "Félicitations pour ton nouveau travail !",
+  "slug": "un-nouveau-travail",
+  "text": "Un nouveau travail. Félicitations pour ton nouveau travail !"
+ },
+ {
+  "term": "joli, jolie",
+  "spoken": "joli, jolie",
+  "example": "C'est une jolie maison.",
+  "slug": "joli-jolie",
+  "text": "Joli, jolie. C'est une jolie maison."
+ },
+ {
+  "term": "beau, belle",
+  "spoken": "beau, belle",
+  "example": "Tu as un beau sourire.",
+  "slug": "beau-belle",
+  "text": "Beau, belle. Tu as un beau sourire."
+ },
+ {
+  "term": "élégant, élégante",
+  "spoken": "élégant, élégante",
+  "example": "Vous êtes très élégante aujourd'hui.",
+  "slug": "elegant-elegante",
+  "text": "Élégant, élégante. Vous êtes très élégante aujourd'hui."
+ },
+ {
+  "term": "délicieux, délicieuse",
+  "spoken": "délicieux, délicieuse",
+  "example": "Ce gâteau est délicieux !",
+  "slug": "delicieux-delicieuse",
+  "text": "Délicieux, délicieuse. Ce gâteau est délicieux !"
+ },
+ {
+  "term": "merci, c'est gentil",
+  "spoken": "merci, c'est gentil",
+  "example": "Merci, c'est très gentil.",
+  "slug": "merci-c-est-gentil",
+  "text": "Merci, c'est gentil. Merci, c'est très gentil."
+ },
+ {
+  "term": "ça me fait plaisir",
+  "spoken": "ça me fait plaisir",
+  "example": "Ça me fait plaisir, merci.",
+  "slug": "ca-me-fait-plaisir",
+  "text": "Ça me fait plaisir. Ça me fait plaisir, merci."
+ }
+]

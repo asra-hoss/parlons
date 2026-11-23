@@ -1,0 +1,6 @@
+VENDEUR: Bonjour madame, regardez ces belles tables en bois. Elles sont anciennes et très solides !
+CLIENTE: Elles sont jolies. Et ces cuillères, là, elles sont en argent ?
+VENDEUR: Oui, madame, des cuillères à café en argent, très anciennes aussi. Et là-bas, j'ai une machine à café ancienne, en métal. Elle fonctionne encore parfaitement !
+CLIENTE: Et cette boîte, elle est en quoi ?
+VENDEUR: C'est une boîte en carton, pour les photos. Mais j'ai aussi des boîtes en métal, ici. Et regardez ces verres à vin, en verre très fin.
+CLIENTE: Parfait. Je prends les cuillères en argent et la petite boîte en métal, s'il vous plaît.

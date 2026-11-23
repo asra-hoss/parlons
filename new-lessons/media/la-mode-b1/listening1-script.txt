@@ -1,0 +1,12 @@
+JULIE: Alors Marc, pour le mariage de samedi, tu portes quoi ?
+MARC: Je ne sais pas. Je pensais mettre mon vieux costume noir...
+JULIE: Il est un peu démodé, non ? Essaie cette veste bleue, elle est très chic.
+MARC: Quelle taille ? Je fais du 50.
+VENDEUSE: Voici la veste en 50, monsieur. La cabine d'essayage est au fond, à droite.
+MARC: Alors, ça donne quoi ?
+JULIE: La veste te va très bien ! Mais essaie un pantalon plus clair avec.
+MARC: Et cette chemise à carreaux ?
+JULIE: Non. Avec la veste bleue, je trouve qu'une chemise blanche est plus élégante. Là, tu as l'air très sérieux !
+MARC: Et pour les chaussures, mes chaussures noires ?
+JULIE: Oui, parfait, avec une ceinture assortie. Et toi, tu as déjà ta tenue ?
+JULIE: Oui, ma robe rouge à fleurs, avec des chaussures à talons. Allez, on paie et on va boire un café ?

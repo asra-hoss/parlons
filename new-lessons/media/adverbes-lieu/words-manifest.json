@@ -1,0 +1,156 @@
+[
+ {
+  "term": "en haut",
+  "spoken": "en haut",
+  "example": "La salle de bain est en haut.",
+  "slug": "en-haut",
+  "text": "En haut. La salle de bain est en haut."
+ },
+ {
+  "term": "en bas",
+  "spoken": "en bas",
+  "example": "On mange en bas, dans la cuisine.",
+  "slug": "en-bas",
+  "text": "En bas. On mange en bas, dans la cuisine."
+ },
+ {
+  "term": "là-bas",
+  "spoken": "là-bas",
+  "example": "Le marché est là-bas, après le parc.",
+  "slug": "la-bas",
+  "text": "Là-bas. Le marché est là-bas, après le parc."
+ },
+ {
+  "term": "ici",
+  "spoken": "ici",
+  "example": "Attends-moi ici, j'arrive.",
+  "slug": "ici",
+  "text": "Ici. Attends-moi ici, j'arrive."
+ },
+ {
+  "term": "là",
+  "spoken": "là",
+  "example": "Tes lunettes sont là, sur la table.",
+  "slug": "la",
+  "text": "Là. Tes lunettes sont là, sur la table."
+ },
+ {
+  "term": "ailleurs",
+  "spoken": "ailleurs",
+  "example": "On peut aller ailleurs si tu veux.",
+  "slug": "ailleurs",
+  "text": "Ailleurs. On peut aller ailleurs si tu veux."
+ },
+ {
+  "term": "partout",
+  "spoken": "partout",
+  "example": "Il y a des touristes partout en été.",
+  "slug": "partout",
+  "text": "Partout. Il y a des touristes partout en été."
+ },
+ {
+  "term": "nulle part",
+  "spoken": "nulle part",
+  "example": "Je ne trouve mes clés nulle part.",
+  "slug": "nulle-part",
+  "text": "Nulle part. Je ne trouve mes clés nulle part."
+ },
+ {
+  "term": "loin",
+  "spoken": "loin",
+  "example": "Son bureau est loin de chez elle.",
+  "slug": "loin",
+  "text": "Loin. Son bureau est loin de chez elle."
+ },
+ {
+  "term": "près",
+  "spoken": "près",
+  "example": "Le cinéma est tout près.",
+  "slug": "pres",
+  "text": "Près. Le cinéma est tout près."
+ },
+ {
+  "term": "monter",
+  "spoken": "monter",
+  "example": "Monte en haut, la chambre est prête.",
+  "slug": "monter",
+  "text": "Monter. Monte en haut, la chambre est prête."
+ },
+ {
+  "term": "descendre",
+  "spoken": "descendre",
+  "example": "Descends en bas, le dîner est prêt.",
+  "slug": "descendre",
+  "text": "Descendre. Descends en bas, le dîner est prêt."
+ },
+ {
+  "term": "dedans",
+  "spoken": "dedans",
+  "example": "Le chat est dedans, il dort.",
+  "slug": "dedans",
+  "text": "Dedans. Le chat est dedans, il dort."
+ },
+ {
+  "term": "dehors",
+  "spoken": "dehors",
+  "example": "Les enfants jouent dehors.",
+  "slug": "dehors",
+  "text": "Dehors. Les enfants jouent dehors."
+ },
+ {
+  "term": "dessus",
+  "spoken": "dessus",
+  "example": "Pose le livre dessus, s'il te plaît.",
+  "slug": "dessus",
+  "text": "Dessus. Pose le livre dessus, s'il te plaît."
+ },
+ {
+  "term": "dessous",
+  "spoken": "dessous",
+  "example": "Le chien est dessous, sous la table.",
+  "slug": "dessous",
+  "text": "Dessous. Le chien est dessous, sous la table."
+ },
+ {
+  "term": "en face",
+  "spoken": "en face",
+  "example": "La boulangerie est en face.",
+  "slug": "en-face",
+  "text": "En face. La boulangerie est en face."
+ },
+ {
+  "term": "à côté",
+  "spoken": "à côté",
+  "example": "Elle habite à côté, dans la même rue.",
+  "slug": "a-cote",
+  "text": "À côté. Elle habite à côté, dans la même rue."
+ },
+ {
+  "term": "les voisins du dessus",
+  "spoken": "les voisins du dessus",
+  "example": "Les voisins du dessus font du bruit le soir.",
+  "slug": "les-voisins-du-dessus",
+  "text": "Les voisins du dessus. Les voisins du dessus font du bruit le soir."
+ },
+ {
+  "term": "en dessous",
+  "spoken": "en dessous",
+  "example": "En dessous, il y a un petit jardin.",
+  "slug": "en-dessous",
+  "text": "En dessous. En dessous, il y a un petit jardin."
+ },
+ {
+  "term": "au coin",
+  "spoken": "au coin",
+  "example": "Le café est là-bas, au coin.",
+  "slug": "au-coin",
+  "text": "Au coin. Le café est là-bas, au coin."
+ },
+ {
+  "term": "quelque part",
+  "spoken": "quelque part",
+  "example": "Je l'ai mis quelque part dans la maison.",
+  "slug": "quelque-part",
+  "text": "Quelque part. Je l'ai mis quelque part dans la maison."
+ }
+]

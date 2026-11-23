@@ -1,0 +1,10 @@
+CLIENTE: Bonjour madame, je cherche une grande tasse à café.
+VENDEUSE: Bien sûr. J'ai ce modèle en verre, très joli, et celui-ci en métal.
+CLIENTE: Je préfère en verre. Et je cherche aussi une boîte pour mes chaussures.
+VENDEUSE: Une boîte à chaussures ? J'ai une boîte en carton, simple et pas chère.
+CLIENTE: Parfait. Mon mari veut des cuillères en bois pour la cuisine.
+VENDEUSE: Les cuillères en bois sont ici. Vous voulez aussi des verres à vin ?
+CLIENTE: Oui, six verres à vin. En verre, bien sûr ! Et un sac en cuir, vous en avez ?
+VENDEUSE: Oui, regardez : ce sac en cuir est très beau.
+CLIENTE: Il est magnifique. Je le prends, avec les tasses et la boîte.
+VENDEUSE: Très bien. Je mets tout dans un sac en papier ?

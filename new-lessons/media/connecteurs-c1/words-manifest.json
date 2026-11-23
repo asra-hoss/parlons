@@ -1,0 +1,177 @@
+[
+ {
+  "term": "considérant que",
+  "spoken": "considérant que",
+  "example": "Considérant que le budget est limité, le projet sera réduit.",
+  "slug": "considerant-que",
+  "text": "Considérant que. Considérant que le budget est limité, le projet sera réduit."
+ },
+ {
+  "term": "d'autant que",
+  "spoken": "d'autant que",
+  "example": "La réforme est nécessaire, d'autant que le système actuel montre ses limites.",
+  "slug": "d-autant-que",
+  "text": "D'autant que. La réforme est nécessaire, d'autant que le système actuel montre ses limites."
+ },
+ {
+  "term": "d'autant plus que",
+  "spoken": "d'autant plus que",
+  "example": "Il est d'autant plus prudent que les risques sont réels.",
+  "slug": "d-autant-plus-que",
+  "text": "D'autant plus que. Il est d'autant plus prudent que les risques sont réels."
+ },
+ {
+  "term": "surtout que",
+  "spoken": "surtout que",
+  "example": "Il faut agir vite, surtout que le rapport est attendu lundi.",
+  "slug": "surtout-que",
+  "text": "Surtout que. Il faut agir vite, surtout que le rapport est attendu lundi."
+ },
+ {
+  "term": "de crainte que",
+  "spoken": "de crainte que",
+  "example": "Elle parle à voix basse, de crainte qu'on l'entende.",
+  "slug": "de-crainte-que",
+  "text": "De crainte que. Elle parle à voix basse, de crainte qu'on l'entende."
+ },
+ {
+  "term": "à ce que",
+  "spoken": "à ce que",
+  "example": "Veillez à ce que le texte soit relu.",
+  "slug": "a-ce-que",
+  "text": "À ce que. Veillez à ce que le texte soit relu."
+ },
+ {
+  "term": "veiller à ce que",
+  "spoken": "veiller à ce que",
+  "example": "L'éditeur veille à ce que les faits soient exacts.",
+  "slug": "veiller-a-ce-que",
+  "text": "Veiller à ce que. L'éditeur veille à ce que les faits soient exacts."
+ },
+ {
+  "term": "tenir à ce que",
+  "spoken": "tenir à ce que",
+  "example": "Je tiens à ce que la source soit citée.",
+  "slug": "tenir-a-ce-que",
+  "text": "Tenir à ce que. Je tiens à ce que la source soit citée."
+ },
+ {
+  "term": "encore que",
+  "spoken": "encore que",
+  "example": "C'est convaincant, encore que ce soit un peu long.",
+  "slug": "encore-que",
+  "text": "Encore que. C'est convaincant, encore que ce soit un peu long."
+ },
+ {
+  "term": "s'attendre à ce que",
+  "spoken": "s'attendre à ce que",
+  "example": "On s'attend à ce que les résultats soient publiés demain.",
+  "slug": "s-attendre-a-ce-que",
+  "text": "S'attendre à ce que. On s'attend à ce que les résultats soient publiés demain."
+ },
+ {
+  "term": "en définitive",
+  "spoken": "en définitive",
+  "example": "En définitive, les deux textes se rejoignent.",
+  "slug": "en-definitive",
+  "text": "En définitive. En définitive, les deux textes se rejoignent."
+ },
+ {
+  "term": "à l'appui de",
+  "spoken": "à l'appui de",
+  "example": "Il cite trois exemples à l'appui de sa thèse.",
+  "slug": "a-l-appui-de",
+  "text": "À l'appui de. Il cite trois exemples à l'appui de sa thèse."
+ },
+ {
+  "term": "il convient de noter que",
+  "spoken": "il convient de noter que",
+  "example": "Il convient de noter que les données sont partielles.",
+  "slug": "il-convient-de-noter-que",
+  "text": "Il convient de noter que. Il convient de noter que les données sont partielles."
+ },
+ {
+  "term": "une citation",
+  "spoken": "une citation",
+  "example": "Cette citation ouvre le premier chapitre.",
+  "slug": "une-citation",
+  "text": "Une citation. Cette citation ouvre le premier chapitre."
+ },
+ {
+  "term": "citer",
+  "spoken": "citer",
+  "example": "Il cite souvent les auteurs classiques.",
+  "slug": "citer",
+  "text": "Citer. Il cite souvent les auteurs classiques."
+ },
+ {
+  "term": "les guillemets",
+  "spoken": "les guillemets",
+  "example": "En français, on utilise les guillemets « ».",
+  "slug": "les-guillemets",
+  "text": "Les guillemets. En français, on utilise les guillemets « »."
+ },
+ {
+  "term": "entre guillemets",
+  "spoken": "entre guillemets",
+  "example": "Le mot est placé entre guillemets dans le texte.",
+  "slug": "entre-guillemets",
+  "text": "Entre guillemets. Le mot est placé entre guillemets dans le texte."
+ },
+ {
+  "term": "selon",
+  "spoken": "selon",
+  "example": "Selon l'auteur, la ville change vite.",
+  "slug": "selon",
+  "text": "Selon. Selon l'auteur, la ville change vite."
+ },
+ {
+  "term": "d'après",
+  "spoken": "d'après",
+  "example": "D'après le rapport, les prix continuent d'augmenter.",
+  "slug": "d-apres",
+  "text": "D'après. D'après le rapport, les prix continuent d'augmenter."
+ },
+ {
+  "term": "comme le souligne X",
+  "spoken": "comme le souligne Martin",
+  "example": "Comme le souligne Martin, le débat reste ouvert.",
+  "slug": "comme-le-souligne-x",
+  "text": "Comme le souligne Martin. Comme le souligne Martin, le débat reste ouvert."
+ },
+ {
+  "term": "rapporter des propos",
+  "spoken": "rapporter des propos",
+  "example": "Elle rapporte fidèlement les propos du ministre.",
+  "slug": "rapporter-des-propos",
+  "text": "Rapporter des propos. Elle rapporte fidèlement les propos du ministre."
+ },
+ {
+  "term": "une source",
+  "spoken": "une source",
+  "example": "Il faut vérifier chaque source avant de publier.",
+  "slug": "une-source",
+  "text": "Une source. Il faut vérifier chaque source avant de publier."
+ },
+ {
+  "term": "un extrait",
+  "spoken": "un extrait",
+  "example": "Cet extrait du roman est devenu célèbre.",
+  "slug": "un-extrait",
+  "text": "Un extrait. Cet extrait du roman est devenu célèbre."
+ },
+ {
+  "term": "faire référence à",
+  "spoken": "faire référence à",
+  "example": "L'article fait référence à une étude récente.",
+  "slug": "faire-reference-a",
+  "text": "Faire référence à. L'article fait référence à une étude récente."
+ },
+ {
+  "term": "un ouvrage",
+  "spoken": "un ouvrage",
+  "example": "Son dernier ouvrage traite de l'économie européenne.",
+  "slug": "un-ouvrage",
+  "text": "Un ouvrage. Son dernier ouvrage traite de l'économie européenne."
+ }
+]

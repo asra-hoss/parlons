@@ -1,0 +1,170 @@
+[
+ {
+  "term": "une tenue",
+  "spoken": "une tenue",
+  "example": "J'aime beaucoup ta tenue aujourd'hui.",
+  "slug": "une-tenue",
+  "text": "Une tenue. J'aime beaucoup ta tenue aujourd'hui."
+ },
+ {
+  "term": "porter",
+  "spoken": "porter",
+  "example": "Elle porte une robe rouge.",
+  "slug": "porter",
+  "text": "Porter. Elle porte une robe rouge."
+ },
+ {
+  "term": "un manteau",
+  "spoken": "un manteau",
+  "example": "Il met son manteau avant de sortir.",
+  "slug": "un-manteau",
+  "text": "Un manteau. Il met son manteau avant de sortir."
+ },
+ {
+  "term": "une veste",
+  "spoken": "une veste",
+  "example": "Cette veste en jean est à la mode.",
+  "slug": "une-veste",
+  "text": "Une veste. Cette veste en jean est à la mode."
+ },
+ {
+  "term": "un pantalon",
+  "spoken": "un pantalon",
+  "example": "Ce pantalon est trop long.",
+  "slug": "un-pantalon",
+  "text": "Un pantalon. Ce pantalon est trop long."
+ },
+ {
+  "term": "une jupe",
+  "spoken": "une jupe",
+  "example": "Elle porte une jupe à fleurs.",
+  "slug": "une-jupe",
+  "text": "Une jupe. Elle porte une jupe à fleurs."
+ },
+ {
+  "term": "une robe",
+  "spoken": "une robe",
+  "example": "Sa robe est très élégante.",
+  "slug": "une-robe",
+  "text": "Une robe. Sa robe est très élégante."
+ },
+ {
+  "term": "un pull",
+  "spoken": "un pull",
+  "example": "Je mets un pull en laine.",
+  "slug": "un-pull",
+  "text": "Un pull. Je mets un pull en laine."
+ },
+ {
+  "term": "une chemise",
+  "spoken": "une chemise",
+  "example": "Il porte une chemise à carreaux.",
+  "slug": "une-chemise",
+  "text": "Une chemise. Il porte une chemise à carreaux."
+ },
+ {
+  "term": "des chaussures",
+  "spoken": "des chaussures",
+  "example": "Tes chaussures sont nouvelles ?",
+  "slug": "des-chaussures",
+  "text": "Des chaussures. Tes chaussures sont nouvelles ?"
+ },
+ {
+  "term": "un chapeau",
+  "spoken": "un chapeau",
+  "example": "Elle ne porte jamais de chapeau.",
+  "slug": "un-chapeau",
+  "text": "Un chapeau. Elle ne porte jamais de chapeau."
+ },
+ {
+  "term": "une écharpe",
+  "spoken": "une écharpe",
+  "example": "En hiver, je mets une écharpe en laine.",
+  "slug": "une-echarpe",
+  "text": "Une écharpe. En hiver, je mets une écharpe en laine."
+ },
+ {
+  "term": "essayer",
+  "spoken": "essayer",
+  "example": "Je peux essayer cette veste ?",
+  "slug": "essayer",
+  "text": "Essayer. Je peux essayer cette veste ?"
+ },
+ {
+  "term": "la cabine d'essayage",
+  "spoken": "la cabine d'essayage",
+  "example": "La cabine d'essayage est au fond du magasin.",
+  "slug": "la-cabine-d-essayage",
+  "text": "La cabine d'essayage. La cabine d'essayage est au fond du magasin."
+ },
+ {
+  "term": "la taille",
+  "spoken": "la taille",
+  "example": "Quelle taille faites-vous ?",
+  "slug": "la-taille",
+  "text": "La taille. Quelle taille faites-vous ?"
+ },
+ {
+  "term": "la pointure",
+  "spoken": "la pointure",
+  "example": "Ma pointure, c'est le 41.",
+  "slug": "la-pointure",
+  "text": "La pointure. Ma pointure, c'est le 41."
+ },
+ {
+  "term": "aller à quelqu'un",
+  "spoken": "aller à quelqu'un",
+  "example": "Ce bleu te va très bien.",
+  "slug": "aller-a-quelqu-un",
+  "text": "Aller à quelqu'un. Ce bleu te va très bien."
+ },
+ {
+  "term": "à la mode",
+  "spoken": "à la mode",
+  "example": "Les baskets blanches sont très à la mode.",
+  "slug": "a-la-mode",
+  "text": "À la mode. Les baskets blanches sont très à la mode."
+ },
+ {
+  "term": "démodé, démodée",
+  "spoken": "démodé, démodée",
+  "example": "Ce style est un peu démodé.",
+  "slug": "demode-demodee",
+  "text": "Démodé, démodée. Ce style est un peu démodé."
+ },
+ {
+  "term": "décontracté, décontractée",
+  "spoken": "décontracté, décontractée",
+  "example": "Il a un style décontracté.",
+  "slug": "decontracte-decontractee",
+  "text": "Décontracté, décontractée. Il a un style décontracté."
+ },
+ {
+  "term": "chic",
+  "spoken": "chic",
+  "example": "Elle est toujours très chic.",
+  "slug": "chic",
+  "text": "Chic. Elle est toujours très chic."
+ },
+ {
+  "term": "à rayures",
+  "spoken": "à rayures",
+  "example": "Il porte un t-shirt à rayures.",
+  "slug": "a-rayures",
+  "text": "À rayures. Il porte un t-shirt à rayures."
+ },
+ {
+  "term": "à carreaux",
+  "spoken": "à carreaux",
+  "example": "Une chemise à carreaux, c'est un classique.",
+  "slug": "a-carreaux",
+  "text": "À carreaux. Une chemise à carreaux, c'est un classique."
+ },
+ {
+  "term": "assorti, assortie",
+  "spoken": "assorti, assortie",
+  "example": "Son sac est assorti à ses chaussures.",
+  "slug": "assorti-assortie",
+  "text": "Assorti, assortie. Son sac est assorti à ses chaussures."
+ }
+]
