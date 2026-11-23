@@ -885,7 +885,7 @@ function steppill(){[].forEach.call(document.querySelectorAll('.scr'),function(s
  var host=node.parentElement;
  node.style.cssText='display:inline-block;margin:0;padding:2px 8px;border-radius:999px;background:#ece6ff;color:#4b34b0;font:800 9.5px/1.4 Nunito,sans-serif;letter-spacing:.3px;white-space:nowrap';
  gb.style.display='flex';gb.style.alignItems='center';gb.style.justifyContent='center';gb.style.gap='8px';
- gb.insertBefore(node,gb.firstChild);
+ gb.appendChild(node);
  try{if(host&&host!==gb&&!host.textContent.trim()&&host.children.length===0)host.style.display='none'}catch(e){}})}
 function readtext(){
  var rs=[].filter.call(document.querySelectorAll('.scr'),function(s){return /READING/.test(s.textContent)})[0];
