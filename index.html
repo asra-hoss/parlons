@@ -433,18 +433,18 @@ button.cam-cont{background:linear-gradient(135deg,#3fb0c4,#4f7fe0)!important;box
 new MutationObserver(m).observe(document.documentElement,{childList:true,subtree:true});m()})();</script><script>/* Chichilang: old lesson pages -> new flow */
 (function(){var MX={A1:8,A2:8,B1:9,B2:8,'C1/C2':11},P={A2:'a2-',B1:'b1-',B2:'b2-','C1/C2':'c12-'},RX=/Chichilang\s*\u2022\s*(A1|A2|B1|B2|C1\/C2)\s*\u2022\s*[^\d\u2022]*?(\d+)\s*\u2022\s*[^\d\u2022]*?(\d+)/;function RXE(s){return RX.exec(s.replace(/[۰-۹]/g,function(c){return'۰۱۲۳۴۵۶۷۸۹'.indexOf(c)}).replace(/[٠-٩]/g,function(c){return'٠١٢٣٤٥٦٧٨٩'.indexOf(c)}))}var armed=true,seen=false,exiting=false,tq=0;try{if(sessionStorage.getItem('cam_exit')==='1'){armed=false;exiting=true}}catch(e){}
 if(exiting){var cs=document.createElement('style');cs.id='camexitcov';cs.textContent='body{visibility:hidden!important}';document.head.appendChild(cs);var rm=function(){var x=document.getElementById('camexitcov');if(x)x.remove();try{clearInterval(xiv)}catch(e){}try{sessionStorage.removeItem('cam_exit')}catch(e){}exiting=false;armed=true};
-var tries=0,xiv=setInterval(function(){try{
-var pop=document.querySelector('[data-elan="flow-cover"],.nx-wcard,[role="dialog"]');
-if(pop){var btns=[].slice.call(pop.querySelectorAll('button')),bk=null,i,b,tx;
-for(i=0;i<btns.length;i++){b=btns[i];if(/^(Back|Close)$/i.test(b.getAttribute('aria-label')||'')){bk=b;break}}
-if(!bk){for(i=0;i<btns.length;i++){b=btns[i];tx=(b.textContent||'').trim();if(/^(Yes|بله|Oui|Sí|Да|هاں|नें)$/.test(tx)){bk=b;break}}}
-if(!bk&&pop.matches('[data-elan="flow-cover"]')){for(i=0;i<btns.length;i++){b=btns[i];tx=(b.textContent||'').trim();if(b.classList.contains('cam-cont'))continue;if(/^(Continue|Start|Begin|ادامه|شروع|Continuar|Продолжить|आगे|متابعة)/.test(tx))continue;bk=b;break}}
-if(bk)bk.click();
-tries++;if(tries>26)rm();return}
+var tries=0,clicked=0,free=0,xiv=setInterval(function(){try{
+var conf=document.querySelector('[data-exit-confirm]');
+if(conf){var lv=conf.querySelector('[data-exit-leave]');if(lv)lv.click();tries++;if(tries>30)rm();return}
+var cover=document.querySelector('[data-elan="flow-cover"]');
+var home=document.querySelector('button[aria-label="Chichilang \u2014 Home"]');
+if(cover&&home){home.click();clicked++;tries++;if(tries>30)rm();return}
+if(!cover){free++;if(clicked&&free>=2){rm();return}
 if(document.querySelector('[data-profile-frame]')||document.querySelector('aside')){rm();return}
-tries++;if(tries>26)rm();
+if(free>=4){rm();return}}
+tries++;if(tries>30)rm();
 }catch(e){}},300);
-setTimeout(rm,10000)}
+setTimeout(rm,12000)}
 window.openLesson=function openLesson(u){/* camelon-fullscreen: lessons always open full-page, like on the phone (Asra's choice, Nov 22) */location.assign(innerWidth>=900?u.replace('/#','/?solo=1#'):u);return;var side=null,best=1e9;try{var els=document.querySelectorAll('nav,aside,div');for(var k=0;k<els.length;k++){var e=els[k],t=e.textContent;if(t.length<500&&t.length<best&&t.indexOf('My lessons')>-1&&t.indexOf('Roadmap')>-1&&t.indexOf('Settings')>-1){var r=e.getBoundingClientRect();if(r.width>80&&r.height>80){side=r;best=t.length}}}}catch(x){}
 if(!side&&innerWidth>=900&&!window.__autoopen){var as=document.querySelector('aside');var ar=as?as.getBoundingClientRect():null;side={right:ar&&ar.width>80?ar.right:240}}
 if(!side||innerWidth<900){if(window.__autoopen&&innerWidth>=900)return false;location.assign(innerWidth>=900?u.replace('/#','/?solo=1#'):u);return}
