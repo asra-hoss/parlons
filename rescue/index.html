@@ -81,7 +81,7 @@
   </head>
   <body>
     <main>
-      <h1>Camelon repair</h1>
+      <h1>Chichilang repair</h1>
       <p>
         If the app keeps showing “A problem repeatedly occurred”, this
         page clears the trapped copy your browser is holding — without
@@ -90,7 +90,7 @@
       <div class="status" id="status">Checking this browser…</div>
 
       <button class="primary" id="repair" disabled>
-        Repair and open Camelon
+        Repair and open Chichilang
       </button>
       <p class="small">
         Repair removes only settings that steer startup — navigation
@@ -242,7 +242,7 @@
           try {
             sessionStorage.clear();
           } catch (e) {}
-          statusEl.textContent = "Repaired — opening Camelon…";
+          statusEl.textContent = "Repaired — opening Chichilang…";
           window.location.replace("/");
         });
 
@@ -283,7 +283,7 @@
             }, 4000);
           } catch (e) {}
           statusEl.textContent =
-            "Backup downloaded — clearing this device and opening Camelon…";
+            "Backup downloaded — clearing this device and opening Chichilang…";
           /* Give the download a moment to start before clearing
              and navigating away. */
           setTimeout(function () {
