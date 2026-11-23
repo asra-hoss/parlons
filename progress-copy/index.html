@@ -581,5 +581,25 @@ new MutationObserver(studyPlan).observe(document.documentElement,{childList:true
 studyPlan();
 })();
 </script>
+<script>
+/* PROGRESS-COPY chest variety: every dossier chest gets its own design */
+(function(){
+  var CUSTOM=[null,'/progress-copy/chests/chest-heart.png',null,'/progress-copy/chests/chest-emerald.png',null,'/progress-copy/chests/chest-amber.png','/progress-copy/chests/chest-diamond.png',null];
+  var HUES={7:'hue-rotate(130deg) saturate(1.15)'};
+  var t=null;
+  function apply(){
+    document.querySelectorAll('.bd-chest').forEach(function(ch,i){
+      var img=ch.querySelector('img'); if(!img) return;
+      var c=CUSTOM[i%CUSTOM.length];
+      if(c){ if(img.getAttribute('src')!==c) img.src=c; img.style.filter=''; }
+      else if(HUES[i%CUSTOM.length]){ img.style.filter=HUES[i%CUSTOM.length]; }
+    });
+  }
+  function sched(){ if(t) return; t=setTimeout(function(){ t=null; apply(); },120); }
+  new MutationObserver(sched).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['src']});
+  document.addEventListener('DOMContentLoaded',sched);
+})();
+</script>
+
 </body>
 </html>
