@@ -555,7 +555,7 @@ function confirmLeave(){if(document.getElementById('leavepop'))return;var o=docu
 document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('.lvy,.lvn');if(!t)return;e.stopImmediatePropagation();e.preventDefault();if(t.classList.contains('lvy')){leave();return}var p=document.getElementById('leavepop');if(p)p.remove()},true);
 document.addEventListener('click',function(e){var x=e.target.closest&&e.target.closest('[data-exit]');if(x){e.stopImmediatePropagation();e.preventDefault();if(x.closest('.chestfr')){showDone();return}leave()}},true);
 // ---- logo on top of every screen goes back to the app
-var LOGO='/shared/3fc9580779cb9131.png';
+var LOGO='/shared/chichilang-logo-20261123.png';
 S.forEach(function(sc){var fr=frameOf(sc);if(!fr||fr.classList.contains('chestfr'))return;var h=document.createElement('div');h.style.cssText='flex:none;display:flex;justify-content:center;padding:0';var LV0=({a1:'A1',a2:'A2',b1:'B1',b2:'B2',c12:'C1/C2'})[LD.level||'a1'];var LB=LV0+' · '+((LD.level&&LD.level!=='a1')?'Unit '+LD.dnum:'Dossier '+LD.dnum+' · Lesson '+LD.n);h.style.flexDirection='column';h.style.alignItems='center';h.innerHTML='<img src="'+LOGO+'" alt="Camelon" data-exit="1" style="width:50px;height:50px;object-fit:contain;cursor:pointer"><div data-exit="1" style="margin-top:0;cursor:pointer;font:800 11.5px Nunito,sans-serif;letter-spacing:.3px;color:#7a76a8">'+LB+'</div>';fr.insertBefore(h,fr.firstChild)});
 // ---- fit to screen
 var stage=document.getElementById('stage');
