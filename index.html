@@ -262,6 +262,9 @@
              costs nothing and lets Home render. Only the exact root
              path is scrubbed — every other shell route (/plan/,
              /progress, …) keeps its saved nav untouched. */
+          try {
+            sessionStorage.setItem("nav_scrub_probe", JSON.stringify({pathname: location.pathname, hadNav: nav !== null}));
+          } catch (eProbe) {}
           if (location.pathname === "/") {
             ls.removeItem("origb1:nav");
           }
