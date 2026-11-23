@@ -396,7 +396,7 @@ function build(){var im=document.querySelector('.nx-wcard img[src*="unit-"]');if
   n.style.display='none';var pv=n.previousElementSibling;if(pv&&!pv.textContent.trim())pv.style.display='none'}}
 new MutationObserver(build).observe(document.documentElement,{childList:true,subtree:true});
 document.addEventListener('click',function(e){var pb=e.target.closest&&e.target.closest('button');if(pb&&pb.textContent.trim().length>0&&!pb.getAttribute('aria-label')&&!pb.hasAttribute('data-popup-plaque')){var pc=pb.closest('.nx-wcard');if(pc&&pc.querySelector('#camlist')&&!pb.closest('#camlist')){var kk=sel||getC();var nn=kk.replace('l','');setC(kk);e.preventDefault();e.stopPropagation();go=true;openLesson('/'+DR(kk)+'/#start');return}}
-if(!cover())return;var b=e.target.closest&&e.target.closest('button');if(!b||b.getAttribute('aria-label')==='Back')return;if(!/^Continue/.test(b.textContent.trim()))return;var k=sel||getC();e.preventDefault();e.stopPropagation();go=true;openLesson('/'+(DR(k)||'lesson-1-1')+'/#start')},true);
+if(!cover())return;var b=e.target.closest&&e.target.closest('button');if(!b||b.getAttribute('aria-label')==='Back')return;if(!/^(Continue|ادامه|Continuar|Продолжить|आगे|متابعة)/.test(b.textContent.trim()))return;var dir=null;try{dir=DR(sel||getC())}catch(e){}e.preventDefault();e.stopPropagation();go=true;openLesson('/'+(dir||'lesson-a1-a1-01')+'/#start')},true);
 function chk(){if(go||!leaving)return;var im=cover();var yes=[].filter.call(document.querySelectorAll('button'),function(b){return /^(Yes|\u0628\u0644\u0647|Oui|S\u00ed|\u0414\u0430|\u0939\u093e\u0901|\u0646\u0639\u0645)$/.test(b.textContent.trim())})[0];
  if(yes){go=true;leaving=false;try{sessionStorage.removeItem('cam_exit')}catch(e){}yes.click();setTimeout(function(){go=false},1200);return}
  var bk=document.querySelector('button[aria-label="Back"]');if(im&&bk&&!bk._c){bk._c=1;bk.click()}}
@@ -405,8 +405,8 @@ new MutationObserver(chk).observe(document.documentElement,{childList:true,subtr
 function done(){try{sessionStorage.removeItem('cam_next')}catch(e){}var x=document.getElementById('camnext');if(x)x.remove();mo.disconnect()}
 var c1=0,c2=0;var mo=new MutationObserver(function(){if(Date.now()-t0>9000){done();return}
  var w=document.querySelector('div.fixed .nx-wcard');
- if(w){var b=[].filter.call(w.querySelectorAll('button'),function(b){return /^Continue$/.test(b.textContent.trim())}).pop();if(b&&!c2){c2=1;setTimeout(function(){b.click();setTimeout(done,500)},250)}return}
- if(!c1){var h=[].filter.call(document.querySelectorAll('button'),function(b){return /^Continue/.test(b.textContent.trim())&&/Dossier/.test(b.textContent)})[0];if(h){c1=1;setTimeout(function(){h.click()},250)}}});
+ if(w){var b=[].filter.call(w.querySelectorAll('button'),function(b){return /^(Continue|ادامه|Continuar|Продолжить|आगे|متابعة)$/.test(b.textContent.trim())}).pop();if(b&&!c2){c2=1;setTimeout(function(){b.click();setTimeout(done,500)},250)}return}
+ if(!c1){var h=[].filter.call(document.querySelectorAll('button'),function(b){return /^(Continue|ادامه|Continuar|Продолжить|आगे|متابعة)/.test(b.textContent.trim())&&/Dossier/.test(b.textContent)})[0];if(h){c1=1;setTimeout(function(){h.click()},250)}}});
 mo.observe(document.documentElement,{childList:true,subtree:true});setTimeout(done,9500)})();</script><script>/* camelon-skip-language: start on "Where are you with French?"; English is the default, the flags on that page change it */
 (function(){var st=document.createElement('style');st.id='camskip';st.textContent='body{visibility:hidden}';document.head.appendChild(st);
 function show(){var s=document.getElementById('camskip');if(s)s.remove();mo.disconnect()}
@@ -429,10 +429,10 @@ new MutationObserver(hide).observe(document.documentElement,{childList:true,subt
 [data-elan="flow-cover"] img{border-radius:24px}
 button.cam-cont{background:linear-gradient(135deg,#3fb0c4,#4f7fe0)!important;box-shadow:0 10px 22px rgba(63,130,210,.38)!important;font-family:Fredoka,Nunito,sans-serif!important;font-weight:600!important}
 </style><script>/* camelon-cover-style: mark the Continue button of the lesson cover */
-(function(){function m(){if(!document.querySelector('[data-elan="flow-cover"]'))return;[].forEach.call(document.querySelectorAll('button'),function(b){if(/^Continue/.test(b.textContent.trim()))b.classList.add('cam-cont')})}
+(function(){function m(){if(!document.querySelector('[data-elan="flow-cover"]'))return;[].forEach.call(document.querySelectorAll('button'),function(b){if(/^(Continue|ادامه|Continuar|Продолжить|आगे|متابعة)/.test(b.textContent.trim()))b.classList.add('cam-cont')})}
 new MutationObserver(m).observe(document.documentElement,{childList:true,subtree:true});m()})();</script><script>/* Camelon: old lesson pages -> new flow */
-(function(){var MX={A1:8,A2:8,B1:9,B2:8,'C1/C2':11},P={A2:'a2-',B1:'b1-',B2:'b2-','C1/C2':'c12-'},RX=/Camelon\s*\u2022\s*(A1|A2|B1|B2|C1\/C2)\s*\u2022\s*[^\d\u2022]*?(\d+)\s*\u2022\s*[^\d\u2022]*?(\d+)/;var armed=true,seen=false,exiting=false,tq=0;try{if(sessionStorage.getItem('cam_exit')==='1'){armed=false;exiting=true}}catch(e){}
-if(exiting){var cs=document.createElement('style');cs.id='camexitcov';cs.textContent='body{visibility:hidden!important}';document.head.appendChild(cs);var t0=Date.now();var rm=function(){var x=document.getElementById('camexitcov');if(x)x.remove();try{mo2.disconnect()}catch(e){}try{sessionStorage.removeItem('cam_exit')}catch(e){}exiting=false;armed=true};var bkc=0,yc=0;var mo2=new MutationObserver(function(){var yes=[].filter.call(document.querySelectorAll('button'),function(b){return /^(Yes|\u0628\u0644\u0647|Oui|S\u00ed|\u0414\u0430|\u0939\u093e\u0901|\u0646\u0639\u0645)$/.test(b.textContent.trim())})[0];if(yes&&!yc){yc=1;try{sessionStorage.removeItem('cam_exit')}catch(e){}yes.click();return}var bk=document.querySelector('button[aria-label="Back"]');if(bk&&!bkc&&/Camelon\s*\u2022/.test(document.body.textContent)){bkc=1;bk.click()}var hb=[].filter.call(document.querySelectorAll('button'),function(b){var t=b.textContent.trim();return /^Continue/.test(t)&&/Dossier/.test(t)})[0];if(hb&&!document.querySelector('[data-elan="flow-cover"]')&&!document.querySelector('.nx-wcard'))rm()});mo2.observe(document.documentElement,{childList:true,subtree:true});setTimeout(rm,3500)}
+(function(){var MX={A1:8,A2:8,B1:9,B2:8,'C1/C2':11},P={A2:'a2-',B1:'b1-',B2:'b2-','C1/C2':'c12-'},RX=/Camelon\s*\u2022\s*(A1|A2|B1|B2|C1\/C2)\s*\u2022\s*[^\d\u2022]*?(\d+)\s*\u2022\s*[^\d\u2022]*?(\d+)/;function RXE(s){return RX.exec(s.replace(/[۰-۹]/g,function(c){return'۰۱۲۳۴۵۶۷۸۹'.indexOf(c)}).replace(/[٠-٩]/g,function(c){return'٠١٢٣٤٥٦٧٨٩'.indexOf(c)}))}var armed=true,seen=false,exiting=false,tq=0;try{if(sessionStorage.getItem('cam_exit')==='1'){armed=false;exiting=true}}catch(e){}
+if(exiting){var cs=document.createElement('style');cs.id='camexitcov';cs.textContent='body{visibility:hidden!important}';document.head.appendChild(cs);var t0=Date.now();var rm=function(){var x=document.getElementById('camexitcov');if(x)x.remove();try{mo2.disconnect()}catch(e){}try{sessionStorage.removeItem('cam_exit')}catch(e){}exiting=false;armed=true};var bkc=0,yc=0;var mo2=new MutationObserver(function(){var yes=[].filter.call(document.querySelectorAll('button'),function(b){return /^(Yes|\u0628\u0644\u0647|Oui|S\u00ed|\u0414\u0430|\u0939\u093e\u0901|\u0646\u0639\u0645)$/.test(b.textContent.trim())})[0];if(yes&&!yc){yc=1;try{sessionStorage.removeItem('cam_exit')}catch(e){}yes.click();return}var bk=document.querySelector('button[aria-label="Back"]');if(bk&&!bkc&&/Camelon\s*\u2022/.test(document.body.textContent)){bkc=1;bk.click()}var hb=[].filter.call(document.querySelectorAll('button'),function(b){var t=b.textContent.trim();return /^(Continue|ادامه|Continuar|Продолжить|आगे|متابعة)/.test(t)&&/Dossier/.test(t)})[0];if(hb&&!document.querySelector('[data-elan="flow-cover"]')&&!document.querySelector('.nx-wcard'))rm()});mo2.observe(document.documentElement,{childList:true,subtree:true});setTimeout(rm,3500)}
 window.openLesson=function openLesson(u){/* camelon-fullscreen: lessons always open full-page, like on the phone (Asra's choice, Nov 22) */location.assign(innerWidth>=900?u.replace('/#','/?solo=1#'):u);return;var side=null,best=1e9;try{var els=document.querySelectorAll('nav,aside,div');for(var k=0;k<els.length;k++){var e=els[k],t=e.textContent;if(t.length<500&&t.length<best&&t.indexOf('My lessons')>-1&&t.indexOf('Roadmap')>-1&&t.indexOf('Settings')>-1){var r=e.getBoundingClientRect();if(r.width>80&&r.height>80){side=r;best=t.length}}}}catch(x){}
 if(!side&&innerWidth>=900&&!window.__autoopen){var as=document.querySelector('aside');var ar=as?as.getBoundingClientRect():null;side={right:ar&&ar.width>80?ar.right:240}}
 if(!side||innerWidth<900){if(window.__autoopen&&innerWidth>=900)return false;location.assign(innerWidth>=900?u.replace('/#','/?solo=1#'):u);return}
@@ -442,10 +442,10 @@ document.addEventListener('click',function(e){if(innerWidth<900)return;var b=e.t
 (function(){var m=location.search.match(/[?&]open=([^&]+)/);if(!m)return;var t=0,iv=setInterval(function(){t++;var x=document.body?document.body.textContent:'';if(x.indexOf('My lessons')>-1&&x.indexOf('Roadmap')>-1){window.__autoopen=1;if(openLesson('/'+m[1]+'/#start')!==false){clearInterval(iv);try{history.replaceState(null,'','/')}catch(e){}}}if(t>80){clearInterval(iv);window.__autoopen=0}},250)})();
 function go(m){var lv=m[1],d=+m[2],l=+m[3];if(d>MX[lv])return;var kk={A1:'a1',A2:'a2',B1:'b1',B2:'b2','C1/C2':'c12'}[lv];var a=window.__T&&window.__T[kk];a=a&&a[d-1];if(!a)return;var f=null;try{var pg=JSON.parse(localStorage.getItem('cam_prog')||'{}');for(var q=0;q<a.length;q++){var r=pg[a[q].key];if(!r||!r.done){f=a[q];break}}var pk=JSON.parse(localStorage.getItem('cam_pick')||'null');if(pk&&pk.d===d&&Date.now()-pk.t<120000&&a[pk.l-1])f=a[pk.l-1]}catch(e){}if(!f)f=a[Math.min(l,a.length)-1]||a[0];var u='/'+f.dir+'/#start';if(innerWidth>=900){openLesson(u);return}var o=document.createElement('div');o.style.cssText='position:fixed;left:0;top:0;right:0;bottom:0;z-index:2147483647;background:#f5f3ff';document.body.appendChild(o);if(innerWidth>=900){openLesson(u);return}location.replace(u)}
 window.__go=go;
-document.addEventListener('click',function(e){var b=e.target,t='';for(var h=0;h<6&&b&&b.nodeType===1;h++,b=b.parentElement){t=b.textContent.replace(/\s+/g,' ').trim();if(/^Continue/.test(t)&&t.length<60)break;t=''}if(!t)return;if(!/^Continue/.test(t))return;var m=/(A1|A2|B1|B2|C1|C2)\s*·\s*Dossier\s*(\d+)/.exec(t);if(!m)return;var lv=m[1].charAt(0)==='C'?'C1/C2':m[1];e.preventDefault();e.stopPropagation();window.__go([0,lv,+m[2],1])},true);
+document.addEventListener('click',function(e){var b=e.target,t='';for(var h=0;h<6&&b&&b.nodeType===1;h++,b=b.parentElement){t=b.textContent.replace(/\s+/g,' ').trim();if(/^(Continue|ادامه|Continuar|Продолжить|आगे|متابعة)/.test(t)&&t.length<60)break;t=''}if(!t)return;if(!/^(Continue|ادامه|Continuar|Продолжить|आगे|متابعة)/.test(t))return;var m=/(A1|A2|B1|B2|C1|C2)\s*·\s*Dossier\s*(\d+)/.exec(t);if(!m)return;var lv=m[1].charAt(0)==='C'?'C1/C2':m[1];e.preventDefault();e.stopPropagation();window.__go([0,lv,+m[2],1])},true);
 document.addEventListener('click',function(e){var f=document.getElementById('v3lesson');if(f&&Date.now()-(window.__v3t||0)>600&&!f.contains(e.target)&&e.target!==f){f.remove();try{window.dispatchEvent(new Event('focus'))}catch(x){}}},true);
-function look(n){if(!n||n.nodeType!==1)return null;var s=n.textContent;if(!s||s.length>400||s.indexOf('Camelon')<0)return null;return RX.exec(s)}
-function full(){var e=document.querySelectorAll('header span,header div,span,p');for(var k=0;k<e.length&&k<400;k++){var s=e[k].textContent;if(s&&s.length<80&&s.indexOf('Camelon')===0){var m=RX.exec(s);if(m)return m}}return null}
+function look(n){if(!n||n.nodeType!==1)return null;if(n.closest&&n.closest('[data-elan="flow-cover"],.nx-wcard'))return null;var s=n.textContent;if(!s||s.length>400||s.indexOf('Camelon')<0)return null;return RXE(s)}
+function full(){var e=document.querySelectorAll('span,p,div');for(var k=0;k<e.length&&k<600;k++){var el=e[k];if(el.closest&&el.closest('[data-elan="flow-cover"],.nx-wcard'))continue;var s=el.textContent;if(s&&s.length<=120&&s.indexOf('Camelon')>-1){var m=RXE(s);if(m)return m}}return null}
 new MutationObserver(function(ms){var f=null;for(var a=0;a<ms.length&&!f;a++){var ad=ms[a].addedNodes;for(var b=0;b<ad.length&&!f;b++)f=look(ad[b])}
 if(f){seen=true;if(armed)go(f);return}if(!tq){tq=setTimeout(function(){tq=0;if(!armed)return;var m=full();if(m){seen=true;go(m)}},200)}}).observe(document.documentElement,{childList:true,subtree:true});
 function once(){if(exiting)return;var m=full();if(m){seen=true;if(armed)go(m)}else armed=true}
@@ -479,27 +479,37 @@ new MutationObserver(apply).observe(document.documentElement,{childList:true,sub
       data-generated-space-slug="french-original-b1-sample"
     ></div>
   
-<script>
-/* camelon-player-net: if the app's own built-in player (Activity n / N) ever opens inside the shell,
-   send the learner to the matching v5 lesson instead. Catches first/cold entries the cover guard misses. */
+<script>/* camelon-player-net: if the app's own built-in player ever opens inside the shell,
+   send the learner to the matching real lesson page instead. LANGUAGE-INDEPENDENT (Nov 22 fix):
+   the bundle localizes its UI (fa: continueWord "ادامه", lessonWord "درس", activity counter
+   "فعالیت ۳ از ۵" with Persian digits), so the previous net — which pattern-matched the English
+   words "Activity n / N" and "Lesson N" — could never fire in a non-English UI and the old
+   player stayed on screen. Detection now keys on the player's lesson pill
+   ("Camelon \u2022 A1 \u2022 Dossier 1 \u2022 <localized lesson word> 1"), whose level / dossier /
+   lesson numbers are structural; fa/ar digits are normalized before matching. The shell-managed
+   cover pop-ups ([data-elan="flow-cover"], .nx-wcard) are excluded: their Continue is handled
+   by the cover guard, and if a tap still leaks through to the player, this net catches the
+   player's own screens within ~1s. */
 (function(){var fired='';
 function lvKey(x){return {'A1':'a1','A2':'a2','B1':'b1','B2':'b2','C1/C2':'c12'}[x]}
+function ND(s){return s.replace(/[۰-۹]/g,function(c){return'۰۱۲۳۴۵۶۷۸۹'.indexOf(c)}).replace(/[٠-٩]/g,function(c){return'٠١٢٣٤٥٦٧٨٩'.indexOf(c)})}
+var PILL=/Camelon\s*\u2022\s*(A1|A2|B1|B2|C1\/C2)\s*\u2022\s*Dossier\s*(\d{1,2})\s*\u2022\s*[^\u2022]*?(\d{1,2})/;
+function excluded(el){return !!(el.closest&&el.closest('[data-elan="flow-cover"],.nx-wcard'))}
 function check(){try{
- if(document.getElementById('v3lesson'))return;
- var t=document.body?document.body.textContent:'';
- if(!/Activity\s+\d+\s*\/\s*\d+/.test(t))return;
- var m=/\u2022\s*(A1|A2|B1|B2|C1\/C2)\s*\u2022\s*Dossier\s*(\d+)\s*\u2022\s*Lesson\s*(\d+)/.exec(t);
- if(!m)return;
+ if(document.getElementById('v3lesson')){fired='';return}
  var T=window.__T;if(!T)return;
+ var els=document.querySelectorAll('div,span,p');
+ var m=null;
+ for(var k=0;k<els.length&&k<900;k++){var el=els[k];var s=el.textContent;if(!s||s.length>160||s.indexOf('Camelon')<0)continue;if(excluded(el))continue;var mm=PILL.exec(ND(s));if(mm){m=mm;break}}
+ if(!m){fired='';return}
  var a=(T[lvKey(m[1])]||[])[+m[2]-1]||[];
- var L=a[+m[3]-1];if(!L||!L.dir)return;
+ var L=a[+m[3]-1];if(!L||!L.dir){fired='';return}
  var sig=L.dir;if(fired===sig)return;fired=sig;
  if(typeof openLesson==='function')openLesson('/'+L.dir+'/#start');
 }catch(e){}}
 new MutationObserver(function(){setTimeout(check,60)}).observe(document.documentElement,{childList:true,subtree:true});
-setInterval(check,900);
-})();
-</script>
+setInterval(check,700);
+})();</script>
 <style id="camelon-shell-fixes">
 /* Dark Home: the Eiffel backdrop illustration is a light pastel image; dim it in dark mode so Home reads as a real dark theme */
 html[data-theme="dark"] img.nx-homebg{filter:brightness(.48) saturate(.85)}
