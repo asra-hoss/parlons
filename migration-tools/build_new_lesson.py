@@ -268,7 +268,9 @@ show(pres().step||0);
     for v in vocab1 + vocab2:
         term = v["term"]
         slug = v["slug"]
-        pron[term] = f"{audio_base}/words/{slug}.mp3"
+        word_path = cfg["media_src"] / "words" / f"{slug}.mp3"
+        if word_path.exists():
+            pron[term] = f"{audio_base}/words/{slug}.mp3"
         dobj[term] = {
             "display": term,
             "en": v["en"],
@@ -319,11 +321,16 @@ show(pres().step||0);
     words_dst.mkdir(parents=True, exist_ok=True)
     shutil.copy2(media_src / "listening1.mp3", audio_dst / "listening1.mp3")
     shutil.copy2(media_src / "listening2.mp3", audio_dst / "listening2.mp3")
+    missing_audio = []
     for v in vocab1 + vocab2:
         src = media_src / "words" / f"{v['slug']}.mp3"
         if not src.exists():
-            raise SystemExit(f"missing word audio: {src}")
+            missing_audio.append(v["slug"])
+            # Leave unwired per flashcard spec — do not invent TTS.
+            continue
         shutil.copy2(src, words_dst / f"{v['slug']}.mp3")
+    if missing_audio:
+        print("WARNING: missing word audio (left unwired):", ", ".join(missing_audio))
     cover_dst = ROOT / "assets" / Path(cfg["cover_web"]).name
     shutil.copy2(media_src / "cover.jpg", cover_dst)
 
