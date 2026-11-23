@@ -1,0 +1,8 @@
+LA JOURNALISTE: Docteure Benali, vous travaillez sur les organoïdes cérébraux. Pour nos auditeurs, rappelez-nous d'abord ce que c'est.
+DR BENALI: Ce sont des structures miniatures, cultivées en laboratoire à partir de cellules souches, qui reproduisent certaines caractéristiques du cerveau humain. Elles nous permettent d'étudier des maladies comme le glioblastome sans recourir d'emblée à l'expérimentation animale.
+LA JOURNALISTE: Et c'est là que la bioéthique entre en scène : jusqu'où peut-on pousser la complexité de ces modèles ?
+DR BENALI: C'est la question centrale. À mesure que ces organoïdes gagnent en complexité, ils pourraient, à terme, développer une forme d'activité organisée. Le comité d'éthique demande donc un consentement libre et éclairé des donneurs de cellules, et des limites claires, révisées régulièrement.
+LA JOURNALISTE: Certains craignent que la recherche n'avance plus vite que le débat public.
+DR BENALI: Ce risque existe. C'est pourquoi nous publions nos protocoles et nous acceptons le débat. La science ne doit pas décider seule de ce qu'elle a le droit de faire : elle propose, la société dispose.
+LA JOURNALISTE: Un dernier mot : ces modèles remplaceront-ils un jour complètement l'expérimentation animale ?
+DR BENALI: Ils ouvrent la voie à une recherche plus proche de la physiologie humaine. Les remplacer totalement, non ; mais réduire le nombre d'animaux tout en améliorant la fiabilité de nos résultats, c'est, en définitive, déjà une avancée considérable.

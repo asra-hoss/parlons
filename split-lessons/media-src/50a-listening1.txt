@@ -1,0 +1,10 @@
+MAXIME: Alors Théo, ton examen final, c'est pour bientôt ?
+THÉO: Oui, dans trois semaines. Je suis un peu stressé, mais mes professeurs disent que je suis prêt.
+MAXIME: Tu as fait un long chemin : le lycée, l'université, et puis cette formation à Grenoble.
+THÉO: L'université, ce n'était pas pour moi. Les cours d'informatique étaient trop difficiles. La formation pratique, c'est différent : on répare, on crée, on apprend avec les mains.
+MAXIME: Et ton stage dans l'entreprise, ça s'est bien passé ?
+THÉO: Très bien ! Ils m'ont proposé de rester après le stage. Mais moi, je veux d'abord mon diplôme.
+MAXIME: Tu continues aussi les cours du soir, non ?
+THÉO: Oui, deux fois par semaine. C'est fatigant, mais je veux un diplôme supérieur.
+MAXIME: Tu as raison. Après le diplôme, tu auras le choix.
+THÉO: C'est ce que je me dis. Étudier, c'est long, mais ça change une vie.
