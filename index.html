@@ -474,6 +474,7 @@ document.addEventListener('click',function(e){if(!e.isTrusted)return;var el=find
 (function(){function apply(){var el=document.querySelector('[data-plan-setup]');if(el&&!el.classList.contains('cam-plan-skin'))el.classList.add('cam-plan-skin')}
 new MutationObserver(apply).observe(document.documentElement,{childList:true,subtree:true});apply()})();</script><style id="camelon-logo-skin">
 img.w-52[src*="camelon-mark-p469sj83"]{display:none!important}
+button:has(img[src*="camelon-mark-p469sj83"]){transform:scale(1.22)!important}
 </style>
 </head>
   <body>
