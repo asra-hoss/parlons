@@ -106,8 +106,13 @@
     from{ box-shadow:0 0 10px 3px rgba(255,255,255,.5), 0 0 22px 7px rgba(170,150,255,.55);}
     to{   box-shadow:0 0 16px 6px rgba(255,255,255,.75), 0 0 36px 13px rgba(255,210,250,.8);}
   }
-  .bubble.popping{ opacity:0; transform:scale(1.5); filter:brightness(2) saturate(0); }
-  .bubble.gone{ opacity:0; pointer-events:none; }
+  .bubble.popping{ opacity:.9; transform:scale(1.4); filter:brightness(2.2) saturate(0); }
+  .bubble.spent{ /* the wish is granted: a quiet, fully opaque husk -- never see-through,
+                    so the artwork's own baked (permanently lit) bubble can't show back through */
+    opacity:1; pointer-events:none; transform:scale(.74);
+    background:radial-gradient(circle at 34% 30%, rgba(255,250,235,.9), rgba(214,196,160,.75) 60%, rgba(190,170,140,.65) 100%);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.3), 0 0 10px 2px rgba(255,225,160,.25);
+  }
 
   .star-left{
     position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
@@ -371,7 +376,8 @@
       bubble._starL.classList.add('show');
 
       setTimeout(function(){
-        bubble.classList.add('gone');
+        bubble.classList.remove('popping');
+        bubble.classList.add('spent');
         stone.classList.remove('current');
         stone.classList.add('done');
         stone.textContent = '✓';
