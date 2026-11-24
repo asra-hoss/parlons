@@ -73,7 +73,7 @@
     var W = frame.clientWidth, H = frame.clientHeight;
     var s = 1 + step * 0.20;
     var fx = STOPS[step][0] / 100, fy = STOPS[step][1] / 100;
-    var tx = 0.50 * W - fx * W * s, ty = 0.64 * H - fy * H * s;
+    var tx = 0.50 * W - fx * W * s, ty = 0.86 * H - fy * H * s;
     tx = Math.min(0, Math.max(W - W * s, tx));
     ty = Math.min(0, Math.max(H - H * s, ty));
     world.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + s + ')';
