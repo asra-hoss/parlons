@@ -42,8 +42,15 @@
   #chests { position:absolute; inset:0; z-index:8; display:none; }
   #chests.show { display:block; }
   .chest { position:absolute; width:20%; aspect-ratio:1; transform:translate(-50%,-50%); background:none; border:none; cursor:pointer; }
-  .chest .cring { position:absolute; inset:8%; border-radius:50%; border:2px solid rgba(255,217,77,.85); animation:chestpulse 2.1s ease-out infinite; pointer-events:none; }
-  @keyframes chestpulse { 0% { box-shadow:0 0 0 0 rgba(255,210,80,.45); opacity:1; } 100% { box-shadow:0 0 0 18px rgba(255,210,80,0); opacity:.25; } }
+  .reward { position:relative; margin-top:44px; }
+  .rbubbles { position:absolute; top:-52px; left:0; right:0; display:flex; justify-content:center; align-items:flex-end; gap:4px; z-index:2; pointer-events:none; }
+  .rbub { position:relative; display:block; animation:rbob 2.8s ease-in-out infinite alternate; }
+  .rbub img { width:100%; height:100%; display:block; }
+  .rbub.small { width:44px; height:44px; opacity:.9; }
+  .rbub.main { width:74px; height:74px; animation-delay:.35s; }
+  .rbub .pz { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); font-size:34px; }
+  @keyframes rbob { from { transform:translateY(3px); } to { transform:translateY(-6px); } }
+  .chestimg { width:58%; display:block; margin:0 auto; filter:drop-shadow(0 10px 22px rgba(0,0,0,.45)); }
   .spark-p { position:absolute; z-index:9; pointer-events:none; border-radius:50%; }
   #doorlight.go { animation:doorbloom 2.2s ease forwards; }
   @keyframes doorbloom { 0% { opacity:0; transform:translate(-50%,-50%) scale(.35); } 35% { opacity:1; transform:translate(-50%,-50%) scale(1); } 100% { opacity:0; transform:translate(-50%,-50%) scale(1.3); } }
@@ -90,15 +97,15 @@
   <div id="interior"><img src="interior.jpg" alt=""></div>
   <div id="doorlight"></div>
   <div id="chests">
-    <button class="chest" data-prize="0" style="left:10%; top:59%;" aria-label="Open the chest"><span class="cring"></span></button>
-    <button class="chest" data-prize="1" style="left:50%; top:52%;" aria-label="Open the crown chest"><span class="cring"></span></button>
-    <button class="chest" data-prize="2" style="left:90%; top:56%;" aria-label="Open the chest"><span class="cring"></span></button>
+    <button class="chest" data-prize="0" style="left:10%; top:59%;" aria-label="Open the chest"></button>
+    <button class="chest" data-prize="1" style="left:50%; top:52%;" aria-label="Open the crown chest"></button>
+    <button class="chest" data-prize="2" style="left:90%; top:56%;" aria-label="Open the chest"></button>
   </div>
   <div class="topbar"><div class="title">Castle Journey</div><div class="pill">&#11088; <span id="stars">0</span></div></div>
   <div id="tag">Dossier 1</div>
   <div id="hint">Tap the bubble to pop it</div>
   <div class="botbar"><div class="dots" id="dots"></div><button id="restart">Restart</button></div>
-  <div id="end"><div class="card"><h2>You reached the castle!</h2><div id="prizeLine"><span class="pz" id="prizeIcon">👑</span><span id="prizeName">The Crown of the Castle</span></div><p>&#11088; <span id="endstars">0</span> stars</p><div class="btnrow"><button class="ghost" id="keeplooking">Keep looking</button><button id="again">Walk it again</button></div></div></div>
+  <div id="end"><div class="card"><div class="reward"><div class="rbubbles"><span class="rbub small"><img src="bubble2.png" alt=""></span><span class="rbub main"><img src="bubble2.png" alt=""><span class="pz" id="prizeIcon">👑</span></span><span class="rbub small"><img src="bubble2.png" alt=""></span></div><img class="chestimg" src="chest.png" alt=""></div><h2>Your prize</h2><div id="prizeLine"><span id="prizeName">The Crown of the Castle</span></div><p>&#11088; <span id="endstars">0</span> stars</p><div class="btnrow"><button class="ghost" id="keeplooking">Keep looking</button><button id="again">Walk it again</button></div></div></div>
 </div>
 <script>
 (function () {
