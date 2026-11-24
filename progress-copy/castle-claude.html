@@ -38,7 +38,6 @@
     content:'';position:absolute;inset:0;pointer-events:none;z-index:50;
     box-shadow: inset 0 40px 60px -30px rgba(10,8,30,.55), inset 0 -50px 70px -30px rgba(10,8,30,.65);
   }
-  .notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:84px;height:16px;border-radius:10px;background:#1a1530;z-index:60;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
 
   .scene{
     position:absolute;
@@ -80,20 +79,21 @@
 
   /* wish bubble */
   .bubble-wrap{ position:absolute; width:11%; aspect-ratio:1/1; margin-left:-5.5%; z-index:17; }
-  .patch{ /* permanently masks the baked-in art bubble once popped */
-    position:absolute; inset:-18%; border-radius:50%; opacity:0;
-    transition: opacity .5s ease .35s;
+  .patch{ /* neutralises the artwork's own baked-in (always-lit) bubble so our
+             own grey/ready/popped states are the only thing the player sees */
+    position:absolute; inset:-22%; border-radius:50%; opacity:0;
+    transition: opacity .6s ease;
   }
+  .patch.shown{ opacity:1; }
   .bubble{
     position:absolute; inset:0; border-radius:50%;
     display:flex; align-items:center; justify-content:center;
     transition: opacity .55s ease, transform .55s ease, filter .6s ease, box-shadow .6s ease;
   }
   .bubble.grey{
-    background:radial-gradient(circle at 34% 30%, rgba(235,235,245,.55), rgba(150,150,170,.38) 55%, rgba(110,110,130,.3) 100%);
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.25), 0 2px 6px rgba(0,0,0,.25);
-    filter:saturate(.15) brightness(.85);
-    opacity:.85;
+    background:radial-gradient(circle at 34% 30%, rgba(232,232,238,.95), rgba(160,160,176,.95) 55%, rgba(120,120,136,.95) 100%);
+    box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.4), inset 0 -4px 7px rgba(0,0,0,.18), 0 2px 7px rgba(0,0,0,.35);
+    opacity:1;
   }
   .bubble.ready{
     background:radial-gradient(circle at 32% 28%, #fff, #bfe3ff 30%, #c9b6ff 55%, #ffd1ea 80%);
@@ -184,7 +184,6 @@
 
   <div class="frame-wrap">
     <div class="frame" id="frame">
-      <div class="notch"></div>
       <div class="hud">
         <div class="count" id="hudCount">Lesson 0 of 11</div>
         <div class="mini-stars" id="hudStars">★ 0</div>
@@ -310,6 +309,7 @@
 
       sampleColorAt(p.x + 7.5, p.y - 4, function(col){
         patch.style.background = 'radial-gradient(circle, '+col+' 55%, '+col+'00 78%)';
+        patch.classList.add('shown');
       });
     });
     placeTraveller();
@@ -387,8 +387,6 @@
 
       setTimeout(function(){
         bubble.classList.add('gone');
-        bubble.parentElement.querySelector('.patch').classList.add('fade-on'); // no-op hook, kept for clarity
-        bubble.parentElement.querySelector('.patch').style.opacity = '1';
         stone.classList.remove('current');
         stone.classList.add('done');
         stone.textContent = '✓';
@@ -422,7 +420,8 @@
       b._starL.classList.remove('show');
     });
     stones.forEach(function(s,i){ s.className='stone'; s.textContent = (i+1); });
-    patches.forEach(function(p){ p.style.opacity = '0'; });
+    // patches stay shown permanently -- they neutralise the artwork's own
+    // always-lit bubble so our grey/ready/popped states are what's visible
     placeTraveller();
     render();
   }
