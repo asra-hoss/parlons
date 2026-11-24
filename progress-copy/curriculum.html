@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chichilang — Curriculum</title>
+<style>
+  * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  body { margin:0; font-family:system-ui,-apple-system,"Segoe UI",sans-serif; background:#f6efe0; color:#2b2440; }
+  header { position:relative; }
+  header img { width:100%; height:190px; object-fit:cover; object-position:50% 20%; display:block; }
+  header .t { position:absolute; left:0; right:0; bottom:12px; text-align:center; color:#fff; text-shadow:0 2px 12px rgba(0,0,0,.55); }
+  header h1 { margin:0; font-family:Georgia,serif; font-size:32px; }
+  header p { margin:2px 0 0; font-size:14.5px; }
+  .totals { text-align:center; padding:12px 10px 2px; font-weight:700; color:#5a4a22; font-size:15px; }
+  main { padding:10px 12px 30px; max-width:760px; margin:0 auto; }
+  .lvl { border-radius:16px; margin:10px 0; overflow:hidden; box-shadow:0 3px 10px rgba(60,45,10,.14); background:#fffdf7; }
+  .lvlhead { display:flex; align-items:center; gap:12px; padding:15px 16px; color:#fff; cursor:pointer; user-select:none; }
+  .lvlhead .code { font-family:Georgia,serif; font-size:27px; font-weight:700; }
+  .lvlhead .nm { font-size:16.5px; font-weight:700; }
+  .lvlhead .ct { margin-left:auto; font-size:13px; background:rgba(255,255,255,.25); padding:5px 11px; border-radius:999px; font-weight:700; white-space:nowrap; }
+  .lvlhead .chev { font-size:15px; transition:transform .25s; }
+  .lvl.open .lvlhead .chev { transform:rotate(180deg); }
+  .lvlbody { display:none; padding:8px 10px 12px; }
+  .lvl.open .lvlbody { display:block; }
+  .dos { border:1.5px solid #eadfc6; border-radius:12px; margin:8px 0; overflow:hidden; }
+  .doshead { display:flex; align-items:center; gap:9px; padding:11px 12px; cursor:pointer; user-select:none; background:#fffdf7; }
+  .doshead .dn { color:#fff; border-radius:7px; font-size:12.5px; font-weight:800; padding:2.5px 8px; white-space:nowrap; }
+  .doshead .dt { font-size:15.5px; font-weight:700; color:#43355e; }
+  .doshead .dc { margin-left:auto; font-size:12.5px; color:#8a7c55; font-weight:700; white-space:nowrap; }
+  .doshead .chev { font-size:12px; color:#a08c4f; transition:transform .25s; }
+  .dos.open .doshead .chev { transform:rotate(180deg); }
+  .dosbody { display:none; padding:2px 12px 10px; }
+  .dos.open .dosbody { display:block; }
+  .dosbody li { list-style:none; display:flex; gap:9px; align-items:baseline; padding:4.5px 0; font-size:14.5px; color:#37304d; }
+  .dosbody ul { margin:0; padding:0; }
+  .dosbody .n { flex:none; min-width:30px; height:21px; border-radius:999px; background:#f0e7d3; color:#7a6428; font-size:12.5px; font-weight:800; text-align:center; line-height:21px; padding:0 6px; }
+  footer { text-align:center; padding:6px 0 26px; color:#6b5a2a; font-family:Georgia,serif; font-size:16px; }
+</style></head><body>
+<header><img src="scene2.jpg" alt=""><div class="t"><h1>Chichilang</h1><p>Tap a level to open it — tap a dossier to see its lessons</p></div></header>
+<div class="totals">6 Levels · 75 Dossiers · 131 Lessons — all live</div>
+<main id="main"></main>
+<footer>👑 C2 — the top of the castle 👑</footer>
+<script>
+var DATA = {"A1": {"Se présenter": [[1, "Bonjour !"], [2, "Je suis Asra"], [3, "Ça s'écrit comment ?"], [4, "J'ai vingt ans"], [5, "Je viens de Toronto"], [6, "Je suis étudiante"], [7, "Je remplis un formulaire"], [8, "Pourquoi j'apprends le français"]], "Les gens autour de moi": [[9, "Tu es d'où ?"], [10, "Voici mon ami"], [11, "Ma famille"], [12, "Il est comment ?"], [13, "On fait connaissance"]], "Ma journée": [[14, "Quelle heure est-il ?"], [15, "Ma journée"], [16, "Je sais, je dis, je vois"], [17, "J'ai mal"], [18, "Mes goûts et mes loisirs"], [19, "On sort ?"], [126, "Félicitations !"]], "Ma maison": [[20, "Ma maison"]], "Ma ville": [[21, "Ma ville"], [22, "Où est la poste ?"]], "Manger": [[23, "Au café"]], "Acheter": [[24, "Je fais les courses"]], "Vêtements": [[25, "J'achète un pull"]], "Voyages": [[26, "Je prends le train"], [27, "Je réserve un hôtel"]], "Météo": [[28, "Quel temps fait-il ?"]], "Raconter": [[29, "Hier, j'ai…"], [30, "Je suis allée à Paris"], [31, "Avant et maintenant"], [32, "Demain, je vais…"]], "Avis et bilan": [[33, "Un conseil, un avis"], [34, "Un film que j'aime"], [35, "Bilan A1"]]}, "A2": {"Moi et mon passé": [[36, "Ma personnalité, mes sentiments"], [37, "Quand j'étais petit"], [38, "Je raconte ma vie"]], "Démarches et vie pratique": [[39, "Les démarches"], [40, "La vie pratique"], [41, "J'écris un message"]], "Mon quartier": [[42, "Mon logement, mon quartier"], [127, "En haut, en bas, là-bas"]], "La nature": [[43, "La nature et les animaux"]], "Voyage": [[44, "Je prépare un voyage"]], "Sorties": [[45, "Culture et sorties"]], "Cuisine": [[46, "À la cuisine"]], "Achats": [[47, "Je consomme"], [128, "En bois, en verre, à café"]], "Santé": [[48, "Chez le médecin"]], "Sport": [[49, "Sport et sécurité"]], "Études": [[50, "Mes études"]], "Métiers": [[132, "Mon métier"]], "Technologie": [[51, "Les médias et la technologie"]], "Opinions et projets": [[52, "Mon opinion"], [53, "Mes projets"]]}, "B1": {"Projets": [[54, "Mes rêves et mes projets"]], "Études": [[55, "Étudier, se former"]], "Emploi": [[56, "Chercher un emploi"]], "Vivre à l'étranger": [[57, "Vivre à l'étranger"], [58, "L'administration"]], "Problèmes et urgences": [[59, "Les petits problèmes"], [60, "Les urgences et l'assurance"]], "Culture et sorties": [[61, "Cultures différentes"], [62, "On sort ensemble"], [63, "La culture"]], "Fêtes": [[64, "Fêtes et traditions"]], "Voisinage": [[65, "Habiter ensemble"]], "Consommer": [[66, "Consommer mieux"]], "Environnement": [[67, "Agir pour l'environnement"]], "La mode": [[129, "Tu portes quoi ?"]], "Médias": [[68, "Les médias"]], "Technologie": [[69, "Technologie et innovation"]], "Raconter et argumenter": [[70, "Je raconte une histoire"], [71, "Je donne mon avis"], [72, "Conseils et obligations"]], "Écrire, comprendre, bilan": [[73, "J'écris et je présente"], [74, "Je comprends le français réel"], [75, "Bilan B1"]]}, "B2": {"Argumenter et nuancer": [[76, "Argumenter"], [77, "Douter, souhaiter, regretter"], [78, "Cause et conséquence"], [79, "Rapporter des propos"]], "Société": [[80, "La société"]], "Climat": [[81, "Climat et environnement"]], "Politique": [[82, "La politique"]], "Histoire": [[83, "La langue et l'histoire"]], "Technologie": [[84, "Technologie et progrès"]], "Santé et sciences": [[85, "Santé et sciences"]], "Émotions": [[86, "Les relations et les émotions"]], "Expressions": [[87, "Expressions et registres"]], "Travail": [[88, "Au travail"]], "Écriture formelle": [[89, "Écrire de façon formelle"], [90, "Le style soutenu"]], "Tourisme": [[91, "Tourisme et voyage"]], "Arts": [[92, "Art et création"]], "Authentique et bilan": [[93, "Comprendre l'authentique"], [94, "Bilan B2"]], "La mode": [[95, "La mode"]], "L'éducation": [[96, "L'éducation"]], "Sport": [[97, "Le sport"]]}, "C1": {"La ville": [[98, "La ville"]], "L'alimentation": [[99, "L'alimentation"]], "Santé et éthique": [[100, "Santé, science et éthique"]], "Le corps et l'art": [[101, "Le corps et l'art"]], "Société": [[102, "Société, identité, générations"]], "Philosophie": [[103, "Philosophie et émotions"]], "Travail et économie": [[104, "Travail et économie"]], "Politique": [[105, "Politique et institutions"]], "Numérique": [[106, "L'ère numérique"]], "Écologie": [[107, "Écologie et énergie"]], "Histoire": [[108, "Histoire et mémoire"]], "Cultures": [[109, "L'interculturel"]], "Langue, discours, écriture": [[110, "Les registres de la langue"], [111, "Le discours structuré"], [112, "La grammaire avancée"], [113, "Écrire à un niveau avancé"], [130, "Les connecteurs formels"], [114, "Les négations"]]}, "C2": {"Résumer et nuancer": [[115, "Résumer et reformuler"], [116, "Les nuances"], [117, "Penser de façon critique"]], "Monde et textes": [[118, "Politique internationale"], [119, "Littérature et textes classiques"], [120, "Domaines spécialisés"]], "Style et oral": [[121, "Maîtriser le style"], [122, "Parler longuement"]], "Écrire, comprendre, bilan": [[123, "Écrire longuement"], [124, "Tout comprendre"], [125, "Bilan C2"]]}};
+var COLORS = {A1:'#3f9e63', A2:'#2f9e8f', B1:'#3f7fbf', B2:'#7a5ff0', C1:'#b04a8a', C2:'#d9930d'};
+var NAMES = {A1:'Beginner', A2:'Elementary', B1:'Intermediate', B2:'Upper Intermediate', C1:'Advanced', C2:'Mastery'};
+var main = document.getElementById('main');
+Object.keys(DATA).forEach(function(lv){
+  var doss = DATA[lv];
+  var total = 0; Object.keys(doss).forEach(function(d){ total += doss[d].length; });
+  var sec = document.createElement('div'); sec.className = 'lvl';
+  var head = document.createElement('div'); head.className = 'lvlhead'; head.style.background = COLORS[lv];
+  head.innerHTML = '<span class="code">' + lv + '</span><span class="nm">' + NAMES[lv] + '</span><span class="ct">' + Object.keys(doss).length + ' dossiers · ' + total + ' lessons</span><span class="chev">▼</span>';
+  var body = document.createElement('div'); body.className = 'lvlbody';
+  head.addEventListener('click', function(){
+    var was = sec.classList.contains('open');
+    document.querySelectorAll('.lvl.open').forEach(function(el){ el.classList.remove('open'); });
+    if (!was) sec.classList.add('open');
+  });
+  Object.keys(doss).forEach(function(dname, di){
+    var lessons = doss[dname];
+    var dos = document.createElement('div'); dos.className = 'dos';
+    var dh = document.createElement('div'); dh.className = 'doshead';
+    dh.innerHTML = '<span class="dn" style="background:' + COLORS[lv] + '">' + lv + '·' + (di+1) + '</span><span class="dt"></span><span class="dc">' + lessons.length + ' lessons</span><span class="chev">▼</span>';
+    dh.querySelector('.dt').textContent = dname;
+    var db = document.createElement('div'); db.className = 'dosbody';
+    var ul = document.createElement('ul');
+    lessons.forEach(function(L){
+      var li = document.createElement('li');
+      li.innerHTML = '<span class="n">' + L[0] + '</span><span></span>';
+      li.lastChild.textContent = L[1];
+      ul.appendChild(li);
+    });
+    db.appendChild(ul);
+    dh.addEventListener('click', function(){ dos.classList.toggle('open'); });
+    dos.appendChild(dh); dos.appendChild(db);
+    body.appendChild(dos);
+  });
+  sec.appendChild(head); sec.appendChild(body);
+  main.appendChild(sec);
+});
+window.__curr = { levels: document.querySelectorAll('.lvl').length };
+</script>
+</body></html>
