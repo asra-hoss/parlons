@@ -72,13 +72,13 @@
     font-weight:900; font-size:14px; color:#4b3a1a;
     background:radial-gradient(circle at 32% 28%, #fff7e4, #e9dcb8 60%, #c9b589 100%);
     box-shadow:0 2px 0 rgba(0,0,0,.18), 0 3px 8px rgba(0,0,0,.35), inset 0 0 0 2px rgba(255,255,255,.4);
-    z-index:15; transition: box-shadow .4s ease, transform .4s ease, filter .4s ease;
+    z-index:19; transition: box-shadow .4s ease, transform .4s ease, filter .4s ease;
   }
   .stone.done{ color:#fff; background:radial-gradient(circle at 32% 28%, #ffe9a8, #f3b23e 60%, #d6821a 100%); box-shadow:0 2px 0 rgba(0,0,0,.18), 0 0 0 3px rgba(255,210,100,.55), 0 0 16px 4px rgba(255,190,60,.55); }
   .stone.current{ transform:scale(1.14); filter:drop-shadow(0 0 7px rgba(255,255,255,.7)); }
 
   /* wish bubble */
-  .bubble-wrap{ position:absolute; width:11%; aspect-ratio:1/1; margin-left:-5.5%; z-index:17; }
+  .bubble-wrap{ position:absolute; width:25%; aspect-ratio:1/1; margin-left:-12.5%; z-index:17; }
   .patch{ /* smears the artwork's own baked-in (always-lit) bubble into a soft
              indistinct blob via backdrop blur, so our own grey/ready/popped
              circle drawn on top is the only crisp thing the player sees */
@@ -276,8 +276,8 @@
 
       var wrap = document.createElement('div');
       wrap.className = 'bubble-wrap';
-      wrap.style.left = (p.x + 7.5) + '%';
-      wrap.style.top  = (p.y - 4) + '%';
+      wrap.style.left = (p.x + 4) + '%';
+      wrap.style.top  = (p.y - 2.5) + '%';
 
       var patch = document.createElement('div');
       patch.className = 'patch';
