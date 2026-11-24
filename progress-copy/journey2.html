@@ -8,7 +8,8 @@
   * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
   html, body { height:100%; background:#10131c; }
   body { font-family:system-ui, -apple-system, sans-serif; display:flex; align-items:center; justify-content:center; overflow:hidden; }
-  #frame { position:relative; height:100%; aspect-ratio:2/3; max-width:100vw; overflow:hidden; background:#20304a; }
+  #frame { position:relative; height:100%; aspect-ratio:2/3; max-width:100vw; overflow:hidden; background:#20304a; perspective:1050px; }
+  #tilt { position:absolute; inset:0; transform:rotateX(7deg) scale(1.09); transform-origin:50% 100%; }
   #world { position:absolute; left:0; top:0; width:100%; height:100%; transform-origin:0 0; transition:transform 1.6s cubic-bezier(.45,.02,.25,1); will-change:transform; }
   #world img.scene { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
   #pop { position:absolute; transform:translate(-50%, -50%); background:none; border:none; cursor:pointer; z-index:6; opacity:0; transition:opacity .7s ease; pointer-events:none; }
@@ -45,9 +46,11 @@
 </head>
 <body>
 <div id="frame">
+  <div id="tilt">
   <div id="world">
-    <img class="scene" src="scene.jpg" alt="">
+    <img class="scene" src="scene2.jpg" alt="">
     <button id="pop" aria-label="Pop the bubble"><span class="ring"></span><img src="bubble.png" alt=""></button>
+  </div>
   </div>
   <div id="leaves"></div>
   <div class="topbar"><div class="title">Castle Journey</div><div class="pill">&#11088; <span id="stars">0</span></div></div>
@@ -69,11 +72,12 @@
   var endEl = document.getElementById('end');
   var step = 0, stars = 0, busy = false, finished = false;
   for (var i = 0; i < 8; i++) { var d = document.createElement('div'); d.className = 'dot'; dotsEl.appendChild(d); }
+  function S() { return 1.18 + step * 0.16; }
   function cam() {
     var W = frame.clientWidth, H = frame.clientHeight;
-    var s = 1 + step * 0.20;
+    var s = S();
     var fx = STOPS[step][0] / 100, fy = STOPS[step][1] / 100;
-    var tx = 0.50 * W - fx * W * s, ty = 0.86 * H - fy * H * s;
+    var tx = 0.50 * W - fx * W * s, ty = 0.80 * H - fy * H * s;
     tx = Math.min(0, Math.max(W - W * s, tx));
     ty = Math.min(0, Math.max(H - H * s, ty));
     world.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + s + ')';
@@ -81,7 +85,7 @@
   }
   function placeBubble() {
     if (step >= 8) { pop.classList.remove('show'); return; }
-    var s = 1 + step * 0.20;
+    var s = S();
     var nx = STOPS[step + 1][0], ny = STOPS[step + 1][1];
     var sizePct = 15.5 / s;
     pop.style.width = sizePct + '%'; pop.style.height = 'auto'; pop.style.aspectRatio = '1';
@@ -91,7 +95,7 @@
   }
   function burst() {
     var r = pop.getBoundingClientRect(), fr = frame.getBoundingClientRect(), wr = world.getBoundingClientRect();
-    var s = 1 + step * 0.20;
+    var s = S();
     var cx = (r.left + r.width / 2 - wr.left) / s, cy = (r.top + r.height / 2 - wr.top) / s;
     var star = '<svg viewBox="0 0 24 24" width="100%" height="100%" fill="#ffd94d"><path d="M12 1.8l3.1 6.9 7.5.7-5.6 5 1.6 7.4L12 18l-6.6 3.8L7 14.4 1.4 9.4l7.5-.7z"/></svg>';
     for (var i = 0; i < 16; i++) {
@@ -147,7 +151,7 @@
       o.style.animationDuration = (8 + Math.random() * 7) + 's';
       o.style.animationDelay = (-Math.random() * 14) + 's';
       var im = document.createElement('img'); im.className = 'leaf-inner';
-      im.src = 'leaf-' + (1 + (i % 9)) + '.png';
+      im.src = 'leafA-' + (1 + (i % 9)) + '.png';
       im.style.width = sz + 'px';
       im.style.animationDuration = (1.6 + Math.random() * 1.6) + 's';
       o.appendChild(im); box.appendChild(o);
