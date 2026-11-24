@@ -18,15 +18,13 @@
   #pop .ring { position:absolute; inset:-13%; border-radius:50%; border:2px solid rgba(255,214,90,.75); animation:ringp 1.8s ease-out infinite; pointer-events:none; }
   @keyframes ringp { 0% { transform:scale(.82); opacity:.95; } 100% { transform:scale(1.22); opacity:0; } }
   .burst-p { position:absolute; z-index:7; pointer-events:none; }
-  #leaves, #ambubbles { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
-  #leaves { z-index:4; } #ambubbles { z-index:5; }
+  #leaves { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+  #leaves { z-index:4; }
   .leaf-outer { position:absolute; top:-12%; animation-name:fall; animation-timing-function:linear; animation-iteration-count:infinite; }
   .leaf-inner { display:block; animation-name:sway; animation-timing-function:ease-in-out; animation-iteration-count:infinite; animation-direction:alternate; }
   @keyframes fall { to { transform:translateY(125vh); } }
   @keyframes sway { from { transform:translateX(-16px) rotate(-38deg); } to { transform:translateX(16px) rotate(42deg); } }
-  .amb { position:absolute; animation-name:rise; animation-timing-function:linear; animation-iteration-count:infinite; opacity:.7; }
   @keyframes rise { from { transform:translateY(112%); } to { transform:translateY(-30%); } }
-  .amb img { display:block; width:100%; animation:sway2 5s ease-in-out infinite alternate; }
   @keyframes sway2 { from { transform:translateX(-7px); } to { transform:translateX(7px); } }
   .topbar { position:absolute; top:0; left:0; right:0; z-index:10; display:flex; justify-content:space-between; align-items:flex-start; padding:14px; pointer-events:none; }
   .title { color:#fff; font-weight:700; font-size:17px; text-shadow:0 1px 8px rgba(0,0,0,.55); }
