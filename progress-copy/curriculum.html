@@ -60,7 +60,7 @@ Object.keys(DATA).forEach(function(lv){
     var lessons = doss[dname];
     var dos = document.createElement('div'); dos.className = 'dos';
     var dh = document.createElement('div'); dh.className = 'doshead';
-    dh.innerHTML = '<span class="dn" style="background:' + COLORS[lv] + '">' + lv + '·' + (di+1) + '</span><span class="dt"></span><span class="dc">' + lessons.length + ' lessons</span><span class="chev">▼</span>';
+    dh.innerHTML = '<span class="dn" style="background:' + COLORS[lv] + '">' + lv + '·' + (di+1) + '</span><span class="dt"></span><span class="dc">' + lessons.length + (lessons.length === 1 ? ' lesson' : ' lessons')</span><span class="chev">▼</span>';
     dh.querySelector('.dt').textContent = dname;
     var db = document.createElement('div'); db.className = 'dosbody';
     var ul = document.createElement('ul');
