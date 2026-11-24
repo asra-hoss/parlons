@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Castle Journey — Layered</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html, body { height:100%; background:#10131c; }
+  body { font-family:system-ui, -apple-system, sans-serif; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  #frame { position:relative; height:100%; aspect-ratio:2/3; max-width:100vw; overflow:hidden; background:#20304a; }
+  #world { position:absolute; left:0; top:0; width:100%; height:100%; transform-origin:0 0; transition:transform 1.6s cubic-bezier(.45,.02,.25,1); will-change:transform; }
+  #world img.scene { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+  #pop { position:absolute; transform:translate(-50%, -50%); background:none; border:none; cursor:pointer; z-index:6; opacity:0; transition:opacity .7s ease; pointer-events:none; }
+  #pop.show { opacity:1; pointer-events:auto; }
+  #pop img { width:100%; height:100%; display:block; filter:drop-shadow(0 0 14px rgba(255,205,80,.85)) drop-shadow(0 0 34px rgba(255,170,40,.4)); animation:bob 2.6s ease-in-out infinite alternate; }
+  @keyframes bob { from { transform:translateY(-4%); } to { transform:translateY(4%); } }
+  #pop .ring { position:absolute; inset:-13%; border-radius:50%; border:2px solid rgba(255,214,90,.75); animation:ringp 1.8s ease-out infinite; pointer-events:none; }
+  @keyframes ringp { 0% { transform:scale(.82); opacity:.95; } 100% { transform:scale(1.22); opacity:0; } }
+  .burst-p { position:absolute; z-index:7; pointer-events:none; }
+  #leaves, #ambubbles { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+  #leaves { z-index:4; } #ambubbles { z-index:5; }
+  .leaf-outer { position:absolute; top:-12%; animation-name:fall; animation-timing-function:linear; animation-iteration-count:infinite; }
+  .leaf-inner { display:block; animation-name:sway; animation-timing-function:ease-in-out; animation-iteration-count:infinite; animation-direction:alternate; }
+  @keyframes fall { to { transform:translateY(125vh); } }
+  @keyframes sway { from { transform:translateX(-16px) rotate(-38deg); } to { transform:translateX(16px) rotate(42deg); } }
+  .amb { position:absolute; animation-name:rise; animation-timing-function:linear; animation-iteration-count:infinite; opacity:.7; }
+  @keyframes rise { from { transform:translateY(112%); } to { transform:translateY(-30%); } }
+  .amb img { display:block; width:100%; animation:sway2 5s ease-in-out infinite alternate; }
+  @keyframes sway2 { from { transform:translateX(-7px); } to { transform:translateX(7px); } }
+  .topbar { position:absolute; top:0; left:0; right:0; z-index:10; display:flex; justify-content:space-between; align-items:flex-start; padding:14px; pointer-events:none; }
+  .title { color:#fff; font-weight:700; font-size:17px; text-shadow:0 1px 8px rgba(0,0,0,.55); }
+  .pill { background:rgba(20,24,40,.55); color:#ffd94d; border-radius:999px; padding:6px 12px; font-weight:700; font-size:15px; backdrop-filter:blur(3px); }
+  #tag { position:absolute; left:50%; bottom:12.5%; transform:translateX(-50%); z-index:10; background:rgba(20,24,40,.55); color:#fff; border-radius:999px; padding:6px 14px; font-size:14px; font-weight:600; backdrop-filter:blur(3px); pointer-events:none; white-space:nowrap; }
+  #hint { position:absolute; left:50%; bottom:6%; transform:translateX(-50%); z-index:10; background:rgba(20,24,40,.55); color:#fff; border-radius:999px; padding:7px 16px; font-size:14px; pointer-events:none; white-space:nowrap; transition:opacity .5s; }
+  .botbar { position:absolute; left:0; right:0; bottom:0; z-index:10; display:flex; justify-content:space-between; align-items:center; padding:12px 14px; pointer-events:none; }
+  .dots { display:flex; gap:6px; }
+  .dot { width:9px; height:9px; border-radius:50%; background:rgba(255,255,255,.35); }
+  .dot.on { background:#ffd94d; }
+  #restart { pointer-events:auto; background:rgba(20,24,40,.55); color:#fff; border:1px solid rgba(255,255,255,.25); border-radius:999px; padding:7px 14px; font-size:13px; cursor:pointer; backdrop-filter:blur(3px); }
+  #end { position:absolute; inset:0; z-index:20; display:none; align-items:center; justify-content:center; background:rgba(10,12,24,.45); }
+  #end .card { background:rgba(18,22,38,.88); color:#fff; border-radius:20px; padding:26px 30px; text-align:center; box-shadow:0 18px 50px rgba(0,0,0,.5); }
+  #end h2 { font-size:23px; margin-bottom:8px; }
+  #end p { color:#ffd94d; font-weight:700; margin-bottom:16px; }
+  #end button { background:#ffd94d; color:#26200a; border:none; border-radius:999px; padding:10px 22px; font-size:15px; font-weight:700; cursor:pointer; }
+</style>
+</head>
+<body>
+<div id="frame">
+  <div id="world">
+    <img class="scene" src="scene.jpg" alt="">
+    <button id="pop" aria-label="Pop the bubble"><span class="ring"></span><img src="bubble.png" alt=""></button>
+  </div>
+  <div id="leaves"></div>
+  <div id="ambubbles"></div>
+  <div class="topbar"><div class="title">Castle Journey</div><div class="pill">&#11088; <span id="stars">0</span></div></div>
+  <div id="tag">Dossier 1</div>
+  <div id="hint">Tap the bubble to pop it</div>
+  <div class="botbar"><div class="dots" id="dots"></div><button id="restart">Restart</button></div>
+  <div id="end"><div class="card"><h2>You reached the castle!</h2><p>&#11088; <span id="endstars">0</span> stars</p><button id="again">Walk it again</button></div></div>
+</div>
+<script>
+(function () {
+  var STOPS = [ [50,88], [44,77], [53,67], [43,58], [51,50], [44,43], [50,37], [46,32], [50,28.5] ];
+  var frame = document.getElementById('frame');
+  var world = document.getElementById('world');
+  var pop = document.getElementById('pop');
+  var tag = document.getElementById('tag');
+  var hint = document.getElementById('hint');
+  var starsEl = document.getElementById('stars');
+  var dotsEl = document.getElementById('dots');
+  var endEl = document.getElementById('end');
+  var step = 0, stars = 0, busy = false, finished = false;
+  for (var i = 0; i < 8; i++) { var d = document.createElement('div'); d.className = 'dot'; dotsEl.appendChild(d); }
+  function cam() {
+    var W = frame.clientWidth, H = frame.clientHeight;
+    var s = 1 + step * 0.20;
+    var fx = STOPS[step][0] / 100, fy = STOPS[step][1] / 100;
+    var tx = 0.50 * W - fx * W * s, ty = 0.64 * H - fy * H * s;
+    tx = Math.min(0, Math.max(W - W * s, tx));
+    ty = Math.min(0, Math.max(H - H * s, ty));
+    world.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + s + ')';
+    return s;
+  }
+  function placeBubble() {
+    if (step >= 8) { pop.classList.remove('show'); return; }
+    var s = 1 + step * 0.20;
+    var nx = STOPS[step + 1][0], ny = STOPS[step + 1][1];
+    var sizePct = 15.5 / s;
+    pop.style.width = sizePct + '%'; pop.style.height = 'auto'; pop.style.aspectRatio = '1';
+    pop.style.left = nx + '%'; pop.style.top = ny + '%';
+    tag.textContent = 'Dossier ' + (step + 1);
+    pop.classList.add('show');
+  }
+  function burst() {
+    var r = pop.getBoundingClientRect(), fr = frame.getBoundingClientRect(), wr = world.getBoundingClientRect();
+    var s = 1 + step * 0.20;
+    var cx = (r.left + r.width / 2 - wr.left) / s, cy = (r.top + r.height / 2 - wr.top) / s;
+    var star = '<svg viewBox="0 0 24 24" width="100%" height="100%" fill="#ffd94d"><path d="M12 1.8l3.1 6.9 7.5.7-5.6 5 1.6 7.4L12 18l-6.6 3.8L7 14.4 1.4 9.4l7.5-.7z"/></svg>';
+    for (var i = 0; i < 16; i++) {
+      var p = document.createElement('div'); p.className = 'burst-p';
+      var sz = 6 + Math.random() * 9;
+      p.style.width = sz + 'px'; p.style.height = sz + 'px';
+      p.style.left = cx + 'px'; p.style.top = cy + 'px';
+      if (i % 3 === 0) p.innerHTML = star;
+      else { p.style.borderRadius = '50%'; p.style.background = i % 2 ? '#ffe98a' : '#ffb52e'; p.style.boxShadow = '0 0 8px rgba(255,200,60,.9)'; }
+      world.appendChild(p);
+      var a = (i / 16) * 6.283 + Math.random() * 0.4, dist = 40 + Math.random() * 55;
+      p.animate([
+        { transform: 'translate(-50%,-50%) scale(1)', opacity: 1 },
+        { transform: 'translate(' + (Math.cos(a) * dist - sz / 2) + 'px,' + (Math.sin(a) * dist - sz / 2 - 16) + 'px) scale(.25)', opacity: 0 }
+      ], { duration: 620 + Math.random() * 260, easing: 'cubic-bezier(.1,.7,.3,1)' }).onfinish = (function (el) { return function () { el.remove(); }; })(p);
+    }
+  }
+  function doPop() {
+    if (busy || finished || step >= 8) return;
+    busy = true;
+    burst();
+    pop.classList.remove('show');
+    stars++; starsEl.textContent = stars;
+    dotsEl.children[step].classList.add('on');
+    hint.style.opacity = '0';
+    step++;
+    setTimeout(function () {
+      cam();
+      setTimeout(function () {
+        if (step >= 8) { finished = true; document.getElementById('endstars').textContent = stars; endEl.style.display = 'flex'; tag.style.display = 'none'; }
+        else placeBubble();
+        busy = false;
+      }, 1000);
+    }, 350);
+  }
+  pop.addEventListener('click', doPop);
+  function reset() {
+    step = 0; stars = 0; finished = false; busy = false;
+    starsEl.textContent = '0'; endEl.style.display = 'none'; tag.style.display = '';
+    hint.style.opacity = '1';
+    for (var i = 0; i < 8; i++) dotsEl.children[i].classList.remove('on');
+    cam(); setTimeout(placeBubble, 500);
+  }
+  document.getElementById('restart').addEventListener('click', reset);
+  document.getElementById('again').addEventListener('click', reset);
+  // falling leaves layer
+  (function leaves() {
+    var box = document.getElementById('leaves');
+    for (var i = 0; i < 12; i++) {
+      var o = document.createElement('div'); o.className = 'leaf-outer';
+      var sz = 24 + Math.random() * 38;
+      o.style.left = (Math.random() * 96) + '%';
+      o.style.animationDuration = (8 + Math.random() * 7) + 's';
+      o.style.animationDelay = (-Math.random() * 14) + 's';
+      var im = document.createElement('img'); im.className = 'leaf-inner';
+      im.src = 'leaf-' + (1 + (i % 9)) + '.png';
+      im.style.width = sz + 'px';
+      im.style.animationDuration = (1.6 + Math.random() * 1.6) + 's';
+      o.appendChild(im); box.appendChild(o);
+    }
+  })();
+  // ambient floating bubbles layer
+  (function amb() {
+    var box = document.getElementById('ambubbles');
+    for (var i = 0; i < 5; i++) {
+      var o = document.createElement('div'); o.className = 'amb';
+      var sz = 30 + Math.random() * 52;
+      o.style.left = (4 + Math.random() * 88) + '%'; o.style.top = '100%';
+      o.style.width = sz + 'px';
+      o.style.animationDuration = (26 + Math.random() * 18) + 's';
+      o.style.animationDelay = (-Math.random() * 30) + 's';
+      var im = document.createElement('img'); im.src = 'bubble.png';
+      o.appendChild(im); box.appendChild(o);
+    }
+  })();
+  cam(); setTimeout(placeBubble, 400);
+  window.__journey2 = { pop: doPop, state: function () { return { step: step, stars: stars, busy: busy, finished: finished }; } };
+})();
+</script>
+</body>
+</html>
