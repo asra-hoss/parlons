@@ -10,7 +10,14 @@
   body { font-family:system-ui, -apple-system, sans-serif; display:flex; align-items:center; justify-content:center; overflow:hidden; }
   #frame { position:relative; height:100%; aspect-ratio:2/3; max-width:100vw; overflow:hidden; background:#20304a; perspective:1050px; }
   #tilt { position:absolute; inset:0; transform:rotateX(7deg) scale(1.09); transform-origin:50% 100%; }
-  #world { position:absolute; left:0; top:0; width:100%; height:100%; transform-origin:0 0; transition:transform 1.6s cubic-bezier(.45,.02,.25,1); will-change:transform; }
+  #world { position:absolute; left:0; top:0; width:100%; height:100%; transform-origin:0 0; will-change:transform; }
+  #world svg.trail { position:absolute; inset:0; width:100%; height:100%; z-index:2; pointer-events:none; }
+  #marker { position:absolute; transform:translate(-50%,-50%); z-index:5; pointer-events:none; }
+  #marker .core { position:absolute; left:50%; top:50%; width:34%; height:34%; transform:translate(-50%,-50%); border-radius:50%; background:#fff7d6; box-shadow:0 0 10px 4px rgba(255,205,70,.95), 0 0 26px 12px rgba(255,180,50,.45); }
+  #marker .ring { position:absolute; inset:0; border-radius:50%; border:2px solid rgba(255,214,90,.8); animation:ringp 1.8s ease-out infinite; }
+  .gbub { position:absolute; transform:translate(-50%,-50%); width:10.5%; aspect-ratio:1; z-index:3; pointer-events:none; }
+  .gbub img { width:100%; height:100%; display:block; filter:grayscale(1) brightness(.82); opacity:.55; }
+  #pop .num { position:absolute; left:50%; top:52%; transform:translate(-50%,-50%); font-weight:800; color:#fff; font-size:clamp(22px, 7.2vmin, 40px); text-shadow:0 0 7px rgba(146,96,0,.9), 0 1px 3px rgba(90,55,0,.95); pointer-events:none; }
   #world img.scene { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
   #pop { position:absolute; transform:translate(-50%, -50%); background:none; border:none; cursor:pointer; z-index:6; opacity:0; transition:opacity .7s ease; pointer-events:none; }
   #pop.show { opacity:1; pointer-events:auto; }
@@ -21,12 +28,23 @@
   .burst-p { position:absolute; z-index:7; pointer-events:none; }
   #leaves { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
   #leaves { z-index:4; transition:opacity 1.2s ease; }
-  #interior { position:absolute; inset:0; z-index:5; opacity:0; pointer-events:none; transition:opacity 1.6s ease; overflow:hidden; }
+  #doorwrap { position:absolute; inset:0; z-index:5; opacity:0; pointer-events:none; transition:opacity .8s ease; overflow:hidden; }
+  #doorwrap.show { opacity:1; }
+  #doorwrap img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+  #doorOpenImg { opacity:0; transition:opacity 1.3s ease; }
+  #doorOpenImg.show { opacity:1; }
+  #interior { position:absolute; inset:0; z-index:6; opacity:0; pointer-events:none; transition:opacity 1.6s ease; overflow:hidden; }
   #interior img { width:100%; height:100%; object-fit:cover; display:block; }
   #interior.show { opacity:1; }
   #interior.show img { animation:kenburns 9s ease-out forwards; }
   @keyframes kenburns { from { transform:scale(1) translateY(0); } to { transform:scale(1.13) translateY(-1.5%); } }
-  #doorlight { position:absolute; left:50%; top:52%; width:75vmin; height:75vmin; transform:translate(-50%,-50%) scale(.35); background:radial-gradient(circle, rgba(255,238,175,.98) 0%, rgba(255,206,92,.55) 38%, rgba(255,190,60,0) 70%); border-radius:50%; opacity:0; pointer-events:none; z-index:6; }
+  #doorlight { position:absolute; left:50%; top:52%; width:75vmin; height:75vmin; transform:translate(-50%,-50%) scale(.35); background:radial-gradient(circle, rgba(255,238,175,.98) 0%, rgba(255,206,92,.55) 38%, rgba(255,190,60,0) 70%); border-radius:50%; opacity:0; pointer-events:none; z-index:7; }
+  #chests { position:absolute; inset:0; z-index:8; display:none; }
+  #chests.show { display:block; }
+  .chest { position:absolute; width:20%; aspect-ratio:1; transform:translate(-50%,-50%); background:none; border:none; cursor:pointer; }
+  .chest .cring { position:absolute; inset:8%; border-radius:50%; border:2px solid rgba(255,217,77,.85); animation:chestpulse 2.1s ease-out infinite; pointer-events:none; }
+  @keyframes chestpulse { 0% { box-shadow:0 0 0 0 rgba(255,210,80,.45); opacity:1; } 100% { box-shadow:0 0 0 18px rgba(255,210,80,0); opacity:.25; } }
+  .spark-p { position:absolute; z-index:9; pointer-events:none; border-radius:50%; }
   #doorlight.go { animation:doorbloom 2.2s ease forwards; }
   @keyframes doorbloom { 0% { opacity:0; transform:translate(-50%,-50%) scale(.35); } 35% { opacity:1; transform:translate(-50%,-50%) scale(1); } 100% { opacity:0; transform:translate(-50%,-50%) scale(1.3); } }
   .leaf-outer { position:absolute; top:-12%; animation-name:fall; animation-timing-function:linear; animation-iteration-count:infinite; }
@@ -50,6 +68,10 @@
   #end h2 { font-size:23px; margin-bottom:8px; }
   #end p { color:#ffd94d; font-weight:700; margin-bottom:16px; }
   #end button { background:#ffd94d; color:#26200a; border:none; border-radius:999px; padding:10px 22px; font-size:15px; font-weight:700; cursor:pointer; }
+  #prizeLine { font-size:19px; font-weight:700; color:#fff; margin-bottom:6px; }
+  #prizeLine .pz { font-size:30px; display:block; margin-bottom:4px; }
+  #end .btnrow { display:flex; gap:10px; justify-content:center; }
+  #end button.ghost { background:rgba(255,255,255,.14); color:#fff; border:1px solid rgba(255,255,255,.4); }
 </style>
 </head>
 <body>
@@ -57,17 +79,26 @@
   <div id="tilt">
   <div id="world">
     <img class="scene" src="scene2.jpg" alt="">
-    <button id="pop" aria-label="Pop the bubble"><span class="ring"></span><img src="bubble.png" alt=""></button>
+    <svg class="trail" viewBox="0 0 100 100" preserveAspectRatio="none"><polyline id="trailPath" points="50,88 44,77 53,67 43,58 51,50 44,43 50,37 46,32 50,28.5" fill="none" stroke="#ffd94d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" pathLength="100" style="filter:drop-shadow(0 0 5px rgba(255,190,50,.95)); opacity:.92;" vector-effect="non-scaling-stroke"/></svg>
+    <div id="marker"><span class="ring"></span><span class="core"></span></div>
+    <div id="gbubs"></div>
+    <button id="pop" aria-label="Pop the bubble"><span class="ring"></span><img src="bubble2.png" alt=""><span class="num" id="popNum">1</span></button>
   </div>
   </div>
   <div id="leaves"></div>
+  <div id="doorwrap"><img src="door-closed.jpg" alt=""><img id="doorOpenImg" src="door-open.jpg" alt=""></div>
   <div id="interior"><img src="interior.jpg" alt=""></div>
   <div id="doorlight"></div>
+  <div id="chests">
+    <button class="chest" data-prize="0" style="left:10%; top:59%;" aria-label="Open the chest"><span class="cring"></span></button>
+    <button class="chest" data-prize="1" style="left:50%; top:52%;" aria-label="Open the crown chest"><span class="cring"></span></button>
+    <button class="chest" data-prize="2" style="left:90%; top:56%;" aria-label="Open the chest"><span class="cring"></span></button>
+  </div>
   <div class="topbar"><div class="title">Castle Journey</div><div class="pill">&#11088; <span id="stars">0</span></div></div>
   <div id="tag">Dossier 1</div>
   <div id="hint">Tap the bubble to pop it</div>
   <div class="botbar"><div class="dots" id="dots"></div><button id="restart">Restart</button></div>
-  <div id="end"><div class="card"><h2>You reached the castle!</h2><p>&#11088; <span id="endstars">0</span> stars</p><button id="again">Walk it again</button></div></div>
+  <div id="end"><div class="card"><h2>You reached the castle!</h2><div id="prizeLine"><span class="pz" id="prizeIcon">👑</span><span id="prizeName">The Crown of the Castle</span></div><p>&#11088; <span id="endstars">0</span> stars</p><div class="btnrow"><button class="ghost" id="keeplooking">Keep looking</button><button id="again">Walk it again</button></div></div></div>
 </div>
 <script>
 (function () {
@@ -83,23 +114,33 @@
   var step = 0, stars = 0, busy = false, finished = false;
   for (var i = 0; i < 8; i++) { var d = document.createElement('div'); d.className = 'dot'; dotsEl.appendChild(d); }
   function S() { return 1.18 + step * 0.16; }
-  function cam() {
+  var stepF = 0;
+  var marker = document.getElementById('marker');
+  var trailPath = document.getElementById('trailPath');
+  function camF(f) {
     var W = frame.clientWidth, H = frame.clientHeight;
-    var s = S();
-    var fx = STOPS[step][0] / 100, fy = STOPS[step][1] / 100;
+    var s = 1.18 + f * 0.16;
+    var i = Math.min(Math.floor(f), 7), t = f - i;
+    var fx = (STOPS[i][0] + (STOPS[i + 1][0] - STOPS[i][0]) * t) / 100;
+    var fy = (STOPS[i][1] + (STOPS[i + 1][1] - STOPS[i][1]) * t) / 100;
     var tx = 0.50 * W - fx * W * s, ty = 0.80 * H - fy * H * s;
     tx = Math.min(0, Math.max(W - W * s, tx));
     ty = Math.min(0, Math.max(H - H * s, ty));
     world.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + s + ')';
+    trailPath.style.strokeDasharray = (f / 8 * 100) + ' 100';
+    marker.style.left = (fx * 100) + '%'; marker.style.top = (fy * 100) + '%';
+    var ms = 5.4 / s; marker.style.width = ms + '%'; marker.style.height = 'auto'; marker.style.aspectRatio = '1';
     return s;
   }
+  function cam() { return camF(stepF); }
   function placeBubble() {
     if (step >= 8) { pop.classList.remove('show'); return; }
     var s = S();
     var nx = STOPS[step + 1][0], ny = STOPS[step + 1][1];
-    var sizePct = 15.5 / s;
+    var sizePct = 19 / s;
     pop.style.width = sizePct + '%'; pop.style.height = 'auto'; pop.style.aspectRatio = '1';
     pop.style.left = nx + '%'; pop.style.top = ny + '%';
+    document.getElementById('popNum').textContent = step + 1;
     tag.textContent = 'Dossier ' + (step + 1);
     pop.classList.add('show');
   }
@@ -132,39 +173,111 @@
     dotsEl.children[step].classList.add('on');
     hint.style.opacity = '0';
     step++;
+    updateGbubs();
+    var from = stepF, to = step, t0 = null;
     setTimeout(function () {
-      cam();
-      setTimeout(function () {
-        if (step >= 8) {
-          finished = true;
-          tag.style.display = 'none';
-          document.getElementById('leaves').style.opacity = '0';
-          var dl = document.getElementById('doorlight');
-          dl.classList.remove('go'); void dl.offsetWidth; dl.classList.add('go');
-          document.getElementById('interior').classList.add('show');
-          setTimeout(function () {
-            document.getElementById('endstars').textContent = stars;
-            endEl.style.display = 'flex';
-          }, 2400);
+      function tick(ts) {
+        if (!t0) t0 = ts;
+        var p = Math.min((ts - t0) / 1750, 1);
+        var e = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+        stepF = from + (to - from) * e;
+        camF(stepF);
+        if (p < 1) requestAnimationFrame(tick);
+        else {
+          if (step >= 8) finale();
+          else placeBubble();
+          busy = false;
         }
-        else placeBubble();
-        busy = false;
-      }, 1000);
+      }
+      requestAnimationFrame(tick);
     }, 350);
+  }
+  var PRIZES = [ ['💎', 'A rare jewel'], ['👑', 'The Crown of the Castle'], ['🪙', 'A chest of gold'] ];
+  function finale() {
+    finished = true;
+    tag.style.display = 'none';
+    marker.style.display = 'none';
+    document.getElementById('leaves').style.opacity = '0';
+    document.getElementById('doorwrap').classList.add('show');
+    setTimeout(function () {
+      document.getElementById('doorOpenImg').classList.add('show');
+      var dl = document.getElementById('doorlight');
+      dl.classList.remove('go'); void dl.offsetWidth; dl.classList.add('go');
+    }, 1200);
+    setTimeout(function () {
+      document.getElementById('interior').classList.add('show');
+    }, 2700);
+    setTimeout(function () {
+      document.getElementById('doorwrap').classList.remove('show');
+      document.getElementById('chests').classList.add('show');
+      hint.textContent = 'Tap a chest to see your prize';
+      hint.style.opacity = '1';
+    }, 3600);
   }
   pop.addEventListener('click', doPop);
   function reset() {
-    step = 0; stars = 0; finished = false; busy = false;
+    step = 0; stars = 0; finished = false; busy = false; stepF = 0;
     starsEl.textContent = '0'; endEl.style.display = 'none'; tag.style.display = '';
+    marker.style.display = '';
     document.getElementById('interior').classList.remove('show');
+    document.getElementById('doorwrap').classList.remove('show');
+    document.getElementById('doorOpenImg').classList.remove('show');
+    document.getElementById('chests').classList.remove('show');
     document.getElementById('doorlight').classList.remove('go');
     document.getElementById('leaves').style.opacity = '';
+    hint.textContent = 'Tap the bubble to pop it';
     hint.style.opacity = '1';
     for (var i = 0; i < 8; i++) dotsEl.children[i].classList.remove('on');
+    updateGbubs();
     cam(); setTimeout(placeBubble, 500);
   }
   document.getElementById('restart').addEventListener('click', reset);
   document.getElementById('again').addEventListener('click', reset);
+  // grey bubbles waiting ahead on the path
+  var gbubsEl = document.getElementById('gbubs');
+  var gbubDivs = [];
+  for (var gi = 1; gi <= 8; gi++) {
+    var g = document.createElement('div'); g.className = 'gbub';
+    g.style.left = STOPS[gi][0] + '%'; g.style.top = STOPS[gi][1] + '%';
+    var gim = document.createElement('img'); gim.src = 'bubble2.png'; gim.alt = '';
+    g.appendChild(gim); gbubsEl.appendChild(g); gbubDivs.push(g);
+  }
+  function updateGbubs() {
+    for (var j = 0; j < gbubDivs.length; j++) {
+      gbubDivs[j].style.display = ((j + 1) > step + 1) ? 'block' : 'none';
+    }
+  }
+  // treasure-room chests
+  function sparkleAt(x, y) {
+    var box = document.getElementById('chests');
+    for (var i = 0; i < 14; i++) {
+      var p = document.createElement('div'); p.className = 'spark-p';
+      var sz = 5 + Math.random() * 8;
+      p.style.width = sz + 'px'; p.style.height = sz + 'px';
+      p.style.left = x + 'px'; p.style.top = y + 'px';
+      p.style.background = i % 2 ? '#ffe98a' : '#ffb52e';
+      p.style.boxShadow = '0 0 8px rgba(255,200,60,.9)';
+      box.appendChild(p);
+      var a = (i / 14) * 6.283 + Math.random() * 0.4, dist = 34 + Math.random() * 52;
+      p.animate([
+        { transform: 'translate(-50%,-50%) scale(1)', opacity: 1 },
+        { transform: 'translate(' + (Math.cos(a) * dist - sz / 2) + 'px,' + (Math.sin(a) * dist - sz / 2 - 14) + 'px) scale(.25)', opacity: 0 }
+      ], { duration: 600 + Math.random() * 260, easing: 'cubic-bezier(.1,.7,.3,1)' }).onfinish = (function (el) { return function () { el.remove(); }; })(p);
+    }
+  }
+  document.querySelectorAll('.chest').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var r = btn.getBoundingClientRect(), fr = frame.getBoundingClientRect();
+      sparkleAt(r.left + r.width / 2 - fr.left, r.top + r.height / 2 - fr.top);
+      var pz = PRIZES[+btn.getAttribute('data-prize')];
+      document.getElementById('prizeIcon').textContent = pz[0];
+      document.getElementById('prizeName').textContent = pz[1];
+      document.getElementById('endstars').textContent = stars;
+      hint.style.opacity = '0';
+      setTimeout(function () { endEl.style.display = 'flex'; }, 450);
+    });
+  });
+  document.getElementById('keeplooking').addEventListener('click', function () { endEl.style.display = 'none'; });
   // falling leaves layer
   (function leaves() {
     var box = document.getElementById('leaves');
@@ -181,6 +294,7 @@
       o.appendChild(im); box.appendChild(o);
     }
   })();
+  updateGbubs();
   cam(); setTimeout(placeBubble, 400);
   window.__journey2 = { pop: doPop, state: function () { return { step: step, stars: stars, busy: busy, finished: finished }; } };
 })();
