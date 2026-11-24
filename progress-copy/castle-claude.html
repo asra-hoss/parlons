@@ -225,24 +225,22 @@
 
 <script>
 (function(){
-  // Lesson stone / wish-bubble waypoints, as fractions of the artwork (x%, y%),
-  // read off the path in castle-bubbles.webp from the start of the trail up to the door.
-  // s = wish-bubble diameter, as a % of the scene width. The painted bubbles in
-  // castle-bubbles.webp get larger toward the bottom of the path (closer to the
-  // viewer) and smaller near the castle, so each marker is sized to actually
-  // cover the real bubble behind it without colliding with its neighbours.
+  // Wish-bubble waypoints: (x,y) is the CENTER of one of the actual painted
+  // bubbles in castle-bubbles.webp (measured directly from the artwork), and
+  // s is that bubble's own diameter as a % of the scene width. Bubbles are
+  // painted larger toward the bottom of the path (closer to the viewer, by
+  // simple perspective) and smaller near the castle. Each lesson stone sits
+  // a little toward the path from its bubble, not on top of it.
   var POINTS = [
-    {x:64.1, y:91.5, s:19.5},
-    {x:42.1, y:86.3, s:19.5},
-    {x:82.4, y:83.0, s:17.5},
-    {x:22.9, y:78.5, s:19.5},
-    {x:71.4, y:72.8, s:17.5},
-    {x:47.6, y:66.5, s:14.5},
-    {x:55.4, y:57.5, s:14},
-    {x:63.2, y:48.8, s:13},
-    {x:50.8, y:42.8, s:13},
-    {x:62.7, y:34.3, s:11.5},
-    {x:62.7, y:21.5, s:9}
+    {x:62.3, y:89.3, s:26.0},
+    {x:82.7, y:75.5, s:18.5},
+    {x:70.4, y:56.7, s:16.7},
+    {x:42.2, y:52.9, s:12.3},
+    {x:48.4, y:38.5, s:13.0},
+    {x:62.5, y:33.4, s:8.5},
+    {x:55.9, y:29.3, s:7.5},
+    {x:46.7, y:24.8, s:7.9},
+    {x:60.7, y:20.0, s:7.0}
   ];
   var TOTAL = POINTS.length;
   var BASE_SCALE = 1.0;
@@ -272,8 +270,8 @@
     POINTS.forEach(function(p, i){
       var stone = document.createElement('div');
       stone.className = 'stone';
-      stone.style.left = p.x + '%';
-      stone.style.top  = p.y + '%';
+      stone.style.left = (p.x - p.s*0.58) + '%';
+      stone.style.top  = (p.y + p.s*0.4) + '%';
       stone.textContent = (i+1);
       layer.appendChild(stone);
       stones.push(stone);
@@ -282,8 +280,9 @@
       wrap.className = 'bubble-wrap';
       wrap.style.width = p.s + '%';
       wrap.style.marginLeft = (-p.s/2) + '%';
-      wrap.style.left = (p.x + p.s*0.3) + '%';
-      wrap.style.top  = (p.y - p.s*0.22) + '%';
+      wrap.style.left = p.x + '%';
+      wrap.style.top  = p.y + '%';
+      wrap.style.marginTop = (-p.s/2) + '%'; // CSS resolves margin % against container WIDTH (both axes), so this matches marginLeft's math and truly centers the circle on (p.x, p.y)
 
       var patch = document.createElement('div');
       patch.className = 'patch';
