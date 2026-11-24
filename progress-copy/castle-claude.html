@@ -227,18 +227,22 @@
 (function(){
   // Lesson stone / wish-bubble waypoints, as fractions of the artwork (x%, y%),
   // read off the path in castle-bubbles.webp from the start of the trail up to the door.
+  // s = wish-bubble diameter, as a % of the scene width. The painted bubbles in
+  // castle-bubbles.webp get larger toward the bottom of the path (closer to the
+  // viewer) and smaller near the castle, so each marker is sized to actually
+  // cover the real bubble behind it without colliding with its neighbours.
   var POINTS = [
-    {x:64.1, y:91.5},
-    {x:42.1, y:86.3},
-    {x:82.4, y:83.0},
-    {x:22.9, y:78.5},
-    {x:71.4, y:72.8},
-    {x:47.6, y:66.5},
-    {x:55.4, y:57.5},
-    {x:63.2, y:48.8},
-    {x:50.8, y:42.8},
-    {x:62.7, y:34.3},
-    {x:62.7, y:21.5}
+    {x:64.1, y:91.5, s:19.5},
+    {x:42.1, y:86.3, s:19.5},
+    {x:82.4, y:83.0, s:17.5},
+    {x:22.9, y:78.5, s:19.5},
+    {x:71.4, y:72.8, s:17.5},
+    {x:47.6, y:66.5, s:14.5},
+    {x:55.4, y:57.5, s:14},
+    {x:63.2, y:48.8, s:13},
+    {x:50.8, y:42.8, s:13},
+    {x:62.7, y:34.3, s:11.5},
+    {x:62.7, y:21.5, s:9}
   ];
   var TOTAL = POINTS.length;
   var BASE_SCALE = 1.0;
@@ -276,8 +280,10 @@
 
       var wrap = document.createElement('div');
       wrap.className = 'bubble-wrap';
-      wrap.style.left = (p.x + 4) + '%';
-      wrap.style.top  = (p.y - 2.5) + '%';
+      wrap.style.width = p.s + '%';
+      wrap.style.marginLeft = (-p.s/2) + '%';
+      wrap.style.left = (p.x + p.s*0.3) + '%';
+      wrap.style.top  = (p.y - p.s*0.22) + '%';
 
       var patch = document.createElement('div');
       patch.className = 'patch';
