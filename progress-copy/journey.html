@@ -8,7 +8,9 @@
   * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
   html, body { height:100%; background:#0e1a2b; overflow:hidden; font-family:-apple-system, "Segoe UI", Roboto, sans-serif; }
   #stage { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; }
-  #frame { position:relative; height:100%; aspect-ratio:2/3; max-width:100vw; }
+  #frame { position:relative; height:100%; aspect-ratio:2/3; max-width:100vw; overflow:hidden; }
+  video.drift { animation:drift 7s ease-in-out infinite alternate; }
+  @keyframes drift { from { transform:scale(1.03) translate(0, 0); } to { transform:scale(1.10) translate(-0.9%, -1.4%); } }
   @media (max-aspect-ratio: 2/3) { #frame { width:100vw; height:auto; } }
   video { width:100%; height:100%; object-fit:cover; display:block; background:#0e1a2b; }
   .topbar { position:absolute; top:0; left:0; right:0; display:flex; justify-content:space-between; align-items:center; padding:14px 16px; pointer-events:none; }
@@ -80,7 +82,7 @@
       <div class="stars" id="starpill"><svg viewBox="0 0 24 24" fill="#ffd94d"><path d="M12 1.8l3.1 6.9 7.5.7-5.6 5 1.6 7.4L12 18l-6.6 3.8L7 14.4 1.4 9.4l7.5-.7z"/></svg><span id="starnum">0</span></div>
     </div>
     <div id="hint">Tap the bubble to pop it</div>
-    <button id="bubble" aria-label="Pop the bubble"><svg viewBox="0 0 24 24" fill="#ffd94d"><path d="M12 1.8l3.1 6.9 7.5.7-5.6 5 1.6 7.4L12 18l-6.6 3.8L7 14.4 1.4 9.4l7.5-.7z"/></svg></button>
+    <button id="bubble" aria-label="Pop the bubble"></button>
     <div id="blabel">Dossier 1</div>
     <div class="bottombar">
       <div class="dots" id="dots"></div>
@@ -171,6 +173,7 @@
       document.getElementById('endstars').textContent = stars + (stars === 1 ? ' star' : ' stars') + ' collected';
       endcard.classList.add('show');
     } else {
+      v.classList.add('drift');
       placeBubble(true);
     }
   }
@@ -190,6 +193,7 @@
     hint.style.opacity = '0';
     stars++; starnum.textContent = stars;
     starpill.classList.remove('bump'); void starpill.offsetWidth; starpill.classList.add('bump');
+    v.classList.remove('drift');
     targetT = STOPS[stage];
     stage++;
     setTimeout(function () {
@@ -220,15 +224,9 @@
   (function buildAmbient() {
     var amb = document.getElementById('ambient');
     var star = '<svg viewBox="0 0 24 24" width="100%" height="100%" fill="#ffd94d"><path d="M12 1.8l3.1 6.9 7.5.7-5.6 5 1.6 7.4L12 18l-6.6 3.8L7 14.4 1.4 9.4l7.5-.7z"/></svg>';
-    var B = [ [18, 30, 30], [30, 52, 44], [70, 22, 24], [82, 58, 36], [12, 66, 22], [58, 82, 28], [88, 36, 20] ];
-    B.forEach(function (b, i) {
-      var el = document.createElement('div'); el.className = 'amb-b';
-      el.style.width = b[2] + 'px'; el.style.height = b[2] + 'px';
-      el.style.left = b[0] + '%'; el.style.top = b[1] + '%';
-      el.style.animationDuration = (5 + i * 0.9) + 's';
-      if (i % 2 === 0) el.innerHTML = star;
-      amb.appendChild(el);
-    });
+    var glow = document.createElement('div');
+    glow.style.cssText = 'position:absolute; inset:0; background:radial-gradient(circle at 50% 26%, rgba(255,225,150,.28), rgba(255,225,150,0) 55%); animation:ambtw 5.5s ease-in-out infinite;';
+    amb.appendChild(glow);
     var leafPath = 'M12 1 C15 6 21 8 22 12 C18 13 17 16 18 21 C14 18 10 18 6 21 C7 16 6 13 2 12 C3 8 9 6 12 1 Z';
     var cols = ['#e8862e', '#d95f26', '#c9452c', '#eda93c', '#b84a39'];
     for (var i = 0; i < 9; i++) {
@@ -252,6 +250,7 @@
       amb.appendChild(sp);
     }
   })();
+  v.classList.add('drift');
   placeBubble(false);
   window.__journey = { pop: pop, restart: restart, state: function () { return { stage: stage, stars: stars, busy: busy, finished: finished, t: v.currentTime, ready: v.readyState }; } };
 })();
