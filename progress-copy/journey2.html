@@ -52,7 +52,6 @@
     <button id="pop" aria-label="Pop the bubble"><span class="ring"></span><img src="bubble.png" alt=""></button>
   </div>
   <div id="leaves"></div>
-  <div id="ambubbles"></div>
   <div class="topbar"><div class="title">Castle Journey</div><div class="pill">&#11088; <span id="stars">0</span></div></div>
   <div id="tag">Dossier 1</div>
   <div id="hint">Tap the bubble to pop it</div>
@@ -153,20 +152,6 @@
       im.src = 'leaf-' + (1 + (i % 9)) + '.png';
       im.style.width = sz + 'px';
       im.style.animationDuration = (1.6 + Math.random() * 1.6) + 's';
-      o.appendChild(im); box.appendChild(o);
-    }
-  })();
-  // ambient floating bubbles layer
-  (function amb() {
-    var box = document.getElementById('ambubbles');
-    for (var i = 0; i < 5; i++) {
-      var o = document.createElement('div'); o.className = 'amb';
-      var sz = 30 + Math.random() * 52;
-      o.style.left = (4 + Math.random() * 88) + '%'; o.style.top = '100%';
-      o.style.width = sz + 'px';
-      o.style.animationDuration = (26 + Math.random() * 18) + 's';
-      o.style.animationDelay = (-Math.random() * 30) + 's';
-      var im = document.createElement('img'); im.src = 'bubble.png';
       o.appendChild(im); box.appendChild(o);
     }
   })();
