@@ -75,12 +75,89 @@ def step_shell(step: int, total: int, title: str, goal: str, body: str, last: bo
     )
 
 
+def _norm_person(label: str) -> str | None:
+    L = "".join(label.lower().split()).replace("’", "'")
+    if L in ("je", "j'"):
+        return "je"
+    if L == "tu":
+        return "tu"
+    if L in ("il", "elle", "il/elle", "on"):
+        return "il"
+    if L == "nous":
+        return "nous"
+    if L == "vous":
+        return "vous"
+    if L in ("ils", "elles", "ils/elles"):
+        return "ils"
+    return None
+
+
+def _conjugation_tiles(tiles: list[tuple[str, str]]) -> list[tuple[str, str]]:
+    """Reorder pronoun conjugation tiles for column-down reading (sing | plur)."""
+    keys = [_norm_person(a) for a, _ in tiles]
+    if sum(1 for k in keys if k) < 3:
+        return tiles
+    by: dict[str, tuple[str, str]] = {}
+    for a, b in tiles:
+        k = _norm_person(a)
+        if k and k not in by:
+            by[k] = (a, b)
+    has_sing = any(k in by for k in ("je", "tu", "il"))
+    has_plur = any(k in by for k in ("nous", "vous", "ils"))
+    if not (has_sing and has_plur):
+        return tiles
+    ordered: list[tuple[str, str]] = []
+    used: set[str] = set()
+    for k in ("je", "nous", "tu", "vous", "il", "ils"):
+        if k in by:
+            ordered.append(by[k])
+            used.add(k)
+    for a, b in tiles:
+        k = _norm_person(a)
+        if k not in used:
+            ordered.append((a, b))
+            if k:
+                used.add(k)
+    return ordered
+
+
+def _highlight_conj_form(forms: list[str]) -> list[tuple[str, str, str]]:
+    """Split each form into (stem, ending, rest). Ending (or whole form) is the accent."""
+    if forms and all(f.startswith("-") or f.startswith("−") for f in forms if f):
+        return [("", f, "") for f in forms]
+    if any("/" in f or "+" in f or " " in f for f in forms):
+        return [("", f, "") for f in forms]
+    prefix = forms[0]
+    for f in forms[1:]:
+        while prefix and not f.startswith(prefix):
+            prefix = prefix[:-1]
+    if len(prefix) >= 2 and all(len(f) > len(prefix) for f in forms):
+        return [(prefix, f[len(prefix) :], "") for f in forms]
+    return [("", f, "") for f in forms]
+
+
 def grammar_html(heading: str, blurb: str, tiles: list[tuple[str, str]], examples: list[str], tip: str) -> str:
-    tiles_html = "".join(
-        f'<div style="background:#eef3ff;border-radius:10px;padding:7px 9px;font-size:13.5px">'
-        f'<span style="color:#7a5af8;font-weight:800">{esc(a)}</span> <b>{esc(b)}</b></div>'
-        for a, b in tiles
-    )
+    tiles = _conjugation_tiles(tiles)
+    is_conj = sum(1 for a, _ in tiles if _norm_person(a)) >= 3
+    if is_conj:
+        splits = _highlight_conj_form([b for _, b in tiles])
+        parts = []
+        for (a, _), (stem, ending, rest) in zip(tiles, splits):
+            hi = ending or rest
+            verb = f"{esc(stem)}<span style=\"color:#7a5af8;font-weight:800\">{esc(hi)}</span>"
+            if ending and rest:
+                verb = f"{esc(stem)}<span style=\"color:#7a5af8;font-weight:800\">{esc(ending)}</span>{esc(rest)}"
+            parts.append(
+                f'<div style="background:#eef3ff;border-radius:10px;padding:7px 9px;font-size:13.5px">'
+                f'<span style="font-weight:800">{esc(a)}</span> <b>{verb}</b></div>'
+            )
+        tiles_html = "".join(parts)
+    else:
+        tiles_html = "".join(
+            f'<div style="background:#eef3ff;border-radius:10px;padding:7px 9px;font-size:13.5px">'
+            f'<span style="color:#7a5af8;font-weight:800">{esc(a)}</span> <b>{esc(b)}</b></div>'
+            for a, b in tiles
+        )
     ex = "".join(f"<div style=\"margin:4px 0\">{esc(e)}</div>" for e in examples)
     return (
         f'<span class="tag">GRAMMAR</span>'
