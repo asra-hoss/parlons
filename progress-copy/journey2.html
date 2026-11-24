@@ -20,7 +20,15 @@
   @keyframes ringp { 0% { transform:scale(.82); opacity:.95; } 100% { transform:scale(1.22); opacity:0; } }
   .burst-p { position:absolute; z-index:7; pointer-events:none; }
   #leaves { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
-  #leaves { z-index:4; }
+  #leaves { z-index:4; transition:opacity 1.2s ease; }
+  #interior { position:absolute; inset:0; z-index:5; opacity:0; pointer-events:none; transition:opacity 1.6s ease; overflow:hidden; }
+  #interior img { width:100%; height:100%; object-fit:cover; display:block; }
+  #interior.show { opacity:1; }
+  #interior.show img { animation:kenburns 9s ease-out forwards; }
+  @keyframes kenburns { from { transform:scale(1) translateY(0); } to { transform:scale(1.13) translateY(-1.5%); } }
+  #doorlight { position:absolute; left:50%; top:52%; width:75vmin; height:75vmin; transform:translate(-50%,-50%) scale(.35); background:radial-gradient(circle, rgba(255,238,175,.98) 0%, rgba(255,206,92,.55) 38%, rgba(255,190,60,0) 70%); border-radius:50%; opacity:0; pointer-events:none; z-index:6; }
+  #doorlight.go { animation:doorbloom 2.2s ease forwards; }
+  @keyframes doorbloom { 0% { opacity:0; transform:translate(-50%,-50%) scale(.35); } 35% { opacity:1; transform:translate(-50%,-50%) scale(1); } 100% { opacity:0; transform:translate(-50%,-50%) scale(1.3); } }
   .leaf-outer { position:absolute; top:-12%; animation-name:fall; animation-timing-function:linear; animation-iteration-count:infinite; }
   .leaf-inner { display:block; animation-name:sway; animation-timing-function:ease-in-out; animation-iteration-count:infinite; animation-direction:alternate; }
   @keyframes fall { to { transform:translateY(125vh); } }
@@ -37,7 +45,7 @@
   .dot { width:9px; height:9px; border-radius:50%; background:rgba(255,255,255,.35); }
   .dot.on { background:#ffd94d; }
   #restart { pointer-events:auto; background:rgba(20,24,40,.55); color:#fff; border:1px solid rgba(255,255,255,.25); border-radius:999px; padding:7px 14px; font-size:13px; cursor:pointer; backdrop-filter:blur(3px); }
-  #end { position:absolute; inset:0; z-index:20; display:none; align-items:center; justify-content:center; background:rgba(10,12,24,.45); }
+  #end { position:absolute; inset:0; z-index:20; display:none; align-items:flex-end; justify-content:center; background:rgba(10,12,24,.16); padding-bottom:9%; }
   #end .card { background:rgba(18,22,38,.88); color:#fff; border-radius:20px; padding:26px 30px; text-align:center; box-shadow:0 18px 50px rgba(0,0,0,.5); }
   #end h2 { font-size:23px; margin-bottom:8px; }
   #end p { color:#ffd94d; font-weight:700; margin-bottom:16px; }
@@ -53,6 +61,8 @@
   </div>
   </div>
   <div id="leaves"></div>
+  <div id="interior"><img src="interior.jpg" alt=""></div>
+  <div id="doorlight"></div>
   <div class="topbar"><div class="title">Castle Journey</div><div class="pill">&#11088; <span id="stars">0</span></div></div>
   <div id="tag">Dossier 1</div>
   <div id="hint">Tap the bubble to pop it</div>
@@ -125,7 +135,18 @@
     setTimeout(function () {
       cam();
       setTimeout(function () {
-        if (step >= 8) { finished = true; document.getElementById('endstars').textContent = stars; endEl.style.display = 'flex'; tag.style.display = 'none'; }
+        if (step >= 8) {
+          finished = true;
+          tag.style.display = 'none';
+          document.getElementById('leaves').style.opacity = '0';
+          var dl = document.getElementById('doorlight');
+          dl.classList.remove('go'); void dl.offsetWidth; dl.classList.add('go');
+          document.getElementById('interior').classList.add('show');
+          setTimeout(function () {
+            document.getElementById('endstars').textContent = stars;
+            endEl.style.display = 'flex';
+          }, 2400);
+        }
         else placeBubble();
         busy = false;
       }, 1000);
@@ -135,6 +156,9 @@
   function reset() {
     step = 0; stars = 0; finished = false; busy = false;
     starsEl.textContent = '0'; endEl.style.display = 'none'; tag.style.display = '';
+    document.getElementById('interior').classList.remove('show');
+    document.getElementById('doorlight').classList.remove('go');
+    document.getElementById('leaves').style.opacity = '';
     hint.style.opacity = '1';
     for (var i = 0; i < 8; i++) dotsEl.children[i].classList.remove('on');
     cam(); setTimeout(placeBubble, 500);
