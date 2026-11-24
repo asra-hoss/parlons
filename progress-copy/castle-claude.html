@@ -244,9 +244,12 @@
   ];
   var TOTAL = POINTS.length;
   var BASE_SCALE = 1.0;
-  var MAX_SCALE  = 1.62;
+  var MAX_SCALE  = 1.25;
   var BASE_PAN   = 0;     // px
-  var MAX_PAN    = -170;  // px, extra upward glide beyond pure scale-from-anchor
+  var MAX_PAN    = 1080;  // px — the castle sits far above the frame at rest, so
+                           // reaching the door needs a large downward glide (positive
+                           // translateY) to bring the castle + crown fully into view,
+                           // on top of the scale-from-anchor growth.
 
   var scene   = document.getElementById('scene');
   var layer   = document.getElementById('layer');
