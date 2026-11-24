@@ -51,6 +51,22 @@
   .card h1 { font-size:21px; color:#20304a; margin:10px 0 4px; }
   .card p { font-size:14px; color:#5a6a84; margin-bottom:16px; }
   .card button { background:#ffb62e; border:none; color:#402c00; font-weight:800; font-size:15px; padding:11px 22px; border-radius:999px; cursor:pointer; box-shadow:0 4px 14px rgba(255,170,30,.5); }
+  #ambient { position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:3; }
+  .amb-b { position:absolute; border-radius:50%;
+    background:
+      radial-gradient(circle at 32% 28%, rgba(255,255,255,.9) 0 7%, rgba(255,255,255,0) 26%),
+      radial-gradient(circle at 70% 80%, rgba(255,120,220,.28), rgba(255,255,255,0) 55%),
+      radial-gradient(circle at 30% 75%, rgba(90,200,255,.28), rgba(255,255,255,0) 55%),
+      radial-gradient(circle at 50% 50%, rgba(255,255,255,.13), rgba(255,255,255,.04) 70%);
+    box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.5), inset -4px -6px 10px rgba(120,160,255,.3);
+    display:flex; align-items:center; justify-content:center;
+    animation:ambfloat ease-in-out infinite alternate; }
+  .amb-b svg { width:38%; height:38%; opacity:.9; }
+  @keyframes ambfloat { from { transform:translate(0, 10px); } to { transform:translate(9px, -14px); } }
+  .amb-leaf { position:absolute; top:-6%; animation:ambfall linear infinite; opacity:.9; }
+  @keyframes ambfall { 0% { transform:translate(0, -4vh) rotate(0deg); } 25% { transform:translate(16px, 26vh) rotate(110deg); } 50% { transform:translate(-10px, 54vh) rotate(210deg); } 75% { transform:translate(14px, 80vh) rotate(300deg); } 100% { transform:translate(-6px, 108vh) rotate(380deg); } }
+  .amb-s { position:absolute; animation:ambtw ease-in-out infinite; }
+  @keyframes ambtw { 0%, 100% { transform:scale(.35) rotate(0deg); opacity:.15; } 50% { transform:scale(1) rotate(35deg); opacity:.95; } }
   #hint { position:absolute; left:50%; bottom:12%; transform:translateX(-50%); z-index:4; color:#fff; font-size:13.5px; font-weight:600; text-shadow:0 1px 8px rgba(0,0,0,.7); background:rgba(10,20,35,.35); padding:6px 14px; border-radius:999px; pointer-events:none; transition:opacity .4s; }
 </style>
 </head>
@@ -58,6 +74,7 @@
 <div id="stage">
   <div id="frame">
     <video id="v" playsinline muted preload="auto" poster="castle-journey-poster.jpg" src="castle-journey.mp4"></video>
+    <div id="ambient"></div>
     <div class="topbar">
       <div class="title">Castle Journey</div>
       <div class="stars" id="starpill"><svg viewBox="0 0 24 24" fill="#ffd94d"><path d="M12 1.8l3.1 6.9 7.5.7-5.6 5 1.6 7.4L12 18l-6.6 3.8L7 14.4 1.4 9.4l7.5-.7z"/></svg><span id="starnum">0</span></div>
@@ -200,6 +217,41 @@
   document.getElementById('restart').addEventListener('click', restart);
   document.getElementById('again').addEventListener('click', restart);
   v.addEventListener('loadedmetadata', function () { try { v.currentTime = 0; } catch (e) {} });
+  (function buildAmbient() {
+    var amb = document.getElementById('ambient');
+    var star = '<svg viewBox="0 0 24 24" width="100%" height="100%" fill="#ffd94d"><path d="M12 1.8l3.1 6.9 7.5.7-5.6 5 1.6 7.4L12 18l-6.6 3.8L7 14.4 1.4 9.4l7.5-.7z"/></svg>';
+    var B = [ [18, 30, 30], [30, 52, 44], [70, 22, 24], [82, 58, 36], [12, 66, 22], [58, 82, 28], [88, 36, 20] ];
+    B.forEach(function (b, i) {
+      var el = document.createElement('div'); el.className = 'amb-b';
+      el.style.width = b[2] + 'px'; el.style.height = b[2] + 'px';
+      el.style.left = b[0] + '%'; el.style.top = b[1] + '%';
+      el.style.animationDuration = (5 + i * 0.9) + 's';
+      if (i % 2 === 0) el.innerHTML = star;
+      amb.appendChild(el);
+    });
+    var leafPath = 'M12 1 C15 6 21 8 22 12 C18 13 17 16 18 21 C14 18 10 18 6 21 C7 16 6 13 2 12 C3 8 9 6 12 1 Z';
+    var cols = ['#e8862e', '#d95f26', '#c9452c', '#eda93c', '#b84a39'];
+    for (var i = 0; i < 9; i++) {
+      var lf = document.createElement('div'); lf.className = 'amb-leaf';
+      var sz = 13 + (i % 4) * 4;
+      lf.style.left = (4 + i * 11) + '%';
+      lf.style.width = sz + 'px'; lf.style.height = sz + 'px';
+      lf.style.animationDuration = (11 + i * 1.7) + 's';
+      lf.style.animationDelay = (-i * 2.3) + 's';
+      lf.innerHTML = '<svg viewBox="0 0 24 24" width="100%" height="100%" fill="' + cols[i % cols.length] + '"><path d="' + leafPath + '"/></svg>';
+      amb.appendChild(lf);
+    }
+    for (var j = 0; j < 12; j++) {
+      var sp = document.createElement('div'); sp.className = 'amb-s';
+      var ss = 8 + (j % 3) * 4;
+      sp.style.left = (6 + (j * 29) % 88) + '%'; sp.style.top = (8 + (j * 37) % 80) + '%';
+      sp.style.width = ss + 'px'; sp.style.height = ss + 'px';
+      sp.style.animationDuration = (2.2 + (j % 5) * 0.6) + 's';
+      sp.style.animationDelay = (-j * 0.7) + 's';
+      sp.innerHTML = star;
+      amb.appendChild(sp);
+    }
+  })();
   placeBubble(false);
   window.__journey = { pop: pop, restart: restart, state: function () { return { stage: stage, stars: stars, busy: busy, finished: finished, t: v.currentTime, ready: v.readyState }; } };
 })();
