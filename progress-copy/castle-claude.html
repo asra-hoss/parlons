@@ -79,12 +79,13 @@
 
   /* wish bubble */
   .bubble-wrap{ position:absolute; width:11%; aspect-ratio:1/1; margin-left:-5.5%; z-index:17; }
-  .patch{ /* neutralises the artwork's own baked-in (always-lit) bubble so our
-             own grey/ready/popped states are the only thing the player sees */
-    position:absolute; inset:-22%; border-radius:50%; opacity:0;
-    transition: opacity .6s ease;
+  .patch{ /* smears the artwork's own baked-in (always-lit) bubble into a soft
+             indistinct blob via backdrop blur, so our own grey/ready/popped
+             circle drawn on top is the only crisp thing the player sees */
+    position:absolute; inset:-8%; border-radius:50%;
+    backdrop-filter: blur(9px) saturate(.5) brightness(.92);
+    -webkit-backdrop-filter: blur(9px) saturate(.5) brightness(.92);
   }
-  .patch.shown{ opacity:1; }
   .bubble{
     position:absolute; inset:0; border-radius:50%;
     display:flex; align-items:center; justify-content:center;
@@ -257,18 +258,6 @@
 
   var stones = [], bubbles = [], patches = [];
 
-  function sampleColorAt(xFrac, yFrac, cb){
-    try{
-      var c = document.createElement('canvas');
-      var iw = art.naturalWidth || 1136, ih = art.naturalHeight || 2080;
-      c.width = iw; c.height = ih;
-      var ctx = c.getContext('2d');
-      ctx.drawImage(art, 0, 0, iw, ih);
-      var px = ctx.getImageData(Math.min(iw-1,Math.round(xFrac/100*iw)), Math.min(ih-1,Math.round(yFrac/100*ih)), 1, 1).data;
-      cb('rgb('+px[0]+','+px[1]+','+px[2]+')');
-    }catch(e){ cb('#9fae86'); } // cors/canvas-tainted fallback: muted green, close enough to the hillside
-  }
-
   function build(){
     POINTS.forEach(function(p, i){
       var stone = document.createElement('div');
@@ -307,10 +296,6 @@
 
       layer.appendChild(wrap);
 
-      sampleColorAt(p.x + 7.5, p.y - 4, function(col){
-        patch.style.background = 'radial-gradient(circle, '+col+' 55%, '+col+'00 78%)';
-        patch.classList.add('shown');
-      });
     });
     placeTraveller();
     render();
