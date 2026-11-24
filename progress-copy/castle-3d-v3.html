@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Castle Path — 3D sample v3</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { width:100%; height:100%; overflow:hidden; background:#aee2ff; font-family:-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  #scene { position:fixed; inset:0; }
+  canvas { display:block; }
+  .hud-top {
+    position:fixed; top:0; left:0; right:0; z-index:10;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:12px 16px; pointer-events:none;
+  }
+  .hud-chip {
+    background:rgba(255,255,255,.88); border-radius:999px; padding:7px 14px;
+    font-size:15px; font-weight:600; color:#274156; box-shadow:0 2px 10px rgba(30,60,90,.18);
+  }
+  .hud-chip .star { color:#e9a13b; }
+  .hud-bottom {
+    position:fixed; left:0; right:0; bottom:0; z-index:10;
+    display:flex; flex-direction:column; align-items:center; gap:10px; padding:16px;
+    background:linear-gradient(to top, rgba(20,40,60,.28), rgba(20,40,60,0));
+  }
+  #msg { color:#fff; font-size:17px; font-weight:600; text-shadow:0 1px 6px rgba(20,40,60,.55); min-height:22px; text-align:center; }
+  .btn-row { display:flex; gap:10px; }
+  button {
+    border:none; border-radius:999px; padding:13px 26px; font-size:17px; font-weight:700;
+    cursor:pointer; box-shadow:0 4px 14px rgba(20,40,60,.30); transition:transform .08s ease, opacity .2s;
+  }
+  button:active { transform:scale(.96); }
+  button:disabled { opacity:.45; cursor:default; }
+  #completeBtn { background:#ffb703; color:#4a2f00; }
+  #demoBtn { background:rgba(255,255,255,.92); color:#274156; }
+  #resetBtn { background:#ef6461; color:#fff; display:none; }
+</style>
+</head>
+<body>
+<div id="scene"></div>
+
+<div class="hud-top">
+  <div class="hud-chip">Castle Path — 3D sample v3</div>
+  <div class="hud-chip"><span id="stepLabel">Lesson 1 of 10</span> &nbsp;·&nbsp; <span class="star">★</span> <span id="starCount">0</span></div>
+</div>
+
+<div class="hud-bottom">
+  <div id="msg">Your next bubble is waiting on the path.</div>
+  <div class="btn-row">
+    <button id="completeBtn">Complete lesson</button>
+    <button id="demoBtn">▶ Watch demo</button>
+    <button id="resetBtn">Start again</button>
+  </div>
+</div>
+
+<script src="three.min.js"></script>
+<script src="GLTFLoader.js"></script>
+<script src="meshopt_decoder.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  // ---------- basics ----------
+  var container = document.getElementById("scene");
+  var scene = new THREE.Scene();
+  scene.fog = new THREE.Fog(0xd8eefb, 70, 190);
+
+  var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 700);
+  var renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  container.appendChild(renderer.domElement);
+
+  scene.add(new THREE.HemisphereLight(0xd6ecff, 0x9db98a, 0.85));
+  var sun = new THREE.DirectionalLight(0xfff1d6, 0.75);
+  sun.position.set(25, 50, 35);
+  scene.add(sun);
+
+  // ---------- helpers ----------
+  function clamp(x, a, b) { return Math.max(a, Math.min(b, x)); }
+  function smoothstep(a, b, x) { var t = clamp((x - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); }
+  var seed = 11;
+  function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+
+  // ---------- sky dome (canvas gradient) + painted clouds ----------
+  (function makeSky() {
+    var cv = document.createElement("canvas"); cv.width = 64; cv.height = 512;
+    var g = cv.getContext("2d");
+    var grad = g.createLinearGradient(0, 0, 0, 512);
+    grad.addColorStop(0.0, "#6fb7ef");
+    grad.addColorStop(0.45, "#a5dcff");
+    grad.addColorStop(0.75, "#d9f1fd");
+    grad.addColorStop(1.0, "#ffe9c4");
+    g.fillStyle = grad; g.fillRect(0, 0, 64, 512);
+    var tex = new THREE.CanvasTexture(cv);
+    var dome = new THREE.Mesh(
+      new THREE.SphereGeometry(300, 24, 16),
+      new THREE.MeshBasicMaterial({ map: tex, side: THREE.BackSide, fog: false })
+    );
+    dome.position.y = -8;
+    scene.add(dome);
+  })();
+
+  function cloudTexture() {
+    var cv = document.createElement("canvas"); cv.width = 256; cv.height = 128;
+    var g = cv.getContext("2d");
+    var blobs = [[70, 78, 42], [118, 62, 52], [168, 74, 44], [96, 84, 46], [142, 86, 40]];
+    blobs.forEach(function (b) {
+      var rg = g.createRadialGradient(b[0], b[1], 4, b[0], b[1], b[2]);
+      rg.addColorStop(0, "rgba(255,255,255,0.95)");
+      rg.addColorStop(0.7, "rgba(255,255,255,0.55)");
+      rg.addColorStop(1, "rgba(255,255,255,0)");
+      g.fillStyle = rg;
+      g.fillRect(0, 0, 256, 128);
+    });
+    return new THREE.CanvasTexture(cv);
+  }
+  var clouds = [];
+  (function makeClouds() {
+    var tex = cloudTexture();
+    for (var i = 0; i < 8; i++) {
+      var m = new THREE.Mesh(
+        new THREE.PlaneGeometry(30 + rnd() * 22, 12 + rnd() * 7),
+        new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthWrite: false, fog: false, opacity: 0.95 })
+      );
+      m.position.set(-90 + rnd() * 180, 36 + rnd() * 26, -70 - rnd() * 60);
+      m.userData = { speed: 0.25 + rnd() * 0.4 };
+      scene.add(m);
+      clouds.push(m);
+    }
+  })();
+
+  // ---------- terrain ----------
+  var CASTLE_POS = new THREE.Vector3(-3.1, 31.5, -23);
+  function terrainH(x, z) {
+    var s = clamp((34 - z) / 78, 0, 1);
+    var h = Math.pow(s, 1.3) * 30;
+    h += (Math.sin(x * 0.10 + 1.7) * 1.3 + Math.cos(z * 0.13) * 0.9 + Math.sin((x + z) * 0.05) * 0.8) * s * (1 - s * 0.4);
+    h += smoothstep(30, 72, Math.abs(x)) * 7 * s;                    // valley sides rise
+    var d = Math.hypot(x - CASTLE_POS.x, z - CASTLE_POS.z);
+    h = h * (1 - smoothstep(19, 10, d)) + CASTLE_POS.y * smoothstep(19, 10, d); // summit plateau
+    return h;
+  }
+
+  // ---------- path (forward, gentle S-curves) ----------
+  function pathPoint(t) {
+    var z = 26 - 46 * t;
+    var x = 6.5 * Math.sin(t * 4.4) * (1 - 0.5 * t);
+    return new THREE.Vector3(x, terrainH(x, z) + 0.35, z);
+  }
+  function pathDir(t) {
+    var a = pathPoint(Math.max(t - 0.04, 0)), b = pathPoint(Math.min(t + 0.04, 1));
+    return b.sub(a).normalize();
+  }
+  var pathSamples = [];
+  for (var ps = 0; ps <= 40; ps++) pathSamples.push(pathPoint(ps / 40));
+  function distToPath(x, z) {
+    var m = 1e9;
+    for (var i = 0; i < pathSamples.length; i++) {
+      var dx = pathSamples[i].x - x, dz = pathSamples[i].z - z;
+      var d = dx * dx + dz * dz;
+      if (d < m) m = d;
+    }
+    return Math.sqrt(m);
+  }
+
+  (function buildTerrain() {
+    var geo = new THREE.PlaneGeometry(170, 130, 110, 84);
+    geo.rotateX(-Math.PI / 2);
+    var pos = geo.attributes.position;
+    var colors = new Float32Array(pos.count * 3);
+    var cA = new THREE.Color(0x4da34e), cB = new THREE.Color(0x7cc46e),
+        cTop = new THREE.Color(0x98cc7f), cPath = new THREE.Color(0xe6d3a3),
+        cPlateau = new THREE.Color(0xb9cf9a), tmp = new THREE.Color();
+    for (var i = 0; i < pos.count; i++) {
+      var x = pos.getX(i), z = pos.getZ(i) - 10;
+      pos.setZ(i, z);
+      var h = terrainH(x, z);
+      pos.setY(i, h);
+      var n = 0.5 + 0.5 * Math.sin(x * 0.35 + Math.sin(z * 0.3) * 2.1) * Math.cos(z * 0.28 + x * 0.12);
+      tmp.copy(cA).lerp(cB, n);
+      tmp.lerp(cTop, clamp(h / 34, 0, 1) * 0.55);
+      var dp = distToPath(x, z);
+      if (dp < 2.7) tmp.lerp(cPath, 0.72 * (1 - dp / 2.7));
+      var dpl = Math.hypot(x - CASTLE_POS.x, z - CASTLE_POS.z);
+      if (dpl < 8) tmp.lerp(cPlateau, 0.6 * (1 - dpl / 8));
+      colors[i * 3] = tmp.r; colors[i * 3 + 1] = tmp.g; colors[i * 3 + 2] = tmp.b;
+    }
+    geo.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+    geo.computeVertexNormals();
+    var terr = new THREE.Mesh(geo, new THREE.MeshLambertMaterial({ vertexColors: true }));
+    scene.add(terr);
+  })();
+
+  // trail dots
+  (function trail() {
+    var dotGeo = new THREE.CylinderGeometry(0.45, 0.45, 0.1, 10);
+    var dotMat = new THREE.MeshLambertMaterial({ color: 0xefdfae });
+    for (var d = 0; d <= 90; d++) {
+      var p = pathPoint(0.02 + (d / 90) * 0.93);
+      var dot = new THREE.Mesh(dotGeo, dotMat);
+      dot.position.copy(p); dot.position.y -= 0.13;
+      scene.add(dot);
+    }
+  })();
+
+  // ---------- stones + bubbles ----------
+  var N = 10, stoneT = [], stones = [], bubbles = [];
+  function starMesh() {
+    var shape = new THREE.Shape();
+    var spikes = 5, outer = 0.6, inner = 0.27;
+    for (var i = 0; i < spikes * 2; i++) {
+      var rad = (i % 2 === 0) ? outer : inner;
+      var a = (i / (spikes * 2)) * Math.PI * 2 - Math.PI / 2;
+      var x = Math.cos(a) * rad, y = Math.sin(a) * rad;
+      if (i === 0) shape.moveTo(x, y); else shape.lineTo(x, y);
+    }
+    shape.closePath();
+    return new THREE.Mesh(new THREE.ShapeGeometry(shape),
+      new THREE.MeshBasicMaterial({ color: 0x9aa4ab, side: THREE.DoubleSide }));
+  }
+  (function buildStones() {
+    var stoneGeo = new THREE.CylinderGeometry(1.5, 1.62, 0.34, 22);
+    var mats = [new THREE.MeshLambertMaterial({ color: 0xf7ead0 }),
+                new THREE.MeshLambertMaterial({ color: 0xf0dcba })];
+    for (var i = 0; i < N; i++) {
+      var t = 0.02 + (i / (N - 1)) * 0.93;
+      stoneT.push(t);
+      var p = pathPoint(t);
+      var stone = new THREE.Mesh(stoneGeo, mats[i % 2]);
+      stone.position.copy(p);
+      stone.rotation.y = rnd() * 3;
+      scene.add(stone);
+      stones.push(stone);
+
+      var dir = pathDir(t);
+      var side = new THREE.Vector3(-dir.z, 0, dir.x);
+      var sign = (i % 3 === 2) ? -1 : 1;
+      var bPos = p.clone().add(side.multiplyScalar(2.7 * sign));
+      bPos.y += 1.95;
+      var bMat = new THREE.MeshPhongMaterial({
+        color: 0xbfc7cc, transparent: true, opacity: 0.45,
+        shininess: 90, specular: 0xffffff, emissive: 0x000000
+      });
+      var bubble = new THREE.Mesh(new THREE.SphereGeometry(1.15, 28, 22), bMat);
+      bubble.position.copy(bPos);
+      var star = starMesh();
+      bubble.add(star);
+      var hl = new THREE.Mesh(new THREE.SphereGeometry(0.24, 10, 8),
+        new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.75 }));
+      hl.position.set(-0.36, 0.42, 0.85);
+      bubble.add(hl);
+      scene.add(bubble);
+      bubbles.push({ mesh: bubble, star: star, baseY: bPos.y, hue: (i * 36) % 360, state: "grey" });
+    }
+  })();
+
+  // ---------- low-poly pines, rocks, flowers (style matched to the castle model) ----------
+  (function scatter() {
+    var trunkGeo = new THREE.CylinderGeometry(0.16, 0.27, 1.1, 7);
+    var trunkMat = new THREE.MeshStandardMaterial({ color: 0x7a4a2e, roughness: 1, flatShading: true });
+    var coneGeo = new THREE.ConeGeometry(1.3, 2.1, 8);
+    var greens = [0x2fb457, 0x3ec85f, 0x27a04b, 0x4bd06b].map(function (c) {
+      return new THREE.MeshStandardMaterial({ color: c, roughness: 1, flatShading: true });
+    });
+    var placed = 0, guard = 0;
+    while (placed < 40 && guard++ < 400) {
+      var x = -58 + rnd() * 116, z = -52 + rnd() * 84;
+      if (distToPath(x, z) < 4.6) continue;
+      if (Math.hypot(x - CASTLE_POS.x, z - CASTLE_POS.z) < 11) continue;
+      var tree = new THREE.Group();
+      var trunk = new THREE.Mesh(trunkGeo, trunkMat); trunk.position.y = 0.55;
+      tree.add(trunk);
+      var gm = greens[Math.floor(rnd() * greens.length)];
+      var tiers = [[1.3, 2.1, 1.55], [0.98, 1.8, 2.6], [0.64, 1.5, 3.55]];
+      tiers.forEach(function (tr2) {
+        var cone = new THREE.Mesh(coneGeo, gm);
+        cone.scale.set(tr2[0] / 1.3, tr2[1] / 2.1, tr2[0] / 1.3);
+        cone.position.y = tr2[2];
+        tree.add(cone);
+      });
+      var sc = 0.85 + rnd() * 0.75;
+      tree.scale.set(sc, sc, sc);
+      tree.position.set(x, terrainH(x, z) - 0.1, z);
+      scene.add(tree);
+      placed++;
+    }
+    // rocks
+    var rockGeo = new THREE.IcosahedronGeometry(0.95, 0);
+    var rockMat = new THREE.MeshStandardMaterial({ color: 0x9a97a3, roughness: 1, flatShading: true });
+    placed = 0; guard = 0;
+    while (placed < 15 && guard++ < 300) {
+      var rx = -55 + rnd() * 110, rz = -50 + rnd() * 82;
+      if (distToPath(rx, rz) < 3.6) continue;
+      if (Math.hypot(rx - CASTLE_POS.x, rz - CASTLE_POS.z) < 10) continue;
+      var rock = new THREE.Mesh(rockGeo, rockMat);
+      var rs = 0.6 + rnd() * 0.9;
+      rock.scale.set(rs, rs * 0.72, rs);
+      rock.rotation.set(rnd() * 3, rnd() * 3, rnd() * 3);
+      rock.position.set(rx, terrainH(rx, rz) + 0.25, rz);
+      scene.add(rock);
+      placed++;
+    }
+    // flowers near the path
+    var fGeo = new THREE.SphereGeometry(0.17, 8, 6);
+    var fMats = [0xf7a8b8, 0xffd93c, 0xffffff, 0xc3aef0, 0xff9d76].map(function (c) {
+      return new THREE.MeshLambertMaterial({ color: c });
+    });
+    for (var f = 0; f < 90; f++) {
+      var base = pathSamples[Math.floor(rnd() * pathSamples.length)];
+      var fx = base.x + (rnd() - 0.5) * 13, fz = base.z + (rnd() - 0.5) * 13;
+      var dd = distToPath(fx, fz);
+      if (dd < 2.1 || dd > 8) continue;
+      var fl = new THREE.Mesh(fGeo, fMats[Math.floor(rnd() * fMats.length)]);
+      fl.position.set(fx, terrainH(fx, fz) + 0.16, fz);
+      scene.add(fl);
+    }
+  })();
+
+  // ---------- castle (ready-made model: Neuschwanstein, CC0 via Grab3D) ----------
+  var flags = [];
+  var crownY = CASTLE_POS.y + 11.4;
+  (function buildCastle() {
+    var crag = new THREE.Mesh(new THREE.DodecahedronGeometry(10.5, 0),
+      new THREE.MeshStandardMaterial({ color: 0x8f8b99, roughness: 1, flatShading: true }));
+    crag.scale.set(1.3, 0.34, 0.72);
+    crag.rotation.y = 0.5;
+    crag.position.set(CASTLE_POS.x, CASTLE_POS.y - 0.4, CASTLE_POS.z);
+    scene.add(crag);
+    var loader = new THREE.GLTFLoader();
+    if (window.MeshoptDecoder) loader.setMeshoptDecoder(MeshoptDecoder);
+    loader.load("neuschwanstein-light.glb", function (g) {
+      var o = g.scene;
+      var box = new THREE.Box3().setFromObject(o);
+      var size = box.getSize(new THREE.Vector3());
+      var ctr = box.getCenter(new THREE.Vector3());
+      var sc = 26 / size.x;
+      o.scale.setScalar(sc);
+      o.position.set(CASTLE_POS.x - ctr.x * sc, CASTLE_POS.y - box.min.y * sc + 0.9, CASTLE_POS.z - ctr.z * sc);
+      scene.add(o);
+      crownY = CASTLE_POS.y + 0.9 + size.y * sc + 1.8;
+    }, undefined, function (e) { console.error("castle load failed", e); });
+  })();
+
+  // crown
+  var crown = new THREE.Group();
+  (function buildCrown() {
+    var gold = new THREE.MeshPhongMaterial({ color: 0xffc93c, emissive: 0x8a5a00, shininess: 80 });
+    var ring = new THREE.Mesh(new THREE.TorusGeometry(1.6, 0.34, 10, 28), gold);
+    ring.rotation.x = Math.PI / 2;
+    crown.add(ring);
+    for (var c = 0; c < 6; c++) {
+      var ca = (c / 6) * Math.PI * 2;
+      var spike = new THREE.Mesh(new THREE.ConeGeometry(0.32, 1.0, 8), gold);
+      spike.position.set(Math.cos(ca) * 1.6, 0.58, Math.sin(ca) * 1.6);
+      crown.add(spike);
+    }
+    var gem = new THREE.Mesh(new THREE.SphereGeometry(0.45, 12, 10),
+      new THREE.MeshPhongMaterial({ color: 0xef3b5c, emissive: 0x6e0f24 }));
+    gem.position.y = 0.15;
+    crown.add(gem);
+    crown.position.set(CASTLE_POS.x, CASTLE_POS.y + 11.4, CASTLE_POS.z);
+    scene.add(crown);
+  })();
+
+  // ---------- sparkles ----------
+  var PMAX = 60;
+  var pGeo = new THREE.BufferGeometry();
+  var pPos = new Float32Array(PMAX * 3);
+  pGeo.setAttribute("position", new THREE.BufferAttribute(pPos, 3));
+  var pMat = new THREE.PointsMaterial({
+    color: 0xffc93c, size: 0.38, transparent: true, opacity: 1,
+    blending: THREE.AdditiveBlending, depthWrite: false
+  });
+  var points = new THREE.Points(pGeo, pMat);
+  points.visible = false;
+  scene.add(points);
+  var pVel = [], pLife = 0;
+  function burst(origin) {
+    pVel = [];
+    for (var i = 0; i < PMAX; i++) {
+      var th = Math.random() * Math.PI * 2, ph = Math.acos(2 * Math.random() - 1);
+      var sp = 2.2 + Math.random() * 3.4;
+      pVel.push(new THREE.Vector3(
+        Math.sin(ph) * Math.cos(th) * sp,
+        Math.cos(ph) * sp * 0.9 + 1.2,
+        Math.sin(ph) * Math.sin(th) * sp));
+      pPos[i * 3] = origin.x; pPos[i * 3 + 1] = origin.y; pPos[i * 3 + 2] = origin.z;
+    }
+    pGeo.attributes.position.needsUpdate = true;
+    pLife = 1;
+    points.visible = true;
+  }
+  function updateParticles(dt) {
+    if (pLife <= 0) return;
+    pLife -= dt / 0.95;
+    for (var i = 0; i < PMAX; i++) {
+      pVel[i].y -= 3.2 * dt;
+      pPos[i * 3] += pVel[i].x * dt;
+      pPos[i * 3 + 1] += pVel[i].y * dt;
+      pPos[i * 3 + 2] += pVel[i].z * dt;
+    }
+    pGeo.attributes.position.needsUpdate = true;
+    pMat.opacity = Math.max(pLife, 0);
+    if (pLife <= 0) points.visible = false;
+  }
+
+  // ---------- camera rig: follow behind the traveller, moving FORWARD ----------
+  var castleLook = CASTLE_POS.clone(); castleLook.y += 4.2;
+  function framing(tStone) {
+    var p = pathPoint(tStone);
+    var dir = pathDir(tStone);
+    var side = new THREE.Vector3(-dir.z, 0, dir.x);
+    var pos = p.clone().add(dir.clone().multiplyScalar(-10.5)).add(side.multiplyScalar(1.6));
+    pos.y += 4.6;
+    var target = p.clone().add(dir.clone().multiplyScalar(6.5));
+    target.y += 1.2;
+    target.lerp(castleLook, 0.30 + tStone * 0.15);
+    return { pos: pos, target: target };
+  }
+  function doorFraming() {
+    var pos = CASTLE_POS.clone(); pos.y += 5.4; pos.z += 19;
+    var target = CASTLE_POS.clone(); target.y += 3.6;
+    return { pos: pos, target: target };
+  }
+  var camPos = framing(stoneT[0]).pos.clone();
+  var camTarget = framing(stoneT[0]).target.clone();
+  var glide = null;
+  function glideTo(f, dur) {
+    glide = { t: 0, dur: dur || 1.7, fromPos: camPos.clone(), toPos: f.pos.clone(),
+              fromTg: camTarget.clone(), toTg: f.target.clone() };
+  }
+  function ease(x) { return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+  function updateGlide(dt) {
+    if (!glide) return;
+    glide.t += dt / glide.dur;
+    var k = ease(Math.min(glide.t, 1));
+    camPos.lerpVectors(glide.fromPos, glide.toPos, k);
+    camTarget.lerpVectors(glide.fromTg, glide.toTg, k);
+    if (glide.t >= 1) { glide = null; onGlideDone(); }
+  }
+
+  // ---------- journey logic ----------
+  var stepLabel = document.getElementById("stepLabel");
+  var starCount = document.getElementById("starCount");
+  var msg = document.getElementById("msg");
+  var completeBtn = document.getElementById("completeBtn");
+  var demoBtn = document.getElementById("demoBtn");
+  var resetBtn = document.getElementById("resetBtn");
+  var idx = 0, stars = 0, busy = false, demoTimer = null;
+
+  function setBusy(b) {
+    busy = b;
+    completeBtn.disabled = b || idx >= N;
+    demoBtn.disabled = b;
+  }
+  function onGlideDone() {
+    setBusy(false);
+    if (idx >= N) {
+      msg.textContent = "You reached the castle door. The crown is yours!";
+      resetBtn.style.display = "inline-block";
+      demoBtn.style.display = "none";
+    } else {
+      msg.textContent = "Your next bubble is waiting on the path.";
+    }
+  }
+  function completeLesson() {
+    if (busy || idx >= N) return;
+    setBusy(true);
+    var b = bubbles[idx];
+    b.state = "lit";
+    b.mesh.material.color.setHSL(b.hue / 360, 0.75, 0.68);
+    b.mesh.material.opacity = 0.85;
+    b.mesh.material.emissive.setHSL(b.hue / 360, 0.8, 0.35);
+    b.star.material.color.set(0xffc93c);
+    msg.textContent = "Lesson complete — watch your bubble!";
+    setTimeout(function () {
+      b.state = "popped";
+      burst(b.mesh.position.clone());
+      b.mesh.visible = false;
+      stars++;
+      starCount.textContent = stars;
+      idx++;
+      if (idx < N) stepLabel.textContent = "Lesson " + (idx + 1) + " of " + N;
+      else stepLabel.textContent = "Castle door";
+      setTimeout(function () {
+        glideTo(idx < N ? framing(stoneT[idx]) : doorFraming(), 1.8);
+      }, 650);
+    }, 750);
+  }
+  function stopDemo() {
+    if (demoTimer) { clearInterval(demoTimer); demoTimer = null; demoBtn.textContent = "▶ Watch demo"; }
+  }
+  function startDemo() {
+    if (demoTimer) { stopDemo(); return; }
+    demoBtn.textContent = "⏸ Stop demo";
+    demoTimer = setInterval(function () {
+      if (idx >= N) { stopDemo(); return; }
+      if (!busy) completeLesson();
+    }, 3400);
+    if (!busy && idx < N) completeLesson();
+  }
+  function reset() {
+    stopDemo();
+    idx = 0; stars = 0;
+    starCount.textContent = "0";
+    stepLabel.textContent = "Lesson 1 of " + N;
+    bubbles.forEach(function (b) {
+      b.state = "grey";
+      b.mesh.visible = true;
+      b.mesh.material.color.set(0xbfc7cc);
+      b.mesh.material.opacity = 0.45;
+      b.mesh.material.emissive.set(0x000000);
+      b.star.material.color.set(0x9aa4ab);
+    });
+    resetBtn.style.display = "none";
+    demoBtn.style.display = "inline-block";
+    msg.textContent = "Your next bubble is waiting on the path.";
+    glideTo(framing(stoneT[0]), 1.2);
+  }
+  completeBtn.addEventListener("click", function () { stopDemo(); completeLesson(); });
+  demoBtn.addEventListener("click", startDemo);
+  resetBtn.addEventListener("click", reset);
+  window.addEventListener("keydown", function (e) {
+    if (e.code === "Space") { e.preventDefault(); stopDemo(); completeLesson(); }
+  });
+  if (window.location.hash.indexOf("demo") >= 0) setTimeout(startDemo, 900);
+
+  // ---------- animate ----------
+  var clock = new THREE.Clock();
+  function animate() {
+    requestAnimationFrame(animate);
+    var dt = Math.min(clock.getDelta(), 0.05);
+    var t = clock.elapsedTime;
+
+    bubbles.forEach(function (b, i) {
+      if (b.state === "popped") return;
+      b.mesh.position.y = b.baseY + Math.sin(t * 1.3 + i * 1.1) * 0.16;
+      b.star.rotation.y = t * 0.9 + i;
+      if (b.state === "lit") {
+        var s = 1 + Math.sin(t * 14) * 0.07;
+        b.mesh.scale.set(s, s, s);
+      }
+    });
+    crown.rotation.y = t * 0.5;
+    crown.position.y = crownY + Math.sin(t * 0.8) * 0.3;
+    flags.forEach(function (f, i) { f.rotation.y = Math.sin(t * 2.2 + i * 1.7) * 0.35; });
+    clouds.forEach(function (c) {
+      c.position.x += c.userData.speed * dt;
+      if (c.position.x > 130) c.position.x = -130;
+    });
+
+    updateParticles(dt);
+    updateGlide(dt);
+
+    var sway = glide ? 0 : Math.sin(t * 0.5) * 0.1;
+    camera.position.copy(camPos);
+    camera.position.y += sway;
+    camera.lookAt(camTarget);
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  window.addEventListener("resize", function () {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+})();
+</script>
+</body>
+</html>
