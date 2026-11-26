@@ -510,7 +510,65 @@ div.relative.z-10.mx-auto.flex.w-full.max-w-md.flex-1.flex-col.px-5:has(>[role="
   padding-top:1.25rem!important;
   padding-bottom:1.25rem!important;
 }
-</style>
+</style><script>/* camelon-cover-i18n: translate lesson static covers from origb1:lang (sample: lesson-a1-a1-01). Missing strings fall back to English. French tokens stay as-is. */
+(function(){
+var KEY='origb1:lang';
+var RTL={fa:1,ar:1};
+window.__CAM_COVER_I18N=window.__CAM_COVER_I18N||{
+"lesson-a1-a1-01":{
+en:{subtitle:"Greet and be polite",heading:"IN THIS LESSON YOU WILL LEARN TO",goals:["Greet someone politely","Introduce yourself (s\u2019appeler)","Use the subject pronouns: je, tu, il, elle"],steps:"8 steps",minutes:"~30 min",cta:"Continue"},
+fa:{subtitle:"سلام کردن و مودب بودن",heading:"در این درس یاد می‌گیرید که",goals:["با ادب به کسی سلام کنید","خودتان را معرفی کنید (s\u2019appeler)","ضمیرهای فاعلی را به کار ببرید: je, tu, il, elle"],steps:"۸ مرحله",minutes:"~۳۰ دقیقه",cta:"ادامه"},
+es:{subtitle:"Saludar y ser educado",heading:"EN ESTA LECCIÓN VAS A APRENDER A",goals:["Saludar a alguien con educación","Presentarte (s\u2019appeler)","Usar los pronombres sujeto: je, tu, il, elle"],steps:"8 pasos",minutes:"~30 min",cta:"Continuar"},
+ru:{subtitle:"Приветствовать и быть вежливым",heading:"В ЭТОМ УРОКЕ ВЫ НАУЧИТЕСЬ",goals:["Вежливо поздороваться","Представиться (s\u2019appeler)","Использовать личные местоимения: je, tu, il, elle"],steps:"8 шагов",minutes:"~30 мин",cta:"Продолжить"},
+hi:{subtitle:"अभिवादन करें और विनम्र रहें",heading:"इस पाठ में आप सीखेंगे",goals:["किसी का विनम्रता से अभिवादन करना","अपना परिचय देना (s\u2019appeler)","कर्ता सर्वनामों का उपयोग करना: je, tu, il, elle"],steps:"8 चरण",minutes:"~30 मिनट",cta:"आगे"},
+ar:{subtitle:"التحية والأدب",heading:"في هذا الدرس ستتعلم أن",goals:["تحيي شخصًا بأدب","تقدم نفسك (s\u2019appeler)","تستخدم ضمائر الفاعل: je, tu, il, elle"],steps:"8 خطوات",minutes:"~30 دقيقة",cta:"متابعة"}
+}
+};
+function lessonKey(){
+  var m=(location.pathname||'').match(/\/(lesson-[^\/]+)/);
+  return m?m[1]:null;
+}
+function lang(){
+  try{var l=localStorage.getItem(KEY);if(l)return l}catch(e){}
+  return 'en';
+}
+function pack(lesson,l){
+  var L=window.__CAM_COVER_I18N[lesson]; if(!L) return null;
+  var base=L.en||{}, cur=L[l]||{};
+  return {
+    subtitle:cur.subtitle||base.subtitle,
+    heading:cur.heading||base.heading,
+    goals:(cur.goals&&cur.goals.length?cur.goals:base.goals||[]).map(function(g,i){return g||(base.goals||[])[i]}),
+    steps:cur.steps||base.steps,
+    minutes:cur.minutes||base.minutes,
+    cta:cur.cta||base.cta
+  };
+}
+function apply(){
+  var lesson=lessonKey(); if(!lesson) return;
+  var p=pack(lesson,lang()); if(!p) return;
+  var root=document.querySelector('.scr')||document;
+  var sub=root.querySelector('[data-cam-cover="subtitle"]'); if(sub&&p.subtitle) sub.textContent=p.subtitle;
+  var hd=root.querySelector('[data-cam-cover="heading"]'); if(hd&&p.heading) hd.textContent=p.heading;
+  var st=root.querySelector('[data-cam-cover="steps"]'); if(st&&p.steps) st.textContent=p.steps;
+  var mn=root.querySelector('[data-cam-cover="minutes"]'); if(mn&&p.minutes) mn.textContent=p.minutes;
+  var cta=document.querySelector('[data-cam-cover="cta"]')||(root&&root.querySelector('[data-cam-cover="cta"]')); if(cta&&p.cta){cta.textContent=p.cta;try{cta.setAttribute('data-cam-cover-lang',lang())}catch(e){}}
+  root.querySelectorAll('[data-cam-cover="goal"]').forEach(function(el){
+    var i=+el.getAttribute('data-cam-goal');
+    if(p.goals&&p.goals[i]!=null) el.textContent=p.goals[i];
+  });
+  var dir=RTL[lang()]?'rtl':'ltr';
+  var box=root.querySelector('[data-cam-cover="goals"]'); if(box) box.setAttribute('dir',dir);
+  if(sub) sub.setAttribute('dir',dir);
+  if(hd) hd.setAttribute('dir',dir);
+  if(cta) cta.setAttribute('dir',dir);
+}
+apply();
+setTimeout(apply,0);
+setTimeout(apply,300);
+new MutationObserver(function(){apply()}).observe(document.documentElement,{childList:true,subtree:true});
+window.addEventListener('storage',function(e){if(!e.key||e.key===KEY)apply()});
+})();</script>
 <style id="camelon-lang-flags-click">
 /* Decorative logo glow was intercepting clicks on the language flag row at desktop widths. */
 span[aria-hidden="true"].absolute.left-1\/2.top-1\/2.h-44.w-64,
