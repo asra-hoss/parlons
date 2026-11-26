@@ -244,4 +244,134 @@ setInterval(tidyread,500);tidyread();
 (function(){function wire(wrap){if(wrap.__wired)return;wrap.__wired=1;var btn=wrap.querySelector(".nmic"),hint=wrap.querySelector(".nmic-hint"),play=wrap.querySelector(".nmic-play");var mr=null,chunks=[],stream=null,want=false,rec=false;function msg(t){hint.textContent=t}function stopTracks(){if(stream){stream.getTracks().forEach(function(t){try{t.stop()}catch(e){}});stream=null}}function start(){if(rec)return;want=true;if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia||typeof MediaRecorder==="undefined"){want=false;msg("Recording is not supported in this browser.");return}msg("Starting the microphone\u2026");navigator.mediaDevices.getUserMedia({audio:true}).then(function(s){stream=s;if(!want){stopTracks();msg("Hold to record your voice");return}chunks=[];try{mr=new MediaRecorder(s)}catch(e){stopTracks();msg("Recording is not supported in this browser.");return}mr.ondataavailable=function(ev){if(ev.data&&ev.data.size)chunks.push(ev.data)};mr.onstop=function(){stopTracks();btn.style.boxShadow="0 10px 22px rgba(90,70,180,.35)";if(chunks.length){var url=URL.createObjectURL(new Blob(chunks,{type:mr.mimeType||"audio/webm"}));play.innerHTML="";var a=document.createElement("audio");a.controls=true;a.src=url;a.style.width="100%";play.appendChild(a);msg("Tap play to hear yourself \u2014 hold to record again.")}else msg("Hold to record your voice")};mr.start();rec=true;btn.style.boxShadow="0 0 0 10px rgba(224,71,106,.25),0 10px 22px rgba(90,70,180,.35)";msg("Recording\u2026 let go when you finish.")}).catch(function(){want=false;msg("Microphone blocked. Allow it in your browser, then try again.")})}function stop(){want=false;if(rec&&mr&&mr.state!=="inactive"){rec=false;try{mr.stop()}catch(e){}}}btn.addEventListener("pointerdown",function(e){e.preventDefault();e.stopPropagation();try{btn.setPointerCapture(e.pointerId)}catch(x){}start()});["pointerup","pointercancel"].forEach(function(ev){btn.addEventListener(ev,function(e){e.preventDefault();stop()})});btn.addEventListener("contextmenu",function(e){e.preventDefault()})}function run(){[].forEach.call(document.querySelectorAll(".nmic-wrap"),wire)}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",run);else run()})();</script><script>
 window.PRON=Object.assign(window.PRON||{},{"considérant que": "https://chichilang.com/assets/lesson-audio/lesson-c1-new-connecteurs/words/considerant-que.mp3", "d'autant que": "https://chichilang.com/assets/lesson-audio/lesson-c1-new-connecteurs/words/d-autant-que.mp3", "d'autant plus que": "https://chichilang.com/assets/lesson-audio/lesson-c1-new-connecteurs/words/d-autant-plus-que.mp3", "surtout que": "https://chichilang.com/assets/lesson-audio/lesson-c1-new-connecteurs/words/surtout-que.mp3", "de crainte que": "https://chichilang.com/assets/lesson-audio/lesson-c1-new-connecteurs/words/de-crainte-que.mp3", "à ce que": "https://chichilang.com/assets/lesson-audio/lesson-c1-new-connecteurs/words/a-ce-que.mp3", "veiller à ce que": "https://chichilang.com/assets/lesson-audio/lesson-c1-new-connecteurs/words/veiller-a-ce-que.mp3", "tenir à ce que": "https://chichilang.com/assets/lesson-audio/lesson-c1-new-connecteurs/words/tenir-a-ce-que.mp3", "encore que": "https://chichilang.com/assets/lesson-audio/lesson-c1-new-connecteurs/words/encore-que.mp3", "s'attendre à ce que": "https://chichilang.com/assets/lesson-audio/lesson-c1-new-connecteurs/words/s-attendre-a-ce-que.mp3", "en définitive": "https://chichilang.com/assets/lesson-audio/lesson-c1-new-connecteurs/words/en-definitive.mp3", "à l'appui de": "https://chichilang.com/assets/lesson-audio/lesson-c1-new-connecteurs/words/a-l-appui-de.mp3", "il convient de noter que": "https://chichilang.com/assets/lesson-audio/lesson-c1-new-connecteurs/words/il-convient-de-noter-que.mp3", "une citation": "https://chichilang.com/assets/lesson-audio/lesson-c1-new-connecteurs/words/une-citation.mp3", "citer": "https://chichilang.com/assets/lesson-audio/lesson-c1-new-connecteurs/words/citer.mp3", "les guillemets": "https://chichilang.com/assets/lesson-audio/lesson-c1-new-connecteurs/words/les-guillemets.mp3", "entre guillemets": "https://chichilang.com/assets/lesson-audio/lesson-c1-new-connecteurs/words/entre-guillemets.mp3", "selon": "https://chichilang.com/assets/lesson-audio/lesson-c1-new-connecteurs/words/selon.mp3", "d'après": "https://chichilang.com/assets/lesson-audio/lesson-c1-new-connecteurs/words/d-apres.mp3", "comme le souligne X": "https://chichilang.com/assets/lesson-audio/lesson-c1-new-connecteurs/words/comme-le-souligne-x.mp3", "rapporter des propos": "https://chichilang.com/assets/lesson-audio/lesson-c1-new-connecteurs/words/rapporter-des-propos.mp3", "une source": "https://chichilang.com/assets/lesson-audio/lesson-c1-new-connecteurs/words/une-source.mp3", "un extrait": "https://chichilang.com/assets/lesson-audio/lesson-c1-new-connecteurs/words/un-extrait.mp3", "faire référence à": "https://chichilang.com/assets/lesson-audio/lesson-c1-new-connecteurs/words/faire-reference-a.mp3", "un ouvrage": "https://chichilang.com/assets/lesson-audio/lesson-c1-new-connecteurs/words/un-ouvrage.mp3"});
 window.D=Object.assign(window.D||{},{"considérant que": {"display": "considérant que", "en": "given that, considering that (formal cause)", "fa": "با توجه به اینکه", "es": "considerando que", "ru": "учитывая что", "hi": "यह देखते हुए कि", "ar": "بالنظر إلى أن", "kind": "word"}, "d'autant que": {"display": "d'autant que", "en": "all the more so as", "fa": "به‌ویژه از آن‌رو که", "es": "tanto más cuanto que", "ru": "тем более что", "hi": "इसलिये और भी", "ar": "لا سيما أن", "kind": "word"}, "d'autant plus que": {"display": "d'autant plus que", "en": "all the more so as (stronger)", "fa": "به‌ویژه از آن‌رو که (قوی‌تر)", "es": "tanto más cuanto que", "ru": "тем более что", "hi": "और भी ज्यादा क्योंकि", "ar": "لا سيما وأن", "kind": "word"}, "surtout que": {"display": "surtout que", "en": "especially since, particularly as", "fa": "مخصوصاً که", "es": "sobre todo porque", "ru": "тем более что", "hi": "खासकर क्योंकि", "ar": "خاصة أن", "kind": "word"}, "de crainte que": {"display": "de crainte que", "en": "for fear that (+ subjunctive)", "fa": "از بیم آنکه", "es": "por temor a que", "ru": "из опасения что", "hi": "इस डर से कि", "ar": "خوفاً من أن", "kind": "word"}, "à ce que": {"display": "à ce que", "en": "that (after veiller / tenir / s'attendre)", "fa": "که (بعد از افعال مراقبت)", "es": "a que", "ru": "к тому чтобы", "hi": "कि (के बाद)", "ar": "أن (بعد أفعال)", "kind": "word"}, "veiller à ce que": {"display": "veiller à ce que", "en": "to make sure that, to see to it that", "fa": "مراقب بودن که", "es": "velar por que", "ru": "следить за тем чтобы", "hi": "यह सुनिश्चित करना कि", "ar": "السهر على أن", "kind": "word"}, "tenir à ce que": {"display": "tenir à ce que", "en": "to insist that, to be keen that", "fa": "اصرار داشتن که", "es": "insistir en que", "ru": "настаивать на том чтобы", "hi": "ज़ोर देना कि", "ar": "الإصرار على أن", "kind": "word"}, "encore que": {"display": "encore que", "en": "although, even though (formal)", "fa": "هرچند که", "es": "aunque (formal)", "ru": "хотя", "hi": "यद्यपि", "ar": "رغم أن", "kind": "word"}, "s'attendre à ce que": {"display": "s'attendre à ce que", "en": "to expect that", "fa": "انتظار داشتن که", "es": "esperar que", "ru": "ожидать что", "hi": "उम्मीद करना कि", "ar": "توقع أن", "kind": "word"}, "en définitive": {"display": "en définitive", "en": "ultimately, in the final analysis", "fa": "در نهایت", "es": "en definitiva", "ru": "в конечном счёте", "hi": "अंततः", "ar": "في النهاية", "kind": "word"}, "à l'appui de": {"display": "à l'appui de", "en": "in support of", "fa": "در تأییدِ", "es": "en apoyo de", "ru": "в поддержку", "hi": "के समर्थन में", "ar": "دعماً لـ", "kind": "word"}, "il convient de noter que": {"display": "il convient de noter que", "en": "it should be noted that", "fa": "شایان ذکر است که", "es": " conviene señalar que", "ru": "следует отметить что", "hi": "यह नोट करना चाहिए कि", "ar": "ينبغي الإشارة إلى أن", "kind": "word"}, "une citation": {"display": "une citation", "en": "a quotation", "fa": "یک نقل‌قول", "es": "una cita", "ru": "цитата", "hi": "उद्धरण", "ar": "اقتباس", "kind": "word"}, "citer": {"display": "citer", "en": "to quote, to cite", "fa": "نقل‌قول کردن", "es": "citar", "ru": "цитировать", "hi": "उद्धृत करना", "ar": "يقتبس", "kind": "word"}, "les guillemets": {"display": "les guillemets", "en": "quotation marks", "fa": "گیومه", "es": "las comillas", "ru": "кавычки", "hi": "उद्धरण चिह्न", "ar": "علامات الاقتباس", "kind": "word"}, "entre guillemets": {"display": "entre guillemets", "en": "in quotation marks", "fa": "داخل گیومه", "es": "entre comillas", "ru": "в кавычках", "hi": "उद्धरण चिह्नों में", "ar": "بين علامتي اقتباس", "kind": "word"}, "selon": {"display": "selon", "en": "according to", "fa": "طبق، بر اساس", "es": "según", "ru": "согласно, по", "hi": "के अनुसार", "ar": "حسب، وفقًا لـ", "kind": "word"}, "d'après": {"display": "d'après", "en": "according to", "fa": "بر اساسِ", "es": "según, de acuerdo con", "ru": "согласно", "hi": "के अनुसार", "ar": "بحسب", "kind": "word"}, "comme le souligne X": {"display": "comme le souligne X", "en": "as X points out", "fa": "چنان‌که X تأکید می‌کند", "es": "como señala X", "ru": "как подчёркивает X", "hi": "जैसा कि X बताते हैं", "ar": "كما يؤكد X", "kind": "word"}, "rapporter des propos": {"display": "rapporter des propos", "en": "to report someone's words", "fa": "سخنان کسی را نقل کردن", "es": "referir palabras", "ru": "пересказывать слова", "hi": "किसी की बातें बताना", "ar": "نقل أقوال", "kind": "word"}, "une source": {"display": "une source", "en": "a source", "fa": "منبع", "es": "una fuente", "ru": "источник", "hi": "एक स्रोत", "ar": "مصدر", "kind": "word"}, "un extrait": {"display": "un extrait", "en": "an extract, an excerpt", "fa": "بخشی از متن", "es": "un extracto", "ru": "отрывок", "hi": "एक अंश", "ar": "مقتطف", "kind": "word"}, "faire référence à": {"display": "faire référence à", "en": "to refer to", "fa": "ارجاع دادن به", "es": "hacer referencia a", "ru": "ссылаться на", "hi": "संदर्भ देना", "ar": "الإحالة إلى", "kind": "word"}, "un ouvrage": {"display": "un ouvrage", "en": "a work, a book (formal)", "fa": "یک اثر / کتاب", "es": "una obra", "ru": "труд, произведение", "hi": "रचना / पुस्तक", "ar": "مؤلَّف", "kind": "word"}});
-</script></body></html>
+</script>
+<!-- chichilang-coin-flyout: coins fly to the star pill whenever stars are awarded; the count always equals the award -->
+<style>
+#cfx-layer{position:fixed;inset:0;z-index:99995;pointer-events:none;overflow:hidden}
+.cfx-el{position:absolute;left:0;top:0;pointer-events:none;will-change:transform,opacity;line-height:0}
+</style>
+<script>
+(function(){
+if(window.__cfx)return;window.__cfx=1;
+var SPARK='M50 2 C57 36 64 43 98 50 C64 57 57 64 50 98 C43 64 36 57 2 50 C36 43 43 36 50 2 Z';
+var IMG=new Image();IMG.src='/assets/coin-reward.png';
+function bal(){try{var o=JSON.parse(localStorage.getItem('parlons:stars')||'{}');return Math.max(0,Math.floor(+o.balance||0))}catch(e){return 0}}
+var last=null,queue=[],flying=false;
+function pillEl(){
+  var s=document.querySelector('span[data-stn]');
+  if(s&&s.parentElement)return s.parentElement;
+  var els=document.querySelectorAll('body *'),best=null,bestY=1e9;
+  for(var i=0;i<els.length;i++){var e=els[i];
+    if(e.children.length>3)continue;
+    var t=(e.textContent||'');
+    if(t.indexOf('\u2605')>-1&&/\d/.test(t)&&t.length<14){
+      var r=e.getBoundingClientRect();
+      if(r.top<140&&r.width>0&&r.top<bestY){best=e;bestY=r.top;}
+    }}
+  return best;
+}
+function layer(){
+  var l=document.getElementById('cfx-layer');
+  if(!l){l=document.createElement('div');l.id='cfx-layer';document.body.appendChild(l);}
+  return l;
+}
+function sparkSVG(size,color){
+  var d=document.createElement('div');d.className='cfx-el';
+  d.innerHTML='<svg width="'+size+'" height="'+size+'" viewBox="0 0 100 100"><path d="'+SPARK+'" fill="'+color+'"/></svg>';
+  d.style.filter='drop-shadow(0 0 6px rgba(255,220,120,.9))';
+  d._w=size;return d;
+}
+function coinEl(size){
+  var d=document.createElement('div');d.className='cfx-el';
+  var img=document.createElement('img');img.src='/assets/coin-reward.png';
+  img.style.width=size+'px';img.style.height='auto';img.style.display='block';
+  img.style.filter='drop-shadow(0 5px 10px rgba(217,138,6,.45))';
+  d.appendChild(img);d._w=size;return d;
+}
+function fly(n){
+  queue.push(n);
+  if(flying)return;
+  flying=true;
+  (function next(){
+    var m=queue.shift();
+    if(!m){flying=false;return;}
+    flyBatch(m,function(){setTimeout(next,160);});
+  })();
+}
+function flyBatch(n,done){
+  var L=layer(),W=window.innerWidth,H=window.innerHeight,cx=W/2,cy=H*0.44;
+  var pill=pillEl(),pr=pill?pill.getBoundingClientRect():null;
+  var tx=pr?pr.left+pr.width/2:W-52,ty=pr?pr.top+pr.height/2:36;
+  function place(el,x,y,s,op,spin){
+    var w=el._w||48;
+    var sx=(spin!=null)?s*Math.cos(spin):s;
+    el.style.transform='translate('+(x-w/2)+'px,'+(y-w/2)+'px) scale('+sx+','+s+')';
+    if(op!=null)el.style.opacity=op;
+  }
+  function twinkle(x,y,cnt,spread){
+    var cols=['#ffffff','#ffe27a','#ffd166'];
+    for(var i=0;i<cnt;i++){
+      (function(i){
+        var s=sparkSVG(11+Math.random()*15,cols[i%3]);L.appendChild(s);
+        var a=Math.random()*Math.PI*2,d=(0.3+Math.random()*0.7)*spread,t0=performance.now()+Math.random()*200;
+        (function fr(t){var p=(t-t0)/900;if(p<0){requestAnimationFrame(fr);return;}if(p>1)p=1;
+          var tw=.55+.45*Math.sin(p*Math.PI*3+i*1.7);
+          place(s,x+Math.cos(a)*d*p,y+Math.sin(a)*d*p,tw,Math.sin(p*Math.PI));
+          if(p<1)requestAnimationFrame(fr);else s.remove();})(t0);
+      })(i);
+    }
+  }
+  twinkle(cx,cy,8,95);
+  var landed=0;
+  for(var i=0;i<n;i++){
+    (function(i){
+      setTimeout(function(){
+        var st=coinEl(58);L.appendChild(st);
+        var sx=cx+(Math.random()-.5)*36, sy=cy+(Math.random()-.5)*22;
+        place(st,sx,sy,.3,1,0);
+        var popT0=performance.now();
+        (function popFr(t){var p=(t-popT0)/300;if(p>1)p=1;
+          var s=.3+.7*(p<.55?(p/.55)*1.12:(1.12-(p-.55)/.45*.12));
+          place(st,sx,sy,s,1,t/90);
+          if(p<1)requestAnimationFrame(popFr);})(popT0);
+        setTimeout(function(){
+          var t0=performance.now(),dur=620,cxp=(sx+tx)/2+(i%2?26:-26),cyp=Math.min(sy,ty)-120,tr=0;
+          (function fr(t){var p=(t-t0)/dur;if(p<0)p=0;if(p>1)p=1;
+            var e=p*p*(0.6+0.4*p), q=1-e;
+            var x=q*q*sx+2*q*e*cxp+e*e*tx, y=q*q*sy+2*q*e*cyp+e*e*ty;
+            place(st,x,y,1-.68*e,null,t/80);
+            if(t-tr>110&&p>0.15&&p<0.9){tr=t;
+              var s2=sparkSVG(10+Math.random()*7,'#ffe27a');L.appendChild(s2);place(s2,x,y,1,1);
+              s2.animate([{opacity:.95},{opacity:0}],{duration:380,fill:'forwards'});
+              setTimeout(function(){s2.remove();},400);
+            }
+            if(p<1){requestAnimationFrame(fr);}
+            else{
+              st.remove();landed++;
+              if(pill)pill.animate([{transform:'scale(1)'},{transform:'scale(1.18)'},{transform:'scale(1)'}],{duration:240,easing:'ease-out'});
+              twinkle(tx,ty,3,26);
+              if(landed===n)done();
+            }
+          })(t0);
+        },330);
+      }, i*110);
+    })(i);
+  }
+}
+function check(){
+  var b=bal();
+  if(last===null){last=b;return;}
+  if(b>last){var d=b-last;last=b;if(d>0)fly(Math.min(d,15));}
+  else if(b<last){last=b;}
+}
+var reduced=false;
+try{reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+setTimeout(function(){
+  last=bal();
+  if(reduced)return;
+  window.addEventListener('parlons:stars-changed',function(){setTimeout(check,30);});
+  setInterval(check,700);
+},1200);
+})();
+</script>
+</body></html>

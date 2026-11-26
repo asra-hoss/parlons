@@ -244,4 +244,134 @@ setInterval(tidyread,500);tidyread();
 (function(){function wire(wrap){if(wrap.__wired)return;wrap.__wired=1;var btn=wrap.querySelector(".nmic"),hint=wrap.querySelector(".nmic-hint"),play=wrap.querySelector(".nmic-play");var mr=null,chunks=[],stream=null,want=false,rec=false;function msg(t){hint.textContent=t}function stopTracks(){if(stream){stream.getTracks().forEach(function(t){try{t.stop()}catch(e){}});stream=null}}function start(){if(rec)return;want=true;if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia||typeof MediaRecorder==="undefined"){want=false;msg("Recording is not supported in this browser.");return}msg("Starting the microphone\u2026");navigator.mediaDevices.getUserMedia({audio:true}).then(function(s){stream=s;if(!want){stopTracks();msg("Hold to record your voice");return}chunks=[];try{mr=new MediaRecorder(s)}catch(e){stopTracks();msg("Recording is not supported in this browser.");return}mr.ondataavailable=function(ev){if(ev.data&&ev.data.size)chunks.push(ev.data)};mr.onstop=function(){stopTracks();btn.style.boxShadow="0 10px 22px rgba(90,70,180,.35)";if(chunks.length){var url=URL.createObjectURL(new Blob(chunks,{type:mr.mimeType||"audio/webm"}));play.innerHTML="";var a=document.createElement("audio");a.controls=true;a.src=url;a.style.width="100%";play.appendChild(a);msg("Tap play to hear yourself \u2014 hold to record again.")}else msg("Hold to record your voice")};mr.start();rec=true;btn.style.boxShadow="0 0 0 10px rgba(224,71,106,.25),0 10px 22px rgba(90,70,180,.35)";msg("Recording\u2026 let go when you finish.")}).catch(function(){want=false;msg("Microphone blocked. Allow it in your browser, then try again.")})}function stop(){want=false;if(rec&&mr&&mr.state!=="inactive"){rec=false;try{mr.stop()}catch(e){}}}btn.addEventListener("pointerdown",function(e){e.preventDefault();e.stopPropagation();try{btn.setPointerCapture(e.pointerId)}catch(x){}start()});["pointerup","pointercancel"].forEach(function(ev){btn.addEventListener(ev,function(e){e.preventDefault();stop()})});btn.addEventListener("contextmenu",function(e){e.preventDefault()})}function run(){[].forEach.call(document.querySelectorAll(".nmic-wrap"),wire)}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",run);else run()})();</script><script>
 window.PRON=Object.assign(window.PRON||{},{"le bois": "https://chichilang.com/assets/lesson-audio/lesson-a2-new-complement-nom/words/le-bois.mp3", "le verre": "https://chichilang.com/assets/lesson-audio/lesson-a2-new-complement-nom/words/le-verre.mp3", "le plastique": "https://chichilang.com/assets/lesson-audio/lesson-a2-new-complement-nom/words/le-plastique.mp3", "le métal": "https://chichilang.com/assets/lesson-audio/lesson-a2-new-complement-nom/words/le-metal.mp3", "le papier": "https://chichilang.com/assets/lesson-audio/lesson-a2-new-complement-nom/words/le-papier.mp3", "le carton": "https://chichilang.com/assets/lesson-audio/lesson-a2-new-complement-nom/words/le-carton.mp3", "le cuir": "https://chichilang.com/assets/lesson-audio/lesson-a2-new-complement-nom/words/le-cuir.mp3", "l'or": "https://chichilang.com/assets/lesson-audio/lesson-a2-new-complement-nom/words/l-or.mp3", "l'argent": "https://chichilang.com/assets/lesson-audio/lesson-a2-new-complement-nom/words/l-argent.mp3", "la laine": "https://chichilang.com/assets/lesson-audio/lesson-a2-new-complement-nom/words/la-laine.mp3", "le coton": "https://chichilang.com/assets/lesson-audio/lesson-a2-new-complement-nom/words/le-coton.mp3", "fait, faite en…": "https://chichilang.com/assets/lesson-audio/lesson-a2-new-complement-nom/words/fait-faite-en.mp3", "une tasse à café": "https://chichilang.com/assets/lesson-audio/lesson-a2-new-complement-nom/words/une-tasse-a-cafe.mp3", "un verre à vin": "https://chichilang.com/assets/lesson-audio/lesson-a2-new-complement-nom/words/un-verre-a-vin.mp3", "une cuillère à soupe": "https://chichilang.com/assets/lesson-audio/lesson-a2-new-complement-nom/words/une-cuillere-a-soupe.mp3", "une cuillère à café": "https://chichilang.com/assets/lesson-audio/lesson-a2-new-complement-nom/words/une-cuillere-a-cafe.mp3", "une machine à laver": "https://chichilang.com/assets/lesson-audio/lesson-a2-new-complement-nom/words/une-machine-a-laver.mp3", "une brosse à dents": "https://chichilang.com/assets/lesson-audio/lesson-a2-new-complement-nom/words/une-brosse-a-dents.mp3", "une salle à manger": "https://chichilang.com/assets/lesson-audio/lesson-a2-new-complement-nom/words/une-salle-a-manger.mp3", "un sac à dos": "https://chichilang.com/assets/lesson-audio/lesson-a2-new-complement-nom/words/un-sac-a-dos.mp3", "une boîte à chaussures": "https://chichilang.com/assets/lesson-audio/lesson-a2-new-complement-nom/words/une-boite-a-chaussures.mp3", "un verre de lait": "https://chichilang.com/assets/lesson-audio/lesson-a2-new-complement-nom/words/un-verre-de-lait.mp3", "une bouteille d'eau": "https://chichilang.com/assets/lesson-audio/lesson-a2-new-complement-nom/words/une-bouteille-d-eau.mp3"});
 window.D=Object.assign(window.D||{},{"le bois": {"display": "le bois", "en": "wood", "fa": "چوب", "es": "madera", "ru": "дерево (материал)", "hi": "लकड़ी", "ar": "خشب", "kind": "word"}, "le verre": {"display": "le verre", "en": "glass (material)", "fa": "شیشه", "es": "vidrio", "ru": "стекло", "hi": "कांच", "ar": "زجاج", "kind": "word"}, "le plastique": {"display": "le plastique", "en": "plastic", "fa": "پلاستیک", "es": "plástico", "ru": "пластик", "hi": "प्लास्टिक", "ar": "بلاستيك", "kind": "word"}, "le métal": {"display": "le métal", "en": "metal", "fa": "فلز", "es": "metal", "ru": "металл", "hi": "धातु", "ar": "معدن", "kind": "word"}, "le papier": {"display": "le papier", "en": "paper", "fa": "کاغذ", "es": "papel", "ru": "бумага", "hi": "कागज़", "ar": "ورق", "kind": "word"}, "le carton": {"display": "le carton", "en": "cardboard", "fa": "مقوا", "es": "cartón", "ru": "картон", "hi": "गत्ता", "ar": "كرتون", "kind": "word"}, "le cuir": {"display": "le cuir", "en": "leather", "fa": "چرم", "es": "cuero", "ru": "кожа", "hi": "चमड़ा", "ar": "جلد", "kind": "word"}, "l'or": {"display": "l'or", "en": "gold", "fa": "طلا", "es": "oro", "ru": "золото", "hi": "सोना", "ar": "ذهب", "kind": "word"}, "l'argent": {"display": "l'argent", "en": "silver", "fa": "نقره", "es": "plata", "ru": "серебро", "hi": "चाँदी", "ar": "فضة", "kind": "word"}, "la laine": {"display": "la laine", "en": "wool", "fa": "پشم", "es": "lana", "ru": "шерсть", "hi": "ऊन", "ar": "صوف", "kind": "word"}, "le coton": {"display": "le coton", "en": "cotton", "fa": "پنبه", "es": "algodón", "ru": "хлопок", "hi": "कपास", "ar": "قطن", "kind": "word"}, "fait, faite en…": {"display": "fait, faite en…", "en": "made of…", "fa": "ساخته‌شده از…", "es": "hecho/hecha de…", "ru": "сделан(а) из…", "hi": "… से बना", "ar": "مصنوع من…", "kind": "word"}, "une tasse à café": {"display": "une tasse à café", "en": "a coffee cup", "fa": "فنجان قهوه", "es": "una taza de café", "ru": "кофейная чашка", "hi": "कॉफ़ी का कप", "ar": "فنجان قهوة", "kind": "word"}, "un verre à vin": {"display": "un verre à vin", "en": "a wine glass", "fa": "گیلاس شراب", "es": "una copa de vino", "ru": "бокал для вина", "hi": "वाइन ग्लास", "ar": "كأس نبيذ", "kind": "word"}, "une cuillère à soupe": {"display": "une cuillère à soupe", "en": "a tablespoon", "fa": "قاشق غذاخوری", "es": "una cucharada sopera", "ru": "столовая ложка", "hi": "बड़ा चम्मच", "ar": "ملعقة كبيرة", "kind": "word"}, "une cuillère à café": {"display": "une cuillère à café", "en": "a teaspoon", "fa": "قاشق چای‌خوری", "es": "una cucharadita", "ru": "чайная ложка", "hi": "छोटी चम्मच", "ar": "ملعقة صغيرة", "kind": "word"}, "une machine à laver": {"display": "une machine à laver", "en": "a washing machine", "fa": "ماشین لباسشویی", "es": "una lavadora", "ru": "стиральная машина", "hi": "वॉशिंग मशीन", "ar": "غسالة", "kind": "word"}, "une brosse à dents": {"display": "une brosse à dents", "en": "a toothbrush", "fa": "مسواک", "es": "un cepillo de dientes", "ru": "зубная щётка", "hi": "टूथब्रश", "ar": "فرشاة أسنان", "kind": "word"}, "une salle à manger": {"display": "une salle à manger", "en": "a dining room", "fa": "اتاق غذاخوری", "es": "un comedor", "ru": "столовая", "hi": "भोजन कक्ष", "ar": "غرفة طعام", "kind": "word"}, "un sac à dos": {"display": "un sac à dos", "en": "a backpack", "fa": "کوله‌پشتی", "es": "una mochila", "ru": "рюкзак", "hi": "बैकपैक", "ar": "حقيبة ظهر", "kind": "word"}, "une boîte à chaussures": {"display": "une boîte à chaussures", "en": "a shoe box", "fa": "جعبه کفش", "es": "una caja de zapatos", "ru": "коробка для обуви", "hi": "जूतों का डिब्बा", "ar": "علبة أحذية", "kind": "word"}, "un verre de lait": {"display": "un verre de lait", "en": "a glass of milk", "fa": "یک لیوان شیر", "es": "un vaso de leche", "ru": "стакан молока", "hi": "एक गिलास दूध", "ar": "كوب من الحليب", "kind": "word"}, "une bouteille d'eau": {"display": "une bouteille d'eau", "en": "a bottle of water", "fa": "یک بطری آب", "es": "una botella de agua", "ru": "бутылка воды", "hi": "पानी की बोतल", "ar": "زجاجة ماء", "kind": "word"}});
-</script></body></html>
+</script>
+<!-- chichilang-coin-flyout: coins fly to the star pill whenever stars are awarded; the count always equals the award -->
+<style>
+#cfx-layer{position:fixed;inset:0;z-index:99995;pointer-events:none;overflow:hidden}
+.cfx-el{position:absolute;left:0;top:0;pointer-events:none;will-change:transform,opacity;line-height:0}
+</style>
+<script>
+(function(){
+if(window.__cfx)return;window.__cfx=1;
+var SPARK='M50 2 C57 36 64 43 98 50 C64 57 57 64 50 98 C43 64 36 57 2 50 C36 43 43 36 50 2 Z';
+var IMG=new Image();IMG.src='/assets/coin-reward.png';
+function bal(){try{var o=JSON.parse(localStorage.getItem('parlons:stars')||'{}');return Math.max(0,Math.floor(+o.balance||0))}catch(e){return 0}}
+var last=null,queue=[],flying=false;
+function pillEl(){
+  var s=document.querySelector('span[data-stn]');
+  if(s&&s.parentElement)return s.parentElement;
+  var els=document.querySelectorAll('body *'),best=null,bestY=1e9;
+  for(var i=0;i<els.length;i++){var e=els[i];
+    if(e.children.length>3)continue;
+    var t=(e.textContent||'');
+    if(t.indexOf('\u2605')>-1&&/\d/.test(t)&&t.length<14){
+      var r=e.getBoundingClientRect();
+      if(r.top<140&&r.width>0&&r.top<bestY){best=e;bestY=r.top;}
+    }}
+  return best;
+}
+function layer(){
+  var l=document.getElementById('cfx-layer');
+  if(!l){l=document.createElement('div');l.id='cfx-layer';document.body.appendChild(l);}
+  return l;
+}
+function sparkSVG(size,color){
+  var d=document.createElement('div');d.className='cfx-el';
+  d.innerHTML='<svg width="'+size+'" height="'+size+'" viewBox="0 0 100 100"><path d="'+SPARK+'" fill="'+color+'"/></svg>';
+  d.style.filter='drop-shadow(0 0 6px rgba(255,220,120,.9))';
+  d._w=size;return d;
+}
+function coinEl(size){
+  var d=document.createElement('div');d.className='cfx-el';
+  var img=document.createElement('img');img.src='/assets/coin-reward.png';
+  img.style.width=size+'px';img.style.height='auto';img.style.display='block';
+  img.style.filter='drop-shadow(0 5px 10px rgba(217,138,6,.45))';
+  d.appendChild(img);d._w=size;return d;
+}
+function fly(n){
+  queue.push(n);
+  if(flying)return;
+  flying=true;
+  (function next(){
+    var m=queue.shift();
+    if(!m){flying=false;return;}
+    flyBatch(m,function(){setTimeout(next,160);});
+  })();
+}
+function flyBatch(n,done){
+  var L=layer(),W=window.innerWidth,H=window.innerHeight,cx=W/2,cy=H*0.44;
+  var pill=pillEl(),pr=pill?pill.getBoundingClientRect():null;
+  var tx=pr?pr.left+pr.width/2:W-52,ty=pr?pr.top+pr.height/2:36;
+  function place(el,x,y,s,op,spin){
+    var w=el._w||48;
+    var sx=(spin!=null)?s*Math.cos(spin):s;
+    el.style.transform='translate('+(x-w/2)+'px,'+(y-w/2)+'px) scale('+sx+','+s+')';
+    if(op!=null)el.style.opacity=op;
+  }
+  function twinkle(x,y,cnt,spread){
+    var cols=['#ffffff','#ffe27a','#ffd166'];
+    for(var i=0;i<cnt;i++){
+      (function(i){
+        var s=sparkSVG(11+Math.random()*15,cols[i%3]);L.appendChild(s);
+        var a=Math.random()*Math.PI*2,d=(0.3+Math.random()*0.7)*spread,t0=performance.now()+Math.random()*200;
+        (function fr(t){var p=(t-t0)/900;if(p<0){requestAnimationFrame(fr);return;}if(p>1)p=1;
+          var tw=.55+.45*Math.sin(p*Math.PI*3+i*1.7);
+          place(s,x+Math.cos(a)*d*p,y+Math.sin(a)*d*p,tw,Math.sin(p*Math.PI));
+          if(p<1)requestAnimationFrame(fr);else s.remove();})(t0);
+      })(i);
+    }
+  }
+  twinkle(cx,cy,8,95);
+  var landed=0;
+  for(var i=0;i<n;i++){
+    (function(i){
+      setTimeout(function(){
+        var st=coinEl(58);L.appendChild(st);
+        var sx=cx+(Math.random()-.5)*36, sy=cy+(Math.random()-.5)*22;
+        place(st,sx,sy,.3,1,0);
+        var popT0=performance.now();
+        (function popFr(t){var p=(t-popT0)/300;if(p>1)p=1;
+          var s=.3+.7*(p<.55?(p/.55)*1.12:(1.12-(p-.55)/.45*.12));
+          place(st,sx,sy,s,1,t/90);
+          if(p<1)requestAnimationFrame(popFr);})(popT0);
+        setTimeout(function(){
+          var t0=performance.now(),dur=620,cxp=(sx+tx)/2+(i%2?26:-26),cyp=Math.min(sy,ty)-120,tr=0;
+          (function fr(t){var p=(t-t0)/dur;if(p<0)p=0;if(p>1)p=1;
+            var e=p*p*(0.6+0.4*p), q=1-e;
+            var x=q*q*sx+2*q*e*cxp+e*e*tx, y=q*q*sy+2*q*e*cyp+e*e*ty;
+            place(st,x,y,1-.68*e,null,t/80);
+            if(t-tr>110&&p>0.15&&p<0.9){tr=t;
+              var s2=sparkSVG(10+Math.random()*7,'#ffe27a');L.appendChild(s2);place(s2,x,y,1,1);
+              s2.animate([{opacity:.95},{opacity:0}],{duration:380,fill:'forwards'});
+              setTimeout(function(){s2.remove();},400);
+            }
+            if(p<1){requestAnimationFrame(fr);}
+            else{
+              st.remove();landed++;
+              if(pill)pill.animate([{transform:'scale(1)'},{transform:'scale(1.18)'},{transform:'scale(1)'}],{duration:240,easing:'ease-out'});
+              twinkle(tx,ty,3,26);
+              if(landed===n)done();
+            }
+          })(t0);
+        },330);
+      }, i*110);
+    })(i);
+  }
+}
+function check(){
+  var b=bal();
+  if(last===null){last=b;return;}
+  if(b>last){var d=b-last;last=b;if(d>0)fly(Math.min(d,15));}
+  else if(b<last){last=b;}
+}
+var reduced=false;
+try{reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+setTimeout(function(){
+  last=bal();
+  if(reduced)return;
+  window.addEventListener('parlons:stars-changed',function(){setTimeout(check,30);});
+  setInterval(check,700);
+},1200);
+})();
+</script>
+</body></html>

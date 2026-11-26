@@ -244,4 +244,134 @@ setInterval(tidyread,500);tidyread();
 (function(){function wire(wrap){if(wrap.__wired)return;wrap.__wired=1;var btn=wrap.querySelector(".nmic"),hint=wrap.querySelector(".nmic-hint"),play=wrap.querySelector(".nmic-play");var mr=null,chunks=[],stream=null,want=false,rec=false;function msg(t){hint.textContent=t}function stopTracks(){if(stream){stream.getTracks().forEach(function(t){try{t.stop()}catch(e){}});stream=null}}function start(){if(rec)return;want=true;if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia||typeof MediaRecorder==="undefined"){want=false;msg("Recording is not supported in this browser.");return}msg("Starting the microphone\u2026");navigator.mediaDevices.getUserMedia({audio:true}).then(function(s){stream=s;if(!want){stopTracks();msg("Hold to record your voice");return}chunks=[];try{mr=new MediaRecorder(s)}catch(e){stopTracks();msg("Recording is not supported in this browser.");return}mr.ondataavailable=function(ev){if(ev.data&&ev.data.size)chunks.push(ev.data)};mr.onstop=function(){stopTracks();btn.style.boxShadow="0 10px 22px rgba(90,70,180,.35)";if(chunks.length){var url=URL.createObjectURL(new Blob(chunks,{type:mr.mimeType||"audio/webm"}));play.innerHTML="";var a=document.createElement("audio");a.controls=true;a.src=url;a.style.width="100%";play.appendChild(a);msg("Tap play to hear yourself \u2014 hold to record again.")}else msg("Hold to record your voice")};mr.start();rec=true;btn.style.boxShadow="0 0 0 10px rgba(224,71,106,.25),0 10px 22px rgba(90,70,180,.35)";msg("Recording\u2026 let go when you finish.")}).catch(function(){want=false;msg("Microphone blocked. Allow it in your browser, then try again.")})}function stop(){want=false;if(rec&&mr&&mr.state!=="inactive"){rec=false;try{mr.stop()}catch(e){}}}btn.addEventListener("pointerdown",function(e){e.preventDefault();e.stopPropagation();try{btn.setPointerCapture(e.pointerId)}catch(x){}start()});["pointerup","pointercancel"].forEach(function(ev){btn.addEventListener(ev,function(e){e.preventDefault();stop()})});btn.addEventListener("contextmenu",function(e){e.preventDefault()})}function run(){[].forEach.call(document.querySelectorAll(".nmic-wrap"),wire)}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",run);else run()})();</script><script>
 window.PRON=Object.assign(window.PRON||{},{"une tenue": "https://chichilang.com/assets/lesson-audio/lesson-b1-new-mode/words/une-tenue.mp3", "porter": "https://chichilang.com/assets/lesson-audio/lesson-b1-new-mode/words/porter.mp3", "un manteau": "https://chichilang.com/assets/lesson-audio/lesson-b1-new-mode/words/un-manteau.mp3", "une veste": "https://chichilang.com/assets/lesson-audio/lesson-b1-new-mode/words/une-veste.mp3", "un pantalon": "https://chichilang.com/assets/lesson-audio/lesson-b1-new-mode/words/un-pantalon.mp3", "une jupe": "https://chichilang.com/assets/lesson-audio/lesson-b1-new-mode/words/une-jupe.mp3", "une robe": "https://chichilang.com/assets/lesson-audio/lesson-b1-new-mode/words/une-robe.mp3", "un pull": "https://chichilang.com/assets/lesson-audio/lesson-b1-new-mode/words/un-pull.mp3", "une chemise": "https://chichilang.com/assets/lesson-audio/lesson-b1-new-mode/words/une-chemise.mp3", "des chaussures": "https://chichilang.com/assets/lesson-audio/lesson-b1-new-mode/words/des-chaussures.mp3", "un chapeau": "https://chichilang.com/assets/lesson-audio/lesson-b1-new-mode/words/un-chapeau.mp3", "une écharpe": "https://chichilang.com/assets/lesson-audio/lesson-b1-new-mode/words/une-echarpe.mp3", "essayer": "https://chichilang.com/assets/lesson-audio/lesson-b1-new-mode/words/essayer.mp3", "la cabine d'essayage": "https://chichilang.com/assets/lesson-audio/lesson-b1-new-mode/words/la-cabine-d-essayage.mp3", "la taille": "https://chichilang.com/assets/lesson-audio/lesson-b1-new-mode/words/la-taille.mp3", "la pointure": "https://chichilang.com/assets/lesson-audio/lesson-b1-new-mode/words/la-pointure.mp3", "aller à quelqu'un": "https://chichilang.com/assets/lesson-audio/lesson-b1-new-mode/words/aller-a-quelqu-un.mp3", "à la mode": "https://chichilang.com/assets/lesson-audio/lesson-b1-new-mode/words/a-la-mode.mp3", "démodé, démodée": "https://chichilang.com/assets/lesson-audio/lesson-b1-new-mode/words/demode-demodee.mp3", "décontracté, décontractée": "https://chichilang.com/assets/lesson-audio/lesson-b1-new-mode/words/decontracte-decontractee.mp3", "chic": "https://chichilang.com/assets/lesson-audio/lesson-b1-new-mode/words/chic.mp3", "à rayures": "https://chichilang.com/assets/lesson-audio/lesson-b1-new-mode/words/a-rayures.mp3", "à carreaux": "https://chichilang.com/assets/lesson-audio/lesson-b1-new-mode/words/a-carreaux.mp3", "assorti, assortie": "https://chichilang.com/assets/lesson-audio/lesson-b1-new-mode/words/assorti-assortie.mp3"});
 window.D=Object.assign(window.D||{},{"une tenue": {"display": "une tenue", "en": "an outfit", "fa": "یک استایل / لباس کامل", "es": "un conjunto / un outfit", "ru": "наряд", "hi": "पोशाक", "ar": "زيّ / إطلالة", "kind": "word"}, "porter": {"display": "porter", "en": "to wear", "fa": "پوشیدن", "es": "llevar, usar (ropa)", "ru": "носить (одежду)", "hi": "पहनना", "ar": "الارتداء", "kind": "word"}, "un manteau": {"display": "un manteau", "en": "a coat", "fa": "پالتو", "es": "un abrigo", "ru": "пальто", "hi": "एक कोट", "ar": "معطف", "kind": "word"}, "une veste": {"display": "une veste", "en": "a jacket", "fa": "ژاکت", "es": "una chaqueta", "ru": "пиджак, куртка", "hi": "एक जैकेट", "ar": "سترة", "kind": "word"}, "un pantalon": {"display": "un pantalon", "en": "trousers, pants", "fa": "شلوار", "es": "un pantalón", "ru": "брюки", "hi": "एक पैंट", "ar": "بنطال", "kind": "word"}, "une jupe": {"display": "une jupe", "en": "a skirt", "fa": "دامن", "es": "una falda", "ru": "юбка", "hi": "एक स्कर्ट", "ar": "تنورة", "kind": "word"}, "une robe": {"display": "une robe", "en": "a dress", "fa": "پیراهن زنانه", "es": "un vestido", "ru": "платье", "hi": "एक पोशाक", "ar": "فستان", "kind": "word"}, "un pull": {"display": "un pull", "en": "a sweater, a jumper", "fa": "پلیور", "es": "un suéter", "ru": "свитер", "hi": "एक स्वेटर", "ar": "سترة صوفية", "kind": "word"}, "une chemise": {"display": "une chemise", "en": "a shirt", "fa": "پیراهن (مردانه)", "es": "una camisa", "ru": "рубашка", "hi": "एक शर्ट", "ar": "قميص", "kind": "word"}, "des chaussures": {"display": "des chaussures", "en": "shoes", "fa": "کفش‌ها", "es": "unos zapatos", "ru": "обувь, туфли", "hi": "जूते", "ar": "أحذية", "kind": "word"}, "un chapeau": {"display": "un chapeau", "en": "a hat", "fa": "کلاه", "es": "un sombrero", "ru": "шляпа", "hi": "एक टोपी", "ar": "قبعة", "kind": "word"}, "une écharpe": {"display": "une écharpe", "en": "a scarf", "fa": "شال‌گردن", "es": "una bufanda", "ru": "шарф", "hi": "एक मफ़लर", "ar": "وشاح", "kind": "word"}, "essayer": {"display": "essayer", "en": "to try on", "fa": "پرو کردن، امتحان کردن", "es": "probarse (ropa)", "ru": "примерять", "hi": "पहनकर देखना", "ar": "أن يجرب (الملابس)", "kind": "word"}, "la cabine d'essayage": {"display": "la cabine d'essayage", "en": "the fitting room", "fa": "اتاق پرو", "es": "el probador", "ru": "примерочная", "hi": "ट्रायल रूम", "ar": "غرفة القياس", "kind": "word"}, "la taille": {"display": "la taille", "en": "the size (clothing)", "fa": "سایز لباس", "es": "la talla", "ru": "размер (одежды)", "hi": "साइज़", "ar": "المقاس", "kind": "word"}, "la pointure": {"display": "la pointure", "en": "the shoe size", "fa": "سایز کفش", "es": "la talla de zapato", "ru": "размер обуви", "hi": "जूते का साइज़", "ar": "مقاس الحذاء", "kind": "word"}, "aller à quelqu'un": {"display": "aller à quelqu'un", "en": "to suit someone", "fa": "به کسی آمدن (لباس)", "es": "sentar bien a alguien", "ru": "идти кому-л. (о одежде)", "hi": "किसी पर सूट करना", "ar": "يناسب شخصاً", "kind": "word"}, "à la mode": {"display": "à la mode", "en": "fashionable", "fa": "مد روز", "es": "de moda", "ru": "модный", "hi": "फ़ैशन में", "ar": "على الموضة", "kind": "word"}, "démodé, démodée": {"display": "démodé, démodée", "en": "out of fashion", "fa": "ازمدافتاده", "es": "pasado de moda", "ru": "немодный, старомодный", "hi": "पुराने ढंग का", "ar": "عفا عليه الزمن", "kind": "word"}, "décontracté, décontractée": {"display": "décontracté, décontractée", "en": "casual, relaxed", "fa": "غیررسمی، راحت", "es": "informal, relajado", "ru": "повседневный, расслабленный", "hi": "आरामदायक", "ar": "غير رسمي", "kind": "word"}, "chic": {"display": "chic", "en": "chic, smart", "fa": "شیک", "es": "elegante, chic", "ru": "шикарный", "hi": "शानदार", "ar": "أنيق", "kind": "word"}, "à rayures": {"display": "à rayures", "en": "striped", "fa": "راه‌راه", "es": "a rayas", "ru": "в полоску", "hi": "धारीदार", "ar": "مخطط", "kind": "word"}, "à carreaux": {"display": "à carreaux", "en": "checked", "fa": "چهارخانه", "es": "a cuadros", "ru": "в клетку", "hi": "चेक वाला", "ar": "مربعات", "kind": "word"}, "assorti, assortie": {"display": "assorti, assortie", "en": "matching", "fa": "هماهنگ", "es": "a juego", "ru": "в тон, подходящий", "hi": "मेल खाता", "ar": "متناسق", "kind": "word"}});
-</script></body></html>
+</script>
+<!-- chichilang-coin-flyout: coins fly to the star pill whenever stars are awarded; the count always equals the award -->
+<style>
+#cfx-layer{position:fixed;inset:0;z-index:99995;pointer-events:none;overflow:hidden}
+.cfx-el{position:absolute;left:0;top:0;pointer-events:none;will-change:transform,opacity;line-height:0}
+</style>
+<script>
+(function(){
+if(window.__cfx)return;window.__cfx=1;
+var SPARK='M50 2 C57 36 64 43 98 50 C64 57 57 64 50 98 C43 64 36 57 2 50 C36 43 43 36 50 2 Z';
+var IMG=new Image();IMG.src='/assets/coin-reward.png';
+function bal(){try{var o=JSON.parse(localStorage.getItem('parlons:stars')||'{}');return Math.max(0,Math.floor(+o.balance||0))}catch(e){return 0}}
+var last=null,queue=[],flying=false;
+function pillEl(){
+  var s=document.querySelector('span[data-stn]');
+  if(s&&s.parentElement)return s.parentElement;
+  var els=document.querySelectorAll('body *'),best=null,bestY=1e9;
+  for(var i=0;i<els.length;i++){var e=els[i];
+    if(e.children.length>3)continue;
+    var t=(e.textContent||'');
+    if(t.indexOf('\u2605')>-1&&/\d/.test(t)&&t.length<14){
+      var r=e.getBoundingClientRect();
+      if(r.top<140&&r.width>0&&r.top<bestY){best=e;bestY=r.top;}
+    }}
+  return best;
+}
+function layer(){
+  var l=document.getElementById('cfx-layer');
+  if(!l){l=document.createElement('div');l.id='cfx-layer';document.body.appendChild(l);}
+  return l;
+}
+function sparkSVG(size,color){
+  var d=document.createElement('div');d.className='cfx-el';
+  d.innerHTML='<svg width="'+size+'" height="'+size+'" viewBox="0 0 100 100"><path d="'+SPARK+'" fill="'+color+'"/></svg>';
+  d.style.filter='drop-shadow(0 0 6px rgba(255,220,120,.9))';
+  d._w=size;return d;
+}
+function coinEl(size){
+  var d=document.createElement('div');d.className='cfx-el';
+  var img=document.createElement('img');img.src='/assets/coin-reward.png';
+  img.style.width=size+'px';img.style.height='auto';img.style.display='block';
+  img.style.filter='drop-shadow(0 5px 10px rgba(217,138,6,.45))';
+  d.appendChild(img);d._w=size;return d;
+}
+function fly(n){
+  queue.push(n);
+  if(flying)return;
+  flying=true;
+  (function next(){
+    var m=queue.shift();
+    if(!m){flying=false;return;}
+    flyBatch(m,function(){setTimeout(next,160);});
+  })();
+}
+function flyBatch(n,done){
+  var L=layer(),W=window.innerWidth,H=window.innerHeight,cx=W/2,cy=H*0.44;
+  var pill=pillEl(),pr=pill?pill.getBoundingClientRect():null;
+  var tx=pr?pr.left+pr.width/2:W-52,ty=pr?pr.top+pr.height/2:36;
+  function place(el,x,y,s,op,spin){
+    var w=el._w||48;
+    var sx=(spin!=null)?s*Math.cos(spin):s;
+    el.style.transform='translate('+(x-w/2)+'px,'+(y-w/2)+'px) scale('+sx+','+s+')';
+    if(op!=null)el.style.opacity=op;
+  }
+  function twinkle(x,y,cnt,spread){
+    var cols=['#ffffff','#ffe27a','#ffd166'];
+    for(var i=0;i<cnt;i++){
+      (function(i){
+        var s=sparkSVG(11+Math.random()*15,cols[i%3]);L.appendChild(s);
+        var a=Math.random()*Math.PI*2,d=(0.3+Math.random()*0.7)*spread,t0=performance.now()+Math.random()*200;
+        (function fr(t){var p=(t-t0)/900;if(p<0){requestAnimationFrame(fr);return;}if(p>1)p=1;
+          var tw=.55+.45*Math.sin(p*Math.PI*3+i*1.7);
+          place(s,x+Math.cos(a)*d*p,y+Math.sin(a)*d*p,tw,Math.sin(p*Math.PI));
+          if(p<1)requestAnimationFrame(fr);else s.remove();})(t0);
+      })(i);
+    }
+  }
+  twinkle(cx,cy,8,95);
+  var landed=0;
+  for(var i=0;i<n;i++){
+    (function(i){
+      setTimeout(function(){
+        var st=coinEl(58);L.appendChild(st);
+        var sx=cx+(Math.random()-.5)*36, sy=cy+(Math.random()-.5)*22;
+        place(st,sx,sy,.3,1,0);
+        var popT0=performance.now();
+        (function popFr(t){var p=(t-popT0)/300;if(p>1)p=1;
+          var s=.3+.7*(p<.55?(p/.55)*1.12:(1.12-(p-.55)/.45*.12));
+          place(st,sx,sy,s,1,t/90);
+          if(p<1)requestAnimationFrame(popFr);})(popT0);
+        setTimeout(function(){
+          var t0=performance.now(),dur=620,cxp=(sx+tx)/2+(i%2?26:-26),cyp=Math.min(sy,ty)-120,tr=0;
+          (function fr(t){var p=(t-t0)/dur;if(p<0)p=0;if(p>1)p=1;
+            var e=p*p*(0.6+0.4*p), q=1-e;
+            var x=q*q*sx+2*q*e*cxp+e*e*tx, y=q*q*sy+2*q*e*cyp+e*e*ty;
+            place(st,x,y,1-.68*e,null,t/80);
+            if(t-tr>110&&p>0.15&&p<0.9){tr=t;
+              var s2=sparkSVG(10+Math.random()*7,'#ffe27a');L.appendChild(s2);place(s2,x,y,1,1);
+              s2.animate([{opacity:.95},{opacity:0}],{duration:380,fill:'forwards'});
+              setTimeout(function(){s2.remove();},400);
+            }
+            if(p<1){requestAnimationFrame(fr);}
+            else{
+              st.remove();landed++;
+              if(pill)pill.animate([{transform:'scale(1)'},{transform:'scale(1.18)'},{transform:'scale(1)'}],{duration:240,easing:'ease-out'});
+              twinkle(tx,ty,3,26);
+              if(landed===n)done();
+            }
+          })(t0);
+        },330);
+      }, i*110);
+    })(i);
+  }
+}
+function check(){
+  var b=bal();
+  if(last===null){last=b;return;}
+  if(b>last){var d=b-last;last=b;if(d>0)fly(Math.min(d,15));}
+  else if(b<last){last=b;}
+}
+var reduced=false;
+try{reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+setTimeout(function(){
+  last=bal();
+  if(reduced)return;
+  window.addEventListener('parlons:stars-changed',function(){setTimeout(check,30);});
+  setInterval(check,700);
+},1200);
+})();
+</script>
+</body></html>
