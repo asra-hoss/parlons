@@ -502,7 +502,16 @@ document.addEventListener('click',function(e){if(!e.isTrusted)return;var el=find
 [data-plan-setup].cam-plan-skin [data-plan-save]{background:#ff6b57!important;border-radius:14px!important}
 </style><script>/* camelon-studyplan-skin: tag the Study plan setup container so the stylesheet above applies; re-tag after React re-renders (presentation only) */
 (function(){function apply(){var el=document.querySelector('[data-plan-setup]');if(el&&!el.classList.contains('cam-plan-skin'))el.classList.add('cam-plan-skin')}
-new MutationObserver(apply).observe(document.documentElement,{childList:true,subtree:true});apply()})();</script><style id="camelon-lang-flags-click">
+new MutationObserver(apply).observe(document.documentElement,{childList:true,subtree:true});apply()})();</script><style id="camelon-landing-center">
+/* Vertically center the signed-out "Where are you with French?" content group
+   (flags + heading + option cards). Internal spacing unchanged. */
+div.relative.z-10.mx-auto.flex.w-full.max-w-md.flex-1.flex-col.px-5:has(>[role="radiogroup"][aria-label="Language"]){
+  justify-content:center!important;
+  padding-top:1.25rem!important;
+  padding-bottom:1.25rem!important;
+}
+</style>
+<style id="camelon-lang-flags-click">
 /* Decorative logo glow was intercepting clicks on the language flag row at desktop widths. */
 span[aria-hidden="true"].absolute.left-1\/2.top-1\/2.h-44.w-64,
 span.absolute.h-44.w-64.blur-2xl[aria-hidden="true"]{pointer-events:none!important}
