@@ -3,98 +3,147 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FX Test — Reward Moments</title>
+<title>Reward FX — Variants</title>
 <style>
-  * { box-sizing: border-box; margin: 0; font-family: -apple-system, "Segoe UI", Roboto, sans-serif; }
-  body { background: #f3f0fd; color: #221c46; padding: 18px 14px 40px; }
+  * { box-sizing: border-box; margin: 0; font-family: -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
+  body { background: #f3f0fd; color: #221c46; padding: 18px 14px 44px; }
   .wrap { max-width: 420px; margin: 0 auto; }
-  header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+  header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
   h1 { font-size: 19px; }
-  .pill { background: #fff; border: 2px solid #e3ddfb; border-radius: 999px; padding: 5px 14px; font-weight: 700; font-size: 16px; display: flex; gap: 6px; align-items: center; transition: transform .18s; }
-  .pill.bump { transform: scale(1.18); }
+  .pill { background: #fff; border: 2px solid #e3ddfb; border-radius: 999px; padding: 5px 14px; font-weight: 800; font-size: 16px; display: flex; gap: 6px; align-items: center; position: relative; z-index: 30; }
   .pill .star { color: #f5a623; }
-  .card { background: #fff; border-radius: 20px; padding: 18px; margin-bottom: 16px; box-shadow: 0 4px 18px rgba(60,40,160,.08); }
-  .card h2 { font-size: 16px; margin-bottom: 4px; }
-  .card p { font-size: 13px; color: #6d6790; margin-bottom: 12px; }
-  button.go { background: #7a5ff0; color: #fff; border: 0; border-radius: 14px; padding: 12px 18px; font-size: 15px; font-weight: 700; width: 100%; cursor: pointer; }
+  .stage { position: relative; background: linear-gradient(160deg, #efeaff, #e7f6ee); border-radius: 24px; height: 300px; overflow: hidden; box-shadow: inset 0 0 0 2px #e3ddfb; margin-bottom: 16px; }
+  .stage .done { position: absolute; left: 0; right: 0; top: 34px; text-align: center; }
+  .stage .done .big { font-size: 21px; font-weight: 800; }
+  .stage .done .sub { font-size: 13px; color: #6d6790; margin-top: 3px; }
+  .centre { position: absolute; left: 50%; top: 56%; width: 0; height: 0; }
+  .fxel { position: absolute; left: 0; top: 0; pointer-events: none; will-change: transform, opacity; }
+  .btns { display: grid; gap: 10px; }
+  button.go { background: #7a5ff0; color: #fff; border: 0; border-radius: 14px; padding: 13px 18px; font-size: 15px; font-weight: 700; cursor: pointer; text-align: left; }
+  button.go small { display: block; font-weight: 500; opacity: .85; font-size: 12px; margin-top: 2px; }
   button.go:active { transform: scale(.98); }
-  .overlay { position: fixed; inset: 0; background: rgba(16,10,40,.82); display: none; align-items: center; justify-content: center; flex-direction: column; z-index: 10; }
-  .overlay.on { display: flex; }
-  .fx { background-repeat: no-repeat; background-size: 800% 100%; background-position: 0% 0; border-radius: 12px; }
-  .fx.play { animation: fxplay var(--dur,1.6s) steps(8) forwards; }
-  @keyframes fxplay { from { background-position: 0% 0; } to { background-position: 100% 0; } }
-  #fxGems { width: 320px; height: 320px; background-image: url("fx/gems-strip.webp"); --dur: 1.9s; }
-  #fxConfetti { width: 340px; height: 340px; background-image: url("fx/confetti-strip.webp"); --dur: 2.4s; }
-  #fxClaim { width: 320px; height: 320px; background-image: url("fx/claim-strip.webp"); --dur: 1.9s; }
-  .banner { color: #fff; font-size: 22px; font-weight: 800; margin-top: 14px; text-align: center; padding: 0 20px; }
-  .close { margin-top: 18px; background: #fff; color: #221c46; border: 0; border-radius: 999px; padding: 10px 22px; font-weight: 700; font-size: 14px; cursor: pointer; }
-  .note { font-size: 12px; color: #8a84ad; text-align: center; margin-top: 6px; }
+  .note { font-size: 12px; color: #8a84ad; text-align: center; margin-top: 14px; }
+  .badge { position: absolute; left: 50%; top: 52%; transform: translate(-50%,-50%); text-align: center; opacity: 0; z-index: 5; }
+  .badge .st { font-size: 74px; color: #f5a623; text-shadow: 0 4px 18px rgba(245,166,35,.55); line-height: 1; }
+  .badge .tx { font-size: 20px; font-weight: 800; margin-top: 2px; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <h1>Reward FX — test</h1>
+    <h1>Lesson complete — pick a style</h1>
     <div class="pill" id="pill"><span class="star">★</span><span id="count">128</span></div>
   </header>
 
-  <div class="card">
-    <h2>1 · Lesson complete</h2>
-    <p>Gems to HUD — the gem bursts and the pieces fly into the counter.</p>
-    <button class="go" id="btnLesson">Finish a lesson</button>
+  <div class="stage" id="stage">
+    <div class="done"><div class="big">Lesson complete!</div><div class="sub">A1 · Bonjour !</div></div>
+    <div class="centre" id="centre"></div>
+    <div class="badge" id="badge"><div class="st">★</div><div class="tx">Bravo !</div></div>
   </div>
 
-  <div class="card">
-    <h2>2 · Chapter complete</h2>
-    <p>Congratulations Confetti Burst — for finishing a whole dossier.</p>
-    <button class="go" id="btnChapter">Finish a chapter</button>
-  </div>
-
-  <div class="card">
-    <h2>3 · Reward moment</h2>
-    <p>Coins rising with the number. Final version: same, without the word “Claim”.</p>
-    <button class="go" id="btnClaim">Collect a reward</button>
+  <div class="btns">
+    <button class="go" id="bA">Variant A — Star pop &amp; fly<small>One big star bursts with sparkles, then flies into the counter (+7)</small></button>
+    <button class="go" id="bB">Variant B — Star fountain<small>7 little stars fountain out, then fly in one by one, counter ticks up</small></button>
+    <button class="go" id="bC">Variant C — Confetti &amp; badge<small>Confetti celebration, gold badge, then the star flies to the counter (+7)</small></button>
   </div>
 
   <p class="note">Test page only — nothing here is in the app yet.</p>
 </div>
 
-<div class="overlay" id="ovGems">
-  <div class="fx" id="fxGems"></div>
-  <div class="banner">Lesson complete!</div>
-  <button class="close" data-close="ovGems">Close</button>
-</div>
-
-<div class="overlay" id="ovConfetti">
-  <div class="fx" id="fxConfetti"></div>
-  <div class="banner">Chapter complete!</div>
-  <button class="close" data-close="ovConfetti">Close</button>
-</div>
-
-<div class="overlay" id="ovClaim">
-  <div class="fx" id="fxClaim"></div>
-  <div class="banner">+50</div>
-  <button class="close" data-close="ovClaim">Close</button>
-</div>
-
 <script>
-function play(ovId, fxId, done) {
-  var ov = document.getElementById(ovId), fx = document.getElementById(fxId);
-  ov.classList.add('on');
-  fx.classList.remove('play'); void fx.offsetWidth; fx.classList.add('play');
-  if (done) setTimeout(done, 1500);
+var stage = document.getElementById('stage'), centre = document.getElementById('centre'),
+    pill = document.getElementById('pill'), countEl = document.getElementById('count'),
+    badge = document.getElementById('badge'), count = 128, busy = false;
+
+function pt(el) { var r = el.getBoundingClientRect(), s = stage.getBoundingClientRect(); return { x: r.left + r.width / 2 - s.left, y: r.top + r.height / 2 - s.top }; }
+function mk(txt, size, color, z) {
+  var d = document.createElement('div'); d.className = 'fxel'; d.textContent = txt;
+  d.style.fontSize = size + 'px'; d.style.color = color; d.style.zIndex = z || 10;
+  d.style.textShadow = '0 2px 10px rgba(0,0,0,.18)'; stage.appendChild(d); return d;
 }
-document.getElementById('btnLesson').addEventListener('click', function () {
-  play('ovGems', 'fxGems', function () {
-    var pill = document.getElementById('pill'), c = document.getElementById('count');
-    pill.classList.add('bump'); c.textContent = '140';
-    setTimeout(function () { pill.classList.remove('bump'); }, 250);
-  });
+function place(el, x, y, scale, rot, op) {
+  el.style.transform = 'translate(' + (x - el.offsetWidth / 2) + 'px,' + (y - el.offsetHeight / 2) + 'px) scale(' + scale + ') rotate(' + (rot || 0) + 'deg)';
+  if (op != null) el.style.opacity = op;
+}
+function flyTo(el, from, to, dur, delay, endScale, onDone) {
+  var t0 = performance.now() + delay, cx = (from.x + to.x) / 2, cy = Math.min(from.y, to.y) - 90;
+  function fr(t) {
+    var p = (t - t0) / dur; if (p < 0) { requestAnimationFrame(fr); return; }
+    if (p > 1) p = 1;
+    var q = 1 - p, x = q * q * from.x + 2 * q * p * cx + p * p * to.x, y = q * q * from.y + 2 * q * p * cy + p * p * to.y;
+    place(el, x, y, 1 - (1 - endScale) * p, p * 160);
+    if (p < 1) requestAnimationFrame(fr); else { el.remove(); if (onDone) onDone(); }
+  }
+  requestAnimationFrame(fr);
+}
+function bump() { pill.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.22)' }, { transform: 'scale(1)' }], { duration: 260, easing: 'ease-out' }); }
+function add(n) { count += n; countEl.textContent = count; }
+function sparkles(c, n, colors, chars, spread, sizeBase) {
+  for (var i = 0; i < n; i++) {
+    var s = mk(chars[i % chars.length], sizeBase + Math.random() * 12, colors[i % colors.length], 9);
+    var a = Math.random() * Math.PI * 2, d = 40 + Math.random() * spread, x0 = c.x, y0 = c.y;
+    place(s, x0, y0, .4, 0, 1);
+    (function (s, a, d) {
+      var t0 = performance.now();
+      (function fr(t) {
+        var p = (t - t0) / 750; if (p > 1) p = 1;
+        place(s, x0 + Math.cos(a) * d * p, y0 + Math.sin(a) * d * p - 14 * p, .4 + .6 * p, p * 120, 1 - p);
+        if (p < 1) requestAnimationFrame(fr); else s.remove();
+      })(t0);
+    })(s, a, d);
+  }
+}
+function reset() { count = 128; countEl.textContent = '128'; badge.style.opacity = 0; }
+
+document.getElementById('bA').addEventListener('click', function () {
+  if (busy) return; busy = true; reset();
+  var c = pt(centre), target = pt(pill);
+  var star = mk('★', 84, '#f5a623', 12); place(star, c.x, c.y, .2, 0, 1);
+  star.animate([{ transform: star.style.transform }, { transform: 'translate(' + (c.x - 42) + 'px,' + (c.y - 42) + 'px) scale(1.18)' }, { transform: 'translate(' + (c.x - 42) + 'px,' + (c.y - 42) + 'px) scale(1)' }], { duration: 480, easing: 'cubic-bezier(.2,1.6,.4,1)', fill: 'forwards' });
+  sparkles(c, 14, ['#f5a623', '#7a5ff0', '#ff6b57', '#2ec4b6'], ['✦', '★', '✦'], 95, 13);
+  setTimeout(function () { star.getAnimations().forEach(function (a) { a.cancel(); }); flyTo(star, c, target, 650, 0, .22, function () { add(7); bump(); busy = false; }); }, 620);
 });
-document.getElementById('btnChapter').addEventListener('click', function () { play('ovConfetti', 'fxConfetti'); });
-document.getElementById('btnClaim').addEventListener('click', function () { play('ovClaim', 'fxClaim'); });
-document.querySelectorAll('[data-close]').forEach(function (b) {
-  b.addEventListener('click', function () { document.getElementById(b.getAttribute('data-close')).classList.remove('on'); });
+
+document.getElementById('bB').addEventListener('click', function () {
+  if (busy) return; busy = true; reset();
+  var c = pt(centre), target = pt(pill), arrived = 0;
+  for (var i = 0; i < 7; i++) {
+    (function (i) {
+      var s = mk('★', 30, '#f5a623', 11);
+      var ang = -Math.PI / 2 + (i - 3) * .38, vx = Math.cos(ang) * (60 + Math.random() * 40), vy = Math.sin(ang) * (120 + Math.random() * 50);
+      var t0 = performance.now() + i * 60, x = c.x, y = c.y;
+      place(s, x, y, 1, 0, 1);
+      (function fr(t) {
+        var p = (t - t0) / 1000; if (p < 0) { requestAnimationFrame(fr); return; }
+        if (p < .55) { var q = p / .55; place(s, x + vx * q, y - vy * q + 150 * q * q, 1, q * 140); requestAnimationFrame(fr); }
+        else flyTo(s, { x: x + vx, y: y - vy + 150 * .3025 }, target, 480, 0, .3, function () { add(1); bump(); if (++arrived === 7) busy = false; });
+      })(t0);
+    })(i);
+  }
+});
+
+document.getElementById('bC').addEventListener('click', function () {
+  if (busy) return; busy = true; reset();
+  var c = pt(centre), target = pt(pill), colors = ['#7a5ff0', '#ff6b57', '#2ec4b6', '#f5a623', '#ff8fab'];
+  for (var i = 0; i < 42; i++) {
+    (function () {
+      var s = mk(Math.random() < .5 ? '●' : '■', 7 + Math.random() * 8, colors[Math.floor(Math.random() * colors.length)], 8);
+      var x0 = c.x + (Math.random() - .5) * 60, y0 = c.y - 30, vx = (Math.random() - .5) * 260, vy = -(120 + Math.random() * 170), rot = Math.random() * 360;
+      var t0 = performance.now() + Math.random() * 120;
+      (function fr(t) {
+        var p = (t - t0) / 1900; if (p < 0) { requestAnimationFrame(fr); return; }
+        if (p > 1) { s.remove(); return; }
+        place(s, x0 + vx * p, y0 + vy * p + 330 * p * p, 1, rot + p * 540, p > .8 ? 1 - (p - .8) * 5 : 1);
+        requestAnimationFrame(fr);
+      })(t0);
+    })();
+  }
+  badge.animate([{ opacity: 0, transform: 'translate(-50%,-50%) scale(.4)' }, { opacity: 1, transform: 'translate(-50%,-50%) scale(1.12)', offset: .55 }, { opacity: 1, transform: 'translate(-50%,-50%) scale(1)' }], { duration: 550, delay: 150, easing: 'cubic-bezier(.2,1.5,.4,1)', fill: 'forwards' });
+  setTimeout(function () {
+    badge.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, fill: 'forwards' });
+    var star = mk('★', 60, '#f5a623', 12); place(star, c.x, c.y - 16, 1, 0, 1);
+    flyTo(star, { x: c.x, y: c.y - 16 }, target, 600, 0, .25, function () { add(7); bump(); busy = false; });
+  }, 1500);
 });
 </script>
 </body>
