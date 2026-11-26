@@ -330,8 +330,11 @@ var IMG=new Image();IMG.src='/assets/coin-reward.png';
 function bal(){try{var o=JSON.parse(localStorage.getItem('parlons:stars')||'{}');return Math.max(0,Math.floor(+o.balance||0))}catch(e){return 0}}
 var last=null,queue=[],flying=false;
 function pillEl(){
-  var s=document.querySelector('span[data-stn]');
-  if(s&&s.parentElement)return s.parentElement;
+  var spans=document.querySelectorAll('span[data-stn]'),vis=null;
+  for(var i=0;i<spans.length;i++){var p=spans[i].parentElement;if(!p)continue;
+    var r=p.getBoundingClientRect();
+    if(r.width>0&&r.height>0&&r.bottom>0&&r.top<window.innerHeight){vis=p;break;}}
+  if(vis)return vis;
   var els=document.querySelectorAll('body *'),best=null,bestY=1e9;
   for(var i=0;i<els.length;i++){var e=els[i];
     if(e.children.length>3)continue;
