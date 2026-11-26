@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FX Test — Reward Moments</title>
+<style>
+  * { box-sizing: border-box; margin: 0; font-family: -apple-system, "Segoe UI", Roboto, sans-serif; }
+  body { background: #f3f0fd; color: #221c46; padding: 18px 14px 40px; }
+  .wrap { max-width: 420px; margin: 0 auto; }
+  header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+  h1 { font-size: 19px; }
+  .pill { background: #fff; border: 2px solid #e3ddfb; border-radius: 999px; padding: 5px 14px; font-weight: 700; font-size: 16px; display: flex; gap: 6px; align-items: center; transition: transform .18s; }
+  .pill.bump { transform: scale(1.18); }
+  .pill .star { color: #f5a623; }
+  .card { background: #fff; border-radius: 20px; padding: 18px; margin-bottom: 16px; box-shadow: 0 4px 18px rgba(60,40,160,.08); }
+  .card h2 { font-size: 16px; margin-bottom: 4px; }
+  .card p { font-size: 13px; color: #6d6790; margin-bottom: 12px; }
+  button.go { background: #7a5ff0; color: #fff; border: 0; border-radius: 14px; padding: 12px 18px; font-size: 15px; font-weight: 700; width: 100%; cursor: pointer; }
+  button.go:active { transform: scale(.98); }
+  .overlay { position: fixed; inset: 0; background: rgba(16,10,40,.82); display: none; align-items: center; justify-content: center; flex-direction: column; z-index: 10; }
+  .overlay.on { display: flex; }
+  .fx { background-repeat: no-repeat; background-size: 800% 100%; background-position: 0% 0; border-radius: 12px; }
+  .fx.play { animation: fxplay var(--dur,1.6s) steps(8) forwards; }
+  @keyframes fxplay { from { background-position: 0% 0; } to { background-position: 100% 0; } }
+  #fxGems { width: 320px; height: 320px; background-image: url("fx/gems-strip.webp"); --dur: 1.9s; }
+  #fxConfetti { width: 340px; height: 340px; background-image: url("fx/confetti-strip.webp"); --dur: 2.4s; }
+  #fxClaim { width: 320px; height: 320px; background-image: url("fx/claim-strip.webp"); --dur: 1.9s; }
+  .banner { color: #fff; font-size: 22px; font-weight: 800; margin-top: 14px; text-align: center; padding: 0 20px; }
+  .close { margin-top: 18px; background: #fff; color: #221c46; border: 0; border-radius: 999px; padding: 10px 22px; font-weight: 700; font-size: 14px; cursor: pointer; }
+  .note { font-size: 12px; color: #8a84ad; text-align: center; margin-top: 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Reward FX — test</h1>
+    <div class="pill" id="pill"><span class="star">★</span><span id="count">128</span></div>
+  </header>
+
+  <div class="card">
+    <h2>1 · Lesson complete</h2>
+    <p>Gems to HUD — the gem bursts and the pieces fly into the counter.</p>
+    <button class="go" id="btnLesson">Finish a lesson</button>
+  </div>
+
+  <div class="card">
+    <h2>2 · Chapter complete</h2>
+    <p>Congratulations Confetti Burst — for finishing a whole dossier.</p>
+    <button class="go" id="btnChapter">Finish a chapter</button>
+  </div>
+
+  <div class="card">
+    <h2>3 · Reward moment</h2>
+    <p>Coins rising with the number. Final version: same, without the word “Claim”.</p>
+    <button class="go" id="btnClaim">Collect a reward</button>
+  </div>
+
+  <p class="note">Test page only — nothing here is in the app yet.</p>
+</div>
+
+<div class="overlay" id="ovGems">
+  <div class="fx" id="fxGems"></div>
+  <div class="banner">Lesson complete!</div>
+  <button class="close" data-close="ovGems">Close</button>
+</div>
+
+<div class="overlay" id="ovConfetti">
+  <div class="fx" id="fxConfetti"></div>
+  <div class="banner">Chapter complete!</div>
+  <button class="close" data-close="ovConfetti">Close</button>
+</div>
+
+<div class="overlay" id="ovClaim">
+  <div class="fx" id="fxClaim"></div>
+  <div class="banner">+50</div>
+  <button class="close" data-close="ovClaim">Close</button>
+</div>
+
+<script>
+function play(ovId, fxId, done) {
+  var ov = document.getElementById(ovId), fx = document.getElementById(fxId);
+  ov.classList.add('on');
+  fx.classList.remove('play'); void fx.offsetWidth; fx.classList.add('play');
+  if (done) setTimeout(done, 1500);
+}
+document.getElementById('btnLesson').addEventListener('click', function () {
+  play('ovGems', 'fxGems', function () {
+    var pill = document.getElementById('pill'), c = document.getElementById('count');
+    pill.classList.add('bump'); c.textContent = '140';
+    setTimeout(function () { pill.classList.remove('bump'); }, 250);
+  });
+});
+document.getElementById('btnChapter').addEventListener('click', function () { play('ovConfetti', 'fxConfetti'); });
+document.getElementById('btnClaim').addEventListener('click', function () { play('ovClaim', 'fxClaim'); });
+document.querySelectorAll('[data-close]').forEach(function (b) {
+  b.addEventListener('click', function () { document.getElementById(b.getAttribute('data-close')).classList.remove('on'); });
+});
+</script>
+</body>
+</html>
