@@ -1048,17 +1048,15 @@ window.addEventListener('storage',function(e){if(!e.key||e.key===KEY)apply()});
 
 
 
-<!-- fxl-finish-effect v5: TEST ONLY on this copy — star sheet + coin flyout streams to the lesson star pill -->
+
+<!-- fxl-finish-effect v6: TEST ONLY on this copy — coin flyout, count matches the step reward (step +1, writing/speaking +5) -->
 <style>
 #fxl-dim{position:fixed;inset:0;background:rgba(24,16,54,0);z-index:99990;pointer-events:none;transition:background .3s}
 #fxl-layer{position:fixed;inset:0;z-index:99995;pointer-events:none;overflow:hidden}
 .fxl-el{position:absolute;left:0;top:0;pointer-events:none;will-change:transform,opacity;line-height:0}
-.fxl-star{background-image:url('/progress-copy/fx/star-sheet.png');background-size:1800% 100%;background-repeat:no-repeat;animation:fxlspin .9s steps(18) infinite;filter:drop-shadow(0 5px 10px rgba(217,138,6,.45))}
-@keyframes fxlspin{from{background-position:0% 0}to{background-position:100% 0}}
-#fxl-bar{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:100000;display:flex;gap:10px}
-.fxl-btn{background:#7a5ff0;color:#fff;border:0;border-radius:999px;padding:13px 20px;font:800 15px Nunito,-apple-system,sans-serif;box-shadow:0 8px 24px rgba(60,40,160,.4);cursor:pointer;white-space:nowrap}
+#fxl-bar{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:100000;display:flex;gap:8px}
+.fxl-btn{background:#f59e0b;color:#fff;border:0;border-radius:999px;padding:12px 16px;font:800 14px Nunito,-apple-system,sans-serif;box-shadow:0 8px 24px rgba(60,40,160,.35);cursor:pointer;white-space:nowrap}
 .fxl-btn:active{transform:scale(.97)}
-.fxl-btn.coin{background:#f59e0b}
 </style>
 <script>
 (function(){
@@ -1070,18 +1068,12 @@ function sparkSVG(size,color){
   d._w=size;
   return d;
 }
-function starEl(size){
-  var d=document.createElement('div');d.className='fxl-el fxl-star';
-  d.style.width=size+'px';d.style.height=size+'px';
-  d._w=size;
-  return d;
-}
 function coinEl(size){
   var d=document.createElement('div');d.className='fxl-el';
   var img=document.createElement('img');img.src='/progress-copy/fx/coin.png';
   img.style.width=size+'px';img.style.height='auto';img.style.display='block';
   img.style.filter='drop-shadow(0 5px 10px rgba(217,138,6,.45))';
-  d.appendChild(img);d._w=size;d._coin=true;
+  d.appendChild(img);d._w=size;
   return d;
 }
 function findPill(){
@@ -1095,7 +1087,7 @@ function findPill(){
     }}
   return best;
 }
-function playFX(kind){
+function playFX(n){
   var dim=document.getElementById('fxl-dim');
   if(!dim){dim=document.createElement('div');dim.id='fxl-dim';document.body.appendChild(dim);}
   var layer=document.getElementById('fxl-layer');
@@ -1107,8 +1099,7 @@ function playFX(kind){
   var tx=pr?pr.left+pr.width/2:W-52,ty=pr?pr.top+pr.height/2:36;
   function place(el,x,y,s,op,spin){
     var w=el._w||48;
-    var sx=s;
-    if(el._coin&&spin!=null)sx=s*Math.cos(spin);
+    var sx=(spin!=null)?s*Math.cos(spin):s;
     el.style.transform='translate('+(x-w/2)+'px,'+(y-w/2)+'px) scale('+sx+','+s+')';
     if(op!=null)el.style.opacity=op;
   }
@@ -1125,12 +1116,12 @@ function playFX(kind){
       })(i);
     }
   }
-  twinkle(cx,cy,12,110);
-  var N=7,landed=0,mk=(kind==='coin')?coinEl:starEl;
-  for(var i=0;i<N;i++){
+  twinkle(cx,cy,10,100);
+  var landed=0;
+  for(var i=0;i<n;i++){
     (function(i){
       setTimeout(function(){
-        var st=mk(60);layer.appendChild(st);
+        var st=coinEl(58);layer.appendChild(st);
         var sx=cx+(Math.random()-.5)*36, sy=cy+(Math.random()-.5)*22;
         place(st,sx,sy,.3,1,0);
         var popT0=performance.now();
@@ -1158,7 +1149,7 @@ function playFX(kind){
                 if(m)pill.textContent=pill.textContent.replace(/\d+/,String(parseInt(m[0],10)+1));
               }
               twinkle(tx,ty,3,26);
-              if(landed===N){setTimeout(function(){dim.style.background='rgba(24,16,54,0)';},250);}
+              if(landed===n){setTimeout(function(){dim.style.background='rgba(24,16,54,0)';},250);}
             }
           })(t0);
         },330);
@@ -1167,11 +1158,14 @@ function playFX(kind){
   }
 }
 var bar=document.createElement('div');bar.id='fxl-bar';
-var b1=document.createElement('button');b1.className='fxl-btn';b1.textContent='\u2605 Stars';
-b1.addEventListener('click',function(){playFX('star');});
-var b2=document.createElement('button');b2.className='fxl-btn coin';b2.textContent='\u25CF Coins';
-b2.addEventListener('click',function(){playFX('coin');});
-bar.appendChild(b1);bar.appendChild(b2);
+function addBtn(label,n){
+  var b=document.createElement('button');b.className='fxl-btn';b.textContent=label;
+  b.addEventListener('click',function(){playFX(n);});
+  bar.appendChild(b);
+}
+addBtn('Step done  +1',1);
+addBtn('Writing  +5',5);
+addBtn('Speaking  +5',5);
 document.body.appendChild(bar);
 var played=false;
 setInterval(function(){
@@ -1180,11 +1174,12 @@ setInterval(function(){
   var last=scrs[scrs.length-1];
   if(last.offsetParent!==null||getComputedStyle(last).position==='fixed'){
     var r=last.getBoundingClientRect();
-    if(r.width>0&&r.height>0){played=true;setTimeout(function(){playFX('star');},600);}
+    if(r.width>0&&r.height>0){played=true;setTimeout(function(){playFX(1);},600);}
   }
 },900);
 })();
 </script>
+
 
 
 
