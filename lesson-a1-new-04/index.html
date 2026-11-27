@@ -482,8 +482,8 @@ body:not(.m) .scr.on .fr{transform:scale(var(--k,1));transform-origin:top center
 .nav{flex-direction:column}
 .nav .btn{min-height:56px;order:1}
 .nav .btn.g{order:2;background:none;box-shadow:none;color:#7a76a8;min-height:40px;font-size:15px}
-</style>
-<script id="chichilang-nt-reskin-js">
+.ntr-chestwrap{text-align:center;margin-top:4px;position:relative}.ntr-chest{width:172px;cursor:pointer}.ntr-shake{animation:ntrshake .45s ease}@keyframes ntrshake{0%,100%{transform:rotate(0)}25%{transform:rotate(-4deg) scale(1.03)}75%{transform:rotate(4deg) scale(1.03)}}.ntr-pop{animation:ntrpop .35s ease}@keyframes ntrpop{0%{transform:scale(.92)}60%{transform:scale(1.06)}100%{transform:scale(1)}}.ntr-chestline{margin-top:8px;font:700 14.5px Nunito,sans-serif;color:#6f6a85}.ntr-reward{margin-top:10px;font:800 16px Nunito,sans-serif;color:#22316e}.ntr-reward img{width:20px;height:20px;vertical-align:-4px}.ntr-burst{position:absolute;left:50%;top:30%;width:26px;height:26px;margin:-13px 0 0 -13px;animation:ntrburst .9s ease-out forwards;pointer-events:none}@keyframes ntrburst{to{transform:rotate(var(--a)) translateY(-95px) rotate(0deg);opacity:0}}</style>
+<script>window.__ntNext={"title": "Pourquoi j'apprends le français", "cover": "/assets/a1-unit-1-cntz6vzq.jpg", "goal": "Pourquoi tu apprends le français ?"}</script><script id="chichilang-nt-reskin-js">
 (function(){
  if(typeof S==='undefined'||typeof LD==='undefined')return;
  var LV=({a1:'A1',a2:'A2',b1:'B1',b2:'B2',c1:'C1',c12:'C1/C2'})[LD.level||'a1']||'A1';
@@ -512,7 +512,7 @@ body:not(.m) .scr.on .fr{transform:scale(var(--k,1));transform-origin:top center
     bar.replaceWith(row)}}});
  function fit(){var fz=1;try{fz={s:1,n:1.3,l:1.5,x:1.75}[localStorage.getItem('cam_fs')||'n']||1}catch(e){}if(innerWidth<=600){document.documentElement.style.removeProperty('--k');return}var k=Math.min(1.12,(innerHeight-70)/700,(innerWidth-16)/340);k=Math.max(.5,k)*fz;document.documentElement.style.setProperty('--k',k)}
  addEventListener('resize',fit);fit();
- var prevShow=window.show;if(typeof prevShow==='function'){window.show=function(n){var r=prevShow.apply(this,arguments);paintCircles();return r}}
+ var prevShow=window.show;if(typeof prevShow==='function'){window.show=function(n){var r=prevShow.apply(this,arguments);paintCircles(); finishFlow();return r}}
  function sumPill(){try{var sum=S[S.length-1];if(!sum||sum.querySelector('span[data-stn]'))return;var src=null;for(var k=1;k<S.length;k++){var p=S[k].querySelector('span[data-stn]');if(p){src=p.parentElement;break}}if(!src)return;var fr=sum.querySelector('.fr')||sum;if(getComputedStyle(fr).position==='static')fr.style.position='relative';var hold=document.createElement('div');hold.style.cssText='position:absolute;top:12px;right:14px;z-index:6';var cl=src.cloneNode(true);hold.appendChild(cl);fr.appendChild(hold);var sp=cl.querySelector('span');if(sp){sp.setAttribute('data-stn','1');try{sp.textContent=String(Math.max(0,Math.floor(+JSON.parse(localStorage.getItem('parlons:stars')||'{}').balance||0)))}catch(e){}}}catch(e){}}
  function fmtT(t){t=Math.max(0,Math.floor(t||0));return Math.floor(t/60)+':'+('0'+(t%60)).slice(-2)}
  function customPlayers(){
@@ -611,7 +611,51 @@ body:not(.m) .scr.on .fr{transform:scale(var(--k,1));transform-origin:top center
    },true);
   });
  }
- transcriptAudio();
+ /* ---- finish flow: pearl chest that opens + next-lesson popup (like the regular lessons) ---- */
+function finishFlow(){
+  var sum=document.querySelector('.scr[data-last="1"]'); if(!sum||sum.dataset.ntrfin)return; sum.dataset.ntrfin='1';
+  var pad=sum.querySelector('.pad'); if(!pad)return;
+  var big=pad.querySelector('.big'); if(big)big.style.display='none';
+  var chest=document.createElement('div'); chest.className='ntr-chestwrap';
+  chest.innerHTML='<img class="ntr-chest" src="/assets/chest3-closed-ggny5m54.png" alt="">'
+    +'<div class="ntr-chestline">Great work — tap your chest to open it</div>'
+    +'<div class="ntr-reward" style="display:none"></div>';
+  pad.appendChild(chest);
+  var opened=false;
+  chest.querySelector('.ntr-chest').addEventListener('click',function(){
+    if(opened)return; opened=true;
+    var img=this; img.classList.add('ntr-shake');
+    setTimeout(function(){ img.classList.remove('ntr-shake'); img.src='/assets/chest3-open-svzjnkc3.png'; img.classList.add('ntr-pop');
+      for(var k=0;k<8;k++){(function(k){var c=document.createElement('img');c.src='/progress-copy/fx/coin.png';c.className='ntr-burst';c.style.setProperty('--a',(k*45)+'deg');chest.appendChild(c);setTimeout(function(){c.remove()},950)})(k)}
+      var g={}; try{g=JSON.parse(localStorage.getItem('parlons:stepfx')||'{}')}catch(e){}
+      var lid=(typeof LD!=='undefined'&&LD.id)||''; var tot=0; Object.keys(g).forEach(function(key){ if(key.indexOf(lid+':')===0&&typeof g[key]==='number')tot+=g[key] });
+      var rw=chest.querySelector('.ntr-reward'); rw.style.display='block'; rw.innerHTML='<img src="/progress-copy/fx/coin.png" alt=""> +'+tot+' coins earned in this lesson';
+      chest.querySelector('.ntr-chestline').textContent='Your reward is in your chest';
+      setTimeout(showPop, 1150);
+    },480);
+  });
+  function showPop(){
+    if(document.getElementById('ntr-donepop'))return;
+    var N=window.__ntNext||null; var nx=(typeof LD!=='undefined'&&LD.next)||null; if(!nx)return;
+    var title=N?N.title:(nx.title||''); var cover=N?N.cover:''; var goal=N?N.goal:'';
+    var o=document.createElement('div'); o.id='ntr-donepop';
+    o.style.cssText='position:fixed;left:0;top:0;right:0;bottom:0;z-index:9998;background:rgba(15,18,35,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:16px';
+    o.innerHTML='<div style="position:relative;background:#fff;border-radius:26px;padding:16px 16px 20px;max-width:340px;width:100%;text-align:center;box-shadow:0 24px 60px rgba(20,16,60,.35)">'
+      +'<div class="ntr-dpn" style="position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;background:#f1eefc;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6f6a85" stroke-width="2.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></div>'
+      +(cover?'<img src="'+cover+'" alt="" style="display:block;width:100%;height:150px;object-fit:cover;object-position:center 30%;border-radius:20px">':'')
+      +'<div style="display:table;margin:14px auto 0;padding:5px 14px;border-radius:20px;background:#efeaff;color:#4b34b0;font:800 11.5px Nunito,sans-serif;letter-spacing:.4px">DOSSIER '+nx.dnum+' · LESSON '+nx.n+'</div>'
+      +'<h2 style="margin:10px 0 0;font:600 23px/28px Fredoka,Nunito,sans-serif;color:#22316e">'+title+'</h2>'
+      +(goal?'<div style="display:flex;align-items:center;gap:10px;margin-top:10px;font:700 14px Nunito,sans-serif;color:#22316e;text-align:left"><span style="width:8px;height:8px;border-radius:50%;background:#4f7fe0;flex:none"></span><span>'+goal+'</span></div>':'')
+      +'<div class="ntr-dpy" style="margin-top:18px;padding:15px 16px;border-radius:999px;background:linear-gradient(90deg,#fdad11,#fe9437 18%,#fd6d61 35%,#fe5e81 50%,#fd5291 65%,#f848a1 82%,#eb50b4);color:#fff;font:800 19px Fredoka,Nunito,sans-serif;cursor:pointer;box-shadow:0 8px 18px rgba(253,109,97,.35)">Continue</div>'
+      +'<div class="ntr-dpn2" style="margin-top:12px;padding:6px;color:#8a86a8;font:800 14px Nunito,sans-serif;cursor:pointer">Not now</div></div>';
+    document.body.appendChild(o);
+    o.querySelector('.ntr-dpy').addEventListener('click',function(){ var b=sum.querySelector('button[data-next]'); o.remove(); if(b)b.click(); });
+    o.querySelector('.ntr-dpn2').addEventListener('click',function(){o.remove()});
+    o.querySelector('.ntr-dpn').addEventListener('click',function(){o.remove()});
+  }
+}
+
+transcriptAudio();
  customPlayers();
  logoExit();
  deckify();
