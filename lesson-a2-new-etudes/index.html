@@ -302,7 +302,7 @@ body:not(.m) .scr.on .fr{transform:scale(var(--k,1));transform-origin:top center
   var h1=cov.querySelector('h1');if(h1)h1.style.textAlign='center';
   var sub=cov.querySelector('.sub');if(sub){sub.style.textAlign='center';
    var p=document.createElement('div');p.style.cssText='display:flex;gap:8px;justify-content:center;margin:2px 0 10px';p.innerHTML='<span style="background:#eee9fb;color:#5a4fb0;font-weight:800;font-size:12px;padding:5px 12px;border-radius:999px">'+totalSteps()+' steps</span><span style="background:#eee9fb;color:#5a4fb0;font-weight:800;font-size:12px;padding:5px 12px;border-radius:999px">~30 min</span>';sub.after(p)}
-  var cards=[].slice.call(cov.querySelectorAll('.pad > .card'));if(cards.length>1){var box=document.createElement('div');box.className='ntr-objbox';cards[0].before(box);cards.forEach(function(c){box.appendChild(c)})}
+  var cards=[].slice.call(cov.querySelectorAll('.pad > .card'));if(cards.length>=1){var box=document.createElement('div');box.className='ntr-objbox';cards[0].before(box);cards.forEach(function(c){box.appendChild(c)})}
   var hd=[].slice.call(cov.querySelectorAll('.pad > div')).find(function(d){return /IN THIS LESSON/.test(d.textContent)});
   if(hd){hd.style.color='#8a86a3';hd.style.letterSpacing='.4px';hd.style.margin='10px 0 6px'}
   var sb=[].slice.call(cov.querySelectorAll('button')).find(function(b){return /Start lesson/.test(b.textContent)});if(sb)sb.textContent='Continue'}
