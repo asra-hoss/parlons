@@ -856,8 +856,8 @@ studyPlan();
 })();
 
 </script>
-<script>/* chichilang-star-chip-coin: the menu-bar star chip shows the approved coin (fx-lesson2 model) */
-(function(){var COIN='/progress-copy/fx/coin.png';function apply(){var chip=document.querySelector('[data-star-chip="true"]');if(!chip)return;var s=chip.querySelector('span[aria-hidden="true"]');if(!s||s.getAttribute('data-coin')==='1')return;s.setAttribute('data-coin','1');s.textContent='';var img=document.createElement('img');img.src=COIN;img.alt='';img.style.cssText='width:22px;height:22px;object-fit:contain;vertical-align:-5px';s.appendChild(img)}new MutationObserver(apply).observe(document.documentElement,{childList:true,subtree:true});apply()})();
+<script>/* chichilang-star-chip-coin v2: the menu-bar star chip shows the approved coin (fx-lesson2 model) */
+(function(){var COIN='/progress-copy/fx/coin.png';function swapIn(chip){if(!chip)return;var imgs=chip.querySelectorAll('img');for(var i=0;i<imgs.length;i++){if((imgs[i].getAttribute('src')||'').indexOf('32ae61d9b985de32')>-1){imgs[i].src=COIN;imgs[i].style.objectFit='contain'}}var spans=chip.querySelectorAll('span');for(var j=0;j<spans.length;j++){var sp=spans[j];if(sp.querySelector('img[data-coinimg="1"]'))return;if(sp.textContent&&sp.textContent.indexOf('\u2B50')>-1&&sp.children.length===0){sp.textContent='';var im=document.createElement('img');im.src=COIN;im.alt='';im.setAttribute('data-coinimg','1');im.style.cssText='width:22px;height:22px;object-fit:contain;vertical-align:-5px';sp.appendChild(im);return}}}function apply(){var chips=document.querySelectorAll('[data-star-chip="true"],[aria-label="\u00C9toiles"]');for(var i=0;i<chips.length;i++)swapIn(chips[i])}new MutationObserver(apply).observe(document.documentElement,{childList:true,subtree:true});apply()})();
 </script>
 </body>
 </html>
