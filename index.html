@@ -856,5 +856,8 @@ studyPlan();
 })();
 
 </script>
+<script>/* chichilang-star-chip-coin: the menu-bar star chip shows the approved coin (fx-lesson2 model) */
+(function(){var COIN='/progress-copy/fx/coin.png';function apply(){var chip=document.querySelector('[data-star-chip="true"]');if(!chip)return;var s=chip.querySelector('span[aria-hidden="true"]');if(!s||s.getAttribute('data-coin')==='1')return;s.setAttribute('data-coin','1');s.textContent='';var img=document.createElement('img');img.src=COIN;img.alt='';img.style.cssText='width:22px;height:22px;object-fit:contain;vertical-align:-5px';s.appendChild(img)}new MutationObserver(apply).observe(document.documentElement,{childList:true,subtree:true});apply()})();
+</script>
 </body>
 </html>
