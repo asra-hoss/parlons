@@ -1,0 +1,864 @@
+<!doctype html>
+<html lang="en">
+  <head><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><base href="/"><script>/* Chichilang: a reset (no onboarding flag) also clears the lesson progress */try{if(localStorage.getItem('origb1:onboarded')!=='1'){Object.keys(localStorage).forEach(function(k){if(k.indexOf('cam_')===0||k==='parlons:stars'||k==='origb1:progress')localStorage.removeItem(k)});try{sessionStorage.removeItem('cam_exit')}catch(e){}}}catch(e){}</script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="color-scheme" content="light dark" />
+    <!-- Installable web app (PWA): Safari's "Add to Home Screen" gives
+         the app its own icon and a full-screen, standalone launch.
+         The file-referencing <link>s (manifest, touch icon, favicon)
+         are injected into the built HTML by build-static.mjs —
+         Bun resolves relative link hrefs as bundle assets, so they
+         cannot live in this source file. The files themselves live
+         in client/public/ and ship verbatim at the site root. -->
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="./logo.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+    <meta name="theme-color" content="#7a5ff0" />
+    <meta
+      name="description"
+      content="Chichilang — learn French from A1 to C2 with the Édito classroom method: complete dossiers, real voices, step-by-step grammar, writing and speaking practice, with your progress saved on every device."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Chichilang" />
+    <meta
+      property="og:title"
+      content="Chichilang — Learn French, one dossier at a time (A1 to C2)"
+    />
+    <meta
+      property="og:description"
+      content="French lessons built on the Édito method: listening, reading, vocabulary, grammar, exercises, writing and speaking in every dossier."
+    />
+    <meta property="og:url" content="https://asra-hoss.github.io/parlons/" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Chichilang" />
+    <!-- Persian/Arabic-script font, SELF-HOSTED (no CDN):
+         Vazirmatn woff2 files live in client/public/fonts/ and
+         ship verbatim at ./fonts/. Every element marked
+         lang="fa" (tap-a-word glosses, flashcard meanings,
+         Persian grammar explanations) or lang="ar" (Arabic
+         translations from the global language picker) renders
+         in Vazirmatn; Latin/French text keeps its own fonts.
+         Line-height is generous: the script needs it. -->
+    <style>
+      @font-face {
+        font-family: "Vazirmatn";
+        src: url("./assets/fonts/vazirmatn-regular.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Vazirmatn";
+        src: url("./assets/fonts/vazirmatn-bold.woff2") format("woff2");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      [lang="fa"],
+      [lang="ar"] {
+        font-family: "Vazirmatn", Tahoma, Arial, sans-serif;
+        line-height: 2;
+      }
+      /* Latin font, SELF-HOSTED (no CDN): Nunito variable woff2
+         (weights 400–800 in one file), the rounded geometric sans
+         of the Lingua-style theme. The font-family itself is
+         applied in theme.css. */
+      @font-face {
+        font-family: "Nunito";
+        src: url("./assets/fonts/nunito.woff2") format("woff2");
+        font-weight: 400 800;
+        font-style: normal;
+        font-display: swap;
+      }
+      /* Rounded display font, SELF-HOSTED: Fredoka variable
+         ttf (weights 300–700) in client/public/fonts/,
+         shipped like Nunito's. Used by the Home v6 screen
+         (bar counter, level title, star chip, Continue)
+         and already named by the Bubble Dream stack. */
+      @font-face {
+        font-family: "Fredoka";
+        src: url("./assets/fonts/fredoka.ttf") format("truetype");
+        font-weight: 300 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      /* Chunky display font for outlined numbers,
+         SELF-HOSTED: Lilita One (Google Fonts, OFL) in
+         client/public/fonts/, shipped like Fredoka's.
+         Used by the Contest page (Asra's design package,
+         Nov 8, 2026) for its outlined score numerals. */
+      @font-face {
+        font-family: "Lilita One";
+        src: url("./assets/fonts/lilita-one.woff") format("woff");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      /* Serif display font, SELF-HOSTED: Libre Baskerville
+         variable woff2 (weights 400–700 in one file) in
+         client/public/fonts/, shipped like Nunito's. Used by
+         the Vocabulary (Flashcards) Tracker screen — the
+         serif of Asra's design package (Nov 8, 2026). */
+      @font-face {
+        font-family: "Libre Baskerville";
+        src: url("./assets/fonts/libre-baskerville.woff2") format("woff2");
+        font-weight: 400 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      /* Serif display font, SELF-HOSTED: Fraunces (latin
+         subsets, weights 600/700 + italics 500/600) in
+         client/public/fonts/, shipped like Nunito's. Used
+         by the Writing and Practice Tracker screens — the
+         serif of Asra's design packages (Nov 8, 2026). */
+      @font-face {
+        font-family: "Fraunces";
+        src: url("./assets/fonts/fraunces-600.woff2") format("woff2");
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Fraunces";
+        src: url("./assets/fonts/fraunces-700.woff2") format("woff2");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Fraunces";
+        src: url("./assets/fonts/fraunces-500-italic.woff2") format("woff2");
+        font-weight: 500;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Fraunces";
+        src: url("./assets/fonts/fraunces-600-italic.woff2") format("woff2");
+        font-weight: 600;
+        font-style: italic;
+        font-display: swap;
+      }
+      /* Script font, SELF-HOSTED: Great Vibes (latin) in
+         client/public/fonts/. Used inside the Writing
+         Tracker's stamp artwork (« Bonjour », « Carte
+         postale ») — the script of Asra's package. */
+      @font-face {
+        font-family: "Great Vibes";
+        src: url("./assets/fonts/great-vibes.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+    <!-- Dark mode (Nov 7, 2026): apply the saved choice
+         (Settings → « Dark mode », origb1:dark-mode)
+         BEFORE first paint, so a dark-mode learner never
+         sees a light flash. Default = light. The
+         useDarkMode hook in App.tsx keeps this attribute
+         in sync afterwards. -->
+    <script>
+      try {
+        document.documentElement.dataset.theme =
+          window.localStorage.getItem("origb1:dark-mode") === "1"
+            ? "dark"
+            : "light";
+      } catch (e) {
+        document.documentElement.dataset.theme = "light";
+      }
+    </script>
+    <!-- Boot scrub (Nov 12, 2026): runs BEFORE the app bundle
+         is even fetched, so it survives a device whose stored
+         state kills the bundle during module init — the case
+         the in-bundle healStoredState (main.tsx) can never
+         reach. Two jobs, both structural and idempotent:
+         (1) This app has NEVER registered a service worker;
+             if one is somehow registered for this origin,
+             unregister it and drop every Cache Storage cache,
+             so the page always comes from the network, never
+             from a trapped copy. (2) Validate the handful of
+             BOOKKEEPING keys startup reads first (language,
+             nav position, theme) and drop a value that is
+             structurally impossible; since Nov 13, 2026 the
+             scrub also shape-checks the MAIN PROGRESS stores
+             (reading checks, study time, starred words,
+             entries, writing/speaking progress) at entry
+             level — the bundle's sanitiser (state-sanitize)
+             owns the full validation, and /rescue owns the
+             manual repair. The transient
+             sign-in markers (auth-error, redirect-attempt)
+             are dropped unconditionally: a stale one can
+             only mislead the next load. Everything is wrapped
+             so a failure here can never block the app. -->
+    <script>
+      (function () {
+        try {
+          if ("serviceWorker" in navigator) {
+            navigator.serviceWorker
+              .getRegistrations()
+              .then(function (regs) {
+                regs.forEach(function (r) {
+                  r.unregister();
+                });
+              })
+              .catch(function () {});
+          }
+          if (window.caches && caches.keys) {
+            caches
+              .keys()
+              .then(function (names) {
+                names.forEach(function (n) {
+                  caches.delete(n);
+                });
+              })
+              .catch(function () {});
+          }
+        } catch (e) {}
+        try {
+          var ls = window.localStorage;
+          ls.removeItem("origb1:auth-error");
+          ls.removeItem("origb1:redirect-attempt");
+          var lang = ls.getItem("origb1:lang");
+          if (
+            lang !== null &&
+            ["en", "fa", "es", "ru", "hi", "ar"].indexOf(lang) === -1
+          ) {
+            ls.removeItem("origb1:lang");
+          }
+          var dm = ls.getItem("origb1:dark-mode");
+          if (dm !== null && dm !== "0" && dm !== "1") {
+            ls.removeItem("origb1:dark-mode");
+          }
+          var nav = ls.getItem("origb1:nav");
+          if (nav !== null) {
+            var ok = false;
+            try {
+              var parsed = JSON.parse(nav);
+              ok =
+                parsed !== null &&
+                typeof parsed === "object" &&
+                !Array.isArray(parsed);
+            } catch (e2) {
+              ok = false;
+            }
+            if (!ok) ls.removeItem("origb1:nav");
+          }
+          /* Home must actually be Home (Nov 23, 2026). The shell
+             boots by reading origb1:nav and, whenever it holds a
+             dossier/lesson position, routes straight there instead
+             of rendering the Home dashboard — so once a learner has
+             opened any lesson, a direct hit on "/" (typing the URL,
+             a bookmark, or the in-lesson logo's own location.href="/")
+             silently bounces right back into that lesson. Home then
+             looks unreachable, which is exactly the "logo doesn't
+             go home" report. Resuming a lesson is still one tap away
+             via the dashboard's own Continue button (driven by
+             origb1:level-dossiers / origb1:progress, not this key),
+             so dropping the stale position on a literal "/" load
+             costs nothing and lets Home render. Only the exact root
+             path is scrubbed — every other shell route (/plan/,
+             /progress, …) keeps its saved nav untouched. */
+          if (location.pathname === "/") {
+            ls.removeItem("origb1:nav");
+          }
+          /* Reading checks: an array of {checkKey, …} entries.
+             A non-array value is dropped outright; entries
+             without a string checkKey are unusable to every
+             reader and are filtered — the one malformation
+             class the in-bundle healing used to leave behind. */
+          var checks = ls.getItem("origb1:reading-checks");
+          if (checks !== null) {
+            try {
+              var arr = JSON.parse(checks);
+              if (!Array.isArray(arr)) {
+                ls.removeItem("origb1:reading-checks");
+              } else {
+                var kept = arr.filter(function (c) {
+                  return (
+                    c !== null &&
+                    typeof c === "object" &&
+                    typeof c.checkKey === "string" &&
+                    /* Real check keys are always « kind:… »
+                       (visual:, game:, words:, listen:, sp:…). */
+                    c.checkKey.indexOf(":") !== -1
+                  );
+                });
+                if (kept.length !== arr.length) {
+                  ls.setItem(
+                    "origb1:reading-checks",
+                    JSON.stringify(kept),
+                  );
+                }
+              }
+            } catch (e3) {
+              ls.removeItem("origb1:reading-checks");
+            }
+          }
+          /* Main progress stores (Nov 13, 2026 — the boot
+             scrub grows the same cheap shape checks the
+             bundle's sanitiser runs, for the stores whose
+             malformed entries can kill a screen before the
+             bundle's own healing is even reached — a null
+             entry in study-time crashed Home in Chromium).
+             Same rule as everywhere: only malformed entries
+             are dropped; valid entries are never touched. */
+          var cleanArr = function (key, okEntry) {
+            var raw = ls.getItem(key);
+            if (raw === null) return;
+            try {
+              var a = JSON.parse(raw);
+              if (!Array.isArray(a)) {
+                ls.removeItem(key);
+                return;
+              }
+              var keptA = a.filter(okEntry);
+              if (keptA.length !== a.length) {
+                ls.setItem(key, JSON.stringify(keptA));
+              }
+            } catch (e4) {
+              ls.removeItem(key);
+            }
+          };
+          var isObj = function (v) {
+            return v !== null && typeof v === "object";
+          };
+          cleanArr("origb1:study-time", function (e) {
+            return (
+              isObj(e) &&
+              typeof e.dossierId === "string" &&
+              typeof e.day === "string" &&
+              typeof e.seconds === "number" &&
+              isFinite(e.seconds) &&
+              e.seconds >= 0
+            );
+          });
+          cleanArr("origb1:starred-words", function (e) {
+            return (
+              isObj(e) &&
+              typeof e.wordKey === "string" &&
+              typeof e.display === "string"
+            );
+          });
+          cleanArr("origb1:entries", function (e) {
+            return (
+              isObj(e) &&
+              typeof e.id === "number" &&
+              typeof e.text === "string"
+            );
+          });
+          /* Progress store: an object whose writing /
+             speaking lists hold only well-shaped entries;
+             a non-object value is dropped outright. */
+          var prog = ls.getItem("origb1:progress");
+          if (prog !== null) {
+            try {
+              var pp = JSON.parse(prog);
+              if (!isObj(pp) || Array.isArray(pp)) {
+                ls.removeItem("origb1:progress");
+              } else {
+                var dirty = false;
+                var fixList = function (list, okE) {
+                  if (!Array.isArray(list)) {
+                    dirty = true;
+                    return [];
+                  }
+                  var k = list.filter(okE);
+                  if (k.length !== list.length) dirty = true;
+                  return k;
+                };
+                pp.writing = fixList(pp.writing, function (e) {
+                  return (
+                    isObj(e) &&
+                    typeof e.draftKey === "string" &&
+                    typeof e.content === "string"
+                  );
+                });
+                pp.speaking = fixList(pp.speaking, function (e) {
+                  return isObj(e) && typeof e.checkKey === "string";
+                });
+                if (dirty) {
+                  ls.setItem("origb1:progress", JSON.stringify(pp));
+                }
+              }
+            } catch (e5) {
+              ls.removeItem("origb1:progress");
+            }
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <title>Chichilang</title>
+    
+  <link rel="stylesheet" crossorigin href="./assets/index-1f9b76c2.css"><script type="module" crossorigin src="/assets/index-v3-31b4247e.js"></script><script>/* Chichilang: the lesson cover pop-up stays; its Continue button opens the new Lesson 1 (from Listening); leaving returns home */
+(function(){var go=false,leaving=false;try{if(sessionStorage.getItem('cam_exit')==='1')leaving=true}catch(e){}
+function cover(){return document.querySelector('img[src*="a1-opener-cover-1"]')}
+var T={"a1":[[{"i":1,"t":"Bonjour !","s":"Greet and be polite","dir":"lesson-a1-a1-01","key":"v3-a1-a1-01"},{"i":2,"t":"Je suis Asra","s":"Introduce yourself","dir":"lesson-a1-a1-02","key":"v3-a1-a1-02"},{"i":3,"t":"Ça s'écrit comment ?","s":"Fill in a form, être and avoir","dir":"lesson-a1-a1-06","key":"v3-a1-a1-06"},{"i":4,"t":"J'ai vingt ans","s":"Say your age","dir":"lesson-a1-new-01","key":"v4-a1-new-01"},{"i":5,"t":"Je viens de Toronto","s":"Say where you come from and where you live","dir":"lesson-a1-new-02","key":"v4-a1-new-02"},{"i":6,"t":"Je suis étudiante","s":"Say what you do","dir":"lesson-a1-new-03","key":"v4-a1-new-03"},{"i":7,"t":"Je remplis un formulaire","s":"Fill in a simple form","dir":"lesson-a1-new-04","key":"v4-a1-new-04"},{"i":8,"t":"Pourquoi j'apprends le français","s":"Say why you learn French","dir":"lesson-a1-a1-05","key":"v3-a1-a1-05"}],[{"i":1,"t":"Tu es d'où ?","s":"Ask questions politely","dir":"lesson-a1-a1-04","key":"v3-a1-a1-04"},{"i":2,"t":"Voici mon ami","s":"Introduce other people","dir":"lesson-a1-a1-03","key":"v3-a1-a1-03"},{"i":3,"t":"Ma famille","s":"Talk about your family","dir":"lesson-a1-a1-07","key":"v3-a1-a1-07"},{"i":4,"t":"Il est comment ?","s":"Describe people","dir":"lesson-a1-a1-08","key":"v3-a1-a1-08"},{"i":5,"t":"On fait connaissance","s":"Get to know someone","dir":"lesson-a1-a1-15","key":"v3-a1-a1-15"}],[{"i":1,"t":"Quelle heure est-il ?","s":"Tell and ask the time","dir":"lesson-a1-new-05","key":"v4-a1-new-05"},{"i":2,"t":"Ma journée","s":"Daily routine and telling the time","dir":"lesson-a1-a1-10","key":"v3-a1-a1-10"},{"i":3,"t":"Je sais, je dis, je vois","s":"Use the other everyday verbs","dir":"lesson-a1-new-06","key":"v4-a1-new-06"},{"i":4,"t":"J'ai mal","s":"Feelings and the body","dir":"lesson-a1-a1-18","key":"v3-a1-a1-18"},{"i":5,"t":"Mes goûts et mes loisirs","s":"Likes and free time","dir":"lesson-a1-a1-09","key":"v3-a1-a1-09"},{"i":6,"t":"On sort ?","s":"Invite, accept, refuse","dir":"lesson-a1-a1-11","key":"v3-a1-a1-11"}],[{"i":1,"t":"Ma maison","s":"Describe your home and city","dir":"lesson-a1-a1-16","key":"v3-a1-a1-16"},{"i":2,"t":"Ma ville","s":"Describe your town","dir":"lesson-a1-new-07","key":"v4-a1-new-07"},{"i":3,"t":"Où est la poste ?","s":"Find your way in town","dir":"lesson-a1-a1-12","key":"v3-a1-a1-12"}],[{"i":1,"t":"Au café","s":"Order food and drink","dir":"lesson-a1-a1-19","key":"v3-a1-a1-19"},{"i":2,"t":"Je fais les courses","s":"Shopping and prices","dir":"lesson-a1-a1-20","key":"v3-a1-a1-20"},{"i":3,"t":"J'achète un pull","s":"Choose and buy clothes","dir":"lesson-a1-new-08","key":"v4-a1-new-08"}],[{"i":1,"t":"Je prends le train","s":"Travel and tickets","dir":"lesson-a1-a1-13","key":"v3-a1-a1-13"},{"i":2,"t":"Je réserve un hôtel","s":"Book accommodation","dir":"lesson-a1-a1-14","key":"v3-a1-a1-14"},{"i":3,"t":"Quel temps fait-il ?","s":"Weather and holiday plans","dir":"lesson-a1-a1-17","key":"v3-a1-a1-17"}],[{"i":1,"t":"Hier, j'ai…","s":"Tell what you did","dir":"lesson-a1-a1-21","key":"v3-a1-a1-21"},{"i":2,"t":"Je suis allée à Paris","s":"Birth and biography","dir":"lesson-a1-a1-23","key":"v3-a1-a1-23"},{"i":3,"t":"Avant et maintenant","s":"Compare, then and now","dir":"lesson-a1-a1-24","key":"v3-a1-a1-24"},{"i":4,"t":"Demain, je vais…","s":"Say what you will do","dir":"lesson-a1-a1-22","key":"v3-a1-a1-22"}],[{"i":1,"t":"Un conseil, un avis","s":"Appreciation and advice","dir":"lesson-a1-a1-25","key":"v3-a1-a1-25"},{"i":2,"t":"Un film que j'aime","s":"Describe and recommend","dir":"lesson-a1-a1-26","key":"v3-a1-a1-26"},{"i":3,"t":"Bilan A1","s":"Review and DELF A1 practice","dir":"lesson-a1-a1-27","key":"v3-a1-a1-27"}]],"a2":[[{"i":1,"t":"Ma personnalité, mes sentiments","s":"Personality and feelings","dir":"lesson-a2-a2-01","key":"v3-a2-a2-01"},{"i":2,"t":"Quand j'étais petit","s":"Past habits and memories","dir":"lesson-a2-a2-05","key":"v3-a2-a2-05"},{"i":3,"t":"Je raconte ma vie","s":"Tell your life story","dir":"lesson-a2-a2-14","key":"v3-a2-a2-14"}],[{"i":1,"t":"Les démarches","s":"Administrative steps","dir":"lesson-a2-a2-03","key":"v3-a2-a2-03"},{"i":2,"t":"La vie pratique","s":"Everyday life and services","dir":"lesson-a2-a2-16","key":"v3-a2-a2-16"},{"i":3,"t":"J'écris un message","s":"Write short messages","dir":"lesson-a2-a2-17","key":"v3-a2-a2-17"}],[{"i":1,"t":"Mon logement, mon quartier","s":"Home and neighbourhood compared","dir":"lesson-a2-a2-02","key":"v3-a2-a2-02"},{"i":2,"t":"La nature et les animaux","s":"Nature and animals","dir":"lesson-a2-a2-06","key":"v3-a2-a2-06"}],[{"i":1,"t":"Je prépare un voyage","s":"Prepare and take a trip","dir":"lesson-a2-a2-04","key":"v3-a2-a2-04"},{"i":2,"t":"Culture et sorties","s":"Culture and leisure","dir":"lesson-a2-a2-12","key":"v3-a2-a2-12"}],[{"i":1,"t":"À la cuisine","s":"Cook and follow a recipe","dir":"lesson-a2-a2-07","key":"v3-a2-a2-07"},{"i":2,"t":"Je consomme","s":"Shopping and money","dir":"lesson-a2-a2-08","key":"v3-a2-a2-08"}],[{"i":1,"t":"Chez le médecin","s":"Health and the body","dir":"lesson-a2-a2-09","key":"v3-a2-a2-09"},{"i":2,"t":"Sport et sécurité","s":"Sport and safety","dir":"lesson-a2-a2-13","key":"v3-a2-a2-13"}],[{"i":1,"t":"Mes études, mon métier","s":"Studies and jobs","dir":"lesson-a2-a2-10","key":"v3-a2-a2-10"},{"i":2,"t":"Les médias et la technologie","s":"Media and technology","dir":"lesson-a2-a2-11","key":"v3-a2-a2-11"}],[{"i":1,"t":"Mon opinion","s":"Give and ask opinions","dir":"lesson-a2-a2-15","key":"v3-a2-a2-15"},{"i":2,"t":"Mes projets","s":"Plan the future","dir":"lesson-a2-a2-18","key":"v3-a2-a2-18"}]],"b1":[[{"i":1,"t":"Mes rêves et mes projets","s":"Plans and ambitions","dir":"lesson-b1-b1-01","key":"v3-b1-b1-01"},{"i":2,"t":"Étudier, se former","s":"Study and train","dir":"lesson-b1-b1-12","key":"v3-b1-b1-12"},{"i":3,"t":"Chercher un emploi","s":"Find a job and work","dir":"lesson-b1-b1-13","key":"v3-b1-b1-13"}],[{"i":1,"t":"Vivre à l'étranger","s":"Moving abroad","dir":"lesson-b1-b1-02","key":"v3-b1-b1-02"},{"i":2,"t":"L'administration","s":"Deal with administration","dir":"lesson-b1-b1-05","key":"v3-b1-b1-05"}],[{"i":1,"t":"Les petits problèmes","s":"Everyday problems and complaints","dir":"lesson-b1-b1-03","key":"v3-b1-b1-03"},{"i":2,"t":"Les urgences et l'assurance","s":"Health emergencies","dir":"lesson-b1-b1-04","key":"v3-b1-b1-04"}],[{"i":1,"t":"Cultures différentes","s":"Compare cultures","dir":"lesson-b1-b1-06","key":"v3-b1-b1-06"},{"i":2,"t":"On sort ensemble","s":"Go out as a group","dir":"lesson-b1-b1-07","key":"v3-b1-b1-07"},{"i":3,"t":"La culture","s":"Talk about culture","dir":"lesson-b1-b1-16","key":"v3-b1-b1-16"}],[{"i":1,"t":"Fêtes et traditions","s":"Family events","dir":"lesson-b1-b1-08","key":"v3-b1-b1-08"},{"i":2,"t":"Habiter ensemble","s":"Housing and neighbourhood life","dir":"lesson-b1-b1-09","key":"v3-b1-b1-09"}],[{"i":1,"t":"Consommer mieux","s":"Consume responsibly","dir":"lesson-b1-b1-10","key":"v3-b1-b1-10"},{"i":2,"t":"Agir pour l'environnement","s":"Act for the environment","dir":"lesson-b1-b1-11","key":"v3-b1-b1-11"}],[{"i":1,"t":"Les médias","s":"Understand the media","dir":"lesson-b1-b1-14","key":"v3-b1-b1-14"},{"i":2,"t":"Technologie et innovation","s":"Technology and innovation","dir":"lesson-b1-b1-15","key":"v3-b1-b1-15"}],[{"i":1,"t":"Je raconte une histoire","s":"Tell stories","dir":"lesson-b1-b1-17","key":"v3-b1-b1-17"},{"i":2,"t":"Je donne mon avis","s":"Give and justify opinions","dir":"lesson-b1-b1-18","key":"v3-b1-b1-18"},{"i":3,"t":"Conseils et obligations","s":"Advice and obligation","dir":"lesson-b1-b1-19","key":"v3-b1-b1-19"}],[{"i":1,"t":"J'écris et je présente","s":"Write and speak with structure","dir":"lesson-b1-b1-20","key":"v3-b1-b1-20"},{"i":2,"t":"Je comprends le français réel","s":"Understand authentic French","dir":"lesson-b1-b1-21","key":"v3-b1-b1-21"},{"i":3,"t":"Bilan B1","s":"Review and DELF B1 practice","dir":"lesson-b1-b1-22","key":"v3-b1-b1-22"}]],"b2":[[{"i":1,"t":"Argumenter","s":"Argue and debate","dir":"lesson-b2-b2-01","key":"v3-b2-b2-01"},{"i":2,"t":"Douter, souhaiter, regretter","s":"Subjunctive and nuance","dir":"lesson-b2-b2-02","key":"v3-b2-b2-02"},{"i":3,"t":"Cause et conséquence","s":"Cause, consequence, concession","dir":"lesson-b2-b2-03","key":"v3-b2-b2-03"},{"i":4,"t":"Rapporter des propos","s":"Report and relate","dir":"lesson-b2-b2-04","key":"v3-b2-b2-04"}],[{"i":1,"t":"La société","s":"Society and social issues","dir":"lesson-b2-b2-05","key":"v3-b2-b2-05"},{"i":2,"t":"Climat et environnement","s":"Environment and climate","dir":"lesson-b2-b2-08","key":"v3-b2-b2-08"}],[{"i":1,"t":"La politique","s":"Political debate","dir":"lesson-b2-b2-06","key":"v3-b2-b2-06"},{"i":2,"t":"La langue et l'histoire","s":"Language and history","dir":"lesson-b2-b2-07","key":"v3-b2-b2-07"}],[{"i":1,"t":"Technologie et progrès","s":"Technology and progress","dir":"lesson-b2-b2-09","key":"v3-b2-b2-09"},{"i":2,"t":"Santé et sciences","s":"Health and science","dir":"lesson-b2-b2-12","key":"v3-b2-b2-12"},{"i":3,"t":"Le sport","s":"Discuss sport at a high level","dir":"lesson-b2-new-sport","key":"v4-b2-new-sport"}],[{"i":1,"t":"Les relations et les émotions","s":"Relationships and feelings","dir":"lesson-b2-b2-10","key":"v3-b2-b2-10"},{"i":2,"t":"Expressions et registres","s":"Idioms and register","dir":"lesson-b2-b2-18","key":"v3-b2-b2-18"}],[{"i":1,"t":"Au travail","s":"Communicate at work","dir":"lesson-b2-b2-11","key":"v3-b2-b2-11"},{"i":2,"t":"Écrire de façon formelle","s":"Write formally","dir":"lesson-b2-b2-15","key":"v3-b2-b2-15"},{"i":3,"t":"Le style soutenu","s":"Formal style and passive","dir":"lesson-b2-b2-16","key":"v3-b2-b2-16"}],[{"i":1,"t":"Tourisme et voyage","s":"Tourism and travel","dir":"lesson-b2-b2-13","key":"v3-b2-b2-13"},{"i":2,"t":"Art et création","s":"Art and creation","dir":"lesson-b2-b2-14","key":"v3-b2-b2-14"}],[{"i":1,"t":"Comprendre l'authentique","s":"Authentic material","dir":"lesson-b2-b2-17","key":"v3-b2-b2-17"},{"i":2,"t":"Bilan B2","s":"Review and DELF B2 practice","dir":"lesson-b2-b2-19","key":"v3-b2-b2-19"}],[{"i":1,"t":"La mode","s":"Discuss fashion and trends","dir":"lesson-b2-new-mode","key":"v4-b2-new-mode"}],[{"i":1,"t":"L'éducation","s":"Discuss education systems and models","dir":"lesson-b2-new-edu","key":"v4-b2-new-edu"}]],"c12":[[{"i":1,"t":"La ville","s":"Cities and urban life","dir":"lesson-c12-c1-01","key":"v3-c12-c1-01"},{"i":2,"t":"L'alimentation","s":"Food, health and society","dir":"lesson-c12-c1-02","key":"v3-c12-c1-02"}],[{"i":1,"t":"Santé, science et éthique","s":"Health, science and ethics","dir":"lesson-c12-c1-03","key":"v3-c12-c1-03"},{"i":2,"t":"Le corps et l'art","s":"Body, art and inequality","dir":"lesson-c12-c1-04","key":"v3-c12-c1-04"}],[{"i":1,"t":"Société, identité, générations","s":"Society, identity and generations","dir":"lesson-c12-c1-05","key":"v3-c12-c1-05"},{"i":2,"t":"Philosophie et émotions","s":"Philosophy and emotions","dir":"lesson-c12-c1-07","key":"v3-c12-c1-07"}],[{"i":1,"t":"Travail et économie","s":"Work and economy","dir":"lesson-c12-c1-06","key":"v3-c12-c1-06"},{"i":2,"t":"Politique et institutions","s":"Politics and institutions","dir":"lesson-c12-c1-13","key":"v3-c12-c1-13"}],[{"i":1,"t":"L'ère numérique","s":"The digital age","dir":"lesson-c12-c1-09","key":"v3-c12-c1-09"},{"i":2,"t":"Écologie et énergie","s":"Ecology and energy","dir":"lesson-c12-c1-12","key":"v3-c12-c1-12"}],[{"i":1,"t":"Histoire et mémoire","s":"History and memory","dir":"lesson-c12-c1-10","key":"v3-c12-c1-10"},{"i":2,"t":"L'interculturel","s":"Interculturality","dir":"lesson-c12-c1-11","key":"v3-c12-c1-11"}],[{"i":1,"t":"Les registres de la langue","s":"Register and language variation","dir":"lesson-c12-c1-08","key":"v3-c12-c1-08"},{"i":2,"t":"Le discours structuré","s":"Rhetoric and formal discourse","dir":"lesson-c12-c1-14","key":"v3-c12-c1-14"},{"i":3,"t":"La grammaire avancée","s":"Advanced grammar","dir":"lesson-c12-c1-15","key":"v3-c12-c1-15"},{"i":4,"t":"Écrire à un niveau avancé","s":"Academic and professional writing","dir":"lesson-c12-c1-16","key":"v3-c12-c1-16"},{"i":5,"t":"Les négations","s":"Master the complete negation system","dir":"lesson-c1-new-negations","key":"v5-new-114"}],[{"i":1,"t":"Résumer et reformuler","s":"Summarise and reconstruct","dir":"lesson-c12-c2-01","key":"v3-c12-c2-01"},{"i":2,"t":"Les nuances","s":"Fine shades of meaning","dir":"lesson-c12-c2-02","key":"v3-c12-c2-02"},{"i":3,"t":"Penser de façon critique","s":"Critical thinking","dir":"lesson-c12-c2-03","key":"v3-c12-c2-03"}],[{"i":1,"t":"Politique internationale","s":"Politics and international affairs","dir":"lesson-c12-c2-04","key":"v3-c12-c2-04"},{"i":2,"t":"Littérature et textes classiques","s":"Literature","dir":"lesson-c12-c2-05","key":"v3-c12-c2-05"},{"i":3,"t":"Domaines spécialisés","s":"Specialised domains","dir":"lesson-c12-c2-06","key":"v3-c12-c2-06"}],[{"i":1,"t":"Maîtriser le style","s":"Mastery of style","dir":"lesson-c12-c2-07","key":"v3-c12-c2-07"},{"i":2,"t":"Parler longuement","s":"Extended speaking","dir":"lesson-c12-c2-08","key":"v3-c12-c2-08"}],[{"i":1,"t":"Écrire longuement","s":"Extended writing","dir":"lesson-c12-c2-09","key":"v3-c12-c2-09"},{"i":2,"t":"Tout comprendre","s":"Understand everything","dir":"lesson-c12-c2-10","key":"v3-c12-c2-10"},{"i":3,"t":"Bilan C2","s":"Review and DELF C2 practice","dir":"lesson-c12-c2-11","key":"v3-c12-c2-11"}]]};window.__T=T;var LVL='a1';function KY(k){var a=T[LVL]&&T[LVL][DN-1];var i=+k.replace('l','');return a&&a[i-1]?a[i-1].key:D+'-'+k}function DR(k){var a=T[LVL]&&T[LVL][DN-1];var i=+k.replace('l','');return a&&a[i-1]?a[i-1].dir:null}
+function setDN(n,lv){lv=lv||'a1';LVL=lv;DN=n;var a=(T[lv]||[])[n-1]||[];D='v3-'+(lv==='c12'?'c1':lv)+'-'+n;L=a.map(function(x){return ['l'+x.i,x.t,x.s]})}
+function PR(){try{return JSON.parse(localStorage.getItem('cam_prog')||'{}')}catch(e){return{}}}
+function getC(){var p=PR();for(var q=0;q<L.length;q++){var r=p[KY(L[q][0])];if(!r||!r.done)return L[q][0]}return L[0][0]}
+function setC(k){try{var m=JSON.parse(localStorage.getItem('cam_lesson_choice')||'{}');m[D]=KY(k);localStorage.setItem('cam_lesson_choice',JSON.stringify(m))}catch(e){}}
+var sel=null;
+function paint(box){[].forEach.call(box.children,function(r){var on=r.getAttribute('data-k')===sel;r.style.background=on?'#ede9fe':'#f8f6ff';r.style.borderColor=on?'#7a5ff0':'transparent'})}
+function build(){var im=document.querySelector('.nx-wcard img[src*="unit-"]');if(!im)return;var mm=/(a1|a2|b2|c12)-unit-(\d+)-/.exec(im.getAttribute('src'));var lv0=mm?mm[1]:'b1';if(!mm)mm=/\/unit-(\d+)-/.exec(im.getAttribute('src'));if(!mm)return;var nn0=+mm[mm.length-1];var sc0=im.closest('.nx-wcard');var hr=sc0&&/(A1|A2|B1|B2|C1\/C2)\s*\u00b7\s*[^\d\u00b7]*?(\d+)/.exec(((sc0.closest('div.fixed')||sc0.parentElement||sc0).textContent||'').slice(0,400));if(hr){lv0={A1:'a1',A2:'a2',B1:'b1',B2:'b2','C1/C2':'c12'}[hr[1]];nn0=+hr[2]}var mx={a1:8,a2:8,b1:9,b2:10,c12:11}[lv0];if(nn0>mx)return;setDN(nn0,lv0);var sec=im.closest('.nx-wcard');if(!sec)return;var oc=sec.querySelector('#camlist');if(oc){if(oc.getAttribute('data-d')===lv0+':'+nn0)return;oc.remove();var ov0=sec.closest('div.fixed');if(ov0)ov0.scrollTop=0}
+ var bs=[].filter.call(sec.querySelectorAll('button'),function(b){return b.textContent.trim().length>0&&!b.getAttribute('aria-label')});var cb=bs[bs.length-1];if(!cb)return;
+ var card=cb.parentNode;sel=getC();var box=document.createElement('div');box.id='camlist';box.setAttribute('data-d',lv0+':'+nn0);var ov=sec.closest('div.fixed');if(ov){ov.style.overflowY='auto';ov.style.alignItems='flex-start';ov.style.webkitOverflowScrolling='touch';ov.style.overscrollBehavior='contain';var w0=ov.firstElementChild;if(w0){w0.style.margin='auto';w0.style.paddingBottom='24px'}}box.style.cssText='display:flex;flex-direction:column;gap:8px;margin:12px 0';
+ L.forEach(function(x,i){var r=document.createElement('div');r.setAttribute('data-k',x[0]);r.style.cssText='display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:18px;border:2px solid transparent;cursor:pointer;font-family:Nunito,sans-serif';
+  r.innerHTML='<span style="width:36px;height:36px;border-radius:12px;background:#e4e0fa;display:flex;align-items:center;justify-content:center;font-weight:900;color:#22316e;flex:none">'+(i+1)+'</span><span style="min-width:0"><b style="display:block;font-size:14px;color:#22316e">'+x[1]+'</b><span style="font-size:12px;color:#6b6f8d;font-weight:700">'+x[2]+'</span></span>'+(function(){var r=PR()[KY(x[0])];if(!r)return '';var n=0;for(var k in (r.steps||{}))n++;if(r.done)return '<span style="margin-left:auto;flex:none;font:800 12px Nunito,sans-serif;color:#1f7a45;background:#e0f6e9;border-radius:12px;padding:4px 9px">\u2713 Done</span>';if(n||r.step)return '<span style="margin-left:auto;flex:none;font:800 12px Nunito,sans-serif;color:#4b34b0;background:#efeaff;border-radius:12px;padding:4px 9px">'+n+'/8 steps</span>';return ''})();
+  r.addEventListener('click',function(){sel=x[0];setC(sel);try{localStorage.setItem('cam_pick',JSON.stringify({d:DN,l:+x[0].replace('l',''),t:Date.now()}))}catch(e){}paint(box)});box.appendChild(r)});
+ card.insertBefore(box,cb);paint(box);try{var lb=[].filter.call(sec.querySelectorAll('b,strong,span'),function(x){return /^Listening:$/.test(x.textContent.trim())})[0];if(lb){var pp=lb.parentElement,cc=pp.parentElement;if(cc&&!cc.querySelector('img')&&!cc.querySelector('h3'))cc.style.display='none';else pp.style.display='none'}}catch(x){}
+ var g=[].filter.call(sec.querySelectorAll('b,strong,span'),function(x){return x.textContent.trim()==='Grammar:'})[0];if(g){var n=g;while(n.parentElement&&!/Speaking:/.test(n.parentElement.textContent.slice(0,0)+n.textContent)){n=n.parentElement;if(/Speaking:/.test(n.textContent))break}
+  n.style.display='none';var pv=n.previousElementSibling;if(pv&&!pv.textContent.trim())pv.style.display='none'}}
+new MutationObserver(build).observe(document.documentElement,{childList:true,subtree:true});
+document.addEventListener('click',function(e){var pb=e.target.closest&&e.target.closest('button');if(pb&&pb.textContent.trim().length>0&&!pb.getAttribute('aria-label')&&!pb.hasAttribute('data-popup-plaque')){var pc=pb.closest('.nx-wcard');if(pc&&pc.querySelector('#camlist')&&!pb.closest('#camlist')){var kk=sel||getC();var dd1=null;try{dd1=DR(kk)}catch(e){}if(!dd1)return;var nn=kk.replace('l','');setC(kk);e.preventDefault();e.stopPropagation();go=true;openLesson('/'+dd1+'/#start');return}}
+var b=e.target.closest&&e.target.closest('button');if(!b||b.getAttribute('aria-label')==='Back')return;if(!/^(Continue|ادامه|Continuar|Продолжить|आगे|متابعة)/.test(b.textContent.trim()))return;var covs=document.querySelectorAll('img[src*="a1-opener-cover-1"]');var covScr=null;for(var ci=0;ci<covs.length;ci++){var sc=covs[ci].closest('div.fixed')||covs[ci].parentElement;if(sc&&sc.contains(b)){covScr=sc;break}}if(!covScr)return;var dir=null;try{var hr2=/(A1|A2|B1|B2|C1\/C2)\s*\u00b7\s*[^\d\u00b7]*?(\d+)/.exec((covScr.textContent||'').slice(0,400));if(hr2){setDN(+hr2[2],{A1:'a1',A2:'a2',B1:'b1',B2:'b2','C1/C2':'c12'}[hr2[1]]);dir=DR(sel||getC())}}catch(e){}if(!dir){try{dir=DR(sel||getC())}catch(e){}}if(!dir)return;e.preventDefault();e.stopPropagation();go=true;openLesson('/'+dir+'/#start')},true);
+function chk(){if(go||!leaving)return;var im=cover();var yes=[].filter.call(document.querySelectorAll('button'),function(b){return /^(Yes|\u0628\u0644\u0647|Oui|S\u00ed|\u0414\u0430|\u0939\u093e\u0901|\u0646\u0639\u0645)$/.test(b.textContent.trim())})[0];
+ if(yes){go=true;leaving=false;try{sessionStorage.removeItem('cam_exit')}catch(e){}yes.click();setTimeout(function(){go=false},1200);return}
+ var bk=document.querySelector('button[aria-label="Back"]');if(im&&bk&&!bk._c){bk._c=1;bk.click()}}
+new MutationObserver(chk).observe(document.documentElement,{childList:true,subtree:true});})();</script><script>/* camelon-next: after finishing Lesson 1, open the next lesson's cover directly */
+(function(){var on=false,t0=Date.now();try{on=sessionStorage.getItem('cam_next')==='1'}catch(e){}if(!on)return;var st=document.createElement('style');st.id='camnext';st.textContent='body{visibility:hidden}';document.head.appendChild(st);
+function done(){try{sessionStorage.removeItem('cam_next')}catch(e){}var x=document.getElementById('camnext');if(x)x.remove();mo.disconnect()}
+var c1=0,c2=0;var mo=new MutationObserver(function(){if(Date.now()-t0>9000){done();return}
+ var w=document.querySelector('div.fixed .nx-wcard');
+ if(w){var b=[].filter.call(w.querySelectorAll('button'),function(b){return /^(Continue|ادامه|Continuar|Продолжить|आगे|متابعة)$/.test(b.textContent.trim())}).pop();if(b&&!c2){c2=1;setTimeout(function(){b.click();setTimeout(done,500)},250)}return}
+ if(!c1){var h=[].filter.call(document.querySelectorAll('button'),function(b){return /^(Continue|ادامه|Continuar|Продолжить|आगे|متابعة)/.test(b.textContent.trim())&&/Dossier/.test(b.textContent)})[0];if(h){c1=1;setTimeout(function(){h.click()},250)}}});
+mo.observe(document.documentElement,{childList:true,subtree:true});setTimeout(done,9500)})();</script><script>/* camelon-skip-language: start on "Where are you with French?"; English is the default, the flags on that page change it */
+(function(){var st=document.createElement('style');st.id='camskip';st.textContent='body{visibility:hidden}';document.head.appendChild(st);
+function show(){var s=document.getElementById('camskip');if(s)s.remove();mo.disconnect()}
+var mo=new MutationObserver(function(){var bs=[].slice.call(document.querySelectorAll('button'));if(!bs.length)return;
+ var en=bs.filter(function(b){return /English/.test(b.textContent)&&bs.some(function(x){return /العربية/.test(x.textContent)})})[0];
+ if(en){en.click();return}
+ if(document.body.innerText.length>20)show()});
+mo.observe(document.documentElement,{childList:true,subtree:true});setTimeout(show,2500)})();</script><script>/* camelon-settings-clean: remove section captions and status lines from Settings */
+(function(){function clean(){if(!document.body||!/Reset my progress/.test(document.body.innerText||''))return;[].forEach.call(document.querySelectorAll('h2,h3,p,span,div'),function(el){if(el.children.length)return;var t=el.textContent.trim();
+ if(t==='Learning'||t==='App'||/^Email verified/.test(t)||/^Progress saved/.test(t)||/^Erases all your progress/.test(t))el.style.display='none'})}
+new MutationObserver(clean).observe(document.documentElement,{childList:true,subtree:true})})();</script><script>/* camelon-hide-level-note: remove the "You can change your level anytime" strip */
+(function(){function hide(){[].forEach.call(document.querySelectorAll('footer p'),function(p){if(p.textContent.trim()==='You can change your level anytime.'){var f=p.closest('footer');if(f)f.style.display='none'}})}
+new MutationObserver(hide).observe(document.documentElement,{childList:true,subtree:true});hide()})();</script><style id="camelon-cover-style">
+[data-elan="flow-cover"] section{border:2px solid #e8e3f7!important;background:#fff!important;border-radius:26px!important;box-shadow:0 14px 30px rgba(90,70,180,.14)!important}
+[data-elan="flow-cover"] section>div:first-child{background:#f1edff!important;border-bottom:2px solid #e8e3f7!important}
+[data-elan="flow-cover"] section p{color:#4b34b0!important}
+[data-elan="flow-cover"] section h3{font-family:Fredoka,Nunito,sans-serif!important;font-weight:600!important;font-size:22px!important;color:#1d1a33!important}
+[data-elan="flow-cover"] li{font-family:Nunito,sans-serif!important;font-weight:700!important}
+[data-elan="flow-cover"] li span{background:linear-gradient(135deg,#3fb0c4,#4f7fe0)!important}
+[data-elan="flow-cover"] img{border-radius:24px}
+button.cam-cont{background:linear-gradient(135deg,#3fb0c4,#4f7fe0)!important;box-shadow:0 10px 22px rgba(63,130,210,.38)!important;font-family:Fredoka,Nunito,sans-serif!important;font-weight:600!important}
+</style><script>/* camelon-cover-style: mark the Continue button of the lesson cover */
+(function(){function m(){if(!document.querySelector('[data-elan="flow-cover"]'))return;[].forEach.call(document.querySelectorAll('button'),function(b){if(/^(Continue|ادامه|Continuar|Продолжить|आगे|متابعة)/.test(b.textContent.trim()))b.classList.add('cam-cont')})}
+new MutationObserver(m).observe(document.documentElement,{childList:true,subtree:true});m()})();</script><script>/* Chichilang: old lesson pages -> new flow */
+(function(){var MX={A1:8,A2:8,B1:9,B2:8,'C1/C2':11},P={A2:'a2-',B1:'b1-',B2:'b2-','C1/C2':'c12-'},RX=/Chichilang\s*\u2022\s*(A1|A2|B1|B2|C1\/C2)\s*\u2022\s*[^\d\u2022]*?(\d+)\s*\u2022\s*[^\d\u2022]*?(\d+)/;function RXE(s){return RX.exec(s.replace(/[۰-۹]/g,function(c){return'۰۱۲۳۴۵۶۷۸۹'.indexOf(c)}).replace(/[٠-٩]/g,function(c){return'٠١٢٣٤٥٦٧٨٩'.indexOf(c)}))}var armed=true,seen=false,exiting=false,tq=0;try{if(sessionStorage.getItem('cam_exit')==='1'){armed=false;exiting=true}}catch(e){}
+if(exiting){var cs=document.createElement('style');cs.id='camexitcov';cs.textContent='body{visibility:hidden!important}';document.head.appendChild(cs);var rm=function(){var x=document.getElementById('camexitcov');if(x)x.remove();try{clearInterval(xiv)}catch(e){}try{sessionStorage.removeItem('cam_exit')}catch(e){}exiting=false;armed=true};
+var tries=0,clicked=0,free=0,xiv=setInterval(function(){try{
+var conf=document.querySelector('[data-exit-confirm]');
+if(conf){var lv=conf.querySelector('[data-exit-leave]');if(lv)lv.click();tries++;if(tries>30)rm();return}
+var cover=document.querySelector('[data-elan="flow-cover"]');
+var home=document.querySelector('button[aria-label="Chichilang \u2014 Home"]');
+if(cover&&home){home.click();clicked++;tries++;if(tries>30)rm();return}
+if(!cover){free++;if(clicked&&free>=2){rm();return}
+if(document.querySelector('[data-profile-frame]')||document.querySelector('aside')){rm();return}
+if(free>=4){rm();return}}
+tries++;if(tries>30)rm();
+}catch(e){}},300);
+setTimeout(rm,12000)}
+window.openLesson=function openLesson(u){/* camelon-fullscreen: lessons always open full-page, like on the phone (Asra's choice, Nov 22) */location.assign(innerWidth>=900?u.replace('/#','/?solo=1#'):u);return;var side=null,best=1e9;try{var els=document.querySelectorAll('nav,aside,div');for(var k=0;k<els.length;k++){var e=els[k],t=e.textContent;if(t.length<500&&t.length<best&&t.indexOf('My lessons')>-1&&t.indexOf('Roadmap')>-1&&t.indexOf('Settings')>-1){var r=e.getBoundingClientRect();if(r.width>80&&r.height>80){side=r;best=t.length}}}}catch(x){}
+if(!side&&innerWidth>=900&&!window.__autoopen){var as=document.querySelector('aside');var ar=as?as.getBoundingClientRect():null;side={right:ar&&ar.width>80?ar.right:240}}
+if(!side||innerWidth<900){if(window.__autoopen&&innerWidth>=900)return false;location.assign(innerWidth>=900?u.replace('/#','/?solo=1#'):u);return}
+if(!document.getElementById('v3css')){var st=document.createElement('style');st.id='v3css';st.textContent='aside>div:first-child>span[aria-hidden]{display:none}body:has(#v3lesson) div:has(>[aria-modal="true"]),body:has(#v3lesson) [aria-modal="true"],body:has(#v3lesson) div[class*="backdrop-blur-[6px]"]{display:none!important}body:has(#v3lesson){overflow:hidden!important}';document.head.appendChild(st)}var old=document.getElementById('v3lesson');if(old)old.remove();var f=document.createElement('iframe');f.id='v3lesson';f.src=u;f.style.cssText='position:fixed;top:0;bottom:0;right:0;left:'+Math.round(side.right+10)+'px;width:calc(100% - '+Math.round(side.right+10)+'px);height:100%;border:0;z-index:2147483000;background:#f6f3ff';window.__v3t=Date.now();document.body.appendChild(f);try{document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',keyCode:27,bubbles:true}))}catch(x){}}
+window.addEventListener('message',function(e){if(e.data==='v4close'){var f=document.getElementById('v3lesson');if(f)f.remove();try{window.dispatchEvent(new Event('focus'));window.dispatchEvent(new StorageEvent('storage',{key:'cam_prog'}))}catch(x){}setTimeout(function(){location.reload()},50)}});
+document.addEventListener('click',function(e){if(innerWidth<900)return;var b=e.target.closest&&e.target.closest('.desk-lessons-grid button[aria-label^="Open Dossier "]');if(!b)return;var d=+(b.getAttribute('aria-label').match(/Dossier (\d+)/)||[])[1];var tab=document.querySelector('button[role="tab"][aria-selected="true"]');var lv=tab?tab.textContent.trim():'A1';if(!d||!/^(A1|A2|B1|B2|C1\/C2)$/.test(lv))return;e.preventDefault();e.stopImmediatePropagation();go(['',lv,d,1])},true);
+(function(){var m=location.search.match(/[?&]open=([^&]+)/);if(!m)return;var t=0,iv=setInterval(function(){t++;var x=document.body?document.body.textContent:'';if(x.indexOf('My lessons')>-1&&x.indexOf('Roadmap')>-1){window.__autoopen=1;if(openLesson('/'+m[1]+'/#start')!==false){clearInterval(iv);try{history.replaceState(null,'','/')}catch(e){}}}if(t>80){clearInterval(iv);window.__autoopen=0}},250)})();
+function go(m){var lv=m[1],d=+m[2],l=+m[3];if(d>MX[lv])return;var kk={A1:'a1',A2:'a2',B1:'b1',B2:'b2','C1/C2':'c12'}[lv];var a=window.__T&&window.__T[kk];a=a&&a[d-1];if(!a)return;var f=null;try{var pg=JSON.parse(localStorage.getItem('cam_prog')||'{}');for(var q=0;q<a.length;q++){var r=pg[a[q].key];if(!r||!r.done){f=a[q];break}}var pk=JSON.parse(localStorage.getItem('cam_pick')||'null');if(pk&&pk.d===d&&Date.now()-pk.t<120000&&a[pk.l-1])f=a[pk.l-1]}catch(e){}if(!f)f=a[Math.min(l,a.length)-1]||a[0];var u='/'+f.dir+'/#start';if(innerWidth>=900){openLesson(u);return}var o=document.createElement('div');o.style.cssText='position:fixed;left:0;top:0;right:0;bottom:0;z-index:2147483647;background:#f5f3ff';document.body.appendChild(o);if(innerWidth>=900){openLesson(u);return}location.replace(u)}
+window.__go=go;
+document.addEventListener('click',function(e){var b=e.target,t='';for(var h=0;h<6&&b&&b.nodeType===1;h++,b=b.parentElement){t=b.textContent.replace(/\s+/g,' ').trim();if(/^(Continue|ادامه|Continuar|Продолжить|आगे|متابعة)/.test(t)&&t.length<60)break;t=''}if(!t)return;if(!/^(Continue|ادامه|Continuar|Продолжить|आगे|متابعة)/.test(t))return;var m=/(A1|A2|B1|B2|C1|C2)\s*·\s*Dossier\s*(\d+)/.exec(t);if(!m)return;var lv=m[1].charAt(0)==='C'?'C1/C2':m[1];e.preventDefault();e.stopPropagation();window.__go([0,lv,+m[2],1])},true);
+document.addEventListener('click',function(e){var f=document.getElementById('v3lesson');if(f&&Date.now()-(window.__v3t||0)>600&&!f.contains(e.target)&&e.target!==f){f.remove();try{window.dispatchEvent(new Event('focus'))}catch(x){}}},true);
+function look(n){if(!n||n.nodeType!==1)return null;if(n.closest&&n.closest('[data-elan="flow-cover"],.nx-wcard'))return null;var s=n.textContent;if(!s||s.length>400||s.indexOf('Chichilang')<0)return null;return RXE(s)}
+function full(){var e=document.querySelectorAll('span,p,div');for(var k=0;k<e.length&&k<600;k++){var el=e[k];if(el.closest&&el.closest('[data-elan="flow-cover"],.nx-wcard'))continue;var s=el.textContent;if(s&&s.length<=120&&s.indexOf('Chichilang')>-1){var m=RXE(s);if(m)return m}}return null}
+new MutationObserver(function(ms){var f=null;for(var a=0;a<ms.length&&!f;a++){var ad=ms[a].addedNodes;for(var b=0;b<ad.length&&!f;b++)f=look(ad[b])}
+if(f){seen=true;if(armed)go(f);return}if(!tq){tq=setTimeout(function(){tq=0;if(!armed)return;var m=full();if(m){seen=true;go(m)}},200)}}).observe(document.documentElement,{childList:true,subtree:true});
+function once(){if(exiting)return;var m=full();if(m){seen=true;if(armed)go(m)}else armed=true}
+setTimeout(once,600);setTimeout(once,1800);setTimeout(once,4000)})();</script><script>/* Chichilang: pictures on tracker flashcards */
+(function(){var EMO={"merci": "🙏", "merci beaucoup": "🙏", "de rien": "🤝", "pardon": "🙇", "excusez-moi": "🙋", "s'il vous plaît": "🙏", "s'il te plaît": "🙏", "oui": "✅", "non": "❌", "monsieur": "👨‍💼", "madame": "👩‍💼", "avec plaisir": "😊", "je vous en prie": "🤝", "un alphabet": "🔤", "une lettre": "✉️", "une voyelle": "🅰️", "une consonne": "🅱️", "épeler": "🔠", "un nom": "🏷️", "un prénom": "🏷️", "un nom de famille": "👪", "comment ?": "❓", "répéter": "🔁", "lentement": "🐢", "écouter": "👂", "un professeur": "👩‍🏫", "une école": "🏫", "une université": "🎓", "un cours": "📚", "un étudiant, une étudiante": "🧑‍🎓", "un élève": "🧒", "un livre": "📖", "un cahier": "📓", "une leçon": "📝", "un examen": "📋", "étudier": "📚", "travailler": "💼", "apprendre": "🧠", "un an": "📅", "l'âge": "🎂", "quel âge ?": "🎂", "dix": "🔟", "vingt": "2️⃣0️⃣", "trente": "3️⃣0️⃣", "quarante": "4️⃣0️⃣", "cinquante": "5️⃣0️⃣", "soixante": "6️⃣0️⃣", "soixante-dix": "7️⃣0️⃣", "quatre-vingts": "8️⃣0️⃣", "quatre-vingt-dix": "9️⃣0️⃣", "cent": "💯", "le lundi": "📅", "le mardi": "📅", "le mercredi": "📅", "le jeudi": "📅", "le vendredi": "📅", "le samedi": "📅", "le dimanche": "📅", "la semaine": "🗓️", "le week-end": "🏖️", "janvier": "❄️", "février": "💘", "mars": "🌱", "avril": "🌧️", "mai": "🌸", "juin": "☀️", "juillet": "🏖️", "août": "🌞", "septembre": "🍂", "octobre": "🎃", "novembre": "🍁", "décembre": "🎄", "le printemps": "🌷", "l'été": "☀️", "l'automne": "🍂", "l'hiver": "⛄", "bonjour": "👋", "bonsoir": "🌆", "salut": "👋", "au revoir": "👋", "à bientôt": "🤗", "à demain": "📆", "bonne journée": "🌞", "bonne soirée": "🌙", "enchanté, enchantée": "🤝", "bienvenue": "🎉", "comment ça va ?": "😊", "ça va bien": "👍", "et toi ?": "🫵", "et vous ?": "🫵", "habiter": "🏠", "manger": "🍽️", "commencer": "▶️", "chercher": "🔍", "trouver": "🔎", "demander": "🙋", "donner": "🎁", "arriver": "🛬", "rester": "🪑", "téléphoner": "📞", "voyager": "✈️", "préparer": "🧑‍🍳", "inviter": "💌", "un professeur, une professeure": "👩‍🏫", "un ingénieur": "👷", "un médecin": "🧑‍⚕️", "un cuisinier, une cuisinière": "🧑‍🍳", "un chauffeur": "🚖", "un vendeur, une vendeuse": "🛍️", "un musicien, une musicienne": "🎸", "un acteur, une actrice": "🎭", "un journaliste": "📰", "un infirmier, une infirmière": "🩺", "une profession": "💼", "la famille": "👨‍👩‍👧‍👦", "les parents": "👫", "le père": "👨", "la mère": "👩", "le frère": "👦", "la sœur": "👧", "le grand-père": "👴", "la grand-mère": "👵", "le fils": "👦", "la fille": "👧", "le mari": "🤵", "la femme": "👰", "le bébé": "👶", "l'enfant": "🧒", "le français": "🇫🇷", "l'anglais": "🇬🇧", "le persan": "🇮🇷", "l'allemand": "🇩🇪", "l'espagnol": "🇪🇸", "une langue": "🗣️", "parler": "💬", "venir de": "➡️", "un pays": "🌍", "une ville": "🏙️", "une capitale": "🏛️", "d'où ?": "📍", "la France": "🇫🇷", "français, française": "🇫🇷", "le Canada": "🇨🇦", "canadien, canadienne": "🇨🇦", "l'Iran": "🇮🇷", "iranien, iranienne": "🇮🇷", "l'Allemagne": "🇩🇪", "allemand, allemande": "🇩🇪", "la Belgique": "🇧🇪", "belge": "🇧🇪", "l'Angleterre": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "anglais, anglaise": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "l'Espagne": "🇪🇸", "espagnol, espagnole": "🇪🇸", "un marché": "🧺", "une boulangerie": "🥖", "un magasin": "🏬", "un supermarché": "🛒", "un client, une cliente": "🛍️", "un kilo": "⚖️", "un morceau": "🍰", "un prix": "🏷️", "acheter": "🛒", "payer": "💳", "cher, chère": "💰", "un bus": "🚌", "un train": "🚆", "un métro": "🚇", "une voiture": "🚗", "un vélo": "🚲", "un taxi": "🚕", "une station": "🚉", "un arrêt": "🚏", "prendre le bus": "🚌", "aller à pied": "🚶", "une carte": "🗺️", "un ticket": "🎫", "une maison": "🏠", "un appartement": "🏢", "une chambre": "🛏️", "une cuisine": "🍳", "un salon": "🛋️", "une salle de bains": "🛁", "un jardin": "🌳", "un balcon": "🪴", "une porte": "🚪", "une fenêtre": "🪟", "une table": "🪑", "un lit": "🛏️", "une chaise": "🪑", "un étage": "🪜", "un tableau": "🧑‍🏫", "un crayon": "✏️", "un stylo": "🖊️", "une règle": "📏", "une gomme": "🧽", "un sac": "🎒", "un mur": "🧱", "une lampe": "💡", "une photo": "📷", "une image": "🖼️", "un ordinateur": "💻", "un téléphone": "📱", "une armoire": "🚪", "un canapé": "🛋️", "une assiette": "🍽️", "un oncle": "👨", "une tante": "👩", "un cousin": "🧑", "une cousine": "👧", "le neveu": "👦", "la nièce": "👧", "marié, mariée": "💍", "célibataire": "🧍", "divorcé, divorcée": "💔", "veuf, veuve": "🕊️", "un couple": "👩‍❤️‍👨", "ensemble": "🤝", "seul, seule": "🧍", "les cheveux": "💇", "les yeux": "👀", "le visage": "🙂", "la tête": "🗣️", "le nez": "👃", "la bouche": "👄", "une barbe": "🧔", "des lunettes": "👓", "long, longue": "📏", "court, courte": "✂️", "blond, blonde": "👱", "brun, brune": "👨‍🦱", "roux, rousse": "👩‍🦰", "frisé, frisée": "👩‍🦱", "grand, grande": "🧍‍♂️", "petit, petite": "🤏", "mince": "🧍", "gros, grosse": "🐘", "jeune": "🧒", "vieux, vieille": "👴", "beau, belle": "😍", "joli, jolie": "🌺", "gentil, gentille": "😇", "sympathique": "😄", "drôle": "😂", "sérieux, sérieuse": "😐", "sportif, sportive": "🏃", "noir, noire": "⚫", "blanc, blanche": "⚪", "rouge": "🔴", "bleu, bleue": "🔵", "vert, verte": "🟢", "jaune": "🟡", "gris, grise": "🩶", "rose": "🌸", "orange": "🟠", "marron": "🟤", "violet, violette": "🟣", "beige": "🟫", "un loisir": "🎨", "la musique": "🎵", "un film": "🎬", "le sport": "🏅", "jouer": "🎮", "chanter": "🎤", "danser": "💃", "nager": "🏊", "cuisiner": "🧑‍🍳", "dessiner": "🖍️", "marcher": "🚶", "la télévision": "📺", "aimer": "❤️", "un secrétaire, une secrétaire": "🗂️", "un comptable, une comptable": "🧮", "un informaticien, une informaticienne": "👩‍💻", "un directeur, une directrice": "🧑‍💼", "un boulanger, une boulangère": "🥖", "un avocat, une avocate": "⚖️", "un ingénieur, une ingénieure": "👷", "un chanteur, une chanteuse": "🎤", "un collègue, une collègue": "🧑‍🤝‍🧑", "regarder la télévision": "📺", "jouer au football": "⚽", "faire du vélo": "🚴", "jouer de la guitare": "🎸", "la piscine": "🏊", "un jeu": "🎲", "se promener": "🚶", "l'heure": "🕐", "une minute": "⏱️", "le matin": "🌅", "l'après-midi": "🌤️", "le soir": "🌇", "la nuit": "🌙", "midi": "🕛", "minuit": "🌃", "une date": "📆", "un anniversaire": "🎂", "aujourd'hui": "📍", "demain": "⏭️", "hier": "⏮️", "un jour": "📅", "un mois": "🗓️", "le midi": "🕛", "le jour": "☀️", "la journée": "🌞", "tôt": "🐓", "tard": "🦉", "maintenant": "⏰", "un projet": "📌", "partir": "🧳", "visiter": "🗺️", "se reposer": "😴", "un quartier": "🏘️", "une rue": "🛣️", "une place": "⛲", "une pharmacie": "💊", "un café": "☕", "un parc": "🌳", "une gare": "🚉", "à gauche": "⬅️", "à droite": "➡️", "tout droit": "⬆️", "loin": "🔭", "le soleil": "☀️", "la pluie": "🌧️", "le vent": "💨", "un nuage": "☁️", "le ciel": "🌤️", "la neige": "❄️", "il fait beau": "🌞", "il fait chaud": "🥵", "il fait froid": "🥶", "pleuvoir": "🌧️", "neiger": "🌨️", "un degré": "🌡️", "la météo": "⛅", "le temps": "🌦️", "une saison": "🍃", "chaud": "🔥", "froid": "🧊", "doux": "🌤️", "frais": "🌬️", "sec": "🏜️", "humide": "💧", "ensoleillé": "☀️", "nuageux": "⛅", "le pain": "🍞", "le fromage": "🧀", "le beurre": "🧈", "le lait": "🥛", "un œuf": "🥚", "la viande": "🥩", "le poisson": "🐟", "le poulet": "🍗", "la confiture": "🍓", "le miel": "🍯", "le café": "☕", "le thé": "🍵", "le jus": "🧃", "l'eau": "💧", "une pomme": "🍎", "une banane": "🍌", "une orange": "🍊", "une fraise": "🍓", "un citron": "🍋", "des raisins": "🍇", "une tomate": "🍅", "une pomme de terre": "🥔", "une carotte": "🥕", "un oignon": "🧅", "une salade": "🥗", "un concombre": "🥒", "un champignon": "🍄", "une poire": "🍐", "un pantalon": "👖", "un jean": "👖", "une chemise": "👔", "un t-shirt": "👕", "un pull": "🧶", "une robe": "👗", "une jupe": "👗", "un manteau": "🧥", "un costume": "🤵", "une veste": "🧥", "des chaussures": "👟", "des bottes": "🥾", "un chapeau": "🎩", "une cravate": "👔", "des chaussettes": "🧦", "une écharpe": "🧣", "une couleur": "🎨", "rond, ronde": "⚪", "carré, carrée": "🟦", "une forme": "🔷", "une taille": "📐", "essayer": "👗", "porter": "👚", "mettre": "🧥", "choisir": "🤔", "trop grand": "📈", "trop petit": "📉", "à la mode": "✨", "les soldes": "🏷️", "élégant, élégante": "💃", "simple": "▫️"},tq=0;function run(){tq=0;var c=document.querySelectorAll('button.card .face.front');for(var i=0;i<c.length;i++){var f=c[i];if(f.getAttribute('data-emo'))continue;var u=f.querySelector('svg use');var fr=f.querySelector('.fr');if(!u||!fr)continue;var k=fr.textContent.trim();var e=EMO[k]||EMO[k.toLowerCase()];f.setAttribute('data-emo','1');if(!e)continue;var s=u.closest('svg');var sp=document.createElement('span');sp.setAttribute('aria-hidden','true');sp.style.cssText='display:flex;align-items:center;justify-content:center;font-size:44px;line-height:1;height:74px;margin-top:6px';sp.textContent=e;s.parentNode.replaceChild(sp,s)}}
+new MutationObserver(function(){if(!tq)tq=setTimeout(run,120)}).observe(document.documentElement,{childList:true,subtree:true})})();</script><style>button.iconbtn[aria-label="Reset view"]{display:none!important}</style><script>/* Chichilang: asking before a page-closing X */
+(function(){function isX(el){var p=el.querySelector&&el.querySelector('path');var d=p&&p.getAttribute('d')||'';return /^M5 5\s?[Ll]\s?19 19|^M5 5\s?l\s?14 14|^M6 6\s?l\s?12 12|^M352 88/.test(d)}
+function find(t){var el=t.closest&&t.closest('button,[role="button"],g[aria-label]');if(!el)return null;var l=el.getAttribute('aria-label');if(l!=='Back'&&l!=='Close')return null;if(!isX(el))return null;if(el.closest('[role="dialog"],[data-elan="flow-cover"],.nx-wcard'))return null;return el}
+function ask(el){if(document.getElementById('camxpop'))return;var o=document.createElement('div');o.id='camxpop';o.style.cssText='position:fixed;left:0;top:0;right:0;bottom:0;z-index:99999;background:rgba(15,18,35,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:16px';
+o.innerHTML='<div style="width:100%;max-width:320px;box-sizing:border-box;background:#fff;border-radius:28px;padding:24px 20px 18px;text-align:center;box-shadow:0 28px 56px -20px rgba(90,60,180,.5)"><div style="margin:0;font:600 24px/28px Fredoka,Nunito,sans-serif;color:#22316e">Are you sure you want to leave?</div><div style="margin:8px 0 0;font:700 14px/20px Nunito,sans-serif;color:#6f6a85">Your progress is saved.</div><div class="xy" style="margin-top:18px;padding:14px;border-radius:999px;background:linear-gradient(90deg,#3fb0c4,#4f7fe0);color:#fff;font:600 18px Fredoka,Nunito,sans-serif;cursor:pointer">Yes, leave</div><div class="xn" style="margin-top:10px;padding:12px;border-radius:999px;background:#efeaff;color:#4b34b0;font:600 18px Fredoka,Nunito,sans-serif;cursor:pointer">No, stay</div></div>';
+o.addEventListener('click',function(e){var y=e.target.closest('.xy'),n=e.target.closest('.xn');if(!y&&!n)return;e.stopPropagation();o.remove();if(y){el.dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true,view:window}))}});document.body.appendChild(o)}
+document.addEventListener('click',function(e){if(!e.isTrusted)return;var el=find(e.target);if(!el)return;e.stopImmediatePropagation();e.preventDefault();ask(el)},true)})();</script><style id="camelon-studyplan-skin">
+/* camelon-studyplan-skin: Study plan setup restyled as a clean toggle list (presentation only; every control stays the bundle's own element with its own handler; ON/OFF follows the bundle's selected class bg-[#6d4fe0]) */
+[data-plan-setup].cam-plan-skin>p:not([data-plan-preview]){color:#0a7c8d!important;margin-top:24px}
+[data-plan-setup].cam-plan-skin>p:not([data-plan-preview]):first-child{margin-top:2px}
+[data-plan-setup].cam-plan-skin>div{display:flex!important;flex-direction:column!important;gap:0!important}
+[data-plan-setup].cam-plan-skin>div>button:not([data-plan-save]){position:relative;display:flex!important;align-items:center;width:100%;background:#fff!important;border:none!important;border-bottom:1px solid #eef1f2!important;border-radius:0!important;box-shadow:none!important;color:#222233!important;font-size:15.5px!important;padding:13px 64px 13px 2px!important;text-align:left}
+[data-plan-setup].cam-plan-skin>div>button:not([data-plan-save])::before{content:'';position:absolute;right:2px;top:50%;transform:translateY(-50%);width:50px;height:29px;border-radius:15px;background:#d8dee0;transition:background .18s ease}
+[data-plan-setup].cam-plan-skin>div>button:not([data-plan-save])::after{content:'';position:absolute;right:26px;top:50%;transform:translateY(-50%);width:23px;height:23px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:right .18s ease}
+[data-plan-setup].cam-plan-skin>div>button[class*="bg-[#6d4fe0]"]:not([data-plan-save])::before{background:#0a9db5}
+[data-plan-setup].cam-plan-skin>div>button[class*="bg-[#6d4fe0]"]:not([data-plan-save])::after{right:5px}
+[data-plan-setup].cam-plan-skin>div>span{display:flex!important;align-items:center;justify-content:space-between;width:100%;background:#fff!important;border:none!important;border-bottom:1px solid #eef1f2!important;border-radius:0!important;padding:8px 2px!important}
+[data-plan-setup].cam-plan-skin [data-plan-preview]{background:#e6f6f8!important;color:#0a5b68!important;border-radius:16px!important}
+[data-plan-setup].cam-plan-skin [data-plan-save]{background:#ff6b57!important;border-radius:14px!important}
+</style><script>/* camelon-studyplan-skin: tag the Study plan setup container so the stylesheet above applies; re-tag after React re-renders (presentation only) */
+(function(){function apply(){var el=document.querySelector('[data-plan-setup]');if(el&&!el.classList.contains('cam-plan-skin'))el.classList.add('cam-plan-skin')}
+new MutationObserver(apply).observe(document.documentElement,{childList:true,subtree:true});apply()})();</script><style id="camelon-landing-center">
+/* Vertically center the signed-out "Where are you with French?" content group
+   (flags + heading + option cards). Internal spacing unchanged. */
+div.relative.z-10.mx-auto.flex.w-full.max-w-md.flex-1.flex-col.px-5:has(>[role="radiogroup"][aria-label="Language"]){
+  justify-content:center!important;
+  padding-top:1.25rem!important;
+  padding-bottom:1.25rem!important;
+}
+</style><script>/* camelon-cover-i18n: translate lesson static covers from origb1:lang (sample: lesson-a1-a1-01). Missing strings fall back to English. French tokens stay as-is. */
+(function(){
+var KEY='origb1:lang';
+var RTL={fa:1,ar:1};
+window.__CAM_COVER_I18N=window.__CAM_COVER_I18N||{
+"lesson-a1-a1-01":{
+en:{subtitle:"Greet and be polite",heading:"IN THIS LESSON YOU WILL LEARN TO",goals:["Greet someone politely","Introduce yourself (s\u2019appeler)","Use the subject pronouns: je, tu, il, elle"],steps:"8 steps",minutes:"~30 min",cta:"Continue"},
+fa:{subtitle:"سلام کردن و مودب بودن",heading:"در این درس یاد می‌گیرید که",goals:["با ادب به کسی سلام کنید","خودتان را معرفی کنید (s\u2019appeler)","ضمیرهای فاعلی را به کار ببرید: je, tu, il, elle"],steps:"۸ مرحله",minutes:"~۳۰ دقیقه",cta:"ادامه"},
+es:{subtitle:"Saludar y ser educado",heading:"EN ESTA LECCIÓN VAS A APRENDER A",goals:["Saludar a alguien con educación","Presentarte (s\u2019appeler)","Usar los pronombres sujeto: je, tu, il, elle"],steps:"8 pasos",minutes:"~30 min",cta:"Continuar"},
+ru:{subtitle:"Приветствовать и быть вежливым",heading:"В ЭТОМ УРОКЕ ВЫ НАУЧИТЕСЬ",goals:["Вежливо поздороваться","Представиться (s\u2019appeler)","Использовать личные местоимения: je, tu, il, elle"],steps:"8 шагов",minutes:"~30 мин",cta:"Продолжить"},
+hi:{subtitle:"अभिवादन करें और विनम्र रहें",heading:"इस पाठ में आप सीखेंगे",goals:["किसी का विनम्रता से अभिवादन करना","अपना परिचय देना (s\u2019appeler)","कर्ता सर्वनामों का उपयोग करना: je, tu, il, elle"],steps:"8 चरण",minutes:"~30 मिनट",cta:"आगे"},
+ar:{subtitle:"التحية والأدب",heading:"في هذا الدرس ستتعلم أن",goals:["تحيي شخصًا بأدب","تقدم نفسك (s\u2019appeler)","تستخدم ضمائر الفاعل: je, tu, il, elle"],steps:"8 خطوات",minutes:"~30 دقيقة",cta:"متابعة"}
+}
+};
+function lessonKey(){
+  var m=(location.pathname||'').match(/\/(lesson-[^\/]+)/);
+  return m?m[1]:null;
+}
+function lang(){
+  try{var l=localStorage.getItem(KEY);if(l)return l}catch(e){}
+  return 'en';
+}
+function pack(lesson,l){
+  var L=window.__CAM_COVER_I18N[lesson]; if(!L) return null;
+  var base=L.en||{}, cur=L[l]||{};
+  return {
+    subtitle:cur.subtitle||base.subtitle,
+    heading:cur.heading||base.heading,
+    goals:(cur.goals&&cur.goals.length?cur.goals:base.goals||[]).map(function(g,i){return g||(base.goals||[])[i]}),
+    steps:cur.steps||base.steps,
+    minutes:cur.minutes||base.minutes,
+    cta:cur.cta||base.cta
+  };
+}
+function apply(){
+  var lesson=lessonKey(); if(!lesson) return;
+  var p=pack(lesson,lang()); if(!p) return;
+  var root=document.querySelector('.scr')||document;
+  var sub=root.querySelector('[data-cam-cover="subtitle"]'); if(sub&&p.subtitle) sub.textContent=p.subtitle;
+  var hd=root.querySelector('[data-cam-cover="heading"]'); if(hd&&p.heading) hd.textContent=p.heading;
+  var st=root.querySelector('[data-cam-cover="steps"]'); if(st&&p.steps) st.textContent=p.steps;
+  var mn=root.querySelector('[data-cam-cover="minutes"]'); if(mn&&p.minutes) mn.textContent=p.minutes;
+  var cta=document.querySelector('[data-cam-cover="cta"]')||(root&&root.querySelector('[data-cam-cover="cta"]')); if(cta&&p.cta){cta.textContent=p.cta;try{cta.setAttribute('data-cam-cover-lang',lang())}catch(e){}}
+  root.querySelectorAll('[data-cam-cover="goal"]').forEach(function(el){
+    var i=+el.getAttribute('data-cam-goal');
+    if(p.goals&&p.goals[i]!=null) el.textContent=p.goals[i];
+  });
+  var dir=RTL[lang()]?'rtl':'ltr';
+  var box=root.querySelector('[data-cam-cover="goals"]'); if(box) box.setAttribute('dir',dir);
+  if(sub) sub.setAttribute('dir',dir);
+  if(hd) hd.setAttribute('dir',dir);
+  if(cta) cta.setAttribute('dir',dir);
+}
+apply();
+setTimeout(apply,0);
+setTimeout(apply,300);
+new MutationObserver(function(){apply()}).observe(document.documentElement,{childList:true,subtree:true});
+window.addEventListener('storage',function(e){if(!e.key||e.key===KEY)apply()});
+})();</script>
+<style id="camelon-lang-flags-click">
+/* Decorative logo glow was intercepting clicks on the language flag row at desktop widths. */
+span[aria-hidden="true"].absolute.left-1\/2.top-1\/2.h-44.w-64,
+span.absolute.h-44.w-64.blur-2xl[aria-hidden="true"]{pointer-events:none!important}
+[role="radiogroup"][aria-label="Language"]{position:relative;z-index:20}
+</style>
+<style id="camelon-logo-skin">
+img.w-52[src*="chichilang-mark-20261123"]{display:none!important}
+button:has(img[src*="chichilang-mark-20261123"]),span:has(>img[data-profile-frame])>button{transform:scale(1.22)!important}
+</style>
+<style id="chichilang-bd-fit">.bd-head{padding-top:calc(env(safe-area-inset-top) + 34px)!important}.bd-prize{margin-top:0!important}</style>
+</head>
+  <body>
+    <div
+      data-generated-space-root=""
+      data-generated-space-slug="french-original-b1-sample"
+    ></div>
+  
+<script>/* camelon-player-net: if the app's own built-in player ever opens inside the shell,
+   send the learner to the matching real lesson page instead. LANGUAGE-INDEPENDENT (Nov 22 fix):
+   the bundle localizes its UI (fa: continueWord "ادامه", lessonWord "درس", activity counter
+   "فعالیت ۳ از ۵" with Persian digits), so the previous net — which pattern-matched the English
+   words "Activity n / N" and "Lesson N" — could never fire in a non-English UI and the old
+   player stayed on screen. Detection now keys on the player's lesson pill
+   ("Chichilang \u2022 A1 \u2022 Dossier 1 \u2022 <localized lesson word> 1"), whose level / dossier /
+   lesson numbers are structural; fa/ar digits are normalized before matching. The shell-managed
+   cover pop-ups ([data-elan="flow-cover"], .nx-wcard) are excluded: their Continue is handled
+   by the cover guard, and if a tap still leaks through to the player, this net catches the
+   player's own screens within ~1s. */
+(function(){var fired='';
+function lvKey(x){return {'A1':'a1','A2':'a2','B1':'b1','B2':'b2','C1/C2':'c12'}[x]}
+function ND(s){return s.replace(/[۰-۹]/g,function(c){return'۰۱۲۳۴۵۶۷۸۹'.indexOf(c)}).replace(/[٠-٩]/g,function(c){return'٠١٢٣٤٥٦٧٨٩'.indexOf(c)})}
+var PILL=/Chichilang\s*\u2022\s*(A1|A2|B1|B2|C1\/C2)\s*\u2022\s*Dossier\s*(\d{1,2})\s*\u2022\s*[^\u2022]*?(\d{1,2})/;
+function excluded(el){return !!(el.closest&&el.closest('[data-elan="flow-cover"],.nx-wcard'))}
+function check(){try{
+ if(document.getElementById('v3lesson')){fired='';return}
+ var T=window.__T;if(!T)return;
+ var els=document.querySelectorAll('div,span,p');
+ var m=null;
+ for(var k=0;k<els.length&&k<900;k++){var el=els[k];var s=el.textContent;if(!s||s.length>160||s.indexOf('Chichilang')<0)continue;if(excluded(el))continue;var mm=PILL.exec(ND(s));if(mm){m=mm;break}}
+ if(!m){fired='';return}
+ var a=(T[lvKey(m[1])]||[])[+m[2]-1]||[];
+ var L=a[+m[3]-1];if(!L||!L.dir){fired='';return}
+ var sig=L.dir;if(fired===sig)return;fired=sig;
+ if(typeof openLesson==='function')openLesson('/'+L.dir+'/#start');
+}catch(e){}}
+new MutationObserver(function(){setTimeout(check,60)}).observe(document.documentElement,{childList:true,subtree:true});
+setInterval(check,700);
+})();</script>
+<style id="camelon-shell-fixes">
+/* Dark Home: the Eiffel backdrop illustration is a light pastel image; dim it in dark mode so Home reads as a real dark theme */
+html[data-theme="dark"] img.nx-homebg{filter:brightness(.48) saturate(.85)}
+/* Dark Home: "Study plan" link under Continue is dark blue (#4a3aff) — unreadable on the dark backdrop */
+html[data-theme="dark"] .nx-homeroot span[class*="text-[#4a3aff]"]{color:#ddd3ff!important;text-shadow:0 1px 8px rgba(10,6,40,.65)}
+/* Progress header: keep the "x / 45" track clear of the prize-chest button and its bubble artwork */
+.bd-track{margin-right:14px}
+</style>
+<script>
+/* camelon-shell-fixes: (1) Team feed opens pre-scrolled (scrollTop 71) and clips the first message — snap it to the top when the Team screen opens; (2) dark-mode "Study plan" link colour (style attr, in case the class hash changes) */
+(function(){
+function teamTop(){
+  var root=document.querySelector('.desk-team');
+  if(!root)return;
+  var sc=root.querySelector('.overflow-y-auto');
+  if(sc&&sc.scrollTop!==0)sc.scrollTop=0;
+}
+var teamUntil=0;
+function armTeam(){teamUntil=Date.now()+1200;teamTop();[150,400,900].forEach(function(t){setTimeout(teamTop,t)})}
+new MutationObserver(function(ms){
+  for(var i=0;i<ms.length;i++){for(var j=0;j<ms[i].addedNodes.length;j++){var n=ms[i].addedNodes[j];
+    if(n.nodeType===1&&(n.classList&&n.classList.contains('desk-team')||n.querySelector&&n.querySelector('.desk-team'))){armTeam();return}}}
+}).observe(document.documentElement,{childList:true,subtree:true});
+document.addEventListener('click',function(e){
+  var b=e.target.closest&&e.target.closest('button');
+  if(b&&/^Team\b/.test(b.textContent.trim()))armTeam();
+},true);
+setInterval(function(){if(Date.now()<teamUntil)teamTop()},120);
+function studyPlan(){
+  if(document.documentElement.getAttribute('data-theme')!=='dark')return;
+  [].forEach.call(document.querySelectorAll('.nx-homeroot span'),function(s){
+    if(s.children.length===0&&s.textContent.trim()==='Study plan'){s.style.color='#ddd3ff';s.style.textShadow='0 1px 8px rgba(10,6,40,.65)'}});
+}
+new MutationObserver(studyPlan).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['data-theme']});
+studyPlan();
+})();
+</script>
+
+<style>/* chichilang-dashboard-dz2 (Asra reference design, Nov 24, 2026) */
+/* Chichilang dashboard — NEW design, colours & sizes sampled from Asra's reference (Nov 24, 2026) */
+.desk-shell { background: linear-gradient(170deg, #eff1fe 0%, #f8f9fd 100%) !important; }
+.dz2-wrap { padding: 4px 26px 30px; }
+.dz2-top { display: flex; align-items: flex-start; gap: 20px; }
+.dz2-hello h1 { font-size: 37px; font-weight: 900; color: #0a1033; line-height: 1.12; }
+.dz2-hello .fr1 { font-size: 17px; font-weight: 700; color: #7c80ab; margin-top: 8px; }
+.dz2-hello .fr2 { font-size: 15.5px; font-weight: 600; color: #9a9ec0; margin-top: 3px; }
+.dz2-profile { margin-left: auto; display: flex; align-items: center; gap: 11px; background: #fff; border-radius: 999px; padding: 8px 20px 8px 9px; box-shadow: 0 8px 20px rgba(80,80,160,.08); flex: none; }
+.dz2-profile img, .dz2-profile .dz2-pav { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; }
+.dz2-profile .dz2-pav { background: linear-gradient(135deg,#ff8fb2,#ffb35c); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 18px; }
+.dz2-profile .n { font-size: 15px; font-weight: 800; color: #0a1033; line-height: 1.15; }
+.dz2-profile .l { font-size: 12.5px; font-weight: 700; color: #9a9ec0; }
+.dz2-profile .ch { color: #b9b4d0; font-size: 15px; margin-left: 2px; }
+.dz2-cards { display: flex; gap: 16px; margin-left: auto; flex: none; }
+.dz2-card { background: #fff; border-radius: 22px; box-shadow: 0 10px 24px rgba(80,80,160,.06); padding: 18px 22px; }
+.dz2-overall { width: 350px; }
+.dz2-overall .row { display: flex; justify-content: space-between; align-items: baseline; }
+.dz2-overall .t { font-size: 15.5px; font-weight: 800; color: #0a1033; }
+.dz2-overall .p { font-size: 15.5px; font-weight: 900; color: #0a1033; }
+.dz2-bar { height: 9px; border-radius: 99px; background: #e9e7fb; overflow: hidden; margin-top: 12px; }
+.dz2-bar i { display: block; height: 100%; border-radius: 99px; background: #a8a5f5; }
+.dz2-overall .s { font-size: 13px; font-weight: 700; color: #9a9ec0; margin-top: 9px; }
+.dz2-streak { width: 205px; display: flex; align-items: center; gap: 13px; }
+.dz2-streak .tr { font-size: 32px; }
+.dz2-streak .t { font-size: 14px; font-weight: 700; color: #9a9ec0; }
+.dz2-streak .d { font-size: 17px; font-weight: 900; color: #0a1033; margin-top: 1px; }
+.dz2-banner { margin-top: 24px; border-radius: 26px; background: linear-gradient(100deg, #f7e3ff 0%, #eee4ff 38%, #e7eaff 72%, #eaf4ec 100%); padding: 30px 34px; display: flex; align-items: center; gap: 20px; box-shadow: 0 12px 26px rgba(122,95,240,.08); }
+.dz2-banner .pill { display: inline-block; background: #c5bcf5; color: #4a3f96; font-size: 12.5px; font-weight: 800; border-radius: 999px; padding: 4px 13px; }
+.dz2-banner h2 { font-size: 30px; font-weight: 900; color: #0a1033; margin-top: 10px; }
+.dz2-banner .sub { font-size: 15.5px; font-weight: 600; color: #7c80ab; margin-top: 4px; }
+.dz2-banner .bwrap { display: flex; align-items: center; gap: 12px; margin-top: 17px; max-width: 480px; }
+.dz2-banner .bbar { flex: 1; height: 9px; border-radius: 99px; background: rgba(255,255,255,.8); overflow: hidden; }
+.dz2-banner .bbar i { display: block; height: 100%; background: #a8a5f5; border-radius: 99px; }
+.dz2-banner .bc { font-size: 13.5px; font-weight: 800; color: #55556e; white-space: nowrap; }
+.dz2-banner .art { margin-left: auto; display: flex; align-items: center; gap: 18px; flex: none; }
+.dz2-banner .hand { font-family: 'Segoe Script', 'Bradley Hand', 'Comic Sans MS', cursive; font-size: 21px; color: #55556e; transform: rotate(-4deg); line-height: 1.35; text-align: center; }
+.dz2-planhead { display: flex; align-items: baseline; margin: 28px 0 15px; }
+.dz2-planhead h3 { font-size: 22px; font-weight: 900; color: #0a1033; }
+.dz2-planhead .all { margin-left: auto; font-size: 14px; font-weight: 800; color: #7a5ff0; cursor: pointer; }
+.dz2-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.dz2-lcard { background: #fff; border-radius: 22px; box-shadow: 0 8px 18px rgba(80,80,160,.055); padding: 20px 20px 16px; cursor: pointer; position: relative; text-align: left; width: 100%; }
+.dz2-lcard .tp { display: flex; align-items: flex-start; }
+.dz2-lcard .med { width: 56px; height: 56px; flex: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.dz2-lcard .med svg { width: 27px; height: 27px; }
+.dz2-lcard .pill { margin-left: 12px; font-size: 12px; font-weight: 800; border-radius: 999px; padding: 4px 11px; }
+.dz2-lcard .chev { margin-left: auto; color: #c9c4dd; font-size: 21px; font-weight: 800; line-height: 1; }
+.dz2-lcard .ti { font-size: 18px; font-weight: 800; color: #0a1033; margin-top: 13px; line-height: 1.25; min-height: 45px; }
+.dz2-lcard .bwrap { display: flex; align-items: center; gap: 9px; margin-top: 10px; }
+.dz2-lcard .bar { flex: 1; height: 7px; border-radius: 99px; background: #e9e7fb; overflow: hidden; }
+.dz2-lcard .bar i { display: block; height: 100%; border-radius: 99px; }
+.dz2-lcard .ct { font-size: 12.5px; font-weight: 700; color: #9a9ec0; white-space: nowrap; }
+.dz2-quick { margin-top: 24px; background: #e9f4ee; border-radius: 22px; box-shadow: 0 8px 18px rgba(80,80,160,.05); padding: 20px 24px; display: flex; align-items: center; gap: 10px; }
+.dz2-quick .qh { width: 180px; flex: none; }
+.dz2-quick .qh .t { font-size: 16px; font-weight: 900; color: #0a1033; }
+.dz2-quick .qh .s { font-size: 13px; font-weight: 600; color: #9a9ec0; margin-top: 2px; }
+.dz2-quick .qi { flex: 1; display: flex; align-items: center; gap: 12px; cursor: pointer; padding: 4px 8px; border-radius: 14px; }
+.dz2-quick .qi svg { width: 27px; height: 27px; flex: none; }
+.dz2-quick .qi .t { font-size: 15px; font-weight: 800; color: #0a1033; }
+.dz2-quick .qi .s { font-size: 12.5px; font-weight: 600; color: #9a9ec0; }
+
+</style>
+<script>/* chichilang-dashboard-dz2 */
+/* Chichilang dashboard — NEW design build (Asra's reference #1, Nov 24, 2026) */
+(function () {
+  var PLAN_URL = window.__DZ_PLAN_URL || '/plan/';
+  var SUBS = { A1: 'Your first steps in French', A2: 'Everyday French, step by step', B1: 'Speak with confidence', B2: 'Refine and express yourself', C1: 'Master the nuances', C2: 'French, like a native' };
+  var PAL = [['#7a5ff0', '#ece8fd'], ['#43b581', '#e2f4ec'], ['#f08c4a', '#fdeadb'], ['#4f8ff7', '#e5effe'], ['#ef6aa5', '#fde7f1'], ['#9b5de5', '#f1e7fd'], ['#e8930c', '#fdf0da'], ['#38b6c9', '#e0f4f7']];
+  var CARD_ICONS = [
+    '<path d="M8 18h.01M12 18h.01M16 18h.01"/><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/>',
+    '<rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M7.5 15.5h3M13.5 15.5h3"/>',
+    '<path d="M5 10h11v6a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4v-6z"/><path d="M16 11h1.5a2.5 2.5 0 0 1 0 5H16M7 6.5c0-1 .8-1 .8-2M11 6.5c0-1 .8-1 .8-2"/>',
+    '<rect x="4" y="4" width="16" height="13" rx="3"/><path d="M4 11h16"/><circle cx="8.5" cy="19.5" r="1.6"/><circle cx="15.5" cy="19.5" r="1.6"/><path d="M7.5 7.5h9"/>',
+    '<circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19.5c.6-3 2.8-4.5 5.5-4.5s4.9 1.5 5.5 4.5"/><circle cx="17" cy="9.5" r="2.6"/><path d="M16 15.2c2.3.2 3.9 1.6 4.4 4.3"/>',
+    '<path d="M4 11l8-6.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M10 20v-5h4v5"/>',
+    '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+    '<circle cx="10" cy="10" r="3.5"/><path d="M10 3.5v1.6M3.5 10h1.6M5.4 5.4l1.1 1.1M14.6 5.4l-1.1 1.1"/><path d="M13 20h6.5a3.5 3.5 0 0 0 .6-6.95A5.5 5.5 0 0 0 9.6 14 3.8 3.8 0 0 0 13 20z"/>'
+  ];
+  function svg(paths, color, size) {
+    return '<svg viewBox="0 0 24 24" width="' + (size || 24) + '" height="' + (size || 24) + '" fill="none" stroke="' + color + '" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + paths + '</svg>';
+  }
+  var PLANT = '<svg width="96" height="112" viewBox="0 0 84 98"><path d="M42 62 C40 48 34 40 24 34" stroke="#5aa469" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M42 62 C43 46 50 36 60 30" stroke="#5aa469" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M42 62 C42 50 42 40 42 30" stroke="#5aa469" stroke-width="2.6" fill="none" stroke-linecap="round"/><ellipse cx="22" cy="30" rx="9" ry="5.4" fill="#7fb069" transform="rotate(-32 22 30)"/><ellipse cx="62" cy="26" rx="9" ry="5.4" fill="#a7c957" transform="rotate(28 62 26)"/><ellipse cx="42" cy="22" rx="6.4" ry="10" fill="#5aa469"/><ellipse cx="30" cy="42" rx="7" ry="4.4" fill="#ef6aa5" transform="rotate(-24 30 42)"/><ellipse cx="55" cy="42" rx="7" ry="4.4" fill="#7fb069" transform="rotate(24 55 42)"/><path d="M28 66 h28 l-3.4 24 a4 4 0 0 1-4 3.4 h-13.2 a4 4 0 0 1-4-3.4 z" fill="#ffffff" stroke="#ddd6f5" stroke-width="2"/><rect x="25" y="60" width="34" height="8" rx="4" fill="#c9bdf7"/></svg>';
+  function camProg() { try { return JSON.parse(localStorage.getItem('cam_prog') || '{}'); } catch (e) { return {}; } }
+  function streak() {
+    try {
+      var key = 'dz2-days', days = JSON.parse(localStorage.getItem(key) || '[]');
+      var today = new Date(); today.setHours(0, 0, 0, 0);
+      var ts = today.getTime();
+      if (days.indexOf(ts) < 0) { days.push(ts); days.sort(); localStorage.setItem(key, JSON.stringify(days.slice(-60))); }
+      var n = 0, cur = ts;
+      while (days.indexOf(cur) >= 0) { n++; cur -= 86400000; }
+      if (n === 0) { cur = ts - 86400000; while (days.indexOf(cur) >= 0) { n++; cur -= 86400000; } }
+      return n;
+    } catch (e) { return 0; }
+  }
+  var planCache = null;
+  function getPlan(cb) {
+    if (planCache) return cb(planCache);
+    fetch(PLAN_URL).then(function (r) { return r.text(); }).then(function (html) {
+      var m = html.match(/\{[^{}]*"n"\s*:\s*\d+[^{}]*"dir"\s*:\s*"[^"]+"[^{}]*\}/g) || [];
+      var recs = [];
+      m.forEach(function (s) { try { recs.push(JSON.parse(s)); } catch (e) {} });
+      planCache = recs; cb(recs);
+    }).catch(function () { cb([]); });
+  }
+  function clickNav(label) {
+    var btns = document.querySelectorAll('.desk-shell aside button');
+    for (var i = 0; i < btns.length; i++) if (btns[i].textContent.indexOf(label) >= 0) { btns[i].click(); return; }
+  }
+  function clickTile(labelA, labelB) {
+    var tiles = document.querySelectorAll('.desk-shell .grid button');
+    for (var i = 0; i < tiles.length; i++) { var t = tiles[i].textContent; if (t.indexOf(labelA) >= 0 || (labelB && t.indexOf(labelB) >= 0)) { tiles[i].click(); return; } }
+  }
+  function build() {
+    var shell = document.querySelector('.desk-shell');
+    if (!shell || shell.querySelector('.dz2-wrap')) return;
+    var main = null;
+    Array.prototype.forEach.call(shell.querySelectorAll('.overflow-y-auto'), function (el) {
+      if (!main && el.textContent.indexOf('Study plan') >= 0) main = el;
+    });
+    if (!main) return;
+    var aside = shell.querySelector('aside');
+    var name = 'Learner', level = 'A1', avatarSrc = null;
+    if (aside) {
+      var nm = aside.querySelector('.truncate');
+      if (nm) name = nm.textContent.trim();
+      var lv = aside.textContent.match(/Level\s+(A1|A2|B1|B2|C1|C2)/); if (lv) level = lv[1];
+      var im = aside.querySelector('img[class*="rounded-full"]'); if (im) avatarSrc = im.getAttribute('src');
+    }
+    var contBtn = null, curDosNum = 1;
+    Array.prototype.forEach.call(main.querySelectorAll('button'), function (b) { if (!contBtn && /Continue/.test(b.textContent)) contBtn = b; });
+    var cm = main.textContent.match(/Dossier\s+(\d+)/); if (cm) curDosNum = +cm[1];
+    var lm = main.textContent.match(/\b(A1|A2|B1|B2|C1|C2)\s*·\s*Dossier/); if (lm) level = lm[1];
+    getPlan(function (recs) {
+      if (shell.querySelector('.dz2-wrap')) return;
+      var mine = recs.filter(function (r) { return r.lv === level; });
+      var P = camProg();
+      var total = mine.length;
+      var done = mine.filter(function (r) { return P[r.dir] && P[r.dir].done; }).length;
+      var pct = total ? Math.round(100 * done / total) : 0;
+      var dosNames = [], dosMap = {};
+      mine.forEach(function (r) { if (!dosMap[r.dos]) { dosMap[r.dos] = []; dosNames.push(r.dos); } dosMap[r.dos].push(r); });
+      var curDos = dosNames[Math.min(curDosNum - 1, dosNames.length - 1)] || '';
+      var curRecs = dosMap[curDos] || [];
+      var curDone = curRecs.filter(function (r) { return P[r.dir] && P[r.dir].done; }).length;
+      var first = name.split(' ')[0];
+      var sd = streak();
+      var cards = dosNames.map(function (dn, i) {
+        var rs = dosMap[dn], d = rs.filter(function (r) { return P[r.dir] && P[r.dir].done; }).length;
+        var pc = rs.length ? Math.round(100 * d / rs.length) : 0;
+        var pal = PAL[i % PAL.length];
+        return '<button class="dz2-lcard" data-dos="' + i + '"><span class="tp"><span class="med" style="background:' + pal[1] + '">' + svg(CARD_ICONS[i % CARD_ICONS.length], pal[0]) + '</span><span class="pill" style="background:' + pal[1] + ';color:' + pal[0] + '">Lesson ' + (i + 1) + '</span><span class="chev">›</span></span><span class="ti" style="display:block">' + dn + '</span><span class="bwrap" style="display:flex"><span class="bar"><i style="width:' + pc + '%;background:' + pal[0] + '"></i></span><span class="ct">' + d + ' / ' + rs.length + '</span></span></button>';
+      }).join('');
+      var wrap = document.createElement('div');
+      wrap.className = 'dz2-wrap';
+      wrap.innerHTML =
+        '<div class="dz2-top"><div class="dz2-hello"><h1>Bonjour ' + first + ' 👋</h1><div class="fr1">Prêt·e pour aujourd\'hui ?</div><div class="fr2">Continue ton parcours et découvre le français pas à pas.</div></div>'
+        + '<div style="margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:14px;flex:none"><div class="dz2-profile" style="margin:0">' + (avatarSrc ? '<img src="' + avatarSrc + '" alt="">' : '<span class="dz2-pav">' + (first.charAt(0) || 'L') + '</span>') + '<span><span class="n" style="display:block">' + name + '</span><span class="l" style="display:block">Level ' + level + '</span></span><span class="ch">⌄</span></div>'
+        + '<div class="dz2-cards" style="margin:0"><div class="dz2-card dz2-overall"><div class="row"><span class="t">Overall Progress</span><span class="p">' + pct + '%</span></div><div class="dz2-bar"><i style="width:' + pct + '%"></i></div><div class="s">' + done + ' / ' + total + ' lessons completed</div></div>'
+        + '<div class="dz2-card dz2-streak"><span class="tr">🏆</span><span><span class="t" style="display:block">Weekly streak</span><span class="d" style="display:block">🔥 ' + sd + (sd === 1 ? ' day' : ' days') + '</span></span></div></div></div></div>'
+        + '<div class="dz2-banner"><div><span class="pill">Level ' + level + '</span><h2>' + level + ' · ' + curDos + '</h2><div class="sub">' + (SUBS[level] || '') + '</div><div class="bwrap"><span class="bbar"><i style="width:' + (curRecs.length ? Math.round(100 * curDone / curRecs.length) : 0) + '%"></i></span><span class="bc">' + curDone + ' / ' + curRecs.length + ' lessons</span></div></div><div class="art">' + '<div class="hand">Petit à petit,<br>grandes choses !</div></div></div>'
+        + '<div class="dz2-planhead"><h3>Your Study Plan</h3><span class="all" id="dz2-all">View all lessons →</span></div>'
+        + '<div class="dz2-grid">' + cards + '</div>'
+        + '<div class="dz2-quick"><div class="qh"><div class="t">Quick Access</div><div class="s">Go directly to what you need</div></div>'
+        + '<span class="qi" data-q="vocab">' + svg('<path d="M12 6c-2-1.5-4.5-2-8-2v14c3.5 0 6 .5 8 2 2-1.5 4.5-2 8-2V4c-3.5 0-6 .5-8 2z"/><path d="M12 6v14"/>', '#7a5ff0', 25) + '<span><span class="t" style="display:block">Vocabulary</span><span class="s" style="display:block">Learn new words</span></span></span>'
+        + '<span class="qi" data-q="grammar">' + svg('<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/>', '#f08c4a', 25) + '<span><span class="t" style="display:block">Grammar</span><span class="s" style="display:block">Build your skills</span></span></span>'
+        + '<span class="qi" data-q="practice">' + svg('<path d="M17 3l4 4L8 20l-5 1 1-5L17 3z"/>', '#43b581', 25) + '<span><span class="t" style="display:block">Practice</span><span class="s" style="display:block">Try exercises</span></span></span>'
+        + '<span class="qi" data-q="progress">' + svg('<path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.7l5.9-.9z"/>', '#ef6aa5', 25) + '<span><span class="t" style="display:block">My Progress</span><span class="s" style="display:block">See your growth</span></span></span></div>';
+      Array.prototype.forEach.call(main.children, function (c) { c.style.display = 'none'; });
+      main.appendChild(wrap);
+      main.style.position = 'relative';
+      if (aside) aside.style.display = 'none';
+      Array.prototype.forEach.call(shell.querySelectorAll('.overflow-y-auto'), function (el) {
+        if (el !== main && el.textContent.indexOf('Weekly contest') >= 0) el.style.display = 'none';
+      });
+      var all = wrap.querySelector('#dz2-all');
+      if (all) all.addEventListener('click', function () { clickNav('My lessons'); });
+      Array.prototype.forEach.call(wrap.querySelectorAll('.dz2-lcard'), function (c) {
+        c.addEventListener('click', function () {
+          if (+c.getAttribute('data-dos') === curDosNum - 1 && contBtn) contBtn.click();
+          else clickNav('My lessons');
+        });
+      });
+      Array.prototype.forEach.call(wrap.querySelectorAll('.qi'), function (q) {
+        q.addEventListener('click', function () {
+          var k = q.getAttribute('data-q');
+          if (k === 'vocab') clickTile('Vocab');
+          else if (k === 'grammar') clickTile('Grammar');
+          else if (k === 'practice') clickTile('Practice', 'Exercises');
+          else if (k === 'progress') clickNav('Roadmap');
+        });
+      });
+    });
+  }
+  var pending = false;
+  function schedule() { if (pending) return; pending = true; setTimeout(function () { pending = false; build(); }, 400); }
+  new MutationObserver(schedule).observe(document.documentElement, { childList: true, subtree: true });
+  schedule();
+})();
+
+</script>
+<script>/* chichilang-star-chip-coin v3: the menu-bar star chip shows the approved coin (fx-lesson2 model) */
+(function(){var COIN='/progress-copy/fx/coin.png';function swapIn(chip){if(!chip)return;var imgs=chip.querySelectorAll('img');for(var i=0;i<imgs.length;i++){var src=imgs[i].getAttribute('src')||'';if(src.indexOf('home-star-plump')>-1||src.indexOf('32ae61d9b985de32')>-1){imgs[i].src=COIN;imgs[i].style.objectFit='contain'}}var spans=chip.querySelectorAll('span');for(var j=0;j<spans.length;j++){var sp=spans[j];if(sp.querySelector('img[data-coinimg="1"]'))return;if(sp.textContent&&sp.textContent.indexOf('\u2B50')>-1&&sp.children.length===0){sp.textContent='';var im=document.createElement('img');im.src=COIN;im.alt='';im.setAttribute('data-coinimg','1');im.style.cssText='width:22px;height:22px;object-fit:contain;vertical-align:-5px';sp.appendChild(im);return}}}function apply(){var chips=document.querySelectorAll('[data-star-chip="true"],[aria-label="\u00C9toiles"]');for(var i=0;i<chips.length;i++)swapIn(chips[i])}new MutationObserver(apply).observe(document.documentElement,{childList:true,subtree:true});apply()})();
+</script>
+</body>
+</html>
