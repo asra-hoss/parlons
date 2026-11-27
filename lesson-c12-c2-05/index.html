@@ -5,7 +5,7 @@
 <style>
 html,body{margin:0;height:100%}
 body{background:linear-gradient(180deg,#dbe7ff 0%,#ebe5ff 55%,#f9e8f1 100%);font-family:Nunito,system-ui,sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;min-height:100vh}
-#stage{transform-origin:top center}body:not(.m) .scr.on .frm{transform:scale(var(--k,1));transform-origin:top center}
+#stage{transform-origin:top center}body:not(.m) .scr.on .frm{transform:scale(var(--k,1));transform-origin:top center}#stage:not(:has(.scr.on)){display:none}
 body{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .mic{touch-action:none;-webkit-touch-callout:none;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
 .scr{display:none}.scr.on{display:block}
