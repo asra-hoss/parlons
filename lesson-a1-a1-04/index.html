@@ -979,7 +979,7 @@ var cards=bd.querySelectorAll('div[style*="font-size:14.5px"]');[].forEach.call(
 fix();setTimeout(fix,300);
 document.addEventListener('click',function(e){var r=e.target.closest&&e.target.closest('[data-readall]');if(!r)return;e.stopPropagation();var sc=r.closest('.scr'),p=sc.querySelector('.pbtn');try{au.currentTime=0}catch(x){}if(au.paused&&p)p.click()},true);
 })();</script><script>(function(){var V={"t": "Je pose des questions", "g": "Ask for information politely", "c": "A1-5"};function add(){try{S.forEach(function(s,k){if(k===0||k===S.length-1||s.getAttribute('data-gb'))return;var fr=s.querySelector('.frm');if(!fr||!fr.firstElementChild)return;s.setAttribute('data-gb','1');var d=document.createElement('div');d.style.cssText='margin:0 16px 2px;padding:6px 10px;border-radius:12px;background:#f4f0ff;color:#3b2f80;font:700 11.5px/1.3 Nunito,sans-serif;text-align:center';d.innerHTML='🎯 <b>'+V.t.replace(/</g,'&lt;')+'</b>';fr.firstElementChild.insertAdjacentElement('afterend',d)})}catch(e){}}add();setTimeout(add,400)})();</script><script>
-/* chichilang-reward-fix v4.1: ONE counter (the parlons:stars wallet) painted everywhere. Coins fly ONLY when a step is genuinely finished: 1 per step, 5 for Writing/Speaking. The counter ticks up as each coin lands. The legacy STARS ticker (bumpStars/flyStar, which started at a hardcoded 12 and painted over the real balance) is neutralised. NT lessons mark a step when it is ENTERED, so for them the award is held pending and only released when the learner leaves the step going forward (or reaches the summary). */
+/* chichilang-reward-fix v4.2: ONE counter (the parlons:stars wallet) painted everywhere. Coins fly ONLY when a step is genuinely finished: 1 per step, 5 for Writing/Speaking. The counter ticks up as each coin lands. The legacy STARS ticker (bumpStars/flyStar, which started at a hardcoded 12 and painted over the real balance) is neutralised. NT lessons mark a step when it is ENTERED, so for them the award is held pending and only released when the learner leaves the step going forward (or reaches the summary). A step counts as already processed only if BOTH this guard and cam_prog say so - after an in-app reset clears cam_prog, stale guard entries must not block re-processing. */
 (function(){
 var SK='parlons:stars',GK='parlons:stepfx';
 function rd(){try{var o=JSON.parse(localStorage.getItem(SK)||'{}');return (o&&typeof o==='object'&&!Array.isArray(o))?o:{}}catch(e){return{}}}
@@ -1031,7 +1031,8 @@ function wrap(){
   var out=mk.apply(this,arguments);
   try{if(bogusStep(n)){var K0=bal()-before;if(K0!==0){var o0=rd();o0.balance=(+o0.balance||0)-K0;o0.earnedTotal=(+o0.earnedTotal||0)-K0;try{localStorage.setItem(SK,JSON.stringify(o0))}catch(e){}}paintNow(false);return out}}catch(e){}
   try{
-   if(!replay&&!progMarked){
+   var alreadyDone=replay&&progMarked;
+   if(!alreadyDone){
     var K=bal()-before;
     var T=(stepType(n)==='WRITING'||stepType(n)==='SPEAKING')?5:Math.max(1,K);
     if(isNT){
