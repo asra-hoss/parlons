@@ -529,7 +529,77 @@ body:not(.m) .scr.on .fr{transform:scale(var(--k,1));transform-origin:top center
    pl.querySelector('.spd').addEventListener('click',function(){ri=(ri+1)%rates.length;au.playbackRate=rates[ri];slab.textContent=rates[ri]+'\u00d7'});
   });
  }
+ function logoExit(){
+  if(!window.__rf4exitHook){
+   window.__rf4exitHook=1;
+   document.addEventListener('click',function(e){var x=e.target.closest&&e.target.closest('[data-exit]');if(!x)return;e.stopImmediatePropagation();e.preventDefault();try{sessionStorage.setItem('cam_exit','1')}catch(_){}if(typeof __v4exit==='function')__v4exit();else{location.href='/'}},true);
+  }
+  document.querySelectorAll('img[src*="chichilang-logo"]').forEach(function(img){
+   img.setAttribute('data-exit','1');img.style.cursor='pointer';
+   var lb=img.parentElement?img.parentElement.querySelector('div'):null;if(lb){lb.setAttribute('data-exit','1');lb.style.cursor='pointer'}
+  });
+ }
+ function transcriptAudio(){
+  var a0=document.querySelector('audio');if(!a0)return;var src=a0.getAttribute('src');if(!src)return;
+  document.querySelectorAll('.scr').forEach(function(sc){
+   var tg=sc.querySelector('.tag');if(!tg||!/TRANSCRIPT/.test(tg.textContent||''))return;
+   if(sc.querySelector('audio'))return;
+   var pad=sc.querySelector('.pad')||sc;
+   var au=document.createElement('audio');au.setAttribute('controls','');au.setAttribute('style','width:100%');au.setAttribute('src',src);
+   var anchor=pad.querySelector('.sub')||pad.querySelector('h1');
+   if(anchor&&anchor.nextSibling)pad.insertBefore(au,anchor.nextSibling);else if(anchor)pad.appendChild(au);else pad.insertBefore(au,pad.firstChild);
+  });
+ }
+ function deckify(){
+  document.querySelectorAll('.scr').forEach(function(sc){
+   var cards=[].slice.call(sc.querySelectorAll('.fcx'));
+   if(!cards.length)return;
+   var data=cards.map(function(fcx){
+    var front=fcx.querySelector('.fcxf:not(.fcxb)'),back=fcx.querySelector('.fcxf.fcxb');
+    var w=fcx.getAttribute('data-w')||(front&&front.children[0]?front.children[0].textContent.trim():'');
+    var en=fcx.getAttribute('data-en')||'',ex=fcx.getAttribute('data-ex')||'';
+    if(back){if(!en)en=back.children[0]?back.children[0].textContent:'';if(!ex)ex=back.children[1]?back.children[1].textContent:''}
+    return {w:w,en:en,ex:ex};
+   }).filter(function(d){return d.w});
+   if(!data.length)return;
+   cards.forEach(function(c){c.style.display='none'});
+   var tagEl=null;
+   sc.querySelectorAll('.tag').forEach(function(t){if(/FLASHCARDS/.test(t.textContent||''))tagEl=t});
+   if(tagEl)tagEl.style.display='none';
+   var host=document.createElement('div');host.className='ntr-deck';
+   host.innerHTML='<div style="display:flex;justify-content:space-between;font-size:12px;color:#6f6a85;margin-bottom:10px;font-weight:800"><span class="fn"></span><span>'+((window.LD&&LD.title)||'')+'</span></div>'
+    +'<div class="fcard" style="margin:8px 6px 0;padding:14px;border-radius:30px;background:#fff;box-shadow:0 18px 36px rgba(90,70,180,.20),0 2px 6px rgba(90,70,180,.10);cursor:pointer"><div class="fin" style="height:300px;box-sizing:border-box;border-radius:20px;background:linear-gradient(160deg,#e4e9ff,#ece6ff);padding:20px 18px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center"></div></div>';
+   if(tagEl&&tagEl.parentElement)tagEl.parentElement.insertBefore(host,tagEl.nextSibling);
+   else{var pad=sc.querySelector('.pad')||sc;pad.appendChild(host)}
+   var fin=host.querySelector('.fin'),fnEl=host.querySelector('.fn'),idx=0,flipped=false,busy=false;
+   var SPK='<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7a5ff0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6"/></svg>';
+   function meaning(d){try{if(typeof meaningOf==='function')return meaningOf(d.w,d.en)}catch(e){}return d.en}
+   function render(){
+    var d=data[idx];fnEl.textContent='Card '+(idx+1)+' of '+data.length;
+    if(!flipped)fin.innerHTML='<div style="font-family:Fredoka,Nunito,sans-serif;font-size:34px;font-weight:600;margin-top:6px">'+d.w+'</div><div class="fsay" style="display:inline-flex;margin-top:8px;padding:6px;cursor:pointer">'+SPK+'</div>'+(d.ex?'<div style="font-size:14px;line-height:1.5;color:#6f6a85;font-weight:700;margin-top:10px">'+d.ex+'</div>':'');
+    else fin.innerHTML='<div style="font-family:Fredoka,Nunito,sans-serif;font-size:30px;font-weight:600;margin-top:6px;color:#7a5ff0">'+meaning(d)+'</div>';
+   }
+   function flip(){if(busy)return;busy=true;var a=fin.animate([{transform:'rotateY(0deg)'},{transform:'rotateY(90deg)'}],{duration:140,easing:'ease-in'});a.onfinish=function(){flipped=!flipped;render();fin.animate([{transform:'rotateY(-90deg)'},{transform:'rotateY(0deg)'}],{duration:140,easing:'ease-out'}).onfinish=function(){busy=false}}}
+   host.querySelector('.fcard').addEventListener('click',function(e){
+    if(e.target.closest('.fsay')){e.stopPropagation();if(window.__pplay)window.__pplay(data[idx].w);return}
+    flip();
+   });
+   render();
+   var nav=sc.querySelector('.nav');if(!nav)return;
+   var nextBtn=nav.querySelector('.btn:not(.g)')||nav.querySelector('.btn');
+   if(!nextBtn)return;
+   nextBtn.addEventListener('click',function(e){
+    if(host.getAttribute('data-done')==='1')return;
+    e.stopImmediatePropagation();e.preventDefault();
+    if(idx<data.length-1){idx++;flipped=false;render();fin.animate([{transform:'translateX(30px)',opacity:0},{transform:'translateX(0)',opacity:1}],{duration:220})}
+    else{host.setAttribute('data-done','1');fnEl.textContent='Card '+data.length+' of '+data.length;nextBtn.click()}
+   },true);
+  });
+ }
+ transcriptAudio();
  customPlayers();
+ logoExit();
+ deckify();
  sumPill();
  paintCircles();
 })();
