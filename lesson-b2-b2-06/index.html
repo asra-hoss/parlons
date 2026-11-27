@@ -978,7 +978,8 @@ var cards=bd.querySelectorAll('div[style*="font-size:14.5px"]');[].forEach.call(
 }catch(e){}}
 fix();setTimeout(fix,300);
 document.addEventListener('click',function(e){var r=e.target.closest&&e.target.closest('[data-readall]');if(!r)return;e.stopPropagation();var sc=r.closest('.scr'),p=sc.querySelector('.pbtn');try{au.currentTime=0}catch(x){}if(au.paused&&p)p.click()},true);
-})();</script><script>(function(){var V={"t": "La politique", "g": "Take part in political debate", "c": "B2-7"};function add(){try{S.forEach(function(s,k){if(k===0||k===S.length-1||s.getAttribute('data-gb'))return;var fr=s.querySelector('.frm');if(!fr||!fr.firstElementChild)return;s.setAttribute('data-gb','1');var d=document.createElement('div');d.style.cssText='margin:0 16px 2px;padding:6px 10px;border-radius:12px;background:#f4f0ff;color:#3b2f80;font:700 11.5px/1.3 Nunito,sans-serif;text-align:center';d.innerHTML='🎯 <b>'+V.t.replace(/</g,'&lt;')+'</b>';fr.firstElementChild.insertAdjacentElement('afterend',d)})}catch(e){}}add();setTimeout(add,400)})();</script><script>/* chichilang-reward-fix v4: ONE counter (the parlons:stars wallet) painted everywhere. Coins fly ONLY when a step is genuinely finished (markStep): 1 per step, 5 for Writing/Speaking. The counter ticks up as each coin lands. The legacy STARS ticker (bumpStars/flyStar, which started at a hardcoded 12 and painted over the real balance) is neutralised. */
+})();</script><script>(function(){var V={"t": "La politique", "g": "Take part in political debate", "c": "B2-7"};function add(){try{S.forEach(function(s,k){if(k===0||k===S.length-1||s.getAttribute('data-gb'))return;var fr=s.querySelector('.frm');if(!fr||!fr.firstElementChild)return;s.setAttribute('data-gb','1');var d=document.createElement('div');d.style.cssText='margin:0 16px 2px;padding:6px 10px;border-radius:12px;background:#f4f0ff;color:#3b2f80;font:700 11.5px/1.3 Nunito,sans-serif;text-align:center';d.innerHTML='🎯 <b>'+V.t.replace(/</g,'&lt;')+'</b>';fr.firstElementChild.insertAdjacentElement('afterend',d)})}catch(e){}}add();setTimeout(add,400)})();</script><script>
+/* chichilang-reward-fix v4.1: ONE counter (the parlons:stars wallet) painted everywhere. Coins fly ONLY when a step is genuinely finished: 1 per step, 5 for Writing/Speaking. The counter ticks up as each coin lands. The legacy STARS ticker (bumpStars/flyStar, which started at a hardcoded 12 and painted over the real balance) is neutralised. NT lessons mark a step when it is ENTERED, so for them the award is held pending and only released when the learner leaves the step going forward (or reaches the summary). */
 (function(){
 var SK='parlons:stars',GK='parlons:stepfx';
 function rd(){try{var o=JSON.parse(localStorage.getItem(SK)||'{}');return (o&&typeof o==='object'&&!Array.isArray(o))?o:{}}catch(e){return{}}}
@@ -1033,16 +1034,48 @@ function wrap(){
    if(!replay&&!progMarked){
     var K=bal()-before;
     var T=(stepType(n)==='WRITING'||stepType(n)==='SPEAKING')?5:Math.max(1,K);
-    var delta=T-K;
-    if(delta!==0){var o=rd();o.balance=(+o.balance||0)+delta;o.earnedTotal=(+o.earnedTotal||0)+delta;try{localStorage.setItem(SK,JSON.stringify(o))}catch(e){}}
-    g[key]=T;gSet(g);
-    if(T>0){queue.push({n:T,base:before});processQ()}
+    if(isNT){
+     if(K!==0){var oN=rd();oN.balance=(+oN.balance||0)-K;oN.earnedTotal=(+oN.earnedTotal||0)-K;try{localStorage.setItem(SK,JSON.stringify(oN))}catch(e){}}
+     g[key]={t:T,p:1};gSet(g);
+     paintNow(false);
+    }else{
+     var delta=T-K;
+     if(delta!==0){var o=rd();o.balance=(+o.balance||0)+delta;o.earnedTotal=(+o.earnedTotal||0)+delta;try{localStorage.setItem(SK,JSON.stringify(o))}catch(e){}}
+     g[key]=T;gSet(g);
+     if(T>0){queue.push({n:T,base:before});processQ()}
+    }
    }
   }catch(e){}
   return out;
  };
  w.__rf4=1;w.__st=1;window.markStep=w;return true;
 }
+function curStep(){var sc=document.querySelector('.scr.on');if(!sc)return -1;var ds=sc.getAttribute('data-step');return ds?+ds:-1}
+function releaseCheck(){
+ if(!isNT)return;
+ var g=gRd(),cur=curStep(),sc=document.querySelector('.scr.on'),S=window.S||[],isLast=!!(sc&&S.length&&sc===S[S.length-1]),prefix=lid()+':',changed=false;
+ var ns=Object.keys(g).filter(function(k){var v=g[k];return v&&typeof v==='object'&&v.p&&k.indexOf(prefix)===0}).map(function(k){return +k.slice(prefix.length)}).sort(function(a,b){return a-b});
+ ns.forEach(function(n){
+  if(isLast||(cur>=0&&n<cur)){
+   var key=prefix+n,T=g[key].t,base=bal();
+   var o=rd();o.balance=(+o.balance||0)+T;o.earnedTotal=(+o.earnedTotal||0)+T;try{localStorage.setItem(SK,JSON.stringify(o))}catch(e){}
+   g[key]=T;changed=true;
+   if(T>0)queue.push({n:T,base:base});
+  }
+ });
+ if(changed){gSet(g);processQ()}else paintNow(false);
+}
+(function wrapShow(){
+ if(!isNT)return;
+ if(typeof window.show==='function'){
+  if(window.show.__rf4)return;
+  var sh=window.show;
+  var wsh=function(){var out=sh.apply(this,arguments);setTimeout(releaseCheck,30);return out};
+  wsh.__rf4=1;window.show=wsh;return;
+ }
+ setTimeout(wrapShow,250);
+})();
+setTimeout(releaseCheck,700);
 var tries=0;
 (function waitWrap(){
  if(wrap())return;
