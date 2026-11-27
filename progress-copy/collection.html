@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Collection — Chichilang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --ink:#2b2350; --mut:#8a84ad; --bg:#f2efff; --card:#ffffff;
+  --acc:#7c5cff; --gold:#ffb020;
+  --A1:#12b5a5; --A2:#3d9df5; --B1:#8b5cf6; --B2:#ef5da8; --C1:#ff922b; --C2:#f43f5e;
+}
+html,body{background:var(--bg)}
+body{font-family:'Nunito',sans-serif;color:var(--ink);max-width:520px;margin:0 auto;padding:0 16px 48px;min-height:100vh}
+h1,h2,h3,.fr{font-family:'Fredoka',sans-serif}
+header{padding:26px 2px 6px;text-align:center}
+header .kick{font-size:12px;font-weight:900;letter-spacing:.22em;color:var(--acc);text-transform:uppercase}
+header h1{font-size:34px;font-weight:700;margin-top:2px}
+header .sub{color:var(--mut);font-weight:800;font-size:14px;margin-top:4px}
+.obar{height:12px;background:#e3ddfb;border-radius:99px;margin:16px 2px 4px;overflow:hidden}
+.obar i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),#b18cff);border-radius:99px;transition:width .5s}
+.search{position:sticky;top:10px;z-index:5;margin:14px 0 6px}
+.search input{width:100%;border:3px solid #e3ddfb;background:#fff;border-radius:18px;padding:14px 18px 14px 46px;font-family:'Nunito';font-weight:800;font-size:16px;color:var(--ink);outline:none;box-shadow:0 6px 18px rgba(80,60,180,.08)}
+.search input:focus{border-color:var(--acc)}
+.search .ic{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:20px;height:20px;color:var(--mut)}
+.view{display:none}.view.on{display:block;animation:up .25s ease}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.win{background:var(--card);border-radius:24px;padding:10px 10px 16px;cursor:pointer;box-shadow:0 8px 22px rgba(80,60,180,.10);border:3px solid transparent;text-align:center;position:relative}
+.win:active{transform:scale(.98)}
+.win .bar{height:26px;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:5px;margin-bottom:12px}
+.win .bar b{width:7px;height:7px;border-radius:50%;background:#fff;opacity:.85}
+.win .lv{font-family:'Fredoka';font-size:44px;font-weight:700;line-height:1}
+.win .nm{font-weight:900;font-size:13px;color:var(--mut);margin-top:2px}
+.win .cnt{font-weight:900;font-size:14px;margin-top:10px}
+.win .pbar{height:9px;background:#eeeafd;border-radius:99px;margin:8px 6px 0;overflow:hidden}
+.win .pbar i{display:block;height:100%;border-radius:99px}
+.win .done{position:absolute;top:44px;right:12px;background:var(--gold);color:#fff;font-weight:900;font-size:12px;border-radius:99px;padding:3px 9px;box-shadow:0 4px 10px rgba(255,176,32,.5)}
+.back{display:inline-flex;align-items:center;gap:8px;background:#fff;border:3px solid #e3ddfb;color:var(--ink);font-family:'Nunito';font-weight:900;font-size:15px;border-radius:99px;padding:9px 16px;cursor:pointer;margin-top:16px}
+.vtitle{font-size:26px;font-weight:700;margin:14px 2px 2px}
+.vsub{color:var(--mut);font-weight:800;font-size:14px;margin:0 2px 6px}
+.pack{display:flex;align-items:center;gap:14px;background:var(--card);border-radius:20px;padding:16px;margin-top:12px;cursor:pointer;box-shadow:0 6px 16px rgba(80,60,180,.08);border:3px solid transparent}
+.pack:active{transform:scale(.99)}
+.pack .dot{width:46px;height:46px;border-radius:14px;flex:none;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Fredoka';font-weight:700;font-size:19px}
+.pack .inf{flex:1;min-width:0}
+.pack .inf .t{font-family:'Fredoka';font-weight:600;font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pack .inf .c{color:var(--mut);font-weight:800;font-size:13px;margin-top:1px}
+.pack .pbar{height:8px;background:#eeeafd;border-radius:99px;margin-top:8px;overflow:hidden}
+.pack .pbar i{display:block;height:100%;border-radius:99px}
+.pack .chk{flex:none;width:30px;height:30px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;box-shadow:0 4px 10px rgba(255,176,32,.45)}
+.pack .chev{flex:none;color:#c9c2ea;font-weight:900;font-size:20px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.lcard{border-radius:20px;padding:16px 14px;min-height:118px;cursor:pointer;position:relative;display:flex;flex-direction:column;gap:6px}
+.lcard .lt{font-family:'Fredoka';font-weight:600;font-size:17px;line-height:1.25}
+.lcard .lg{font-size:12.5px;font-weight:700;line-height:1.35}
+.lcard .badge{position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900}
+.lcard.got{background:#fff;box-shadow:0 6px 16px rgba(80,60,180,.10)}
+.lcard.got .badge{background:var(--gold);color:#fff}
+.lcard.got .lg{color:var(--mut)}
+.lcard.mid{background:#fff;box-shadow:0 6px 16px rgba(80,60,180,.08)}
+.lcard.mid .badge{background:#eeeafd;color:var(--acc);font-size:11px;width:auto;border-radius:99px;padding:4px 8px;height:auto}
+.lcard.mid .lg{color:var(--mut)}
+.lcard.miss{background:#e9e6f5;box-shadow:inset 0 0 0 2px #ddd8f2}
+.lcard.miss .lt{color:#a49ec4}
+.lcard.miss .lg{color:#b3aed2}
+.lcard.miss .badge{background:#d5d0ec;color:#fff}
+.res{display:flex;align-items:center;gap:12px;background:#fff;border-radius:18px;padding:14px 16px;margin-top:10px;cursor:pointer;box-shadow:0 5px 14px rgba(80,60,180,.07)}
+.res .rl{flex:none;font-family:'Fredoka';font-weight:700;font-size:13px;color:#fff;border-radius:10px;padding:5px 9px}
+.res .rt{flex:1;min-width:0}
+.res .rt .a{font-family:'Fredoka';font-weight:600;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.res .rt .b{color:var(--mut);font-weight:800;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.res .st{flex:none;font-weight:900;font-size:13px}
+.empty{text-align:center;color:var(--mut);font-weight:800;padding:36px 10px;font-size:15px}
+</style>
+</head>
+<body>
+<header>
+  <div class="kick">Chichilang</div>
+  <h1>My Collection</h1>
+  <div class="sub" id="totalsub"></div>
+  <div class="obar"><i id="obarfill" style="width:0%"></i></div>
+</header>
+
+<div class="search">
+  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.8-3.8"/></svg>
+  <input id="q" type="search" placeholder="Search lessons, dossiers, levels…" autocomplete="off">
+</div>
+
+<section class="view on" id="v-home"></section>
+<section class="view" id="v-level"></section>
+<section class="view" id="v-dos"></section>
+<section class="view" id="v-search"></section>
+
+<script>
+const DATA = [{"n": 1, "lv": "A1", "dos": "Se présenter", "t": "Bonjour !", "goal": "Greet someone and say goodbye politely", "dir": "lesson-a1-a1-01", "key": "v3-a1-a1-01"}, {"n": 2, "lv": "A1", "dos": "Se présenter", "t": "Je suis Asra", "goal": "Say your name", "dir": "lesson-a1-a1-02", "key": "v3-a1-a1-02"}, {"n": 3, "lv": "A1", "dos": "Se présenter", "t": "Ça s'écrit comment ?", "goal": "Spell your name out loud", "dir": "lesson-a1-a1-06", "key": "v3-a1-a1-06"}, {"n": 4, "lv": "A1", "dos": "Se présenter", "t": "J'ai vingt ans", "goal": "Say your age", "dir": "lesson-a1-new-01", "key": "v4-a1-new-01"}, {"n": 5, "lv": "A1", "dos": "Se présenter", "t": "Je viens de Toronto", "goal": "Say where you come from and where you live", "dir": "lesson-a1-new-02", "key": "v4-a1-new-02"}, {"n": 6, "lv": "A1", "dos": "Se présenter", "t": "Je suis étudiante", "goal": "Say what you do", "dir": "lesson-a1-new-03", "key": "v4-a1-new-03"}, {"n": 7, "lv": "A1", "dos": "Se présenter", "t": "Je remplis un formulaire", "goal": "Fill in a simple form", "dir": "lesson-a1-a1-06", "key": "v3-a1-a1-06"}, {"n": 8, "lv": "A1", "dos": "Se présenter", "t": "Pourquoi j'apprends le français", "goal": "Say why you are learning French", "dir": "lesson-a1-a1-05", "key": "v3-a1-a1-05"}, {"n": 9, "lv": "A1", "dos": "Les gens autour de moi", "t": "Tu es d'où ?", "goal": "Ask someone about themselves", "dir": "lesson-a1-a1-04", "key": "v3-a1-a1-04"}, {"n": 10, "lv": "A1", "dos": "Les gens autour de moi", "t": "Voici mon ami", "goal": "Introduce another person", "dir": "lesson-a1-a1-03", "key": "v3-a1-a1-03"}, {"n": 11, "lv": "A1", "dos": "Les gens autour de moi", "t": "Ma famille", "goal": "Talk about your family", "dir": "lesson-a1-a1-07", "key": "v3-a1-a1-07"}, {"n": 12, "lv": "A1", "dos": "Les gens autour de moi", "t": "Il est comment ?", "goal": "Describe what someone looks like and is like", "dir": "lesson-a1-a1-08", "key": "v3-a1-a1-08"}, {"n": 13, "lv": "A1", "dos": "Les gens autour de moi", "t": "On fait connaissance", "goal": "Hold a short first conversation", "dir": "lesson-a1-a1-15", "key": "v3-a1-a1-15"}, {"n": 14, "lv": "A1", "dos": "Ma journée", "t": "Quelle heure est-il ?", "goal": "Tell and ask the time", "dir": "lesson-a1-new-05", "key": "v4-a1-new-05"}, {"n": 15, "lv": "A1", "dos": "Ma journée", "t": "Ma journée", "goal": "Say what you do every day", "dir": "lesson-a1-a1-10", "key": "v3-a1-a1-10"}, {"n": 16, "lv": "A1", "dos": "Ma journée", "t": "Je sais, je dis, je vois", "goal": "Use the other everyday verbs", "dir": "lesson-a1-new-06", "key": "v4-a1-new-06"}, {"n": 17, "lv": "A1", "dos": "Ma journée", "t": "J'ai mal", "goal": "Say how you feel and what hurts", "dir": "lesson-a1-a1-18", "key": "v3-a1-a1-18"}, {"n": 18, "lv": "A1", "dos": "Ma journée", "t": "Mes goûts et mes loisirs", "goal": "Say what you like and what you do in your free time", "dir": "lesson-a1-a1-09", "key": "v3-a1-a1-09"}, {"n": 19, "lv": "A1", "dos": "Ma journée", "t": "On sort ?", "goal": "Invite, accept and refuse", "dir": "lesson-a1-a1-11", "key": "v3-a1-a1-11"}, {"n": 126, "lv": "A1", "dos": "Ma journée", "t": "Félicitations !", "goal": "Congratulate, wish well and give compliments", "dir": "lesson-a1-new-feliciter", "key": "v3-a1-a1-16"}, {"n": 20, "lv": "A1", "dos": "Ma maison", "t": "Ma maison", "goal": "Describe where you live", "dir": "lesson-a1-a1-16", "key": "v3-a1-a1-16"}, {"n": 21, "lv": "A1", "dos": "Ma ville", "t": "Ma ville", "goal": "Describe your town", "dir": "lesson-a1-new-07", "key": "v4-a1-new-07"}, {"n": 22, "lv": "A1", "dos": "Ma ville", "t": "Où est la poste ?", "goal": "Ask the way and give directions", "dir": "lesson-a1-a1-12", "key": "v3-a1-a1-12"}, {"n": 23, "lv": "A1", "dos": "Manger", "t": "Au café", "goal": "Order a drink or a snack", "dir": "lesson-a1-a1-19", "key": "v3-a1-a1-19"}, {"n": 24, "lv": "A1", "dos": "Acheter", "t": "Je fais les courses", "goal": "Buy food and ask prices", "dir": "lesson-a1-a1-20", "key": "v3-a1-a1-20"}, {"n": 25, "lv": "A1", "dos": "Vêtements", "t": "J'achète un pull", "goal": "Choose and buy clothes", "dir": "lesson-a1-new-08", "key": "v4-a1-new-08"}, {"n": 26, "lv": "A1", "dos": "Voyages", "t": "Je prends le train", "goal": "Travel and buy a ticket", "dir": "lesson-a1-a1-13", "key": "v3-a1-a1-13"}, {"n": 27, "lv": "A1", "dos": "Voyages", "t": "Je réserve un hôtel", "goal": "Book a place to stay", "dir": "lesson-a1-a1-14", "key": "v3-a1-a1-14"}, {"n": 28, "lv": "A1", "dos": "Météo", "t": "Quel temps fait-il ?", "goal": "Talk about the weather", "dir": "lesson-a1-a1-17", "key": "v3-a1-a1-17"}, {"n": 29, "lv": "A1", "dos": "Raconter", "t": "Hier, j'ai…", "goal": "Say what you did", "dir": "lesson-a1-a1-21", "key": "v3-a1-a1-21"}, {"n": 30, "lv": "A1", "dos": "Raconter", "t": "Je suis allée à Paris", "goal": "Say where you went", "dir": "lesson-a1-a1-23", "key": "v3-a1-a1-23"}, {"n": 31, "lv": "A1", "dos": "Raconter", "t": "Avant et maintenant", "goal": "Compare then and now", "dir": "lesson-a1-a1-24", "key": "v3-a1-a1-24"}, {"n": 32, "lv": "A1", "dos": "Raconter", "t": "Demain, je vais…", "goal": "Say what you are going to do", "dir": "lesson-a1-a1-22", "key": "v3-a1-a1-22"}, {"n": 33, "lv": "A1", "dos": "Avis et bilan", "t": "Un conseil, un avis", "goal": "Give an opinion and some advice", "dir": "lesson-a1-a1-25", "key": "v3-a1-a1-25"}, {"n": 34, "lv": "A1", "dos": "Avis et bilan", "t": "Un film que j'aime", "goal": "Recommend something", "dir": "lesson-a1-a1-26", "key": "v3-a1-a1-26"}, {"n": 35, "lv": "A1", "dos": "Avis et bilan", "t": "Bilan A1", "goal": "Check what you can do", "dir": "lesson-a1-a1-27", "key": "v3-a1-a1-27"}, {"n": 36, "lv": "A2", "dos": "Moi et mon passé", "t": "Ma personnalité, mes sentiments", "goal": "Describe personality and feelings", "dir": "lesson-a2-a2-01", "key": "v3-a2-a2-01"}, {"n": 37, "lv": "A2", "dos": "Moi et mon passé", "t": "Quand j'étais petit", "goal": "Talk about past habits and memories", "dir": "lesson-a2-a2-05", "key": "v3-a2-a2-05"}, {"n": 38, "lv": "A2", "dos": "Moi et mon passé", "t": "Je raconte ma vie", "goal": "Tell your life story", "dir": "lesson-a2-a2-14", "key": "v3-a2-a2-14"}, {"n": 39, "lv": "A2", "dos": "Démarches et vie pratique", "t": "Les démarches", "goal": "Handle administrative steps", "dir": "lesson-a2-a2-03", "key": "v3-a2-a2-03"}, {"n": 40, "lv": "A2", "dos": "Démarches et vie pratique", "t": "La vie pratique", "goal": "Everyday life and public services", "dir": "lesson-a2-a2-16", "key": "v3-a2-a2-16"}, {"n": 41, "lv": "A2", "dos": "Démarches et vie pratique", "t": "J'écris un message", "goal": "Write short messages", "dir": "lesson-a2-a2-17", "key": "v3-a2-a2-17"}, {"n": 42, "lv": "A2", "dos": "Mon quartier", "t": "Mon logement, mon quartier", "goal": "Describe and compare home and neighbourhood", "dir": "lesson-a2-a2-02", "key": "v3-a2-a2-02"}, {"n": 127, "lv": "A2", "dos": "Mon quartier", "t": "En haut, en bas, là-bas", "goal": "Locate things and people precisely in a place", "dir": "lesson-a2-new-adverbes-lieu", "key": "v3-a2-a2-06"}, {"n": 43, "lv": "A2", "dos": "La nature", "t": "La nature et les animaux", "goal": "Talk about the nature and animals", "dir": "lesson-a2-a2-06", "key": "v3-a2-a2-06"}, {"n": 44, "lv": "A2", "dos": "Voyage", "t": "Je prépare un voyage", "goal": "Prepare and take a trip", "dir": "lesson-a2-a2-04", "key": "v3-a2-a2-04"}, {"n": 45, "lv": "A2", "dos": "Sorties", "t": "Culture et sorties", "goal": "Culture and leisure", "dir": "lesson-a2-a2-12", "key": "v3-a2-a2-12"}, {"n": 46, "lv": "A2", "dos": "Cuisine", "t": "À la cuisine", "goal": "Cook and follow a recipe", "dir": "lesson-a2-a2-07", "key": "v3-a2-a2-07"}, {"n": 47, "lv": "A2", "dos": "Achats", "t": "Je consomme", "goal": "Shop and manage money", "dir": "lesson-a2-a2-08", "key": "v3-a2-a2-08"}, {"n": 128, "lv": "A2", "dos": "Achats", "t": "En bois, en verre, à café", "goal": "Describe objects: what they are made of and what they are for", "dir": "lesson-a2-new-complement-nom", "key": "v3-a2-a2-09"}, {"n": 48, "lv": "A2", "dos": "Santé", "t": "Chez le médecin", "goal": "Health and the body", "dir": "lesson-a2-a2-09", "key": "v3-a2-a2-09"}, {"n": 49, "lv": "A2", "dos": "Sport", "t": "Sport et sécurité", "goal": "Sport and safety", "dir": "lesson-a2-a2-13", "key": "v3-a2-a2-13"}, {"n": 50, "lv": "A2", "dos": "Études", "t": "Mes études", "goal": "Talk about studies, training and diplomas", "dir": "lesson-a2-new-etudes", "key": "v3-a2-a2-10"}, {"n": 132, "lv": "A2", "dos": "Métiers", "t": "Mon métier", "goal": "Jobs and careers: looking for work and changing jobs", "dir": "lesson-a2-a2-10", "key": "v3-a2-a2-10"}, {"n": 51, "lv": "A2", "dos": "Technologie", "t": "Les médias et la technologie", "goal": "Understand and discuss media and technology", "dir": "lesson-a2-a2-11", "key": "v3-a2-a2-11"}, {"n": 52, "lv": "A2", "dos": "Opinions et projets", "t": "Mon opinion", "goal": "Give and ask for opinions", "dir": "lesson-a2-a2-15", "key": "v3-a2-a2-15"}, {"n": 53, "lv": "A2", "dos": "Opinions et projets", "t": "Mes projets", "goal": "Plan the future", "dir": "lesson-a2-a2-18", "key": "v3-a2-a2-18"}, {"n": 54, "lv": "B1", "dos": "Projets", "t": "Mes rêves et mes projets", "goal": "Talk about plans, wishes and ambitions", "dir": "lesson-b1-b1-01", "key": "v3-b1-b1-01"}, {"n": 55, "lv": "B1", "dos": "Études", "t": "Étudier, se former", "goal": "Study and train", "dir": "lesson-b1-b1-12", "key": "v3-b1-b1-12"}, {"n": 56, "lv": "B1", "dos": "Emploi", "t": "Chercher un emploi", "goal": "Find a job and work", "dir": "lesson-b1-b1-13", "key": "v3-b1-b1-13"}, {"n": 57, "lv": "B1", "dos": "Vivre à l'étranger", "t": "Vivre à l'étranger", "goal": "Weigh moving abroad", "dir": "lesson-b1-b1-02", "key": "v3-b1-b1-02"}, {"n": 58, "lv": "B1", "dos": "Vivre à l'étranger", "t": "L'administration", "goal": "Deal with administration", "dir": "lesson-b1-b1-05", "key": "v3-b1-b1-05"}, {"n": 59, "lv": "B1", "dos": "Problèmes et urgences", "t": "Les petits problèmes", "goal": "Solve everyday problems and complain", "dir": "lesson-b1-b1-03", "key": "v3-b1-b1-03"}, {"n": 60, "lv": "B1", "dos": "Problèmes et urgences", "t": "Les urgences et l'assurance", "goal": "Handle health emergencies and insurance", "dir": "lesson-b1-b1-04", "key": "v3-b1-b1-04"}, {"n": 61, "lv": "B1", "dos": "Culture et sorties", "t": "Cultures différentes", "goal": "Compare cultures", "dir": "lesson-b1-b1-06", "key": "v3-b1-b1-06"}, {"n": 62, "lv": "B1", "dos": "Culture et sorties", "t": "On sort ensemble", "goal": "Go out and decide as a group", "dir": "lesson-b1-b1-07", "key": "v3-b1-b1-07"}, {"n": 63, "lv": "B1", "dos": "Culture et sorties", "t": "La culture", "goal": "Talk about culture", "dir": "lesson-b1-b1-16", "key": "v3-b1-b1-16"}, {"n": 64, "lv": "B1", "dos": "Fêtes", "t": "Fêtes et traditions", "goal": "Family events and celebrations", "dir": "lesson-b1-b1-08", "key": "v3-b1-b1-08"}, {"n": 65, "lv": "B1", "dos": "Voisinage", "t": "Habiter ensemble", "goal": "Housing and neighbourhood life", "dir": "lesson-b1-b1-09", "key": "v3-b1-b1-09"}, {"n": 66, "lv": "B1", "dos": "Consommer", "t": "Consommer mieux", "goal": "Consume responsibly", "dir": "lesson-b1-b1-10", "key": "v3-b1-b1-10"}, {"n": 67, "lv": "B1", "dos": "Environnement", "t": "Agir pour l'environnement", "goal": "Act for the environment", "dir": "lesson-b1-b1-11", "key": "v3-b1-b1-11"}, {"n": 129, "lv": "B1", "dos": "La mode", "t": "Tu portes quoi ?", "goal": "Describe what people wear and shop for clothes", "dir": "lesson-b1-new-mode", "key": "v3-b1-b1-14"}, {"n": 68, "lv": "B1", "dos": "Médias", "t": "Les médias", "goal": "Understand the media", "dir": "lesson-b1-b1-14", "key": "v3-b1-b1-14"}, {"n": 69, "lv": "B1", "dos": "Technologie", "t": "Technologie et innovation", "goal": "Discuss technology and innovation", "dir": "lesson-b1-b1-15", "key": "v3-b1-b1-15"}, {"n": 70, "lv": "B1", "dos": "Raconter et argumenter", "t": "Je raconte une histoire", "goal": "Tell stories and experiences", "dir": "lesson-b1-b1-17", "key": "v3-b1-b1-17"}, {"n": 71, "lv": "B1", "dos": "Raconter et argumenter", "t": "Je donne mon avis", "goal": "Give and justify opinions", "dir": "lesson-b1-b1-18", "key": "v3-b1-b1-18"}, {"n": 72, "lv": "B1", "dos": "Raconter et argumenter", "t": "Conseils et obligations", "goal": "Give advice, obligation, suggestions", "dir": "lesson-b1-b1-19", "key": "v3-b1-b1-19"}, {"n": 73, "lv": "B1", "dos": "Écrire, comprendre, bilan", "t": "J'écris et je présente", "goal": "Write and speak with structure", "dir": "lesson-b1-b1-20", "key": "v3-b1-b1-20"}, {"n": 74, "lv": "B1", "dos": "Écrire, comprendre, bilan", "t": "Je comprends le français réel", "goal": "Understand authentic French", "dir": "lesson-b1-b1-21", "key": "v3-b1-b1-21"}, {"n": 75, "lv": "B1", "dos": "Écrire, comprendre, bilan", "t": "Bilan B1", "goal": "Review and oral presentation", "dir": "lesson-b1-b1-22", "key": "v3-b1-b1-22"}, {"n": 76, "lv": "B2", "dos": "Argumenter et nuancer", "t": "Argumenter", "goal": "Argue and debate", "dir": "lesson-b2-b2-01", "key": "v3-b2-b2-01"}, {"n": 77, "lv": "B2", "dos": "Argumenter et nuancer", "t": "Douter, souhaiter, regretter", "goal": "Express nuance with the subjunctive", "dir": "lesson-b2-b2-02", "key": "v3-b2-b2-02"}, {"n": 78, "lv": "B2", "dos": "Argumenter et nuancer", "t": "Cause et conséquence", "goal": "Express cause, consequence, aim, concession", "dir": "lesson-b2-b2-03", "key": "v3-b2-b2-03"}, {"n": 79, "lv": "B2", "dos": "Argumenter et nuancer", "t": "Rapporter des propos", "goal": "Report and relate", "dir": "lesson-b2-b2-04", "key": "v3-b2-b2-04"}, {"n": 80, "lv": "B2", "dos": "Société", "t": "La société", "goal": "Discuss society and social issues", "dir": "lesson-b2-b2-05", "key": "v3-b2-b2-05"}, {"n": 81, "lv": "B2", "dos": "Climat", "t": "Climat et environnement", "goal": "Discuss environment and climate", "dir": "lesson-b2-b2-08", "key": "v3-b2-b2-08"}, {"n": 82, "lv": "B2", "dos": "Politique", "t": "La politique", "goal": "Take part in political debate", "dir": "lesson-b2-b2-06", "key": "v3-b2-b2-06"}, {"n": 83, "lv": "B2", "dos": "Histoire", "t": "La langue et l'histoire", "goal": "Talk about language and history", "dir": "lesson-b2-b2-07", "key": "v3-b2-b2-07"}, {"n": 84, "lv": "B2", "dos": "Technologie", "t": "Technologie et progrès", "goal": "Discuss technology and progress", "dir": "lesson-b2-b2-09", "key": "v3-b2-b2-09"}, {"n": 85, "lv": "B2", "dos": "Santé et sciences", "t": "Santé et sciences", "goal": "Discuss health and science", "dir": "lesson-b2-b2-12", "key": "v3-b2-b2-12"}, {"n": 86, "lv": "B2", "dos": "Émotions", "t": "Les relations et les émotions", "goal": "Talk about relationships and feelings", "dir": "lesson-b2-b2-10", "key": "v3-b2-b2-10"}, {"n": 87, "lv": "B2", "dos": "Expressions", "t": "Expressions et registres", "goal": "Idioms, register and fluency", "dir": "lesson-b2-b2-18", "key": "v3-b2-b2-18"}, {"n": 88, "lv": "B2", "dos": "Travail", "t": "Au travail", "goal": "Communicate at work and in business", "dir": "lesson-b2-b2-11", "key": "v3-b2-b2-11"}, {"n": 89, "lv": "B2", "dos": "Écriture formelle", "t": "Écrire de façon formelle", "goal": "Write formally", "dir": "lesson-b2-b2-15", "key": "v3-b2-b2-15"}, {"n": 90, "lv": "B2", "dos": "Écriture formelle", "t": "Le style soutenu", "goal": "Use formal style and the passive", "dir": "lesson-b2-b2-16", "key": "v3-b2-b2-16"}, {"n": 91, "lv": "B2", "dos": "Tourisme", "t": "Tourisme et voyage", "goal": "Discuss tourism and travel", "dir": "lesson-b2-b2-13", "key": "v3-b2-b2-13"}, {"n": 92, "lv": "B2", "dos": "Arts", "t": "Art et création", "goal": "Discuss art and creation", "dir": "lesson-b2-b2-14", "key": "v3-b2-b2-14"}, {"n": 93, "lv": "B2", "dos": "Authentique et bilan", "t": "Comprendre l'authentique", "goal": "Understand authentic material", "dir": "lesson-b2-b2-17", "key": "v3-b2-b2-17"}, {"n": 94, "lv": "B2", "dos": "Authentique et bilan", "t": "Bilan B2", "goal": "Review and DELF B2 practice", "dir": "lesson-b2-b2-19", "key": "v3-b2-b2-19"}, {"n": 95, "lv": "B2", "dos": "La mode", "t": "La mode", "goal": "Discuss fashion and trends", "dir": "lesson-b2-new-mode", "key": "v4-b2-new-mode"}, {"n": 96, "lv": "B2", "dos": "L'éducation", "t": "L'éducation", "goal": "Discuss education systems and models", "dir": "lesson-b2-new-edu", "key": "v4-b2-new-edu"}, {"n": 97, "lv": "B2", "dos": "Sport", "t": "Le sport", "goal": "Discuss sport at a high level", "dir": "lesson-b2-new-sport", "key": "v4-b2-new-sport"}, {"n": 98, "lv": "C1", "dos": "La ville", "t": "La ville", "goal": "Discuss cities and urban life", "dir": "lesson-c12-c1-01", "key": "v3-c12-c1-01"}, {"n": 99, "lv": "C1", "dos": "L'alimentation", "t": "L'alimentation", "goal": "Discuss food, health and society", "dir": "lesson-c12-c1-02", "key": "v3-c12-c1-02"}, {"n": 100, "lv": "C1", "dos": "Santé et éthique", "t": "Santé, science et éthique", "goal": "Discuss health, science and ethics", "dir": "lesson-c12-c1-03", "key": "v3-c12-c1-03"}, {"n": 101, "lv": "C1", "dos": "Le corps et l'art", "t": "Le corps et l'art", "goal": "Discuss body, art and inequality", "dir": "lesson-c12-c1-04", "key": "v3-c12-c1-04"}, {"n": 102, "lv": "C1", "dos": "Société", "t": "Société, identité, générations", "goal": "Discuss society, identity and generations", "dir": "lesson-c12-c1-05", "key": "v3-c12-c1-05"}, {"n": 103, "lv": "C1", "dos": "Philosophie", "t": "Philosophie et émotions", "goal": "Discuss philosophy and emotions", "dir": "lesson-c12-c1-07", "key": "v3-c12-c1-07"}, {"n": 104, "lv": "C1", "dos": "Travail et économie", "t": "Travail et économie", "goal": "Discuss work and economy", "dir": "lesson-c12-c1-06", "key": "v3-c12-c1-06"}, {"n": 105, "lv": "C1", "dos": "Politique", "t": "Politique et institutions", "goal": "Understand politics and institutions", "dir": "lesson-c12-c1-13", "key": "v3-c12-c1-13"}, {"n": 106, "lv": "C1", "dos": "Numérique", "t": "L'ère numérique", "goal": "Navigate the digital age and fake news", "dir": "lesson-c12-c1-09", "key": "v3-c12-c1-09"}, {"n": 107, "lv": "C1", "dos": "Écologie", "t": "Écologie et énergie", "goal": "Discuss ecology and energy", "dir": "lesson-c12-c1-12", "key": "v3-c12-c1-12"}, {"n": 108, "lv": "C1", "dos": "Histoire", "t": "Histoire et mémoire", "goal": "Discuss history and memory", "dir": "lesson-c12-c1-10", "key": "v3-c12-c1-10"}, {"n": 109, "lv": "C1", "dos": "Cultures", "t": "L'interculturel", "goal": "Discuss interculturality", "dir": "lesson-c12-c1-11", "key": "v3-c12-c1-11"}, {"n": 110, "lv": "C1", "dos": "Langue, discours, écriture", "t": "Les registres de la langue", "goal": "Master register and language variation", "dir": "lesson-c12-c1-08", "key": "v3-c12-c1-08"}, {"n": 111, "lv": "C1", "dos": "Langue, discours, écriture", "t": "Le discours structuré", "goal": "Structure formal discourse and rhetoric", "dir": "lesson-c12-c1-14", "key": "v3-c12-c1-14"}, {"n": 112, "lv": "C1", "dos": "Langue, discours, écriture", "t": "La grammaire avancée", "goal": "Use advanced grammar", "dir": "lesson-c12-c1-15", "key": "v3-c12-c1-15"}, {"n": 113, "lv": "C1", "dos": "Langue, discours, écriture", "t": "Écrire à un niveau avancé", "goal": "Academic and professional writing", "dir": "lesson-c12-c1-16", "key": "v3-c12-c1-16"}, {"n": 130, "lv": "C1", "dos": "Langue, discours, écriture", "t": "Les connecteurs formels", "goal": "Connect ideas formally and quote sources accurately in writing", "dir": "lesson-c1-new-connecteurs", "key": "v5-new-130"}, {"n": 114, "lv": "C1", "dos": "Langue, discours, écriture", "t": "Les négations", "goal": "Master the complete negation system", "dir": "lesson-c1-new-negations", "key": "v3-c12-c2-01"}, {"n": 115, "lv": "C2", "dos": "Résumer et nuancer", "t": "Résumer et reformuler", "goal": "Summarise and reconstruct arguments", "dir": "lesson-c12-c2-01", "key": "v3-c12-c2-01"}, {"n": 116, "lv": "C2", "dos": "Résumer et nuancer", "t": "Les nuances", "goal": "Fine shades of meaning", "dir": "lesson-c12-c2-02", "key": "v3-c12-c2-02"}, {"n": 117, "lv": "C2", "dos": "Résumer et nuancer", "t": "Penser de façon critique", "goal": "Critical thinking and philosophy", "dir": "lesson-c12-c2-03", "key": "v3-c12-c2-03"}, {"n": 118, "lv": "C2", "dos": "Monde et textes", "t": "Politique internationale", "goal": "Politics and international affairs", "dir": "lesson-c12-c2-04", "key": "v3-c12-c2-04"}, {"n": 119, "lv": "C2", "dos": "Monde et textes", "t": "Littérature et textes classiques", "goal": "Literature and classic texts", "dir": "lesson-c12-c2-05", "key": "v3-c12-c2-05"}, {"n": 120, "lv": "C2", "dos": "Monde et textes", "t": "Domaines spécialisés", "goal": "Specialised and academic domains", "dir": "lesson-c12-c2-06", "key": "v3-c12-c2-06"}, {"n": 121, "lv": "C2", "dos": "Style et oral", "t": "Maîtriser le style", "goal": "Mastery of style and register", "dir": "lesson-c12-c2-07", "key": "v3-c12-c2-07"}, {"n": 122, "lv": "C2", "dos": "Style et oral", "t": "Parler longuement", "goal": "Extended speaking", "dir": "lesson-c12-c2-08", "key": "v3-c12-c2-08"}, {"n": 123, "lv": "C2", "dos": "Écrire, comprendre, bilan", "t": "Écrire longuement", "goal": "Extended writing", "dir": "lesson-c12-c2-09", "key": "v3-c12-c2-09"}, {"n": 124, "lv": "C2", "dos": "Écrire, comprendre, bilan", "t": "Tout comprendre", "goal": "Understand everything", "dir": "lesson-c12-c2-10", "key": "v3-c12-c2-10"}, {"n": 125, "lv": "C2", "dos": "Écrire, comprendre, bilan", "t": "Bilan C2", "goal": "Review and DALF C2 practice", "dir": "lesson-c12-c2-11", "key": "v3-c12-c2-11"}];
+const LEVELS = ["A1","A2","B1","B2","C1","C2"];
+const LNAME = {A1:"Beginner",A2:"Elementary",B1:"Intermediate",B2:"Upper intermediate",C1:"Advanced",C2:"Mastery"};
+const LCOL = {A1:"#12b5a5",A2:"#3d9df5",B1:"#8b5cf6",B2:"#ef5da8",C1:"#ff922b",C2:"#f43f5e"};
+let PROG = {};
+try{ PROG = JSON.parse(localStorage.getItem('cam_prog')||'{}'); }catch(e){}
+function state(l){
+  const r = PROG[l.key];
+  if(r && r.done) return 2;
+  if(r && r.steps && Object.keys(r.steps).length) return 1;
+  return 0;
+}
+DATA.forEach(l=>l.st = state(l));
+const byLv = lv => DATA.filter(l=>l.lv===lv);
+const dossiers = lv => { const m = new Map(); byLv(lv).forEach(l=>{ if(!m.has(l.dos)) m.set(l.dos,[]); m.get(l.dos).push(l); }); return [...m.entries()].map(([name,ls])=>({name, ls})); };
+const got = ls => ls.filter(l=>l.st===2).length;
+
+function show(id){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  window.scrollTo({top:0});
+}
+function renderHome(){
+  const tot = DATA.length, g = got(DATA);
+  document.getElementById('totalsub').textContent = g + ' of ' + tot + ' lessons collected';
+  document.getElementById('obarfill').style.width = (100*g/tot) + '%';
+  document.getElementById('v-home').innerHTML = '<div class="grid">' + LEVELS.map(lv=>{
+    const ls = byLv(lv), gg = got(ls), full = gg===ls.length;
+    return '<div class="win" data-lv="'+lv+'">'
+      + '<div class="bar" style="background:'+LCOL[lv]+'"><b></b><b></b><b></b></div>'
+      + (full ? '<div class="done">Complete</div>' : '')
+      + '<div class="lv" style="color:'+LCOL[lv]+'">'+lv+'</div>'
+      + '<div class="nm">'+LNAME[lv]+' · '+dossiers(lv).length+' dossiers</div>'
+      + '<div class="cnt">'+gg+' / '+ls.length+' lessons</div>'
+      + '<div class="pbar"><i style="width:'+(100*gg/ls.length)+'%;background:'+LCOL[lv]+'"></i></div>'
+      + '</div>';
+  }).join('') + '</div>';
+  document.querySelectorAll('.win').forEach(w=>w.onclick=()=>{ renderLevel(w.dataset.lv); show('v-level'); });
+}
+function renderLevel(lv){
+  const ds = dossiers(lv), ls = byLv(lv);
+  document.getElementById('v-level').innerHTML =
+    '<button class="back" id="bk1">‹ All levels</button>'
+    + '<div class="vtitle" style="color:'+LCOL[lv]+'">Level '+lv+'</div>'
+    + '<div class="vsub">'+LNAME[lv]+' · '+got(ls)+' of '+ls.length+' lessons collected</div>'
+    + ds.map((d,i)=>{
+        const gg = got(d.ls), full = gg===d.ls.length;
+        return '<div class="pack" data-d="'+i+'">'
+          + '<div class="dot" style="background:'+LCOL[lv]+'">'+(i+1)+'</div>'
+          + '<div class="inf"><div class="t">'+d.name+'</div>'
+          + '<div class="c">'+gg+' / '+d.ls.length+' collected</div>'
+          + '<div class="pbar"><i style="width:'+(100*gg/d.ls.length)+'%;background:'+LCOL[lv]+'"></i></div></div>'
+          + (full ? '<div class="chk">✓</div>' : '<div class="chev">›</div>')
+          + '</div>';
+      }).join('');
+  document.getElementById('bk1').onclick=()=>{ renderHome(); show('v-home'); };
+  document.querySelectorAll('#v-level .pack').forEach(p=>p.onclick=()=>{ renderDos(lv, ds[+p.dataset.d]); show('v-dos'); });
+}
+function renderDos(lv, d){
+  document.getElementById('v-dos').innerHTML =
+    '<button class="back" id="bk2">‹ Level '+lv+'</button>'
+    + '<div class="vtitle">'+d.name+'</div>'
+    + '<div class="vsub">'+got(d.ls)+' of '+d.ls.length+' collected</div>'
+    + '<div class="cards">' + d.ls.map(l=>{
+        const cls = l.st===2 ? 'got' : (l.st===1 ? 'mid' : 'miss');
+        const badge = l.st===2 ? '✓' : (l.st===1 ? 'In progress' : '·');
+        const bord = l.st===1 ? 'border:3px solid '+LCOL[lv] : '';
+        const tcol = l.st===2 ? 'border-top:6px solid '+LCOL[lv] : '';
+        return '<div class="lcard '+cls+'" data-dir="'+l.dir+'" style="'+bord+tcol+'">'
+          + '<div class="badge">'+badge+'</div>'
+          + '<div class="lt">'+l.t+'</div><div class="lg">'+l.goal+'</div></div>';
+      }).join('') + '</div>';
+  document.getElementById('bk2').onclick=()=>{ renderLevel(lv); show('v-level'); };
+  document.querySelectorAll('#v-dos .lcard').forEach(c=>c.onclick=()=>{ location.href='/'+c.dataset.dir+'/'; });
+}
+const q = document.getElementById('q');
+q.addEventListener('input', ()=>{
+  const s = q.value.trim().toLowerCase();
+  if(!s){ show('v-home'); return; }
+  const hits = DATA.filter(l => l.t.toLowerCase().includes(s) || l.dos.toLowerCase().includes(s) || l.goal.toLowerCase().includes(s) || l.lv.toLowerCase()===s);
+  document.getElementById('v-search').innerHTML =
+    '<div class="vtitle">Search</div><div class="vsub">'+hits.length+' result'+(hits.length===1?'':'s')+'</div>'
+    + (hits.length ? hits.map(l=>
+        '<div class="res" data-dir="'+l.dir+'"><div class="rl" style="background:'+LCOL[l.lv]+'">'+l.lv+'</div>'
+        + '<div class="rt"><div class="a">'+l.t+'</div><div class="b">'+l.dos+' · '+l.goal+'</div></div>'
+        + '<div class="st" style="color:'+(l.st===2 ? '#ffb020' : (l.st===1 ? '#7c5cff' : '#b3aed2'))+'">'+(l.st===2 ? '✓ Collected' : (l.st===1 ? 'In progress' : 'Not started'))+'</div></div>'
+      ).join('') : '<div class="empty">Nothing matches that search yet.</div>');
+  document.querySelectorAll('#v-search .res').forEach(r=>r.onclick=()=>{ location.href='/'+r.dataset.dir+'/'; });
+  show('v-search');
+});
+renderHome();
+</script>
+</body>
+</html>
