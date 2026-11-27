@@ -299,7 +299,6 @@ function fly(n){
   })();
 }
 function flyBatch(n,done){
-  try{swapPills();}catch(e){}
   var L=layer(),W=window.innerWidth,H=window.innerHeight,cx=W/2,cy=H*0.44;
   var pill=pillEl(),pr=pill?pill.getBoundingClientRect():null;
   var tx=pr?pr.left+pr.width/2:W-52,ty=pr?pr.top+pr.height/2:36;
@@ -365,29 +364,6 @@ function check(){
   if(b>last){var d=b-last;last=b;if(d>0)fly(Math.min(d,15));}
   else if(b<last){last=b;}
 }
-function swapPills(){
-  try{
-    [].forEach.call(document.querySelectorAll('.cpill'),function(p){
-      if(p.getAttribute('data-cfx-coin'))return;
-      var done=false;
-      [].forEach.call(p.querySelectorAll('span'),function(sp){
-        var t=(sp.textContent||'').trim();
-        if(!done&&(t==='\u2B50'||t==='\u2605')){
-          sp.innerHTML='<img src="/assets/coin-reward.png" alt="" style="width:20px;height:20px;object-fit:contain;display:block">';
-          sp.style.fontSize='0';done=true;
-        }});
-      if(done)p.setAttribute('data-cfx-coin','1');
-    });
-    [].forEach.call(document.querySelectorAll('img'),function(im){
-      if((im.getAttribute('src')||'').indexOf('32ae61d9b985de32')>-1){
-        var p=im.parentElement;
-        if(p&&p.style&&p.style.borderRadius==='20px'&&!p.getAttribute('data-cfx-coin')){
-          im.src='/assets/coin-reward.png';p.setAttribute('data-cfx-coin','1');
-        }
-      }});
-  }catch(e){}
-}
-[400,1200,2500,4000].forEach(function(t){setTimeout(swapPills,t);});
 var reduced=false;
 try{reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
 setTimeout(function(){
