@@ -1093,12 +1093,14 @@ function swapPills(){
     });
     [].forEach.call(document.querySelectorAll('img'),function(im){
       if((im.getAttribute('src')||'').indexOf('32ae61d9b985de32')>-1){
-        im.src='/assets/coin-reward.png';
+        var p=im.parentElement;
+        if(p&&p.style&&p.style.borderRadius==='20px'&&!p.getAttribute('data-cfx-coin')){
+          im.src='/assets/coin-reward.png';p.setAttribute('data-cfx-coin','1');
+        }
       }});
   }catch(e){}
 }
-[400,1200,2500,4000,7000,12000].forEach(function(t){setTimeout(swapPills,t);});
-try{new MutationObserver(function(){swapPills();}).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['src']});}catch(e){}
+[400,1200,2500,4000].forEach(function(t){setTimeout(swapPills,t);});
 var reduced=false;
 try{reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
 setTimeout(function(){
