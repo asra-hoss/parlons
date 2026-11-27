@@ -976,7 +976,7 @@ var cards=bd.querySelectorAll('div[style*="font-size:14.5px"]');[].forEach.call(
 fix();setTimeout(fix,300);
 document.addEventListener('click',function(e){var r=e.target.closest&&e.target.closest('[data-readall]');if(!r)return;e.stopPropagation();var sc=r.closest('.scr'),p=sc.querySelector('.pbtn');try{au.currentTime=0}catch(x){}if(au.paused&&p)p.click()},true);
 })();</script><script>(function(){var V={"t": "Avant et maintenant", "g": "Compare and talk about then and now", "c": "A1-23"};function add(){try{S.forEach(function(s,k){if(k===0||k===S.length-1||s.getAttribute('data-gb'))return;var fr=s.querySelector('.frm');if(!fr||!fr.firstElementChild)return;s.setAttribute('data-gb','1');var d=document.createElement('div');d.style.cssText='margin:0 16px 2px;padding:6px 10px;border-radius:12px;background:#f4f0ff;color:#3b2f80;font:700 11.5px/1.3 Nunito,sans-serif;text-align:center';d.innerHTML='🎯 <b>'+V.t.replace(/</g,'&lt;')+'</b>';fr.firstElementChild.insertAdjacentElement('afterend',d)})}catch(e){}}add();setTimeout(add,400)})();</script><script>
-/* chichilang-reward-fix v4.2: ONE counter (the parlons:stars wallet) painted everywhere. Coins fly ONLY when a step is genuinely finished: 1 per step, 5 for Writing/Speaking. The counter ticks up as each coin lands. The legacy STARS ticker (bumpStars/flyStar, which started at a hardcoded 12 and painted over the real balance) is neutralised. NT lessons mark a step when it is ENTERED, so for them the award is held pending and only released when the learner leaves the step going forward (or reaches the summary). A step counts as already processed only if BOTH this guard and cam_prog say so - after an in-app reset clears cam_prog, stale guard entries must not block re-processing. */
+/* chichilang-reward-fix v4.3: ONE counter (the parlons:stars wallet) painted everywhere. Coins fly ONLY when a step is genuinely finished: 1 per step, 5 for Writing/Speaking. The counter ticks up as each coin lands. The legacy STARS ticker (bumpStars/flyStar, which started at a hardcoded 12 and painted over the real balance) is neutralised. NT lessons mark a step when it is ENTERED, so for them the award is held pending and only released when the learner leaves the step going forward (or reaches the summary). A step counts as already processed only if BOTH this guard and cam_prog say so - after an in-app reset clears cam_prog, stale guard entries must not block re-processing. */
 (function(){
 var SK='parlons:stars',GK='parlons:stepfx';
 function rd(){try{var o=JSON.parse(localStorage.getItem(SK)||'{}');return (o&&typeof o==='object'&&!Array.isArray(o))?o:{}}catch(e){return{}}}
@@ -1011,11 +1011,15 @@ function processQ(){
  flyCoins(job.n,visPill(),function(){flying=false;processQ()});
 }
 function stepType(n){
- try{var L=((window.LD&&LD.trk)||{})[n]||[];for(var j=0;j<L.length;j++){var e=L[j];if(!e)continue;var k=e[1];if(typeof k==='string'){if(k.indexOf('wr:')===0)return'WRITING';if(k.indexOf('sp:')===0)return'SPEAKING'}}}catch(e){}
  try{var re=new RegExp('STEP\\s+'+n+'\\s*·\\s*(WRITING|SPEAKING)');var S=window.S||[];
   for(var s=0;s<S.length;s++){var m=(S[s].textContent||'').match(re);if(m)return m[1];
    var ds=S[s].getAttribute&&S[s].getAttribute('data-step');if(ds&&+ds===n){var tg=S[s].querySelector('.tag');if(tg){var m2=(tg.textContent||'').match(/WRITING|SPEAKING/);if(m2)return m2[0]}}}}catch(e){}
  return '';
+}
+function stepTypeHere(n){
+ var sc=document.querySelector('.scr.on');
+ if(sc){var t=(sc.textContent||'').match(/STEP\s+\d+\s*\u00b7\s*([A-Z]+)/);if(t)return (t[1]==='WRITING'||t[1]==='SPEAKING')?t[1]:''}
+ return stepType(n);
 }
 var isNT=!!document.querySelector('.scr[data-step]');
 function bogusStep(n){if(!isNT)return false;var S=window.S||[];for(var s=0;s<S.length;s++){var ds=S[s].getAttribute&&S[s].getAttribute('data-step');if(ds&&+ds===n){var tg=S[s].querySelector('.tag');if(tg&&/STEP\s*\d+/.test(tg.textContent||''))return false}}return true}
@@ -1031,7 +1035,7 @@ function wrap(){
    var alreadyDone=replay&&progMarked;
    if(!alreadyDone){
     var K=bal()-before;
-    var T=(stepType(n)==='WRITING'||stepType(n)==='SPEAKING')?5:Math.max(1,K);
+    var ty=stepTypeHere(n);var T=(ty==='WRITING'||ty==='SPEAKING')?5:Math.max(1,K);
     if(isNT){
      if(K!==0){var oN=rd();oN.balance=(+oN.balance||0)-K;oN.earnedTotal=(+oN.earnedTotal||0)-K;try{localStorage.setItem(SK,JSON.stringify(oN))}catch(e){}}
      g[key]={t:T,p:1};gSet(g);
@@ -1081,6 +1085,5 @@ var tries=0;
  setTimeout(waitWrap,200);
 })();
 paintNow(false);setTimeout(function(){paintNow(false)},400);
-})();
-</script>
+})();</script>
 </body></html>
