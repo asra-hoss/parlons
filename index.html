@@ -874,6 +874,11 @@ studyPlan();
 (function(){var COIN='/progress-copy/fx/coin.png';function swapIn(chip){if(!chip)return;var imgs=chip.querySelectorAll('img');for(var i=0;i<imgs.length;i++){var src=imgs[i].getAttribute('src')||'';if(src.indexOf('home-star-plump')>-1||src.indexOf('32ae61d9b985de32')>-1){imgs[i].src=COIN;imgs[i].style.objectFit='contain'}}var spans=chip.querySelectorAll('span');for(var j=0;j<spans.length;j++){var sp=spans[j];if(sp.querySelector('img[data-coinimg="1"]'))return;if(sp.textContent&&sp.textContent.indexOf('\u2B50')>-1&&sp.children.length===0){sp.textContent='';var im=document.createElement('img');im.src=COIN;im.alt='';im.setAttribute('data-coinimg','1');im.style.cssText='width:22px;height:22px;object-fit:contain;vertical-align:-5px';sp.appendChild(im);return}}}function apply(){var chips=document.querySelectorAll('[data-star-chip="true"],[aria-label="\u00C9toiles"]');for(var i=0;i<chips.length;i++)swapIn(chips[i])}new MutationObserver(apply).observe(document.documentElement,{childList:true,subtree:true});apply()})();
 </script>
 
+<style id="chichilang-coin-shine">
+[data-star-chip="true"] img,[aria-label="\u00c9toiles"] img{animation:chichilang-coinshine 8s ease-in-out infinite}
+@keyframes chichilang-coinshine{0%,74%{transform:rotateY(0deg) scale(1);filter:brightness(1)}82%{transform:rotateY(360deg) scale(1.15);filter:brightness(1.4)}90%,100%{transform:rotateY(360deg) scale(1);filter:brightness(1)}}
+@media (prefers-reduced-motion: reduce){[data-star-chip="true"] img,[aria-label="\u00c9toiles"] img{animation:none}}
+</style>
 <script id="chichilang-progress-collection">
 /* Progress tab -> Collection page (Nov 27, 2026, Asra's instruction).
    The old Progress stays untouched in the app; removing this script restores it.
