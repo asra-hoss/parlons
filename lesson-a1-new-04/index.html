@@ -698,4 +698,8 @@ transcriptAudio();
  paintCircles();
 })();
 </script>
+
+<script>/* chichilang-fc-only: the Flashcards step shows only the deck, not the word list above it (Asra, Nov 28, 2026) */
+(function(){function fix(){var pads=document.querySelectorAll('.scr .pad');for(var i=0;i<pads.length;i++){var p=pads[i];var deck=p.querySelector('.ntr-deck')||p.querySelector('.fcx');if(!deck)continue;var el=p.firstElementChild;while(el&&el!==deck&&!el.contains(deck)){var nx=el.nextElementSibling;if(el.tagName!=='STYLE')el.style.setProperty('display','none','important');el=nx}}}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fix);else fix();setTimeout(fix,600);setTimeout(fix,1800)})();
+</script>
 </body></html>
