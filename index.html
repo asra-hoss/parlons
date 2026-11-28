@@ -700,6 +700,7 @@ studyPlan();
 .dz2-banner .pill { display: inline-block; background: #c5bcf5; color: #4a3f96; font-size: 12.5px; font-weight: 800; border-radius: 999px; padding: 4px 13px; }
 .dz2-banner h2 { font-size: 30px; font-weight: 900; color: #0a1033; margin-top: 10px; }
 .dz2-banner .sub { font-size: 15.5px; font-weight: 600; color: #7c80ab; margin-top: 4px; }
+.dz2-cont { margin-top: 16px; border: 0; cursor: pointer; padding: 13px 36px; border-radius: 999px; background: linear-gradient(90deg, #38b2ac, #4a78e0); color: #fff; font: 900 17px Fredoka, Nunito, sans-serif; box-shadow: 0 10px 22px rgba(74,120,224,.35); } .dz2-cont:active { transform: scale(.98); }
 .dz2-banner .bwrap { display: flex; align-items: center; gap: 12px; margin-top: 17px; max-width: 480px; }
 .dz2-banner .bbar { flex: 1; height: 9px; border-radius: 99px; background: rgba(255,255,255,.8); overflow: hidden; }
 .dz2-banner .bbar i { display: block; height: 100%; background: #a8a5f5; border-radius: 99px; }
@@ -829,7 +830,7 @@ studyPlan();
         + '<div style="margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:14px;flex:none"><div class="dz2-profile" style="margin:0">' + (avatarSrc ? '<img src="' + avatarSrc + '" alt="">' : '<span class="dz2-pav">' + (first.charAt(0) || 'L') + '</span>') + '<span><span class="n" style="display:block">' + name + '</span><span class="l" style="display:block">Level ' + level + '</span></span><span class="ch">⌄</span></div>'
         + '<div class="dz2-cards" style="margin:0"><div class="dz2-card dz2-overall"><div class="row"><span class="t">Overall Progress</span><span class="p">' + pct + '%</span></div><div class="dz2-bar"><i style="width:' + pct + '%"></i></div><div class="s">' + done + ' / ' + total + ' lessons completed</div></div>'
         + '<div class="dz2-card dz2-streak"><span class="tr">🏆</span><span><span class="t" style="display:block">Weekly streak</span><span class="d" style="display:block">🔥 ' + sd + (sd === 1 ? ' day' : ' days') + '</span></span></div></div></div></div>'
-        + '<div class="dz2-banner"><div><span class="pill">Level ' + level + '</span><h2>' + level + ' · ' + curDos + '</h2><div class="sub">' + (SUBS[level] || '') + '</div><div class="bwrap"><span class="bbar"><i style="width:' + (curRecs.length ? Math.round(100 * curDone / curRecs.length) : 0) + '%"></i></span><span class="bc">' + curDone + ' / ' + curRecs.length + ' lessons</span></div></div><div class="art">' + '<div class="hand">Petit à petit,<br>grandes choses !</div></div></div>'
+        + '<div class="dz2-banner"><div><span class="pill">Level ' + level + '</span><h2>' + level + ' · ' + curDos + '</h2><div class="sub">' + (SUBS[level] || '') + '</div><div class="bwrap"><span class="bbar"><i style="width:' + (curRecs.length ? Math.round(100 * curDone / curRecs.length) : 0) + '%"></i></span><span class="bc">' + curDone + ' / ' + curRecs.length + ' lessons</span></div><button class="dz2-cont" type="button">Continue</button></div><div class="art">' + '<div class="hand">Petit à petit,<br>grandes choses !</div></div></div>'
         + '<div class="dz2-planhead"><h3>Your Study Plan</h3><span class="all" id="dz2-all">View all lessons →</span></div>'
         + '<div class="dz2-grid">' + cards + '</div>'
         + '<div class="dz2-quick"><div class="qh"><div class="t">Quick Access</div><div class="s">Go directly to what you need</div></div>'
@@ -840,10 +841,12 @@ studyPlan();
       Array.prototype.forEach.call(main.children, function (c) { c.style.display = 'none'; });
       main.appendChild(wrap);
       main.style.position = 'relative';
-      if (aside) aside.style.display = 'none';
+      /* sidebar kept visible (Asra, Nov 28) */
       Array.prototype.forEach.call(shell.querySelectorAll('.overflow-y-auto'), function (el) {
         if (el !== main && el.textContent.indexOf('Weekly contest') >= 0) el.style.display = 'none';
       });
+      var cb2 = wrap.querySelector('.dz2-cont');
+      if (cb2) cb2.addEventListener('click', function () { if (contBtn) contBtn.click(); else clickNav('My lessons'); });
       var all = wrap.querySelector('#dz2-all');
       if (all) all.addEventListener('click', function () { clickNav('My lessons'); });
       Array.prototype.forEach.call(wrap.querySelectorAll('.dz2-lcard'), function (c) {
