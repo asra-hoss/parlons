@@ -488,20 +488,33 @@ function ask(el){if(document.getElementById('camxpop'))return;var o=document.cre
 o.innerHTML='<div style="width:100%;max-width:320px;box-sizing:border-box;background:#fff;border-radius:28px;padding:24px 20px 18px;text-align:center;box-shadow:0 28px 56px -20px rgba(90,60,180,.5)"><div style="margin:0;font:600 24px/28px Fredoka,Nunito,sans-serif;color:#22316e">Are you sure you want to leave?</div><div style="margin:8px 0 0;font:700 14px/20px Nunito,sans-serif;color:#6f6a85">Your progress is saved.</div><div class="xy" style="margin-top:18px;padding:14px;border-radius:999px;background:linear-gradient(90deg,#3fb0c4,#4f7fe0);color:#fff;font:600 18px Fredoka,Nunito,sans-serif;cursor:pointer">Yes, leave</div><div class="xn" style="margin-top:10px;padding:12px;border-radius:999px;background:#efeaff;color:#4b34b0;font:600 18px Fredoka,Nunito,sans-serif;cursor:pointer">No, stay</div></div>';
 o.addEventListener('click',function(e){var y=e.target.closest('.xy'),n=e.target.closest('.xn');if(!y&&!n)return;e.stopPropagation();o.remove();if(y){el.dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true,view:window}))}});document.body.appendChild(o)}
 document.addEventListener('click',function(e){if(!e.isTrusted)return;var el=find(e.target);if(!el)return;e.stopImmediatePropagation();e.preventDefault();ask(el)},true)})();</script><style id="camelon-studyplan-skin">
-/* camelon-studyplan-skin: Study plan setup restyled as a clean toggle list (presentation only; every control stays the bundle's own element with its own handler; ON/OFF follows the bundle's selected class bg-[#6d4fe0]) */
-[data-plan-setup].cam-plan-skin>p:not([data-plan-preview]){color:#0a7c8d!important;margin-top:24px}
-[data-plan-setup].cam-plan-skin>p:not([data-plan-preview]):first-child{margin-top:2px}
-[data-plan-setup].cam-plan-skin>div{display:flex!important;flex-direction:column!important;gap:0!important}
-[data-plan-setup].cam-plan-skin>div>button:not([data-plan-save]){position:relative;display:flex!important;align-items:center;width:100%;background:#fff!important;border:none!important;border-bottom:1px solid #eef1f2!important;border-radius:0!important;box-shadow:none!important;color:#222233!important;font-size:15.5px!important;padding:13px 64px 13px 2px!important;text-align:left}
-[data-plan-setup].cam-plan-skin>div>button:not([data-plan-save])::before{content:'';position:absolute;right:2px;top:50%;transform:translateY(-50%);width:50px;height:29px;border-radius:15px;background:#d8dee0;transition:background .18s ease}
-[data-plan-setup].cam-plan-skin>div>button:not([data-plan-save])::after{content:'';position:absolute;right:26px;top:50%;transform:translateY(-50%);width:23px;height:23px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:right .18s ease}
-[data-plan-setup].cam-plan-skin>div>button[class*="bg-[#6d4fe0]"]:not([data-plan-save])::before{background:#0a9db5}
-[data-plan-setup].cam-plan-skin>div>button[class*="bg-[#6d4fe0]"]:not([data-plan-save])::after{right:5px}
-[data-plan-setup].cam-plan-skin>div>span{display:flex!important;align-items:center;justify-content:space-between;width:100%;background:#fff!important;border:none!important;border-bottom:1px solid #eef1f2!important;border-radius:0!important;padding:8px 2px!important}
-[data-plan-setup].cam-plan-skin [data-plan-preview]{background:#e6f6f8!important;color:#0a5b68!important;border-radius:16px!important}
-[data-plan-setup].cam-plan-skin [data-plan-save]{background:#ff6b57!important;border-radius:14px!important}
+/* camelon-studyplan-skin: Study plan setup as ONE compact page — no scrolling. Choice groups are single rows of pills (the bundle's own pill buttons), never stacked toggle rows. Presentation only: every control stays the bundle's own element with its own handler; selected state is the bundle's own bg-[#6d4fe0] pill. */
+[data-plan-setup].cam-plan-skin>p:not([data-plan-preview]){color:#0a7c8d!important;font-size:14px!important;margin:12px 0 5px!important}
+[data-plan-setup].cam-plan-skin>p:not([data-plan-preview]):first-child{margin-top:0!important}
+[data-plan-setup].cam-plan-skin>div{margin-bottom:10px!important;gap:6px!important}
+[data-plan-setup].cam-plan-skin>div>button:not([data-plan-save]){padding:6px 8px!important;font-size:12.5px!important;line-height:1.2!important;box-shadow:none!important}
+[data-plan-setup].cam-plan-skin>div:nth-of-type(1){flex-wrap:nowrap!important}
+[data-plan-setup].cam-plan-skin>div:nth-of-type(1)>button{flex:1 1 0!important;min-width:0!important;padding-left:5px!important;padding-right:5px!important;text-align:center!important}
+[data-plan-setup].cam-plan-skin>div>span{padding:3px 6px!important}
+[data-plan-setup].cam-plan-skin>div>span span{min-width:52px!important;font-size:13px!important}
+[data-plan-setup].cam-plan-skin [data-plan-preview]{background:#e6f6f8!important;color:#0a5b68!important;border-radius:14px!important;padding:8px 12px!important;font-size:13.5px!important;margin-bottom:10px!important}
+[data-plan-setup].cam-plan-skin [data-plan-save]{background:#ff6b57!important;border-radius:14px!important;padding-top:10px!important;padding-bottom:10px!important;font-size:15.5px!important}
+/* Result page: same one-screen compaction (tighter card, bar, headings and task rows) */
+.cam-plan-page{padding-bottom:20px!important}
+.cam-plan-result>div:nth-child(2)>div:first-child{padding:14px 16px!important}
+.cam-plan-result>div:nth-child(2)>div:first-child>div:first-child p{font-size:13.5px!important}
+.cam-plan-result [data-plan-headline]{font-size:19px!important}
+.cam-plan-result [data-plan-headline]+p{font-size:13px!important;margin-top:2px!important}
+.cam-plan-result [data-plan-adjust]{padding-top:4px!important;padding-bottom:4px!important;font-size:12.5px!important}
+.cam-plan-result div[class*="h-[22px]"]{height:14px!important;margin-top:10px!important}
+.cam-plan-result div[class*="h-[22px]"]+div{margin-top:6px!important;font-size:12px!important}
+.cam-plan-result h2{font-size:16px!important;margin-top:16px!important;margin-bottom:8px!important}
+.cam-plan-result h2+div{gap:8px!important}
+.cam-plan-result h2+div>button{padding-top:9px!important;padding-bottom:9px!important;border-radius:14px!important}
+.cam-plan-result h2+div>button>span:first-child{font-size:21px!important}
 </style><script>/* camelon-studyplan-skin: tag the Study plan setup container so the stylesheet above applies; re-tag after React re-renders (presentation only) */
-(function(){function apply(){var el=document.querySelector('[data-plan-setup]');if(el&&!el.classList.contains('cam-plan-skin'))el.classList.add('cam-plan-skin')}
+(function(){function colOf(el){var n=el;while(n&&n!==document.body){if(typeof n.className==='string'&&n.className.indexOf('max-w-[640px]')>=0)return n;n=n.parentElement}return null}
+function apply(){var el=document.querySelector('[data-plan-setup]');if(el&&!el.classList.contains('cam-plan-skin'))el.classList.add('cam-plan-skin');var head=document.querySelector('[data-plan-headline]');var anchor=head||el;if(anchor){var col=colOf(anchor);if(col){if(!col.classList.contains('cam-plan-page'))col.classList.add('cam-plan-page');if(head&&!col.classList.contains('cam-plan-result'))col.classList.add('cam-plan-result')}}}
 new MutationObserver(apply).observe(document.documentElement,{childList:true,subtree:true});apply()})();</script><style id="camelon-landing-center">
 /* Vertically center the signed-out "Where are you with French?" content group
    (flags + heading + option cards). Internal spacing unchanged. */
