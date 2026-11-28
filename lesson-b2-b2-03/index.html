@@ -554,11 +554,11 @@ var BUB={"headphones": "/shared/a1b0098e3208320c.png", "book": "/shared/73f0c903
    el.addEventListener('click',function(ev){ev.stopImmediatePropagation();if(el._done)return;if(!real){el.querySelector('.bd-float').animate([{transform:'translateX(-7px) rotate(-5deg)'},{transform:'translateX(6px) rotate(4deg)'},{transform:'none'}],{duration:350});return}
     el._done=1;el.classList.remove('bd-ready');var q=el.animate([{transform:'translate('+ex+'px,'+ey+'px) scale(1)',opacity:1},{transform:'translate('+ex+'px,'+ey+'px) scale(1.3)',opacity:.9,offset:.4},{transform:'translate('+ex+'px,'+(ey-30)+'px) scale(.2)',opacity:0}],{duration:520,fill:'forwards'});
     burst(fr,ex+d/2,ey+d/2);flyStar(fr,ex+d/2,ey+d/2);if(fan.querySelectorAll('.bd-fb').length&&[].every.call(fan.querySelectorAll('.bd-fb'),function(b){return !b._real||b._done}))setTimeout(function(){fan.innerHTML='';st=1;ch.classList.remove('bd-open');ch.classList.add('bd-closing');setTimeout(function(){ch.classList.remove('bd-closing');st=0;setTimeout(showDone,500)},480)},1100)},true)})}
- function flyStar(f,x,y){var pill=f.querySelector('.cpill');playFX(1,pill,function(){var c=f.querySelector('.cnum');if(c)c.textContent=String(STARS)})}
+ function flyStar(f,x,y){var pill=f.querySelector('.cpill');playFX(1,pill,function(){var c=f.querySelector('.cnum');if(c){if(window.paintStars)window.paintStars();else c.textContent=String(STARS)}})}
  function burst(f,x,y){var o=document.createElement('div');o.style.cssText='position:absolute;left:0;top:0;right:0;bottom:0;pointer-events:none;z-index:9';var cols=['#fff8dc','#ffe7a0','#ffd56a','#ffffff','#ffb3c8','#c3e8ff'];
   for(var k=0;k<18;k++){var c=document.createElement('i');var w=4+Math.random()*6;c.style.cssText='position:absolute;left:'+x+'px;top:'+y+'px;width:'+w+'px;height:'+w+'px;border-radius:50%;background:'+cols[k%6];o.appendChild(c);var a=Math.random()*6.28,d=30+Math.random()*60;c.animate([{transform:'translate(0,0)',opacity:1},{transform:'translate('+Math.cos(a)*d+'px,'+Math.sin(a)*d+'px)',opacity:0}],{duration:700+Math.random()*300,fill:'forwards'})}
   f.appendChild(o);setTimeout(function(){o.remove()},1200)}
- window._chestStart=function(){if(fr._started)return;fr._started=1;var cn=fr.querySelector('.cnum');if(cn)cn.textContent=String(STARS);fan.innerHTML='';
+ window._chestStart=function(){if(fr._started)return;fr._started=1;var cn=fr.querySelector('.cnum');if(cn){if(window.paintStars)window.paintStars();else cn.textContent=String(STARS)}fan.innerHTML='';
   var o=document.createElement('div');o.style.cssText='position:absolute;left:0;top:0;right:0;bottom:0;z-index:30;background:linear-gradient(180deg,#e3e6ff,#f8e8f2);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px';
   o.innerHTML='<div style="font-size:84px;line-height:1">🎉</div><div style="margin-top:14px;font:600 28px/34px Fredoka,Nunito,sans-serif;color:#22316e">Lesson '+LD.n+' completed!</div><div style="margin-top:8px;font:700 16px Nunito,sans-serif;color:#6f6a85">Great work. Time to open your chest.</div>';fr.appendChild(o);
   var n=0,iv=setInterval(function(){burst(o,40+Math.random()*250,120+Math.random()*300);if(++n>6)clearInterval(iv)},320);
@@ -978,7 +978,7 @@ var cards=bd.querySelectorAll('div[style*="font-size:14.5px"]');[].forEach.call(
 fix();setTimeout(fix,300);
 document.addEventListener('click',function(e){var r=e.target.closest&&e.target.closest('[data-readall]');if(!r)return;e.stopPropagation();var sc=r.closest('.scr'),p=sc.querySelector('.pbtn');try{au.currentTime=0}catch(x){}if(au.paused&&p)p.click()},true);
 })();</script><script>(function(){var V={"t": "La société", "g": "Discuss society and social issues", "c": "B2-5"};function add(){try{S.forEach(function(s,k){if(k===0||k===S.length-1||s.getAttribute('data-gb'))return;var fr=s.querySelector('.frm');if(!fr||!fr.firstElementChild)return;s.setAttribute('data-gb','1');var d=document.createElement('div');d.style.cssText='margin:0 16px 2px;padding:6px 10px;border-radius:12px;background:#f4f0ff;color:#3b2f80;font:700 11.5px/1.3 Nunito,sans-serif;text-align:center';d.innerHTML='🎯 <b>'+V.t.replace(/</g,'&lt;')+'</b>';fr.firstElementChild.insertAdjacentElement('afterend',d)})}catch(e){}}add();setTimeout(add,400)})();</script><script>
-/* chichilang-reward-fix v4.4: ONE counter (the parlons:stars wallet) painted everywhere. Coins fly ONLY when a step is genuinely finished: 1 per step, 5 for Writing/Speaking. The counter ticks up as each coin lands. The legacy STARS ticker (bumpStars/flyStar, which started at a hardcoded 12 and painted over the real balance) is neutralised. NT lessons mark a step when it is ENTERED, so for them the award is held pending and only released when the learner leaves the step going forward (or reaches the summary). A step counts as already processed only if BOTH this guard and cam_prog say so - after an in-app reset clears cam_prog, stale guard entries must not block re-processing. */
+/* chichilang-reward-fix v4.6: ONE counter (the parlons:stars wallet) painted everywhere. Coins fly ONLY when a step is genuinely finished: 1 per step, 5 for Writing/Speaking. The counter ticks up as each coin lands. The legacy STARS ticker (bumpStars/flyStar, which started at a hardcoded 12 and painted over the real balance) is neutralised. NT lessons mark a step when it is ENTERED, so for them the award is held pending and only released when the learner leaves the step going forward (or reaches the summary). A step counts as already processed only if BOTH this guard and cam_prog say so - after an in-app reset clears cam_prog, stale guard entries must not block re-processing. */
 (function(){
 var SK='parlons:stars',GK='parlons:stepfx';
 function rd(){try{var o=JSON.parse(localStorage.getItem(SK)||'{}');return (o&&typeof o==='object'&&!Array.isArray(o))?o:{}}catch(e){return{}}}
@@ -1012,6 +1012,7 @@ function processQ(){
  paintNow(false);
  flyCoins(job.n,visPill(),function(){flying=false;processQ()});
 }
+function stepTypeOf(n){try{var S=window.S||[];if(typeof SCR2STEP!=='undefined'&&SCR2STEP){for(var s2 in SCR2STEP){if(SCR2STEP[s2]===n){var sc2=S[+s2];if(sc2){var mm=(sc2.textContent||'').match(/STEP\s+\d+\s*\u00b7\s*(WRITING|SPEAKING)/);return mm?mm[1]:''}return ''}}}}catch(e){}return stepType(n)}
 function stepType(n){
  try{var re=new RegExp('STEP\\s+'+n+'\\s*·\\s*(WRITING|SPEAKING)');var S=window.S||[];
   for(var s=0;s<S.length;s++){var m=(S[s].textContent||'').match(re);if(m)return m[1];
@@ -1037,7 +1038,7 @@ function wrap(){
    var alreadyDone=replay&&progMarked;if(typeof g[key]==='number')alreadyDone=true;
    if(!alreadyDone){
     var K=bal()-before;
-    var ty=stepType(n);var T=(ty==='WRITING'||ty==='SPEAKING')?5:Math.max(1,K);
+    var ty=stepTypeOf(n);var T=(ty==='WRITING'||ty==='SPEAKING')?5:Math.max(1,K);
     if(isNT){
      if(K!==0){var oN=rd();oN.balance=(+oN.balance||0)-K;oN.earnedTotal=(+oN.earnedTotal||0)-K;try{localStorage.setItem(SK,JSON.stringify(oN))}catch(e){}}
      g[key]={t:T,p:1};gSet(g);
@@ -1094,8 +1095,8 @@ function activeStepNo(){
  var m=(sc.textContent||'').match(/STEP\s+(\d+)\s*\u00b7/); return m?+m[1]:-1;
 }
 function awardStep(n){
- var key=lid()+':'+n, g=gRd(), progMarked=false;
- try{var p=JSON.parse(localStorage.getItem('cam_prog')||'{}');var r=p[lid()];progMarked=!!(r&&r.steps&&r.steps[n])}catch(e){}
+ var key=lid()+':w'+n, g=gRd(), progMarked=false;
+ try{var p=JSON.parse(localStorage.getItem('cam_prog')||'{}');var r=p[lid()];var mn=n;if(typeof SCR2STEP!=='undefined'&&SCR2STEP){var S2=window.S||[];for(var s3=0;s3<S2.length;s3++){var mm2=(S2[s3].textContent||'').match(/STEP\s+(\d+)\s*\u00b7/);if(mm2&&+mm2[1]===n&&SCR2STEP[s3]!=null){mn=SCR2STEP[s3];break}}}progMarked=!!(r&&r.steps&&r.steps[mn])}catch(e){}
  if(typeof g[key]==='number'&&progMarked) return;
  var base=(balSnap[n]!=null)?balSnap[n]:bal();
  var K=bal()-base; if(K<0)K=0;

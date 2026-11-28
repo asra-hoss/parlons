@@ -363,7 +363,7 @@ function playFX(n,pill,onDone){
  },i*110)})(i)}
 }
 /* chichilang-reward-fix v4.1: ONE counter (the parlons:stars wallet) painted everywhere. Coins fly ONLY when a step is genuinely finished: 1 per step, 5 for Writing/Speaking. The counter ticks up as each coin lands. The legacy STARS ticker (bumpStars/flyStar, which started at a hardcoded 12 and painted over the real balance) is neutralised. NT lessons mark a step when it is ENTERED, so for them the award is held pending and only released when the learner leaves the step going forward (or reaches the summary). */
-/* chichilang-reward-fix v4.4: ONE counter (the parlons:stars wallet) painted everywhere. Coins fly ONLY when a step is genuinely finished: 1 per step, 5 for Writing/Speaking. The counter ticks up as each coin lands. The legacy STARS ticker (bumpStars/flyStar, which started at a hardcoded 12 and painted over the real balance) is neutralised. NT lessons mark a step when it is ENTERED, so for them the award is held pending and only released when the learner leaves the step going forward (or reaches the summary). A step counts as already processed only if BOTH this guard and cam_prog say so - after an in-app reset clears cam_prog, stale guard entries must not block re-processing. */
+/* chichilang-reward-fix v4.6: ONE counter (the parlons:stars wallet) painted everywhere. Coins fly ONLY when a step is genuinely finished: 1 per step, 5 for Writing/Speaking. The counter ticks up as each coin lands. The legacy STARS ticker (bumpStars/flyStar, which started at a hardcoded 12 and painted over the real balance) is neutralised. NT lessons mark a step when it is ENTERED, so for them the award is held pending and only released when the learner leaves the step going forward (or reaches the summary). A step counts as already processed only if BOTH this guard and cam_prog say so - after an in-app reset clears cam_prog, stale guard entries must not block re-processing. */
 (function(){
 var SK='parlons:stars',GK='parlons:stepfx';
 function rd(){try{var o=JSON.parse(localStorage.getItem(SK)||'{}');return (o&&typeof o==='object'&&!Array.isArray(o))?o:{}}catch(e){return{}}}
@@ -397,6 +397,7 @@ function processQ(){
  paintNow(false);
  flyCoins(job.n,visPill(),function(){flying=false;processQ()});
 }
+function stepTypeOf(n){try{var S=window.S||[];if(typeof SCR2STEP!=='undefined'&&SCR2STEP){for(var s2 in SCR2STEP){if(SCR2STEP[s2]===n){var sc2=S[+s2];if(sc2){var mm=(sc2.textContent||'').match(/STEP\s+\d+\s*\u00b7\s*(WRITING|SPEAKING)/);return mm?mm[1]:''}return ''}}}}catch(e){}return stepType(n)}
 function stepType(n){
  try{var re=new RegExp('STEP\\s+'+n+'\\s*·\\s*(WRITING|SPEAKING)');var S=window.S||[];
   for(var s=0;s<S.length;s++){var m=(S[s].textContent||'').match(re);if(m)return m[1];
@@ -422,7 +423,7 @@ function wrap(){
    var alreadyDone=replay&&progMarked;if(typeof g[key]==='number')alreadyDone=true;
    if(!alreadyDone){
     var K=bal()-before;
-    var ty=stepType(n);var T=(ty==='WRITING'||ty==='SPEAKING')?5:Math.max(1,K);
+    var ty=stepTypeOf(n);var T=(ty==='WRITING'||ty==='SPEAKING')?5:Math.max(1,K);
     if(isNT){
      if(K!==0){var oN=rd();oN.balance=(+oN.balance||0)-K;oN.earnedTotal=(+oN.earnedTotal||0)-K;try{localStorage.setItem(SK,JSON.stringify(oN))}catch(e){}}
      g[key]={t:T,p:1};gSet(g);
@@ -479,8 +480,8 @@ function activeStepNo(){
  var m=(sc.textContent||'').match(/STEP\s+(\d+)\s*\u00b7/); return m?+m[1]:-1;
 }
 function awardStep(n){
- var key=lid()+':'+n, g=gRd(), progMarked=false;
- try{var p=JSON.parse(localStorage.getItem('cam_prog')||'{}');var r=p[lid()];progMarked=!!(r&&r.steps&&r.steps[n])}catch(e){}
+ var key=lid()+':w'+n, g=gRd(), progMarked=false;
+ try{var p=JSON.parse(localStorage.getItem('cam_prog')||'{}');var r=p[lid()];var mn=n;if(typeof SCR2STEP!=='undefined'&&SCR2STEP){var S2=window.S||[];for(var s3=0;s3<S2.length;s3++){var mm2=(S2[s3].textContent||'').match(/STEP\s+(\d+)\s*\u00b7/);if(mm2&&+mm2[1]===n&&SCR2STEP[s3]!=null){mn=SCR2STEP[s3];break}}}progMarked=!!(r&&r.steps&&r.steps[mn])}catch(e){}
  if(typeof g[key]==='number'&&progMarked) return;
  var base=(balSnap[n]!=null)?balSnap[n]:bal();
  var K=bal()-base; if(K<0)K=0;
