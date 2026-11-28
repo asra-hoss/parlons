@@ -826,7 +826,7 @@ function gflip(){var idx=gidx();if(!idx.length)return;var host=S[idx[0]],hb=body
  card.appendChild(fin);
  var hint=document.createElement('div');hint.className='gfh';hint.style.cssText='text-align:center;font-size:12px;color:#6f6a85;margin:10px 0 2px;font-weight:700';
  wrap.appendChild(top);wrap.appendChild(card);wrap.appendChild(hint);hb.appendChild(wrap);
- idx.slice(1).forEach(function(i){var bd=body(S[i]);if(bd)bd.innerHTML=''});
+ idx.slice(1).forEach(function(i){var bd=body(S[i]);if(bd)bd.innerHTML='';S[i].__deckHost=idx[0]});
  host.__deck={cards:cards,i:0,back:false,last:idx[idx.length-1]};
  grender(host)}
 function grender(host){var d=host.__deck;if(!d)return;var hb=body(host);var fin=hb.querySelector('.gfin');
@@ -857,6 +857,8 @@ document.addEventListener('click',function(e){var sc=e.target.closest&&e.target.
  if(e.target.closest('span[data-t]'))return;
  var d=sc.__deck;if(d.i<d.cards.length-1){e.stopImmediatePropagation();e.preventDefault();gshow(sc,d.i+1,1);return}
  e.stopImmediatePropagation();e.preventDefault();go(d.last+1)},true);
+/* deck-guard: a screen emptied into the deck must never be shown; send the learner to the deck host instead. */
+setInterval(function(){try{var ai=-1;for(var q=0;q<S.length;q++){if(S[q].classList.contains('on')){ai=q;break}}if(ai>=0&&S[ai].__deckHost!=null&&ai!==S[ai].__deckHost&&typeof go==='function')go(S[ai].__deckHost)}catch(e){}},300);
 (function(){var sx=null,sy=null;
  document.addEventListener('pointerdown',function(e){var c=e.target.closest&&e.target.closest('.gfc');if(!c){sx=null;return}sx=e.clientX;sy=e.clientY},true);
  document.addEventListener('pointerup',function(e){if(sx===null)return;var dx=e.clientX-sx,dy=e.clientY-sy;sx=null;
