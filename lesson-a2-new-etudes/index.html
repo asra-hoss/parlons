@@ -608,7 +608,7 @@ function finishFlow(){
         ev.stopImmediatePropagation();
         if(el._done)return;
         if(!real){el.animate([{transform:'translate('+ex+'px,'+ey+'px) translateX(-7px) rotate(-5deg)'},{transform:'translate('+ex+'px,'+ey+'px) translateX(6px) rotate(4deg)'},{transform:'translate('+ex+'px,'+ey+'px)'}],{duration:350});return}
-        el._done=1;el.classList.remove('nt-ready');
+        el._done=1;el.classList.remove('nt-ready');try{var ow=JSON.parse(localStorage.getItem('parlons:stars')||'{}');ow.balance=(+ow.balance||0)+1;ow.earnedTotal=(+ow.earnedTotal||0)+1;localStorage.setItem('parlons:stars',JSON.stringify(ow));window.dispatchEvent(new Event('parlons:stars-changed'))}catch(e){}
         el.animate([{transform:'translate('+ex+'px,'+ey+'px) scale(1)',opacity:1},{transform:'translate('+ex+'px,'+ey+'px) scale(1.3)',opacity:.9,offset:.4},{transform:'translate('+ex+'px,'+(ey-30)+'px) scale(.2)',opacity:0}],{duration:520,fill:'forwards'});
         for(var k=0;k<6;k++){(function(k){var c=document.createElement('img');c.src='/progress-copy/fx/coin.png';c.className='ntr-burst';c.style.left=(ex+d/2)+'px';c.style.top=(ey+d/2)+'px';c.style.setProperty('--a',(k*60)+'deg');fan.appendChild(c);setTimeout(function(){c.remove()},950)})(k)}
         leftCount--;
