@@ -1013,5 +1013,115 @@ var mo=new MutationObserver(tryClick);mo.observe(document.documentElement,{child
   tick();
 })();
 </script>
+<script id="chichilang-fixes-8916">
+/* Nov 28, 2026 (Asra): (9) Photo words page — remove the top-left Back button (logo goes Home).
+   (16a) Never show the level frame around the Chichilang logo itself (only around real photos).
+   (16b) Email sign-up must ask for a Name; it is saved as the profile name after sign-in. */
+(function () {
+  function hidePhotoBack() {
+    var inputs = document.querySelectorAll('input[type="file"][accept="image/*"]');
+    for (var i = 0; i < inputs.length; i++) {
+      var el = inputs[i], depth = 0;
+      while (el && depth < 9) {
+        el = el.parentElement; depth++;
+        if (!el) break;
+        if (el.querySelector('h1')) {
+          var backs = el.querySelectorAll('button[aria-label="Back"]');
+          for (var j = 0; j < backs.length; j++) {
+            if (!backs[j].closest('.desk-profile')) backs[j].style.display = 'none';
+          }
+          break;
+        }
+      }
+    }
+  }
+  function hideLogoFrames() {
+    var frames = document.querySelectorAll('img[data-profile-frame]');
+    for (var i = 0; i < frames.length; i++) {
+      var fr = frames[i];
+      if (fr.style.display === 'none') continue;
+      var fc = fr.getBoundingClientRect();
+      if (!fc.width) continue;
+      var fcx = fc.left + fc.width / 2, fcy = fc.top + fc.height / 2;
+      var scope = fr.parentElement;
+      for (var up = 0; up < 2 && scope; up++) {
+        var imgs = scope.querySelectorAll('img');
+        var done = false;
+        for (var j = 0; j < imgs.length; j++) {
+          var im = imgs[j];
+          if (im === fr || (im.getAttribute('src') || '').indexOf('chichilang-mark') < 0) continue;
+          var r = im.getBoundingClientRect();
+          if (!r.width) continue;
+          if (Math.abs(r.left + r.width / 2 - fcx) < 16 && Math.abs(r.top + r.height / 2 - fcy) < 16) {
+            fr.style.display = 'none';
+            done = true;
+            break;
+          }
+        }
+        if (done) break;
+        scope = scope.parentElement;
+      }
+    }
+  }
+  function stashName(v) {
+    try {
+      if ((v || '').trim()) sessionStorage.setItem('cl-pending-name', v.trim());
+      else sessionStorage.removeItem('cl-pending-name');
+    } catch (e) {}
+  }
+  function addNameDesk() {
+    var confirm = document.getElementById('desk-login-confirm');
+    if (!confirm || document.getElementById('cl-signup-name-desk')) return;
+    var email = document.getElementById('desk-login-email');
+    var emailLabel = document.querySelector('label[for="desk-login-email"]');
+    if (!email || !emailLabel) return;
+    var lab = document.createElement('label');
+    lab.className = emailLabel.className;
+    lab.setAttribute('for', 'cl-signup-name-desk');
+    lab.textContent = 'Name';
+    var inp = document.createElement('input');
+    inp.id = 'cl-signup-name-desk';
+    inp.type = 'text';
+    inp.autoComplete = 'name';
+    inp.placeholder = 'Your name';
+    inp.className = email.className;
+    inp.addEventListener('input', function () { stashName(inp.value); });
+    emailLabel.parentElement.insertBefore(lab, emailLabel);
+    emailLabel.parentElement.insertBefore(inp, emailLabel);
+  }
+  function addNameMobile() {
+    var confirm = document.querySelector('[data-account-confirm-input]');
+    if (!confirm || document.querySelector('[data-cl-signup-name]')) return;
+    var email = document.querySelector('[data-account-email-input]');
+    if (!email) return;
+    var inp = document.createElement('input');
+    inp.type = 'text';
+    inp.autoComplete = 'name';
+    inp.placeholder = 'Name';
+    inp.className = email.className;
+    inp.setAttribute('data-cl-signup-name', 'true');
+    inp.addEventListener('input', function () { stashName(inp.value); });
+    email.parentElement.insertBefore(inp, email);
+  }
+  function applyPendingName() {
+    var pending = null;
+    try { pending = sessionStorage.getItem('cl-pending-name'); } catch (e) {}
+    if (!pending) return;
+    var onLogin = document.querySelector('[data-account-email-input]') || document.getElementById('desk-login-email');
+    if (onLogin) return;
+    var cur = '';
+    try { cur = localStorage.getItem('origb1:profile-name') || ''; } catch (e) {}
+    if (cur) { try { sessionStorage.removeItem('cl-pending-name'); } catch (e) {} return; }
+    try {
+      localStorage.setItem('origb1:profile-name', pending);
+      sessionStorage.removeItem('cl-pending-name');
+    } catch (e) {}
+  }
+  function tick() { hidePhotoBack(); hideLogoFrames(); addNameDesk(); addNameMobile(); applyPendingName(); }
+  new MutationObserver(tick).observe(document.documentElement, { childList: true, subtree: true });
+  setInterval(tick, 1200);
+  tick();
+})();
+</script>
 </body>
 </html>
