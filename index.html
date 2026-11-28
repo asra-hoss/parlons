@@ -910,5 +910,36 @@ studyPlan();
 })();
 </script>
 
+
+<script id="chichilang-logo-names">
+(function(){
+var HIDE_EXACT=['Welcome back','Your French is waiting for you.','New accounts are created automatically.'];
+function hideLoginExtras(){
+  var els=document.querySelectorAll('p,h1,h2,h3,h4,div,span');
+  for(var i=0;i<els.length;i++){var el=els[i];if(el.children.length)continue;var t=(el.textContent||'').trim();
+    if(HIDE_EXACT.indexOf(t)>=0||t.indexOf('If you signed up with Google')===0)el.style.display='none';}
+}
+function fix(){
+  hideLoginExtras();
+  var pw=document.querySelectorAll('input[type="password"]');
+  for(var j=0;j<pw.length;j++){if(pw[j].getAttribute('placeholder'))pw[j].setAttribute('placeholder','');}
+  var imgs=document.querySelectorAll('img');
+  for(var i=0;i<imgs.length;i++){var s=imgs[i].getAttribute('src')||'';if(s.indexOf('chichilang-mark-20261123.png')>=0)imgs[i].src=s.replace('chichilang-mark-20261123.png','chichilang-mark-clear.png');}
+  var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);var n;
+  while(n=w.nextNode()){var t=n.nodeValue;var tr=t.trim();
+    if(tr==='Parlons fran\u00e7ais'||tr==='\u2014 Parlons fran\u00e7ais')n.nodeValue=t.replace('Parlons fran\u00e7ais','Chichilang');
+    else if(t.indexOf('48 dossiers')>=0)n.nodeValue=t.replace('48 dossiers','75 dossiers');}
+}
+function go(){fix();new MutationObserver(function(){fix();}).observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['src']});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
+})();
+</script>
+
+<script id="chichilang-nav-go">
+(function(){var go=new URLSearchParams(location.search).get('go');if(!go)return;var labels={Contest:'Contest',Team:'Team',Roadmap:'Roadmap',Home:'Home',Progress:'Progress'};var label=labels[go];if(!label)return;history.replaceState(null,'',location.pathname);var done=false;
+function tryClick(){if(done)return;var b=document.querySelector('nav[aria-label="App"] button[aria-label="'+label+'"]');if(!b)return;if(b.getAttribute('aria-current')==='page'){done=true;return;}b.click();}
+var iv=setInterval(tryClick,400);setTimeout(function(){clearInterval(iv);},90000);
+var mo=new MutationObserver(tryClick);mo.observe(document.documentElement,{childList:true,subtree:true});setTimeout(function(){mo.disconnect();},90000);})();
+</script>
 </body>
 </html>
