@@ -72,6 +72,7 @@ h1,h2,.fr{font-family:'Fredoka',sans-serif}
 .res .rt .a{font-family:'Fredoka';font-weight:600;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .res .rt .b{color:#8b93c9;font-weight:800;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .res .st{flex:none;font-weight:900;font-size:13px}
+.res .mtag{flex:none;font-family:'Fredoka';font-weight:700;font-size:10.5px;color:#6553e6;background:#eef0fe;border:2px solid #d5defc;border-radius:99px;padding:3px 8px}
 .lcard .nm span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 
 .bnav{position:fixed;left:50%;transform:translateX(-50%);bottom:0;z-index:60}
@@ -186,20 +187,42 @@ function renderDos(lv, d){
   document.querySelectorAll('#v-dos .lcard').forEach(c=>c.onclick=()=>{ location.href='/'+c.dataset.dir+'/'; });
 }
 const q = document.getElementById('q');
-q.addEventListener('input', ()=>{
-  const s = q.value.trim().toLowerCase();
-  if(!s){ show('v-home'); return; }
-  const hits = DATA.filter(l => l.t.toLowerCase().includes(s) || l.dos.toLowerCase().includes(s) || l.goal.toLowerCase().includes(s) || l.lv.toLowerCase()===s);
+/* full-content search v4: index over flashcards / grammar / texts of every lesson */
+let SIDX = null;
+fetch('search-index.json').then(r=>r.json()).then(j=>{ SIDX = j; if(q.value.trim()) runSearch(); }).catch(()=>{ SIDX = {}; });
+const snorm = s => (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\u2019/g,"'").replace(/\s+/g,' ').trim();
+const TIERS = ['Title','Goal','Dossier','Flashcards','Grammar','Texts'];
+function matchTier(l, words, raw, deep){
+  const ix = (SIDX && SIDX[l.dir]) || {};
+  const fields = [ snorm(l.t), snorm(l.goal), snorm(l.dos), deep ? (ix.f||'') : '', deep ? (ix.g||'') : '', deep ? (ix.x||'') : '' ];
+  for(let t=0;t<fields.length;t++){
+    if(fields[t] && words.every(w=>fields[t].indexOf(w)>=0)) return t;
+  }
+  if(raw === (''+l.lv).toLowerCase()) return 2;
+  return -1;
+}
+function runSearch(){
+  const raw = q.value.trim().toLowerCase();
+  if(!raw){ show('v-home'); return; }
+  const s = snorm(raw);
+  const words = s.split(' ').filter(Boolean);
+  const deep = !!SIDX && s.length >= 2;
+  const hits = [];
+  DATA.forEach(l=>{ const t = matchTier(l, words, raw, deep); if(t>=0) hits.push({l:l, tier:t}); });
+  hits.sort((a,b)=> a.tier-b.tier || a.l.n-b.l.n);
+  const shown = hits.slice(0, 80);
   document.getElementById('v-search').innerHTML =
-    '<div class="vtitle">Search</div><div class="vsub">'+hits.length+' result'+(hits.length===1?'':'s')+'</div>'
-    + (hits.length ? hits.map(l=>
-        '<div class="res" data-dir="'+l.dir+'"><div class="rl" style="background:'+LCOL[l.lv]+'">'+l.lv+'</div>'
+    '<div class="vtitle">Search</div><div class="vsub">'+hits.length+' result'+(hits.length===1?'':'s')+(hits.length>shown.length ? ' · showing '+shown.length : '')+'</div>'
+    + (shown.length ? shown.map(h=>{ const l = h.l;
+        return '<div class="res" data-dir="'+l.dir+'"><div class="rl" style="background:'+LCOL[l.lv]+'">'+l.lv+'</div>'
         + '<div class="rt"><div class="a">'+l.t+'</div><div class="b">'+l.dos+' · '+l.goal+'</div></div>'
-        + '<div class="st" style="color:'+(l.st===2 ? '#46a302' : (l.st===1 ? '#6c5ee0' : '#b3aed2'))+'">'+(l.st===2 ? '✓ Collected' : (l.st===1 ? 'In progress' : 'Not started'))+'</div></div>'
-      ).join('') : '<div class="empty">Nothing matches that search yet.</div>');
+        + '<div class="mtag">'+TIERS[h.tier]+'</div>'
+        + '<div class="st" style="color:'+(l.st===2 ? '#46a302' : (l.st===1 ? '#6c5ee0' : '#b3aed2'))+'">'+(l.st===2 ? '✓ Collected' : (l.st===1 ? 'In progress' : 'Not started'))+'</div></div>';
+      }).join('') : '<div class="empty">Nothing matches that search yet.</div>');
   document.querySelectorAll('#v-search .res').forEach(r=>r.onclick=()=>{ location.href='/'+r.dataset.dir+'/'; });
   show('v-search');
-});
+}
+q.addEventListener('input', runSearch);
 renderHome();
 </script>
 <nav class="bnav"><div class="cap"><a class="on" href="/progress-copy/collection-app.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 19.5c3.8 0 3.8-2.8 6.8-2.8 2.1 0 2.9-1.1 3.1-2.9" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="2.6 2.6" stroke-linecap="round"/><path d="M17.8 3.2a3.6 3.6 0 0 1 3.6 3.6c0 2.7-3.6 6.4-3.6 6.4s-3.6-3.7-3.6-6.4a3.6 3.6 0 0 1 3.6-3.6z" fill="currentColor" stroke="none"/><circle cx="17.8" cy="6.8" r="1.3" fill="#eaf4ff" stroke="none"/></svg>Progress</a><a href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3.8h10V9a5 5 0 0 1-10 0V3.8z" fill="currentColor" stroke="none"/><path d="M7 5.2H4.6a2.6 2.6 0 0 0 2.7 3.3M17 5.2h2.4a2.6 2.6 0 0 1-2.7 3.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 13.8v2.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M9.9 16.2h4.2l.7 3.9H9.2z" fill="currentColor" stroke="none"/></svg>Contest</a><a href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.2 21 11h-2.8v8.6a.9.9 0 0 1-.9.9h-3.9v-6h-2.8v6H6.7a.9.9 0 0 1-.9-.9V11H3z" fill="currentColor" stroke="none"/></svg>Home</a><a href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8.5" r="3.2" fill="currentColor" stroke="none"/><path d="M3.2 19.6c.8-3.4 3-5.1 5.8-5.1s5 1.7 5.8 5.1z" fill="currentColor" stroke="none"/><circle cx="17.2" cy="9.6" r="2.5" fill="currentColor" stroke="none" opacity="0.6"/><path d="M15.6 14.8c2.2.3 3.8 1.8 4.5 4.8h-4.7c-.4-1.9-.3-3.5.2-4.8z" fill="currentColor" stroke="none" opacity="0.6"/></svg>Team</a><a href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.3 13.8v5.9h3.7v-5.9z" fill="currentColor" stroke="none"/><path d="M10.2 10v9.7h3.7V10z" fill="currentColor" stroke="none"/><path d="M16.1 5.9v13.8h3.7V5.9z" fill="currentColor" stroke="none"/></svg>Roadmap</a></div></nav>
