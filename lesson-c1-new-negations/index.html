@@ -640,9 +640,10 @@ function finishFlow(){
   var big=pad.querySelector('.big'); if(big)big.style.display='none';
   var chest=document.createElement('div'); chest.className='ntr-chestwrap';
   chest.innerHTML='<img class="ntr-chest" src="/assets/chest3-closed-ggny5m54.png" alt="">'
-    +'<div class="ntr-chestline">Great work — tap your chest to open it</div>'
+    
     +'<div class="ntr-reward" style="display:none"></div>';
   pad.appendChild(chest);
+  var nav=sum.querySelector('.nav'); if(nav)nav.style.display='none';
   var opened=false;
   chest.querySelector('.ntr-chest').addEventListener('click',function(){
     if(opened)return; opened=true;
@@ -652,7 +653,7 @@ function finishFlow(){
       var g={}; try{g=JSON.parse(localStorage.getItem('parlons:stepfx')||'{}')}catch(e){}
       var lid=(typeof LD!=='undefined'&&LD.id)||''; var tot=0; Object.keys(g).forEach(function(key){ if(key.indexOf(lid+':')===0&&typeof g[key]==='number')tot+=g[key] });
       var rw=chest.querySelector('.ntr-reward'); rw.style.display='block'; rw.innerHTML='<img src="/progress-copy/fx/coin.png" alt=""> +'+tot+' coins earned in this lesson';
-      chest.querySelector('.ntr-chestline').textContent='Your reward is in your chest';
+      
       releaseBubbles();
     },480);
   });
