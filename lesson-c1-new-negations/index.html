@@ -654,4 +654,44 @@ transcriptAudio();
  paintCircles();
 })();
 </script>
+
+<script>/* chichilang-deeplink v1: #dl=<screen>[&fc=<card>] lands on that step from Collection search; toggles screens directly and never writes saved progress */
+(function(){try{
+function land(){
+ var h=location.hash||'';var m=/dl=(\d+)/.exec(h);if(!m)return;
+ var n=parseInt(m[1],10);var fm=/fc=(\d+)/.exec(h);var fci=fm?parseInt(fm[1],10):-1;
+ var S=[].slice.call(document.querySelectorAll('.scr'));
+ if(!S.length||n<0||n>=S.length||!S[n])return;
+ S.forEach(function(s,k){s.classList.toggle('on',k===n)});
+ try{window.i=n}catch(e){}
+ if(fci>0){
+  var tries=0;
+  var iv=setInterval(function(){
+   tries++;
+   var sc=S[n];
+   if(!sc||sc.getAttribute('data-dl-done')){clearInterval(iv);return}
+   var advanced=false;
+   var host=sc.querySelector('.ntr-deck');
+   if(host){
+    var nav=sc.querySelector('.nav');
+    var btn=nav&&(nav.querySelector('.btn:not(.g)')||nav.querySelector('.btn'));
+    if(btn){sc.setAttribute('data-dl-done','1');for(var k=0;k<fci;k++)btn.click();advanced=true}
+   }else{
+    var fs=sc.querySelector('.fshow');
+    if(fs){sc.setAttribute('data-dl-done','1');for(var k2=0;k2<fci;k2++)fs.click();advanced=true}
+   }
+   if(advanced){
+    clearInterval(iv);
+    var fc2=sc.querySelector('.fcard');
+    if(fc2){fc2.style.outline='3px solid #f5a623';setTimeout(function(){fc2.style.outline=''},2800)}
+   }
+   if(tries>14)clearInterval(iv);
+  },180);
+ }
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',land);else land();
+window.addEventListener('pageshow',land);
+window.addEventListener('hashchange',land);
+}catch(e){}})();
+</script>
 </body></html>

@@ -73,6 +73,12 @@ h1,h2,.fr{font-family:'Fredoka',sans-serif}
 .res .rt .b{color:#8b93c9;font-weight:800;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .res .st{flex:none;font-weight:900;font-size:13px}
 .res .mtag{flex:none;font-family:'Fredoka';font-weight:700;font-size:10.5px;color:#6553e6;background:#eef0fe;border:2px solid #d5defc;border-radius:99px;padding:3px 8px}
+.res.pvrow{align-items:flex-start}
+.res .rt .pv{margin-top:6px;font-size:13.5px;font-weight:700;color:#4a4570;line-height:1.45}
+.res .rt .pv .pvf{font-family:'Fredoka';font-weight:600;color:#2f2a55}
+.res .rt .pv .pvb{color:#6a6590;font-weight:700}
+.res .rt .pvx{margin-top:2px;font-size:12.5px;font-weight:600;color:#8b93c9;line-height:1.4}
+.res .rt .hl{background:#ffe9a8;border-radius:4px;padding:0 1px;color:inherit}
 .lcard .nm span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 
 .bnav{position:fixed;left:50%;transform:translateX(-50%);bottom:0;z-index:60}
@@ -187,39 +193,97 @@ function renderDos(lv, d){
   document.querySelectorAll('#v-dos .lcard').forEach(c=>c.onclick=()=>{ location.href='/'+c.dataset.dir+'/'; });
 }
 const q = document.getElementById('q');
-/* full-content search v4: index over flashcards / grammar / texts of every lesson */
-let SIDX = null;
-fetch('search-index.json').then(r=>r.json()).then(j=>{ SIDX = j; if(q.value.trim()) runSearch(); }).catch(()=>{ SIDX = {}; });
-const snorm = s => (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\u2019/g,"'").replace(/\s+/g,' ').trim();
+/* full-content search v5: item-level index. Title/Goal/Dossier matches behave as
+   before; Flashcards/Grammar/Texts matches preview the exact item found and
+   deep-link to its step in the lesson (#dl=<screen>, &fc=<card> for NT cards). */
+let SIDX = null, SNORM = null;
+const snorm = s => (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/’/g,"'").replace(/\s+/g,' ').trim();
+fetch('search-index.json?v=2').then(r=>r.json()).then(j=>{
+  SIDX = (j && j.lessons) || {}; SNORM = {};
+  Object.keys(SIDX).forEach(dir=>{
+    const e = SIDX[dir], o = {fc:[], gr:[], tx:[]};
+    (e.fc||[]).forEach(it=>o.fc.push({scr:it[0], card:it[1], f:it[2], b:it[3], x:it[4], nf:snorm(it[2]), nall:snorm(it[2]+' '+it[3]+' '+it[4])}));
+    (e.gr||[]).forEach(it=>o.gr.push({scr:it[0], t:it[1], s:it[2], nt:snorm(it[1]), nall:snorm(it[1]+' '+it[3])}));
+    (e.tx||[]).forEach(it=>o.tx.push({scr:it[0], kind:it[1], s:it[2], nall:snorm(it[2])}));
+    SNORM[dir] = o;
+  });
+  if(q.value.trim()) runSearch();
+}).catch(()=>{ SIDX = {}; SNORM = {}; });
 const TIERS = ['Title','Goal','Dossier','Flashcards','Grammar','Texts'];
-function matchTier(l, words, raw, deep){
-  const ix = (SIDX && SIDX[l.dir]) || {};
-  const fields = [ snorm(l.t), snorm(l.goal), snorm(l.dos), deep ? (ix.f||'') : '', deep ? (ix.g||'') : '', deep ? (ix.x||'') : '' ];
-  for(let t=0;t<fields.length;t++){
-    if(fields[t] && words.every(w=>fields[t].indexOf(w)>=0)) return t;
+function bestItem(arr, words, subFn){
+  let best = null, bestSub = 99;
+  for(let k=0;k<arr.length;k++){
+    const it = arr[k];
+    if(!words.every(w=>it.nall.indexOf(w)>=0)) continue;
+    const sub = subFn(it);
+    if(sub < bestSub){ best = it; bestSub = sub; if(sub===0) break; }
   }
-  if(raw === (''+l.lv).toLowerCase()) return 2;
-  return -1;
+  return best;
+}
+function matchTier(l, words, raw, deep){
+  if(words.every(w=>snorm(l.t).indexOf(w)>=0)) return {tier:0};
+  if(words.every(w=>snorm(l.goal).indexOf(w)>=0)) return {tier:1};
+  if(words.every(w=>snorm(l.dos).indexOf(w)>=0)) return {tier:2};
+  if(raw === (''+l.lv).toLowerCase()) return {tier:2};
+  if(!deep || !SNORM) return null;
+  const ix = SNORM[l.dir]; if(!ix) return null;
+  let it = bestItem(ix.fc, words, x=>words.every(w=>x.nf.indexOf(w)>=0)?0:1);
+  if(it) return {tier:3, it:it};
+  it = bestItem(ix.gr, words, x=>words.every(w=>x.nt.indexOf(w)>=0)?0:1);
+  if(it) return {tier:4, it:it};
+  it = bestItem(ix.tx, words, ()=>0);
+  if(it) return {tier:5, it:it};
+  return null;
+}
+const esc = s => (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const ACC = {a:'aàáâäãå',e:'eèéêë',i:'iìíîï',o:'oòóôöõ',u:'uùúûü',c:'cç',n:'nñ',y:'yÿ'};
+let curWords = [];
+function hl(text){
+  let out = esc(text);
+  curWords.forEach(w=>{
+    if(!w) return;
+    const pat = w.split('').map(ch=>{
+      const b = snorm(ch);
+      if(ACC[b]) return '['+ACC[b]+']';
+      return b.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    }).join('');
+    if(!pat) return;
+    try{ out = out.replace(new RegExp('('+pat+')','gi'), '<b class="hl">$1</b>'); }catch(e){}
+  });
+  return out;
+}
+function previewOf(h){
+  const it = h.it; if(!it) return '';
+  if(h.tier===3) return '<div class="pv"><span class="pvf">'+hl(it.f)+'</span>'+(it.b?' <span class="pvb">— '+hl(it.b)+'</span>':'')+'</div>'+(it.x?'<div class="pvx">'+hl(it.x)+'</div>':'');
+  if(h.tier===4) return '<div class="pv"><span class="pvf">'+hl(it.t)+'</span></div>'+(it.s?'<div class="pvx">'+hl(it.s)+'</div>':'');
+  if(h.tier===5) return '<div class="pv">'+hl(it.s)+'</div>';
+  return '';
+}
+function tagOf(h){ return h.tier===5 && h.it ? h.it.kind : TIERS[h.tier]; }
+function linkOf(h){
+  if(h.it && h.tier>=3) return '/'+h.l.dir+'/#dl='+h.it.scr+((h.it.card!==undefined && h.it.card>=0)?'&fc='+h.it.card:'');
+  return '/'+h.l.dir+'/';
 }
 function runSearch(){
   const raw = q.value.trim().toLowerCase();
   if(!raw){ show('v-home'); return; }
   const s = snorm(raw);
   const words = s.split(' ').filter(Boolean);
-  const deep = !!SIDX && s.length >= 2;
+  curWords = words;
+  const deep = !!SNORM && s.length >= 2;
   const hits = [];
-  DATA.forEach(l=>{ const t = matchTier(l, words, raw, deep); if(t>=0) hits.push({l:l, tier:t}); });
+  DATA.forEach(l=>{ const m = matchTier(l, words, raw, deep); if(m) hits.push({l:l, tier:m.tier, it:m.it||null}); });
   hits.sort((a,b)=> a.tier-b.tier || a.l.n-b.l.n);
   const shown = hits.slice(0, 80);
   document.getElementById('v-search').innerHTML =
     '<div class="vtitle">Search</div><div class="vsub">'+hits.length+' result'+(hits.length===1?'':'s')+(hits.length>shown.length ? ' · showing '+shown.length : '')+'</div>'
-    + (shown.length ? shown.map(h=>{ const l = h.l;
-        return '<div class="res" data-dir="'+l.dir+'"><div class="rl" style="background:'+LCOL[l.lv]+'">'+l.lv+'</div>'
-        + '<div class="rt"><div class="a">'+l.t+'</div><div class="b">'+l.dos+' · '+l.goal+'</div></div>'
-        + '<div class="mtag">'+TIERS[h.tier]+'</div>'
+    + (shown.length ? shown.map(h=>{ const l = h.l, pv = previewOf(h);
+        return '<div class="res'+(pv?' pvrow':'')+'" data-href="'+linkOf(h)+'"><div class="rl" style="background:'+LCOL[l.lv]+'">'+l.lv+'</div>'
+        + '<div class="rt"><div class="a">'+l.t+'</div><div class="b">'+l.dos+' · '+l.goal+'</div>'+pv+'</div>'
+        + '<div class="mtag">'+tagOf(h)+'</div>'
         + '<div class="st" style="color:'+(l.st===2 ? '#46a302' : (l.st===1 ? '#6c5ee0' : '#b3aed2'))+'">'+(l.st===2 ? '✓ Collected' : (l.st===1 ? 'In progress' : 'Not started'))+'</div></div>';
       }).join('') : '<div class="empty">Nothing matches that search yet.</div>');
-  document.querySelectorAll('#v-search .res').forEach(r=>r.onclick=()=>{ location.href='/'+r.dataset.dir+'/'; });
+  document.querySelectorAll('#v-search .res').forEach(r=>r.onclick=()=>{ location.href=r.dataset.href; });
   show('v-search');
 }
 q.addEventListener('input', runSearch);
