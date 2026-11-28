@@ -655,9 +655,42 @@ function finishFlow(){
       var lid=(typeof LD!=='undefined'&&LD.id)||''; var tot=0; Object.keys(g).forEach(function(key){ if(key.indexOf(lid+':')===0&&typeof g[key]==='number')tot+=g[key] });
       var rw=chest.querySelector('.ntr-reward'); rw.style.display='block'; rw.innerHTML='<img src="/progress-copy/fx/coin.png" alt=""> +'+tot+' coins earned in this lesson';
       chest.querySelector('.ntr-chestline').textContent='Your reward is in your chest';
-      setTimeout(showPop, 1150);
+      releaseBubbles();
     },480);
   });
+  function releaseBubbles(){
+    var fr=sum.querySelector('.fr'); if(!fr)return;
+    if(getComputedStyle(fr).position==='static')fr.style.position='relative';
+    if(!document.getElementById('nt-fan-css')){var st=document.createElement('style');st.id='nt-fan-css';st.textContent='.nt-fan{position:absolute;left:0;top:0;right:0;bottom:0;z-index:6;pointer-events:none}.nt-fb{position:absolute;left:0;top:0;pointer-events:auto;cursor:pointer;will-change:transform}.nt-fb img{width:100%;height:100%;display:block}.nt-fb.nt-ready{border-radius:50%;box-shadow:0 0 0 3px rgba(244,193,79,.9),0 6px 18px rgba(122,95,240,.25)}';document.head.appendChild(st)}
+    var fan=document.createElement('div');fan.className='nt-fan';fr.appendChild(fan);
+    var BUB={headphones:'/shared/a1b0098e3208320c.png',book:'/shared/73f0c90388831482.png',cards:'/shared/b2ac7d7982275e9f.png',letter:'/shared/fb7a34d9bd5394d7.png',e1:'/shared/d974725029f32209.png',e2:'/shared/420be5d885a33edd.png',e3:'/shared/35fa642e00eb1886.png'};
+    var SL=[{x:.275,y:.10,r:.109},{x:.501,y:.07,r:.1},{x:.719,y:.11,r:.108},{x:.152,y:.30,r:.104},{x:.338,y:.33,r:.061},{x:.497,y:.28,r:.085},{x:.659,y:.32,r:.06},{x:.848,y:.30,r:.104}];
+    var ASSIGN=[['e1',0],['cards',1],['book',2],['headphones',3],['e2',4],['e3',5],['e1',6],['letter',7]];
+    var W=fr.offsetWidth||340,H=fr.offsetHeight||560;
+    var cr=chest.getBoundingClientRect(),fr2=fr.getBoundingClientRect();
+    var mx=cr.left-fr2.left+cr.width/2,my=cr.top-fr2.top+40;
+    var leftCount=4;
+    ASSIGN.forEach(function(a,idx){
+      var s=SL[a[1]],d=Math.max(44,2*s.r*W*1.02),ex=s.x*W-d/2,ey=Math.min(26+s.y*H*.92-d/2,H-150);
+      var real=['cards','book','headphones','letter'].indexOf(a[0])>-1;
+      var el=document.createElement('div');el.className='nt-fb'+(real?' nt-ready':'');
+      el.style.cssText='width:'+d+'px;height:'+d+'px';
+      el.innerHTML='<img alt="" src="'+BUB[a[0]]+'">';
+      fan.appendChild(el);
+      var sxp=mx-d/2,syp=my-d/2,mxp=sxp+(ex-sxp)*.45,myp=Math.min(syp,ey)+(syp-ey)*.15;
+      el.animate([{transform:'translate('+sxp+'px,'+syp+'px) scale(.08)',opacity:0},{transform:'translate('+mxp+'px,'+myp+'px) scale(.7)',opacity:1,offset:.45},{transform:'translate('+ex+'px,'+ey+'px) scale(1.07)',offset:.8},{transform:'translate('+ex+'px,'+ey+'px) scale(1)',opacity:1}],{duration:1100,delay:idx*85,easing:'cubic-bezier(.3,.85,.4,1)',fill:'both'});
+      el.addEventListener('click',function(ev){
+        ev.stopImmediatePropagation();
+        if(el._done)return;
+        if(!real){el.animate([{transform:'translate('+ex+'px,'+ey+'px) translateX(-7px) rotate(-5deg)'},{transform:'translate('+ex+'px,'+ey+'px) translateX(6px) rotate(4deg)'},{transform:'translate('+ex+'px,'+ey+'px)'}],{duration:350});return}
+        el._done=1;el.classList.remove('nt-ready');
+        el.animate([{transform:'translate('+ex+'px,'+ey+'px) scale(1)',opacity:1},{transform:'translate('+ex+'px,'+ey+'px) scale(1.3)',opacity:.9,offset:.4},{transform:'translate('+ex+'px,'+(ey-30)+'px) scale(.2)',opacity:0}],{duration:520,fill:'forwards'});
+        for(var k=0;k<6;k++){(function(k){var c=document.createElement('img');c.src='/progress-copy/fx/coin.png';c.className='ntr-burst';c.style.left=(ex+d/2)+'px';c.style.top=(ey+d/2)+'px';c.style.setProperty('--a',(k*60)+'deg');fan.appendChild(c);setTimeout(function(){c.remove()},950)})(k)}
+        leftCount--;
+        if(leftCount<=0)setTimeout(showPop,650);
+      });
+    });
+  }
   function showPop(){
     if(document.getElementById('ntr-donepop'))return;
     var N=window.__ntNext||null; var nx=(typeof LD!=='undefined'&&LD.next)||null; if(!nx)return;
