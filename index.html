@@ -944,5 +944,74 @@ function tryClick(){if(done)return;var b=document.querySelector('nav[aria-label=
 var iv=setInterval(tryClick,400);setTimeout(function(){clearInterval(iv);},90000);
 var mo=new MutationObserver(tryClick);mo.observe(document.documentElement,{childList:true,subtree:true});setTimeout(function(){mo.disconnect();},90000);})();
 </script>
+
+<script id="chichilang-settings-fixes">
+/* Settings fixes (Asra, Nov 28, 2026): hide the Back button (the logo already goes Home),
+   hide the "Email verified" and "Progress saved" status lines (only the verify alert stays),
+   and turn the always-open Name box into name + pencil -> edit -> Save. */
+(function () {
+  var css = document.createElement('style');
+  css.textContent = '.desk-profile button[aria-label="Back"]{display:none!important}'
+    + '[data-sync-status]{display:none!important}'
+    + '.cl-name-view{display:flex;align-items:center;gap:9px;margin-top:4px}'
+    + '.cl-name-txt{font-size:16px;font-weight:700;color:var(--text)}'
+    + '.cl-name-txt.empty{color:var(--dim);font-weight:600}'
+    + '.cl-pencil{border:0;background:#f1edff;color:#5b3fd0;width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex:none}'
+    + '.cl-pencil:active{transform:scale(.94)}'
+    + '.cl-save{margin-top:8px;border:0;cursor:pointer;padding:9px 22px;border-radius:999px;background:linear-gradient(90deg,#38b2ac,#4a78e0);color:#fff;font:900 14px Nunito,sans-serif}';
+  document.head.appendChild(css);
+  var PENCIL = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>';
+  function hideVerified(root) {
+    var ps = (root || document).querySelectorAll('p');
+    for (var i = 0; i < ps.length; i++) {
+      var t = (ps[i].textContent || '').trim();
+      if (/^Email verified/.test(t)) ps[i].style.display = 'none';
+    }
+  }
+  function fixName() {
+    var inp = document.querySelector('input[data-profile-name="true"]');
+    if (!inp || inp.__clFixed) return;
+    inp.__clFixed = true;
+    var view = document.createElement('div');
+    view.className = 'cl-name-view';
+    var txt = document.createElement('span');
+    txt.className = 'cl-name-txt';
+    var pen = document.createElement('button');
+    pen.type = 'button';
+    pen.className = 'cl-pencil';
+    pen.setAttribute('aria-label', 'Edit name');
+    pen.innerHTML = PENCIL;
+    view.appendChild(txt);
+    view.appendChild(pen);
+    var save = document.createElement('button');
+    save.type = 'button';
+    save.className = 'cl-save';
+    save.textContent = 'Save';
+    save.style.display = 'none';
+    inp.parentElement.insertBefore(view, inp);
+    inp.parentElement.insertBefore(save, inp.nextSibling);
+    function showView() {
+      var v = (inp.value || '').trim();
+      txt.textContent = v || (inp.getAttribute('placeholder') || 'Your name');
+      txt.classList.toggle('empty', !v);
+      view.style.display = 'flex';
+      inp.style.display = 'none';
+      save.style.display = 'none';
+    }
+    pen.addEventListener('click', function () {
+      view.style.display = 'none';
+      inp.style.display = '';
+      save.style.display = '';
+      try { inp.focus(); inp.select(); } catch (e) {}
+    });
+    save.addEventListener('click', showView);
+    showView();
+  }
+  function tick() { hideVerified(document); fixName(); }
+  new MutationObserver(tick).observe(document.documentElement, { childList: true, subtree: true });
+  setInterval(tick, 1200);
+  tick();
+})();
+</script>
 </body>
 </html>
